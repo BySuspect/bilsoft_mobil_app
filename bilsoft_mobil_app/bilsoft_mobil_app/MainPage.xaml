@@ -10,7 +10,7 @@
                 <Grid>
                     <StackLayout>
                         <Frame HeightRequest="800" WidthRequest="500" Margin="20" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Red">
-
+                            <Label Text="test"/>
                         </Frame>
                     </StackLayout>
                 </Grid>
