@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:custom1="clr-namespace:bilsoft_mobil_app.CustomItems"
+             x:Class="bilsoft_mobil_app.Pages.LoginPage" Title="Login">
+
+    <StackLayout BackgroundColor="Green">
+        <ScrollView>
+            <Grid Padding="0,10,0,25">
+                <Frame  Margin="35,20" Padding="25,10" CornerRadius="15">
+                    <StackLayout>
+                        <StackLayout Margin="0,20,0,10">
+                            <Image Source="bilsoft_logo"/>
+                        </StackLayout>
+
+                        <custom1:CustomEntry x:Name="entry_loginvergino"
+                                        CornerRadius="15"  
+                                        IsCurvedCornersEnabled="True"  
+                                        BorderColor="Black"      
+                                        HorizontalTextAlignment="Center"  
+                                        FontSize="17"  
+                                        HeightRequest="40"  
+                                        Placeholder="Vergi No"  
+                                        PlaceholderColor="Gray"  
+                                        TextColor="Black"  
+                                        FontAttributes="None"  
+                                        WidthRequest="100"/>
+
+                        <custom1:CustomEntry x:Name="entry_loginkullaniciadi"
+                                        CornerRadius="18"  
+                                        IsCurvedCornersEnabled="True"  
+                                        BorderColor="Black"      
+                                        HorizontalTextAlignment="Center"  
+                                        FontSize="17"  
+                                        HeightRequest="40"  
+                                        Placeholder="Kullanıcı Adı"  
+                                        PlaceholderColor="Gray"  
+                                        TextColor="Black"  
+                                        FontAttributes="None"  
+                                        WidthRequest="100"/>
+
+                        <custom1:CustomEntry x:Name="entry_loginsifre"
+                                        CornerRadius="18"  
+                                        IsCurvedCornersEnabled="True"  
+                                        BorderColor="Black"      
+                                        HorizontalTextAlignment="Center"  
+                                        FontSize="17"  
+                                        HeightRequest="40"  
+                                        Placeholder="Şifre"  
+                                        PlaceholderColor="Gray"  
+                                        TextColor="Black"  
+                                        FontAttributes="None"  
+                                        WidthRequest="100"/>
+
+                        <Button x:Name="btn_sifreunuttum" Clicked="btn_sifreunuttum_Clicked" BackgroundColor="Transparent" CornerRadius="25" Margin="15,0" Text="Şifremi Unuttum" HorizontalOptions="Start" TextColor="Red" HeightRequest="30" Padding="5,5,5,5"/>
+                        <StackLayout Margin="25,0">
+                            <StackLayout Margin="15,10,0,0" Orientation="Horizontal">
+                                <CheckBox x:Name="cb_benihatirla" VerticalOptions="Center" Color="#8290a3"/>
+                                <Label Text="Beni Hatırla" VerticalOptions="Center" TextColor="#8290a3"/>
+                            </StackLayout>
+                            <StackLayout Margin="15,0,0,0" Orientation="Horizontal">
+                                <CheckBox x:Name="cb_oturumuaciktut" VerticalOptions="Center" Color="#8290a3"/>
+                                <Label Text="Oturumu Açık Tut" VerticalOptions="Center" TextColor="#8290a3"/>
+                            </StackLayout>
+                            <Button x:Name="bt_login" Clicked="bt_login_Clicked" Margin="15,0,15,5" HeightRequest="40" Padding="5,0,5,0" ScaleY="1" BackgroundColor="#32c5d2" Text="Giriş Yap" CornerRadius="15" TextColor="White"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Button x:Name="btn_ucretsizdene" Clicked="btn_ucretsizdene_Clicked" Text="Ücretsiz Dene" HeightRequest="30" Padding="5,0" BackgroundColor="#337ab7" CornerRadius="10" Margin="5,0" TextColor="White"/>
+                            <Button x:Name="btn_demogiris" Clicked="btn_demogiris_Clicked" Text="Demo Giriş" HeightRequest="30" Padding="5,0" BackgroundColor="#1bbc9b" CornerRadius="10" Margin="5,0" TextColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Label Text="2022 © Bilsoft Online Muhasebe" VerticalOptions="End" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                <Button x:Name="ResetBTN" Text="Reset" Clicked="ResetBTN_Clicked" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
+                <AbsoluteLayout x:Name="Loodinglayout" IsVisible="false" BackgroundColor="#77767676" VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" Padding="50">
+                        <ActivityIndicator x:Name="LoodingActivity" IsRunning="False" Color="White" />
+                    </StackLayout>
+                </AbsoluteLayout>
+            </Grid>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS0809: Obsolete member overrides non-obsolete member
+dotnet_diagnostic.CS0809.severity = silent
+
+# IDE0003: Remove qualification
+dotnet_diagnostic.IDE0003.severity = silent

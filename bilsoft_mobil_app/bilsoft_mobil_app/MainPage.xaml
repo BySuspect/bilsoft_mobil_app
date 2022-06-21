@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="bilsoft_mobil_app.MainPage">
+
+    <Grid  BackgroundColor="LightGray">
+        <ScrollView>
+            <AbsoluteLayout BackgroundColor="White">
+                <Grid>
+                    <StackLayout>
+                        <Frame HeightRequest="800" WidthRequest="500" Margin="20" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Red">
+
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </AbsoluteLayout>
+        </ScrollView>
+        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#B0828282" VerticalOptions="Fill"/>
+        <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="CadetBlue" HorizontalOptions="End" VerticalOptions="Start"/>
+    </Grid>
+</ContentPage>

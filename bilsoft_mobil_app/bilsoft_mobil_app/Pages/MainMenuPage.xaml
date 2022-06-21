@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bilsoft_mobil_app.Pages.MainMenuPage" Title="Main">
+
+
+    <Grid VerticalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Button BackgroundColor="Transparent"  ImageSource="house32x.png" Text="Giriş Ekranı" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="cartshopping32x.png" Text="Satış Yap" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="users32x.png" Text="Cari Hesaplar" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="dropbox32x.png" Text="Stok Kartları" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="pen_to_square32.png" Text="Faturalar" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="pen_to_square32.png" Text="E-Fatura" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="pen_to_square32.png" Text="E-İrsaliye" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="chartcolumn32.png" Text="Gelir Gider" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="money32x.png" Text="Kasa" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="building_columns32x.png" Text="Banka" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="file_dollar32x.png" Text="Çek/Senet" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="calendar32.png" Text="Taksit Yap" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="file_lines32x.png" Text="Teklif Sipariş" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="book32x.png" Text="Ajanda" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="Transparent" ImageSource="file_lines32x.png" Text="Raporlar" Margin="25,5,25,-10" Padding="65,10"/>
+                <StackLayout x:Name="RaporlarToggle">
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
