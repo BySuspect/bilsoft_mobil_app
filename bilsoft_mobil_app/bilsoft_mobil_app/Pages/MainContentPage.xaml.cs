@@ -696,38 +696,78 @@ namespace bilsoft_mobil_app.Pages
         #endregion
         private async void btnPopUpMenu_Clicked(object sender, EventArgs e)
         {
+            //Menü arka button heightrequestler sırayla
+            //55-100-150-200-240-280-330-380
+
             if (!popupMenuBack.IsVisible)
             {
                 btnPopUpMenu.ImageSource = "offmenuicon.png";
-                popupMenuBackBox.HeightRequest = 120;
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
                 popupMenuBack.IsVisible = true;
                 btnpopupMenuReturnBack.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 100;
                 btnPopUpMenuItemPanel.IsVisible = true;
-                await Task.Delay(20);
-                popupMenuBackBox.HeightRequest = 220;
+                lblPopUpMenuItemPanel.IsVisible = true;
+                
+                await Task.Delay(50);
+
+                popupMenuBackBox.HeightRequest = 150;
                 btnPopUpMenuItemAra.IsVisible = true;
+                lblPopUpMenuItemAra.IsVisible = true;
+
+                await Task.Delay(50);
+
+                popupMenuBackBox.HeightRequest = 200;
                 btnPopUpMenuItemCariIslem.IsVisible = true;
-                await Task.Delay(20);
-                popupMenuBackBox.HeightRequest = 320;
-                btnPopUpMenuItemStokKartlarıi.IsVisible = true;
+                lblPopUpMenuItemCariIslem.IsVisible = true;
+
+                await Task.Delay(50);
+
+                popupMenuBackBox.HeightRequest = 240;
+                btnPopUpMenuItemStokKartlari.IsVisible = true;
+                lblPopUpMenuItemStokKartlari.IsVisible = true;
+
+                await Task.Delay(50);
+
+                popupMenuBackBox.HeightRequest = 280;
                 btnPopUpMenuItemSatisYap.IsVisible = true;
-                await Task.Delay(20);
-                popupMenuBackBox.HeightRequest = 400;
+                lblPopUpMenuItemSatisYap.IsVisible = true;
+
+                await Task.Delay(50);
+
+                popupMenuBackBox.HeightRequest = 330;
                 btnPopUpMenuItemFaturalar.IsVisible = true;
+                lblPopUpMenuItemFaturalar.IsVisible = true;
+
+                await Task.Delay(50);
+
+                popupMenuBackBox.HeightRequest = 380;
                 btnPopUpMenuItemFiyatGor.IsVisible = true;
+                lblPopUpMenuItemFiyatGor.IsVisible = true;
+
             }
             else
             {
                 btnPopUpMenu.ImageSource = "menuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
                 popupMenuBack.IsVisible = false;
                 btnpopupMenuReturnBack.IsVisible = false;
+                btnPopUpMenuItemPanel.IsVisible = false;
+                lblPopUpMenuItemPanel.IsVisible = false;
                 btnPopUpMenuItemAra.IsVisible = false;
+                lblPopUpMenuItemAra.IsVisible = false;
                 btnPopUpMenuItemCariIslem.IsVisible = false;
-                btnPopUpMenuItemStokKartlarıi.IsVisible = false;
+                lblPopUpMenuItemCariIslem.IsVisible = false;
+                btnPopUpMenuItemStokKartlari.IsVisible = false;
+                lblPopUpMenuItemStokKartlari.IsVisible = false;
                 btnPopUpMenuItemSatisYap.IsVisible = false;
+                lblPopUpMenuItemSatisYap.IsVisible = false;
                 btnPopUpMenuItemFaturalar.IsVisible = false;
+                lblPopUpMenuItemFaturalar.IsVisible = false;
                 btnPopUpMenuItemFiyatGor.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 100;
+                lblPopUpMenuItemFiyatGor.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 55;
             }
         }
 
@@ -736,15 +776,24 @@ namespace bilsoft_mobil_app.Pages
             if (popupMenuBack.IsVisible)
             {
                 btnPopUpMenu.ImageSource = "menuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
                 popupMenuBack.IsVisible = false;
                 btnpopupMenuReturnBack.IsVisible = false;
+                btnPopUpMenuItemPanel.IsVisible = false;
+                lblPopUpMenuItemPanel.IsVisible = false;
                 btnPopUpMenuItemAra.IsVisible = false;
+                lblPopUpMenuItemAra.IsVisible = false;
                 btnPopUpMenuItemCariIslem.IsVisible = false;
-                btnPopUpMenuItemStokKartlarıi.IsVisible = false;
+                lblPopUpMenuItemCariIslem.IsVisible = false;
+                btnPopUpMenuItemStokKartlari.IsVisible = false;
+                lblPopUpMenuItemStokKartlari.IsVisible = false;
                 btnPopUpMenuItemSatisYap.IsVisible = false;
+                lblPopUpMenuItemSatisYap.IsVisible = false;
                 btnPopUpMenuItemFaturalar.IsVisible = false;
+                lblPopUpMenuItemFaturalar.IsVisible = false;
                 btnPopUpMenuItemFiyatGor.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 100;
+                lblPopUpMenuItemFiyatGor.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 55;
             }
         }
 

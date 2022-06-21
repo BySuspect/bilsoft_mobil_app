@@ -4,6 +4,9 @@
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="bilsoft_mobil_app.Pages.MainContentPage" BackgroundColor="White">
 
+    <!-- Yapılacaklar -->
+    <!-- Ana sayfa Fontları Küçültülücek telefonda sığmıyor-->
+    
     <NavigationPage.TitleIconImageSource>
         Bilsoft_Logo_Beyaz.png
     </NavigationPage.TitleIconImageSource>
@@ -511,7 +514,7 @@
         </ScrollView>
         <!--#endregion-->
         <!--#region popUplar-->
-        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#B0828282" VerticalOptions="Fill"/>
+        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#CC000000" VerticalOptions="Fill"/>
         <!--#region Suresi Geçen Hatırlatmalar View-->
         <ScrollView x:Name="SuresiGecenHatirlatmaView" IsVisible="true">
             <Frame BackgroundColor="White" BorderColor="Black" Margin="20" CornerRadius="15">
@@ -532,8 +535,8 @@
                     <StackLayout VerticalOptions="EndAndExpand">
                         <BoxView HeightRequest="1" Color="LightGray" Margin ="0, 0, 0, 0" VerticalOptions="End"/>
                         <StackLayout Orientation="Horizontal">
-                            <Button x:Name="btnSureGecenHatirlatmaAjandayaGit" Text="Ajandaya Git" CornerRadius="15" BackgroundColor="LightBlue" HorizontalOptions="Start"/>
-                            <Button x:Name="btnSureGecenHatirlatmaKapat" Clicked="btnSureGecenHatirlatmaKapat_Clicked" Text="Kapat" CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
+                            <Button x:Name="btnSureGecenHatirlatmaAjandayaGit" Text="Ajandaya Git" CornerRadius="15" BackgroundColor="LightBlue" TextColor="Black" HorizontalOptions="Start"/>
+                            <Button x:Name="btnSureGecenHatirlatmaKapat" Clicked="btnSureGecenHatirlatmaKapat_Clicked" Text="Kapat" CornerRadius="15" TextColor="Black" BorderColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
@@ -542,20 +545,35 @@
         <!--#endregion-->
         
         <!--#region Sağ Menü-->
-        <AbsoluteLayout x:Name="popupMenuBack" IsVisible="false" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Start" Margin="0,100,10,0">
-            <BoxView x:Name="popupMenuBackBox" Color="CadetBlue" WidthRequest="60" HeightRequest="100" CornerRadius="25"/>
-            <StackLayout HorizontalOptions="End" WidthRequest="60" HeightRequest="400" VerticalOptions="Start">
-                <Button x:Name="btnPopUpMenuItemPanel" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="home24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-                <Button x:Name="btnPopUpMenuItemAra" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="search24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-                <Button x:Name="btnPopUpMenuItemCariIslem" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="users24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-                <Button x:Name="btnPopUpMenuItemStokKartlarıi" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="dropbox24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-                <Button x:Name="btnPopUpMenuItemSatisYap" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="cartshopping24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-                <Button x:Name="btnPopUpMenuItemFaturalar" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="pen_to_square24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-                <Button x:Name="btnPopUpMenuItemFiyatGor" Margin="-11,0" TranslationY="65" IsVisible="false" ImageSource="file_dollar24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+        <AbsoluteLayout x:Name="popupMenuBack" IsVisible="false" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Start" Margin="0,100,8,0">
+            <BoxView x:Name="popupMenuBackBox" Color="#36c6d3" WidthRequest="55" HeightRequest="55" CornerRadius="25"/>
+            <StackLayout HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start">
+                
+                <Button x:Name="btnPopUpMenuItemPanel" Margin="-11,0" TranslationX="-2" TranslationY="65" IsVisible="true" ImageSource="home24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" FontSize="15" TextColor="white" IsVisible="false" TranslationY="29" TranslationX="-45"/>
+
+                <Button x:Name="btnPopUpMenuItemAra" Margin="-11,0" TranslationX="-2" TranslationY="35" IsVisible="false" ImageSource="search24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-5" TranslationX="-60" Padding="-20,0,0,0"/>
+
+                <Button x:Name="btnPopUpMenuItemCariIslem" Margin="-11,0" TranslationX="-2" TranslationY="5" IsVisible="false" ImageSource="users24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-30" TranslationX="-60" Padding="-25,0,0,0"/>
+
+                <Button x:Name="btnPopUpMenuItemStokKartlari" Margin="-11,0" TranslationX="-2" TranslationY="-20" IsVisible="false" ImageSource="dropbox24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-60" TranslationX="-60" Padding="-25,0,0,0"/>
+
+                <Button x:Name="btnPopUpMenuItemSatisYap" Margin="-11,0" TranslationX="-2" TranslationY="-50" IsVisible="false" ImageSource="cartshopping24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-90" TranslationX="-40" Padding="-25,0,0,0"/>
+
+                <Button x:Name="btnPopUpMenuItemFaturalar" Margin="-11,0" TranslationX="-2" TranslationY="-80" IsVisible="false" ImageSource="pen_to_square24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-116" TranslationX="-40" Padding="-25,0,0,0"/>
+
+                <Button x:Name="btnPopUpMenuItemFiyatGor" Margin="-11,0" TranslationX="-2" TranslationY="-105" IsVisible="false" ImageSource="file_dollar24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
+                <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-140" TranslationX="-40" Padding="-25,0,0,0"/>
+
             </StackLayout>
         </AbsoluteLayout>
         <!--#endregion-->
-        <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="CadetBlue" HorizontalOptions="End" VerticalOptions="Start"/>
+        <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="#9A36c6d3" HorizontalOptions="End" VerticalOptions="Start"/>
     <!--#endregion-->
     </Grid>
 </ContentPage>
