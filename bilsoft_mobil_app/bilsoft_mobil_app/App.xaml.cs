@@ -16,10 +16,10 @@ namespace bilsoft_mobil_app
             //MainPage = new LoginPage();
 
             //Ana Sayfa
-            MainPage = new MainMDPage();
+            //MainPage = new MainMDPage();
 
             //Test Page
-            //MainPage = new MainPage();
+            MainPage = new MainPage();
         }
 
         public void SetMainPage(Page rootPage)
