@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microcharts;
 using SkiaSharp;
+using bilsoft_mobil_app.Helper;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -72,6 +73,10 @@ namespace bilsoft_mobil_app.Pages
         string _7GunKasaHareketDay1, _7GunKasaHareketDay2, _7GunKasaHareketDay3, _7GunKasaHareketDay4, _7GunKasaHareketDay5, _7GunKasaHareketDay6, _7GunKasaHareketDay7;
         #endregion
 
+        #region Süresi Geçen Hatırlatma Veriler
+        List<SuresiGecenListeProps> SuresiGecenHatirlatmalarListe = new List<SuresiGecenListeProps>();
+        #endregion
+
         public MainContentPage()
         {
             InitializeComponent();
@@ -126,12 +131,21 @@ namespace bilsoft_mobil_app.Pages
                 #region 7 Günlük Kasa Haraket Chart
                 _7GunlukKasaHareketleriChart.Chart = new PointChart { Entries = entries7GunlukKasaHareketleri, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse("#000000"), PointAreaAlpha = 255, PointMode = PointMode.Square, AnimationDuration = TimeSpan.FromSeconds(3), BackgroundColor = SKColors.Transparent };
                 #endregion
+
+                #region Süresi Geçen Hatırlatma Check
+                SuresiGecenHatirlatmalarListeAdder();
+                foreach (var item in SuresiGecenHatirlatmalarListe)
+                {
+                    SuresiGecenHatirlatmalarViewAdder(item.AdSoyad, item.Firma, item.Aciklama);
+                }
+                #endregion
             }
             catch (Exception e)
             {
                 DisplayAlert("", e.Message, "ok");
             }
         }
+        #region ChartVoidler
         void createChart()
         {
             try
@@ -679,6 +693,7 @@ namespace bilsoft_mobil_app.Pages
         {
 
         }
+        #endregion
         private async void btnPopUpMenu_Clicked(object sender, EventArgs e)
         {
             if (!popupMenuBack.IsVisible)
@@ -732,6 +747,66 @@ namespace bilsoft_mobil_app.Pages
                 popupMenuBackBox.HeightRequest = 100;
             }
         }
+
+        #region Süresi Geçen Hatırlatmalar View
+        void SuresiGecenHatirlatmalarListeAdder()
+        {
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "aaaaaaa", AdSoyad = "Ahmet Ertürk", Firma = "Sancaklar iletişim" });
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "bbbbbbbbb", AdSoyad = "awhaha awhawh", Firma = "fghgdjdfg sehjnrsdnj" });
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "vvvvvvv", AdSoyad = "fdhdh jhfhg", Firma = "dshesh iletişim" });
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "sssssssss", AdSoyad = "awhawh awhawhwahawh", Firma = "dhsdhsdfh iletişim" });
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "aefsgseg", AdSoyad = "awha awhawh", Firma = "gfdjdfj sdgehse" });
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "gawgaw", AdSoyad = "awgawh Ertürk", Firma = "sehsejsrej sjsejsj" });
+            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "shhehseh", AdSoyad = "Ahmet agwagawg", Firma = "gfjgfj fgdjdf" });
+        }
+        void SuresiGecenHatirlatmalarViewAdder(string _adSoyad, string _firma, string _aciklama)
+        {
+            SuresiGecenListeView.Children.Add(new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        Text=_adSoyad,
+                        TextColor=Color.Black,
+                        FontSize=12,
+                        FontAttributes=FontAttributes.Bold,
+                        HorizontalOptions=LayoutOptions.StartAndExpand
+                    },
+                    new Label
+                    {
+                        Text=_firma,
+                        TextColor=Color.Black,
+                        FontSize=12,
+                        FontAttributes=FontAttributes.Bold,
+                        HorizontalOptions=LayoutOptions.CenterAndExpand
+                    },
+                    new Label
+                    {
+                        Text=_aciklama,
+                        TextColor=Color.Black,
+                        FontSize=12,
+                        FontAttributes=FontAttributes.Bold,
+                        HorizontalOptions=LayoutOptions.EndAndExpand,
+                        TranslationX=-20
+                    }
+                },
+                Orientation = StackOrientation.Horizontal
+            });
+            SuresiGecenListeView.Children.Add(new BoxView()
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions =
+                LayoutOptions.Start
+            });
+        }
+        private void btnSureGecenHatirlatmaKapat_Clicked(object sender, EventArgs e)
+        {
+            SuresiGecenHatirlatmaView.IsVisible = false;
+        }
+
+        #endregion
 
         #region btnAnaSayfa
         private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)

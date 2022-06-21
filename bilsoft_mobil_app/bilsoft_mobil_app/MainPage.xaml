@@ -10,13 +10,40 @@
                 <Grid>
                     <StackLayout>
                         <Frame HeightRequest="800" WidthRequest="500" Margin="20" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Red">
-                            <Label Text="test"/>
+                            <Label Text="test" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+
                         </Frame>
                     </StackLayout>
                 </Grid>
             </AbsoluteLayout>
         </ScrollView>
         <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#B0828282" VerticalOptions="Fill"/>
+        <ScrollView x:Name="SuresiGecenHatirlatmaView" IsVisible="true">
+            <Frame BackgroundColor="White" BorderColor="Black" Margin="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Grid.Row="0" Grid.ColumnSpan="4" Text="Süresi Geçen Hatırlatmalarınız!" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                    <ImageButton Source="users24x.png" Clicked="btnSureGecenHatirlatmaKapat_Clicked" HorizontalOptions="EndAndExpand"/>
+                    <BoxView Grid.Row="1" Grid.ColumnSpan="4" HeightRequest="1" Color="LightGray" Margin ="-20, 0, -20, 0" VerticalOptions="Start"/>
+                    <ScrollView>
+                        <StackLayout x:Name="SuresiGecenListeView" VerticalOptions="Start">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Ad Soyad" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="StartAndExpand" />
+                                <Label Text="Firma" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                                <Label Text="Açıklama" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TranslationX="-20"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="1" Color="LightGray" Margin ="0, 0, 0, 0" VerticalOptions="Start"/>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout VerticalOptions="EndAndExpand">
+                        <BoxView HeightRequest="1" Color="LightGray" Margin ="0, 0, 0, 0" VerticalOptions="End"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Button x:Name="btnSureGecenHatirlatmaAjandayaGit" Text="Ajandaya Git" CornerRadius="15" BackgroundColor="LightBlue" HorizontalOptions="Start"/>
+                            <Button x:Name="btnSureGecenHatirlatmaKapat" Clicked="btnSureGecenHatirlatmaKapat_Clicked" Text="Kapat" CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
         <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="CadetBlue" HorizontalOptions="End" VerticalOptions="Start"/>
     </Grid>
 </ContentPage>
