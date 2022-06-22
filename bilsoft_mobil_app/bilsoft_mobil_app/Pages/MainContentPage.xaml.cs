@@ -14,6 +14,7 @@ namespace bilsoft_mobil_app.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainContentPage : ContentPage
     {
+        string mod = null, donemYili = null;
         #region Günlük Satış Tablo Verileri
         List<ChartEntry> entriesGunlukSatis = new List<ChartEntry>();
         double GSNakit = 525.00f;
@@ -73,19 +74,34 @@ namespace bilsoft_mobil_app.Pages
         string _7GunKasaHareketDay1, _7GunKasaHareketDay2, _7GunKasaHareketDay3, _7GunKasaHareketDay4, _7GunKasaHareketDay5, _7GunKasaHareketDay6, _7GunKasaHareketDay7;
         #endregion
 
+        #region Kasa Bakiyeleri Liste Veriler
+        List<BankListVeriler> BankaBakiyelerListe = new List<BankListVeriler>();
+        #endregion
+
+        #region Kasa Bakiyeleri Liste Veriler
+        List<KasaBakiyeListeVeriler> KasaBakiyelerListe = new List<KasaBakiyeListeVeriler>();
+        #endregion
+
         #region Süresi Geçen Hatırlatma Veriler
         List<SuresiGecenListeProps> SuresiGecenHatirlatmalarListe = new List<SuresiGecenListeProps>();
         #endregion
 
-        public MainContentPage()
+        #region popUp Menu Veriler
+        UInt16 _popuptimer = 200;
+        #endregion
+
+        public MainContentPage(string _mod, string _donemYil)
         {
             InitializeComponent();
             try
             {
-                #region
-                set7gunlukSatisG();
-                set7gunlukVadeG();
-                Set7GunBankaHaraket();
+                donemYili = _donemYil;
+                mod = _mod;
+
+                #region setDemo
+                setDemo7gunlukSatisG();
+                setDemo7gunlukVadeG();
+                SetDemo7GunBankaHaraket();
                 Set7GunKasaHaraket();
                 createChart();
                 #endregion
@@ -139,12 +155,167 @@ namespace bilsoft_mobil_app.Pages
                     SuresiGecenHatirlatmalarViewAdder(item.AdSoyad, item.Firma, item.Aciklama);
                 }
                 #endregion
+
+                #region Banka Bakiye Liste Check
+                BankaBakiyelerListe.Add(new BankListVeriler { sira = 0, Banka_Hesap = "Name1", HesapNo = "21312412", HesapBakiye = 23543654.22 });
+                BankaBakiyelerListe.Add(new BankListVeriler { sira = 0, Banka_Hesap = "Name2", HesapNo = "23532623", HesapBakiye = 7643654.50 });
+                BankaBakiyelerListe.Add(new BankListVeriler { sira = 0, Banka_Hesap = "Name3", HesapNo = "457457", HesapBakiye = 23554.00 });
+                BankaBakiyelerListe.Add(new BankListVeriler { sira = 0, Banka_Hesap = "Name4", HesapNo = "23423523", HesapBakiye = 3432432.56 });
+                for (int i = 0; i < BankaBakiyelerListe.Count; i++)
+                {
+                    createBankListProp(i);
+                }
+                #endregion
+
+                #region Kasa Bakiye Liste Check
+                KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 0, Kasa = "Name1", KasaBakiye = 23543654.22 });
+                KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 1, Kasa = "Name2", KasaBakiye = 7643654.50 });
+                KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 2, Kasa = "Name3",  KasaBakiye = 23554.00 });
+                KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 3, Kasa = "Name4", KasaBakiye = 3432432.56 });
+                for (int i = 0; i < KasaBakiyelerListe.Count; i++)
+                {
+                    createKasaListProp(i);
+                }
+                #endregion
             }
             catch (Exception e)
             {
                 DisplayAlert("", e.Message, "ok");
             }
         }
+        #region Kasa Bakiye Liste
+        async Task createKasaListProp(int sira)
+        {
+            gridKasaBakiye.Children.Add(new Label
+            {
+                Text = (sira + 1).ToString(),
+                FontSize = 12,
+                Margin = new Thickness(-5, 5, 5, 5),
+                TextColor = Color.Black,
+                Padding = new Thickness(0, 5),
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center
+            }, 0, sira + 1);
+            gridKasaBakiye.Children.Add(new Label
+            {
+                Text = KasaBakiyelerListe[sira].Kasa,
+                FontSize = 12,
+                Margin = new Thickness(-70, 5, 5, 5),
+                TextColor = Color.Black,
+                Padding = new Thickness(0, 5),
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center
+            }, 1, sira + 1);
+            gridKasaBakiye.Children.Add(new Label
+            {
+                Text = KasaBakiyelerListe[sira].KasaBakiye.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                FontSize = 12,
+                Margin = new Thickness(0, 5, 5, -5),
+                TextColor = Color.Black,
+                Padding = new Thickness(5),
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Start,
+                BackgroundColor=Color.LightBlue
+            }, 2, sira + 1);
+            gridKasaBakiye.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            }, 0, sira + 1);
+            gridKasaBakiye.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            }, 1, sira + 1);
+            gridKasaBakiye.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            }, 2, sira + 1);
+
+        }
+#endregion
+        #region Banka Bakieler Liste
+        async Task createBankListProp(int sira)
+        {
+            gridBankaList.Children.Add(new Label
+            {
+                Text = (sira + 1).ToString(),
+                FontSize = 12,
+                Margin = new Thickness(-5, 5, 5, 5),
+                TextColor = Color.Black,
+                Padding = new Thickness(0, 5),
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center
+            }, 0, sira + 1);
+            gridBankaList.Children.Add(new Label
+            {
+                Text = BankaBakiyelerListe[sira].Banka_Hesap,
+                FontSize = 12,
+                Margin = new Thickness(-70, 5, 5, 5),
+                TextColor = Color.Black,
+                Padding = new Thickness(0, 5),
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center
+            }, 1, sira + 1);
+            gridBankaList.Children.Add(new Label
+            {
+                Text = BankaBakiyelerListe[sira].HesapNo,
+                FontSize = 12,
+                Margin = new Thickness(-30, 5, -10, 5),
+                TextColor = Color.Black,
+                Padding = new Thickness(0, 5),
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center
+            }, 2, sira + 1);
+            gridBankaList.Children.Add(new Label
+            {
+                Text = BankaBakiyelerListe[sira].HesapBakiye.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                FontSize = 12,
+                Margin = new Thickness(-10, 5, -10, 5),
+                TextColor = Color.Black,
+                Padding = new Thickness(0, 5),
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center
+            }, 3, sira + 1);
+            gridBankaList.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            },0, sira + 1);
+            gridBankaList.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            },1, sira + 1);
+            gridBankaList.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            },2, sira + 1);
+            gridBankaList.Children.Add(new BoxView
+            {
+                HeightRequest = 1,
+                Color = Color.LightGray,
+                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(-10, 0)
+            },3, sira + 1);
+
+        }
+        #endregion
+
         #region ChartVoidler
         void createChart()
         {
@@ -573,7 +744,7 @@ namespace bilsoft_mobil_app.Pages
                 DisplayAlert("", e.Message, "ok");
             }
         }
-        void set7gunlukVadeG()
+        void setDemo7gunlukVadeG()
         {
             _7GunVadeOdemeGMoney1 = 12421.00;
             _7GunVadeOdemeGMoney2 = 23521.24;
@@ -599,7 +770,7 @@ namespace bilsoft_mobil_app.Pages
             _7GunVadeGDay6 = "15.16.2022";
             _7GunVadeGDay7 = "16.16.2022";
         }
-        void set7gunlukSatisG()
+        void setDemo7gunlukSatisG()
         {
             _7GunSatisGMoney1 = 0;
             _7GunSatisGMoney2 = 0;
@@ -617,7 +788,7 @@ namespace bilsoft_mobil_app.Pages
             _7GunSatisGDay6 = "15.16.2022";
             _7GunSatisGDay7 = "16.16.2022";
         }
-        void Set7GunBankaHaraket()
+        void SetDemo7GunBankaHaraket()
         {
             switch (_7GunBankaHaraketBanka)
             {
@@ -694,11 +865,338 @@ namespace bilsoft_mobil_app.Pages
 
         }
         #endregion
-        private async void btnPopUpMenu_Clicked(object sender, EventArgs e)
+        private void btnPopUpMenu_Clicked(object sender, EventArgs e)
         {
             //Menü arka button heightrequestler sırayla
-            //55-100-150-200-240-280-330-380
+            //55-80-120-160-200-240-280-320-340
 
+            if (!popupMenuBack.IsVisible)
+            {
+                this.CancelAnimations();
+                btnPopUpMenu.ImageSource = "offmenuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
+                popupMenuBack.IsVisible = true;
+                btnpopupMenuReturnBack.IsVisible = true;
+                popupMenuBackBox.HeightRequest = 55;
+
+
+                //Panel 1
+                popupMenuBackBox.HeightRequest = 80;
+                btnPopUpMenuItemPanel.IsVisible = true;
+                lblPopUpMenuItemPanel.IsVisible = true;
+                btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
+                lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
+
+                //Hızlı Arama 2
+                popupMenuBackBox.HeightRequest = 120;
+                btnPopUpMenuItemAra.IsVisible = true;
+                lblPopUpMenuItemAra.IsVisible = true;
+                btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
+                lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
+
+                //Cari İşlem 3
+                popupMenuBackBox.HeightRequest = 160;
+                btnPopUpMenuItemCariIslem.IsVisible = true;
+                lblPopUpMenuItemCariIslem.IsVisible = true;
+                btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
+                lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
+
+                //Stok Kartları 4
+                popupMenuBackBox.HeightRequest = 200;
+                btnPopUpMenuItemStokKartlari.IsVisible = true;
+                lblPopUpMenuItemStokKartlari.IsVisible = true;
+                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
+                lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
+
+                //Satış Yap 5
+                popupMenuBackBox.HeightRequest = 240;
+                btnPopUpMenuItemSatisYap.IsVisible = true;
+                lblPopUpMenuItemSatisYap.IsVisible = true;
+                btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
+                lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
+
+                //Faturalar 6
+                popupMenuBackBox.HeightRequest = 280;
+                btnPopUpMenuItemFaturalar.IsVisible = true;
+                lblPopUpMenuItemFaturalar.IsVisible = true;
+                btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
+                lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
+
+                //Fiyat Gör 7
+                popupMenuBackBox.HeightRequest = 320;
+                btnPopUpMenuItemFiyatGor.IsVisible = true;
+                lblPopUpMenuItemFiyatGor.IsVisible = true;
+                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
+                lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
+
+                popupMenuBackBox.HeightRequest = 340;
+            }
+            else
+            {
+                this.CancelAnimations();
+                //Fiyat Gör 7                
+                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemFiyatGor.TranslateTo(0, 0, _popuptimer);
+
+                //Faturalar 6
+                btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemFaturalar.TranslateTo(0, 0, _popuptimer);
+
+                //Satış Yap 5
+                btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemSatisYap.TranslateTo(0, 0, _popuptimer);
+
+                //Stok Kartları 4
+                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemStokKartlari.TranslateTo(0, 0, _popuptimer);
+
+                //Cari İşlem 3
+                btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemCariIslem.TranslateTo(0, 0, _popuptimer);
+
+                //Hızlı Arama 2
+                btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemAra.TranslateTo(0, 0, _popuptimer);
+
+                //Panel 1
+                btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemPanel.TranslateTo(0, 0, _popuptimer);
+
+
+                popupMenuBackBox.HeightRequest = 320;
+                btnPopUpMenuItemFaturalar.IsVisible = false;
+                lblPopUpMenuItemFaturalar.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 280;
+                btnPopUpMenuItemSatisYap.IsVisible = false;
+                lblPopUpMenuItemSatisYap.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 240;
+                btnPopUpMenuItemStokKartlari.IsVisible = false;
+                lblPopUpMenuItemStokKartlari.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 200;
+                btnPopUpMenuItemCariIslem.IsVisible = false;
+                lblPopUpMenuItemCariIslem.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 160;
+                btnPopUpMenuItemAra.IsVisible = false;
+                lblPopUpMenuItemAra.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                btnPopUpMenuItemPanel.IsVisible = false;
+                lblPopUpMenuItemPanel.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 120;
+                popupMenuBackBox.HeightRequest = 80;
+                popupMenuBackBox.HeightRequest = 55;
+                popupMenuBack.IsVisible = false;
+                btnpopupMenuReturnBack.IsVisible = false;
+
+                btnPopUpMenu.ImageSource = "menuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
+            }
+            #region old v3 kapanma buglu
+            /*
+             //Menü arka button heightrequestler sırayla
+            //55-80-120-160-200-240-280-320-340
+
+            if (!popupMenuBack.IsVisible)
+            {
+                this.CancelAnimations();
+                btnPopUpMenu.ImageSource = "offmenuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
+                popupMenuBack.IsVisible = true;
+                btnpopupMenuReturnBack.IsVisible = true;
+                popupMenuBackBox.HeightRequest = 55;
+
+
+                //Panel 1
+                popupMenuBackBox.HeightRequest = 80;
+                btnPopUpMenuItemPanel.IsVisible = true;
+                lblPopUpMenuItemPanel.IsVisible = true;
+                btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
+                lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
+
+                //Hızlı Arama 2
+                popupMenuBackBox.HeightRequest = 120;
+                btnPopUpMenuItemAra.IsVisible = true;
+                lblPopUpMenuItemAra.IsVisible = true;
+                btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
+                lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
+
+                //Cari İşlem 3
+                popupMenuBackBox.HeightRequest = 160;
+                btnPopUpMenuItemCariIslem.IsVisible = true;
+                lblPopUpMenuItemCariIslem.IsVisible = true;
+                btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
+                lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
+
+                //Stok Kartları 4
+                popupMenuBackBox.HeightRequest = 200;
+                btnPopUpMenuItemStokKartlari.IsVisible = true;
+                lblPopUpMenuItemStokKartlari.IsVisible = true;
+                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
+                lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
+
+                //Satış Yap 5
+                popupMenuBackBox.HeightRequest = 240;
+                btnPopUpMenuItemSatisYap.IsVisible = true;
+                lblPopUpMenuItemSatisYap.IsVisible = true;
+                btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
+                lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
+
+                //Faturalar 6
+                popupMenuBackBox.HeightRequest = 280;
+                btnPopUpMenuItemFaturalar.IsVisible = true;
+                lblPopUpMenuItemFaturalar.IsVisible = true;
+                btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
+                lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
+
+                //Fiyat Gör 7
+                popupMenuBackBox.HeightRequest = 320;
+                btnPopUpMenuItemFiyatGor.IsVisible = true;
+                lblPopUpMenuItemFiyatGor.IsVisible = true;
+                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
+                lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
+
+                popupMenuBackBox.HeightRequest = 340;
+            }
+            else
+            {
+                this.CancelAnimations();
+                //Fiyat Gör 7
+                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemFiyatGor.TranslateTo(0, 0, _popuptimer);
+                btnPopUpMenuItemFiyatGor.IsVisible = false;
+                lblPopUpMenuItemFiyatGor.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 320;
+
+                //Faturalar 6
+                btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemFaturalar.TranslateTo(0, 0, _popuptimer);
+                btnPopUpMenuItemFaturalar.IsVisible = false;
+                lblPopUpMenuItemFaturalar.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 280;
+
+                //Satış Yap 5
+                btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemSatisYap.TranslateTo(0, 0, _popuptimer);
+                btnPopUpMenuItemSatisYap.IsVisible = false;
+                lblPopUpMenuItemSatisYap.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 240;
+
+                //Stok Kartları 4
+                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemStokKartlari.TranslateTo(0, 0, _popuptimer);
+                btnPopUpMenuItemStokKartlari.IsVisible = false;
+                lblPopUpMenuItemStokKartlari.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 200;
+
+                //Cari İşlem 3
+                btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemCariIslem.TranslateTo(0, 0, _popuptimer);
+                btnPopUpMenuItemCariIslem.IsVisible = false;
+                lblPopUpMenuItemCariIslem.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 160;
+
+                //Hızlı Arama 2
+                btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemAra.TranslateTo(0, 0, _popuptimer);
+                btnPopUpMenuItemAra.IsVisible = false;
+                lblPopUpMenuItemAra.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 120;
+
+                //Panel 1
+                popupMenuBackBox.HeightRequest = 80;
+                btnPopUpMenuItemPanel.IsVisible = false;
+                lblPopUpMenuItemPanel.IsVisible = false;
+                btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemPanel.TranslateTo(0, 0, _popuptimer);
+
+                await Task.Delay(500);
+
+                popupMenuBackBox.HeightRequest = 55;
+                btnPopUpMenu.ImageSource = "menuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
+                popupMenuBack.IsVisible = false;
+                btnpopupMenuReturnBack.IsVisible = false;
+            }
+             */
+            #endregion
+            #region old v2 bugfix
+            //Menü arka button heightrequestler sırayla
+            //55-80-120-160-200-240-280-320-340
+            /*
+            if (!popupMenuBack.IsVisible)
+            {
+                btnPopUpMenu.ImageSource = "offmenuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
+                popupMenuBack.IsVisible = true;
+                btnpopupMenuReturnBack.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 55;
+                popupMenuBackBox.HeightRequest = 80;
+                //Panel
+                btnPopUpMenuItemPanel.IsVisible = true;
+                lblPopUpMenuItemPanel.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 120;
+                //Hızlı Arama
+                btnPopUpMenuItemAra.IsVisible = true;
+                lblPopUpMenuItemAra.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 160;
+                //Cari İşlem
+                btnPopUpMenuItemCariIslem.IsVisible = true;
+                lblPopUpMenuItemCariIslem.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 200;
+                //Stok Kartları
+                btnPopUpMenuItemStokKartlari.IsVisible = true;
+                lblPopUpMenuItemStokKartlari.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 240;
+                //Satış Yap
+                btnPopUpMenuItemSatisYap.IsVisible = true;
+                lblPopUpMenuItemSatisYap.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 280;
+                //Faturalar
+                btnPopUpMenuItemFaturalar.IsVisible = true;
+                lblPopUpMenuItemFaturalar.IsVisible = true;
+                popupMenuBackBox.HeightRequest = 320;
+                //Fiyat Gör
+                btnPopUpMenuItemFiyatGor.IsVisible = true;
+                lblPopUpMenuItemFiyatGor.IsVisible = true;
+
+                popupMenuBackBox.HeightRequest = 340;
+            }
+            else
+            {
+                btnPopUpMenu.ImageSource = "menuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
+                popupMenuBack.IsVisible = false;
+                btnpopupMenuReturnBack.IsVisible = false;
+                btnPopUpMenuItemPanel.IsVisible = false;
+                lblPopUpMenuItemPanel.IsVisible = false;
+                btnPopUpMenuItemAra.IsVisible = false;
+                lblPopUpMenuItemAra.IsVisible = false;
+                btnPopUpMenuItemCariIslem.IsVisible = false;
+                lblPopUpMenuItemCariIslem.IsVisible = false;
+                btnPopUpMenuItemStokKartlari.IsVisible = false;
+                lblPopUpMenuItemStokKartlari.IsVisible = false;
+                btnPopUpMenuItemSatisYap.IsVisible = false;
+                lblPopUpMenuItemSatisYap.IsVisible = false;
+                btnPopUpMenuItemFaturalar.IsVisible = false;
+                lblPopUpMenuItemFaturalar.IsVisible = false;
+                btnPopUpMenuItemFiyatGor.IsVisible = false;
+                lblPopUpMenuItemFiyatGor.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 55;
+            }*/
+            #endregion
+            #region old v1 buglu olan
+            //Menü arka button heightrequestler sırayla
+            //55-100-150-200-240-280-330-380
+            /*
             if (!popupMenuBack.IsVisible)
             {
                 btnPopUpMenu.ImageSource = "offmenuicon.png";
@@ -768,32 +1266,74 @@ namespace bilsoft_mobil_app.Pages
                 btnPopUpMenuItemFiyatGor.IsVisible = false;
                 lblPopUpMenuItemFiyatGor.IsVisible = false;
                 popupMenuBackBox.HeightRequest = 55;
-            }
+            }*/
+            #endregion
         }
 
         private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
         {
             if (popupMenuBack.IsVisible)
             {
-                btnPopUpMenu.ImageSource = "menuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
-                popupMenuBack.IsVisible = false;
-                btnpopupMenuReturnBack.IsVisible = false;
-                btnPopUpMenuItemPanel.IsVisible = false;
-                lblPopUpMenuItemPanel.IsVisible = false;
-                btnPopUpMenuItemAra.IsVisible = false;
-                lblPopUpMenuItemAra.IsVisible = false;
-                btnPopUpMenuItemCariIslem.IsVisible = false;
-                lblPopUpMenuItemCariIslem.IsVisible = false;
-                btnPopUpMenuItemStokKartlari.IsVisible = false;
-                lblPopUpMenuItemStokKartlari.IsVisible = false;
-                btnPopUpMenuItemSatisYap.IsVisible = false;
-                lblPopUpMenuItemSatisYap.IsVisible = false;
+                this.CancelAnimations();
+                //Fiyat Gör 7                
+                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemFiyatGor.TranslateTo(0, 0, _popuptimer);
+
+                //Faturalar 6
+                btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemFaturalar.TranslateTo(0, 0, _popuptimer);
+
+                //Satış Yap 5
+                btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemSatisYap.TranslateTo(0, 0, _popuptimer);
+
+                //Stok Kartları 4
+                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemStokKartlari.TranslateTo(0, 0, _popuptimer);
+
+                //Cari İşlem 3
+                btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemCariIslem.TranslateTo(0, 0, _popuptimer);
+
+                //Hızlı Arama 2
+                btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemAra.TranslateTo(0, 0, _popuptimer);
+
+                //Panel 1
+                btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
+                lblPopUpMenuItemPanel.TranslateTo(0, 0, _popuptimer);
+
+
+                popupMenuBackBox.HeightRequest = 320;
                 btnPopUpMenuItemFaturalar.IsVisible = false;
                 lblPopUpMenuItemFaturalar.IsVisible = false;
-                btnPopUpMenuItemFiyatGor.IsVisible = false;
-                lblPopUpMenuItemFiyatGor.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 280;
+                btnPopUpMenuItemSatisYap.IsVisible = false;
+                lblPopUpMenuItemSatisYap.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 240;
+                btnPopUpMenuItemStokKartlari.IsVisible = false;
+                lblPopUpMenuItemStokKartlari.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 200;
+                btnPopUpMenuItemCariIslem.IsVisible = false;
+                lblPopUpMenuItemCariIslem.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                popupMenuBackBox.HeightRequest = 160;
+                btnPopUpMenuItemAra.IsVisible = false;
+                lblPopUpMenuItemAra.IsVisible = false;
+                Task.Delay(_popuptimer / 7);
+                btnPopUpMenuItemPanel.IsVisible = false;
+                lblPopUpMenuItemPanel.IsVisible = false;
+                popupMenuBackBox.HeightRequest = 120;
+                popupMenuBackBox.HeightRequest = 80;
                 popupMenuBackBox.HeightRequest = 55;
+                popupMenuBack.IsVisible = false;
+                btnpopupMenuReturnBack.IsVisible = false;
+
+                btnPopUpMenu.ImageSource = "menuicon.png";
+                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
             }
         }
 
@@ -906,6 +1446,32 @@ namespace bilsoft_mobil_app.Pages
             DisplayAlert("", bt.Text, "ok");
         }
         #endregion
+        private void btnTest_Clicked(object sender, EventArgs e)
+        {
+            UInt16 _popuptimer = 100;
 
+            btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
+            lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
+
+            btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
+            lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
+
+            btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
+            lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
+
+            btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
+            lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
+
+            btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
+            lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
+
+            btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
+            lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
+
+            btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
+            lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
+
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace bilsoft_mobil_app
             //MainPage = new LoginPage();
 
             //Ana Sayfa
-            MainPage = new MainMDPage();
+            MainPage = new MainMDPage("demo");
 
             //Test Page
             //MainPage = new MainPage();
