@@ -2,115 +2,56 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             x:Class="bilsoft_mobil_app.Pages.MainContentPage" BackgroundColor="White">
+             x:Class="bilsoft_mobil_app.Pages.MainContentPage" BackgroundImageSource="bakcground.jpg">
 
-    <NavigationPage.TitleIconImageSource>
-        Bilsoft_Logo_Beyaz.png
-    </NavigationPage.TitleIconImageSource>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnToolbarOpenpopup" Clicked="btnToolbarOpenpopup_Clicked" IconImageSource="search24x.png"/>
+    </ContentPage.ToolbarItems>
     <Grid>
         <!--#region Main Content-->
-        <ScrollView BackgroundColor="LightGray">
+        <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <!--#region Menüler-->
-                <Frame BackgroundColor="White" CornerRadius="15" Padding="10,10,10,15" Margin="20,20,20,5">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
-                        </Grid.RowDefinitions>
-                        <Frame CornerRadius="15" Grid.Row="0" Grid.Column="0" BackgroundColor="#3598dc" Margin="5,5,0,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="users128x.png" Scale=".8" TranslationX="-35" TranslationY="-20"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaCariHesaplar" Clicked="btnAnaSayfaCariHesaplar_Clicked" Text="Cari Hesaplar" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-20" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="0" Grid.Column="1" BackgroundColor="#e7505a" Margin="5,5,5,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="dropbox128x.png" Scale=".8" TranslationX="-35" TranslationY="-20"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaStokKartlari" Clicked="btnAnaSayfaStokKartlari_Clicked" Text="Stok Kartları" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-24" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="1" Grid.Column="0" BackgroundColor="#26c281" Margin="5,5,0,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="calendar128x.png" Scale=".8" TranslationX="-40" TranslationY="-20"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaTaksitTakip" Clicked="btnAnaSayfaTaksitTakip_Clicked" Text="Taksit Takip" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-20" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="1" Grid.Column="1" BackgroundColor="#8e44ad" Margin="5,5,5,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="cartshopping128x.png" Scale=".8" TranslationX="-35" TranslationY="-7"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaSatisYap" Clicked="btnAnaSayfaSatisYap_Clicked" Text="Satış Yap" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-24" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="2" Grid.Column="0" BackgroundColor="#2ab4c0" Margin="5,5,0,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="filedollar128x.png" Scale=".8" TranslationX="-33" TranslationY="-30"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaCekSenet" Clicked="btnAnaSayfaCekSenet_Clicked" Text="Çek Senet" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-20" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="2" Grid.Column="1" BackgroundColor="#32c5d2" Margin="5,5,5,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="building_columns128x.png" Scale=".8" TranslationX="-40" TranslationY="-20"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaBanka" Clicked="btnAnaSayfaBanka_Clicked" Text="Banka" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-24" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="3" Grid.Column="0" BackgroundColor="#3598dc" Margin="5,5,0,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="money128.png" Scale=".6" TranslationX="-72" TranslationY="-25"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaKasa" Clicked="btnAnaSayfaKasa_Clicked" Text="Kasa" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-20" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                        <Frame CornerRadius="15" Grid.Row="3" Grid.Column="1" BackgroundColor="Red" Margin="5,5,5,0">
-                            <StackLayout>
-                                <AbsoluteLayout VerticalOptions="Fill">
-                                    <AbsoluteLayout>
-                                        <Image Source="pen_to_square128x.png" Scale=".7" TranslationX="-40" TranslationY="-20"/>
-                                    </AbsoluteLayout>
-                                    <Button x:Name="btnAnaSayfaFaturalar" Clicked="btnAnaSayfaFaturalar_Clicked" Text="Faturalar" FontSize="18" WidthRequest="185" HeightRequest="100" HorizontalOptions="Center" TranslationX="-24" TranslationY="-25" Padding="20" BackgroundColor="Transparent" TextColor="White"/>
-                                </AbsoluteLayout>
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
+                <Frame BackgroundColor="#5AEC5E0F" BorderColor="#7AEC5E0F" CornerRadius="15" Margin="15">
+                    <StackLayout>
+                        <!--#region cari hesaplar - Stok Kartları-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ImageButton x:Name="btnAnaSayfaCariHesaplar" Clicked="btnAnaSayfaCariHesaplar_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="carihesaplarbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <ImageButton x:Name="btnAnaSayfaStokKartlari" Clicked="btnAnaSayfaStokKartlari_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="stokkartlarbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <!--#endregion-->
+                        
+                        <!--#region Taksit Takip - Satış Yap-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ImageButton x:Name="btnAnaSayfaTaksitTakip" Clicked="btnAnaSayfaTaksitTakip_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="taksittakipbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <ImageButton x:Name="btnAnaSayfaSatisYap" Clicked="btnAnaSayfaSatisYap_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="satisyapbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <!--#endregion-->
+                        
+                        <!--#region Çek Senet - Banka-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ImageButton x:Name="btnAnaSayfaCekSenet" Clicked="btnAnaSayfaCekSenet_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="ceksenetbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <ImageButton x:Name="btnAnaSayfaBanka" Clicked="btnAnaSayfaBanka_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="bankabtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <!--#endregion-->
+                        
+                        <!--#region Kasa - Faturalar-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ImageButton x:Name="btnAnaSayfaKasa" Clicked="btnAnaSayfaKasa_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="kasabtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <ImageButton x:Name="btnAnaSayfaFaturalar" Clicked="btnAnaSayfaFaturalar_Clicked" BorderColor="LightGray" BorderWidth="2" CornerRadius="15" Source="faturalarbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <!--#endregion-->
+                    </StackLayout>
                 </Frame>
                 <!--#endregion-->
                 <!--#region Chartlar-->
                 <Grid>
-                    <StackLayout BackgroundColor="LightGray">
+                    <StackLayout>
                         <!--#region GÜNLÜK Satış Donut Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="120,20,120,25" Margin="20,5,20,0" >
+                        <Frame BackgroundColor="#5AEC5E0F" BorderColor="#7AEC5E0F" CornerRadius="15" Padding="120,20,120,25" Margin="20,5,20,0" >
                             <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="GÜNLÜK Satış"/>
@@ -119,7 +60,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                 </StackLayout>
-
+                                
                                 <forms:ChartView x:Name="GunlukSatisChart" HeightRequest="400" WidthRequest="400" Margin="-90,-40,-90,-20" IgnorePixelScaling="False"/>
 
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" TranslationX="-90">
@@ -152,10 +93,10 @@
                         <!--#endregion-->
 
                         <!--#region GÜNLÜK ALIŞ Donut Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="120,20,120,25" Margin="20,20,20,0">
+                        <Frame BackgroundColor="#5AEC5E0F" CornerRadius="15" Padding="120,20,120,25" Margin="20,20,20,0">
                             <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="GÜNLÜK ALIŞ"/>
@@ -197,10 +138,10 @@
                         <!--#endregion-->
 
                         <!--#region GÜNLÜK TAHSİLAT Donut Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="120,20,120,25" Margin="20,20,20,0">
+                        <Frame BackgroundColor="#5AEC5E0F" CornerRadius="15" Padding="120,20,120,25" Margin="20,20,20,0">
                             <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="GÜNLÜK TAHSİLAT"/>
@@ -242,10 +183,10 @@
                         <!--#endregion-->
 
                         <!--#region GÜNLÜK ÖDEME Donut Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="120,20,120,25" Margin="20,20,20,0">
+                        <Frame BackgroundColor="#5AEC5E0F" CornerRadius="15" Padding="120,20,120,25" Margin="20,20,20,0">
                             <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                    <Label Padding="-95,0" FontSize="20" WidthRequest="100" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="GÜNLÜK ÖDEME"/>
@@ -287,11 +228,11 @@
                         <!--#endregion-->
 
                         <!--#region 7 Günlük Satış Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="10,10,10,15" Margin="20,20,20,5">
+                        <Frame BackgroundColor="#5AEC5E0F" CornerRadius="15" Padding="10,10,10,15" Margin="20,20,20,5">
                             <StackLayout HeightRequest="450">
                                 <StackLayout Margin="20,10,20,10">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Padding="-5,0" FontSize="20" WidthRequest="300" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                        <Label Padding="-5,0" FontSize="20" WidthRequest="300" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="7 GÜNLÜK SATIŞ"/>
@@ -308,11 +249,11 @@
                         <!--#endregion-->
 
                         <!--#region 7 Günlük Vadesi Gelen Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="10,10,10,15" Margin="20,20,20,5">
+                        <Frame BackgroundColor="#5AEC5E0F" CornerRadius="15" Padding="10,10,10,15" Margin="20,20,20,5">
                             <StackLayout HeightRequest="550">
                                 <StackLayout Margin="20,10,20,10">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Padding="-5,0" FontSize="20" WidthRequest="300" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                        <Label Padding="-5,0" FontSize="20" WidthRequest="300" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="7 GÜNLÜK VADESİ GELECEK İŞLEMLER"/>
@@ -346,10 +287,10 @@
                         <!--#endregion-->
 
                         <!--#region 7 Günlük Banka Haraket Grafik-->
-                        <Frame  Margin="20,0,20,0" HeightRequest="570" BackgroundColor="White" CornerRadius="15">
+                        <Frame  Margin="20,0,20,0" HeightRequest="570" BackgroundColor="#5AEC5E0F" CornerRadius="15">
                             <StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                    <Label Margin="-10,10,10,0" FontSize="20" WidthRequest="300" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                    <Label Margin="-10,10,10,0" FontSize="20" WidthRequest="300" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="7 GÜNLÜK BANKA HARAKETLERİ"/>
@@ -358,7 +299,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <Picker x:Name="_7gunlukBankaHaraketPicker" SelectedIndexChanged="_7gunlukBankaHaraketPicker_SelectedIndexChanged" HorizontalOptions="Center" TextColor="Black" TitleColor="Black" Title="Banka Listesi"/>
+                                    <Picker x:Name="_7gunlukBankaHaraketPicker" SelectedIndexChanged="_7gunlukBankaHaraketPicker_SelectedIndexChanged" HorizontalOptions="Center" TextColor="White" TitleColor="White" Title="Banka Listesi"/>
                                 </StackLayout>
 
                                 <forms:ChartView x:Name="_7GunlukBankaHaraketGraph" HeightRequest="400" WidthRequest="400" IgnorePixelScaling="False"/>
@@ -378,7 +319,7 @@
                         <!--#endregion-->
 
                         <!--#region Banka Bakiyeleri Tablo-->
-                        <Frame BackgroundColor="White" Margin="20,20,20,-5" CornerRadius="15" BorderColor="Green">
+                        <Frame BackgroundColor="#5AEC5E0F" Margin="20,20,20,-5" CornerRadius="15" BorderColor="Green">
                             <StackLayout>
                                 <Frame BackgroundColor="Green" Margin="-20,-20,-20,5">
                                     <Label Text="Banka Bakiyeleri" TextColor="White" FontSize="20" Margin="-10"/>
@@ -399,11 +340,11 @@
                         <!--#endregion-->
 
                         <!--#region 7 Günlük Kasa Hareketleri Grafik-->
-                        <Frame BackgroundColor="White" CornerRadius="15" Padding="10,15,10,15" Margin="20,20,20,5">
+                        <Frame BackgroundColor="#5AEC5E0F" CornerRadius="15" Padding="10,15,10,15" Margin="20,20,20,5">
                             <StackLayout HeightRequest="530">
                                 <StackLayout Margin="20,10,20,10">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Padding="0,0" FontSize="20" WidthRequest="350" FontAttributes="Bold" TextColor="#26c281" HorizontalOptions="Center">
+                                        <Label Padding="0,0" FontSize="20" WidthRequest="350" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="7 GÜNLÜK KASA HAREKETLERİ"/>
@@ -436,7 +377,7 @@
                         <!--#endregion-->
 
                         <!--#region Kasa Bakiyeleri Tablo-->
-                        <Frame BackgroundColor="White" Margin="20,20,20,-5" CornerRadius="15" BorderColor="Green">
+                        <Frame BackgroundColor="#5AEC5E0F" Margin="20,20,20,-5" CornerRadius="15" BorderColor="Green">
                             <StackLayout>
                                 <Frame BackgroundColor="Green" Margin="-20,-20,-20,5">
                                     <Label Text="Kasa Bakiyeleri" TextColor="White" FontSize="20" Margin="-10"/>
@@ -461,7 +402,8 @@
         </ScrollView>
         <!--#endregion-->
         <!--#region popUplar-->
-        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#CC000000" VerticalOptions="Fill"/>
+        <Frame x:Name="btnpopupMenuReturnBackground" IsVisible="false" BackgroundColor="#AA000000"></Frame>
+        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#00000000" VerticalOptions="Fill"/>
         <!--#region Suresi Geçen Hatırlatmalar View-->
         <ScrollView x:Name="SuresiGecenHatirlatmaView" IsVisible="true">
             <Frame BackgroundColor="White" BorderColor="Black" Margin="20" CornerRadius="15">
@@ -492,36 +434,36 @@
         <!--#endregion-->
         
         <!--#region Sağ Menü-->
-        <AbsoluteLayout x:Name="popupMenuBack" IsVisible="false" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Start" Margin="0,100,8,0">
-            <BoxView x:Name="popupMenuBackBox" Color="#36c6d3" WidthRequest="55" HeightRequest="340" CornerRadius="25"/>
-            <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start">
+        <AbsoluteLayout x:Name="popupMenuBack" IsVisible="true" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,-5,0">
+            <BoxView x:Name="popupMenuBackBox" Color="#ffa600" VerticalOptions="Start" HorizontalOptions="EndAndExpand" WidthRequest="55" HeightRequest="350" TranslationY="-350" CornerRadius="0,0,25,25"/>
+            <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start" TranslationY="-45">
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemPanel" IsVisible="false" ImageSource="home24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+                <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" TranslationY="56" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemAra" IsVisible="false" ImageSource="search24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" />
-                <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+                <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" TranslationY="93" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemCariIslem" IsVisible="false" ImageSource="users24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+                <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" TranslationY="134" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemStokKartlari" IsVisible="false" ImageSource="dropbox24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+                <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" TranslationY="173" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemSatisYap" IsVisible="false" ImageSource="cartshopping24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" IsVisible="false" FontSize="15" TextColor="white" Padding="-30,0"/>
+                <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" TranslationY="213" IsVisible="false" FontSize="15" TextColor="white" Padding="-30,0"/>
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemFaturalar" IsVisible="false" ImageSource="pen_to_square24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+                <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" TranslationY="255" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemFiyatGor" IsVisible="false" ImageSource="file_dollar24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+                <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" TranslationY="297" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
 
             </Grid>
         </AbsoluteLayout>
         <!--#endregion-->
         <!-- <Button x:Name="btnTest" Clicked="btnTest_Clicked" Text="test" VerticalOptions="Start" HorizontalOptions="Center"/> -->
-        <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" TranslationX="-1" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="#9A36c6d3" HorizontalOptions="End" VerticalOptions="Start"/>
+        <!-- <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" TranslationX="-1" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="#9A36c6d3" HorizontalOptions="End" VerticalOptions="Start"/>-->
     <!--#endregion-->
     </Grid>
 
@@ -1045,35 +987,34 @@
     </Grid>
     -->
     <!--#endregion-->
-    <!--#region Sağ Menü v2 buglu
-    <AbsoluteLayout x:Name="popupMenuBack" IsVisible="false" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Start" Margin="0,100,8,0">
-        <BoxView x:Name="popupMenuBackBox" Color="#36c6d3" WidthRequest="55" HeightRequest="55" CornerRadius="25"/>
-        <StackLayout HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start">
+    <!--#region Sağ Menü v2 buglu -->
+    <!-- <AbsoluteLayout x:Name="popupMenuBack" IsVisible="false" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Start" Margin="0,100,8,0">
+        <BoxView x:Name="popupMenuBackBox" Color="#36c6d3" WidthRequest="55" HeightRequest="340" CornerRadius="25"/>
+        <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start">
 
-            <Button x:Name="btnPopUpMenuItemPanel" Margin="-11,0" TranslationX="-2" TranslationY="65" IsVisible="true" ImageSource="home24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" FontSize="15" TextColor="white" IsVisible="false" TranslationY="29" TranslationX="-45"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemPanel" IsVisible="false" ImageSource="home24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+            <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
 
-            <Button x:Name="btnPopUpMenuItemAra" Margin="-11,0" TranslationX="-2" TranslationY="35" IsVisible="false" ImageSource="search24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-5" TranslationX="-60" Padding="-20,0,0,0"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemAra" IsVisible="false" ImageSource="search24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" />
+            <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
 
-            <Button x:Name="btnPopUpMenuItemCariIslem" Margin="-11,0" TranslationX="-2" TranslationY="5" IsVisible="false" ImageSource="users24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-30" TranslationX="-60" Padding="-25,0,0,0"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemCariIslem" IsVisible="false" ImageSource="users24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+            <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
 
-            <Button x:Name="btnPopUpMenuItemStokKartlari" Margin="-11,0" TranslationX="-2" TranslationY="-20" IsVisible="false" ImageSource="dropbox24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-60" TranslationX="-60" Padding="-25,0,0,0"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemStokKartlari" IsVisible="false" ImageSource="dropbox24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+            <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
 
-            <Button x:Name="btnPopUpMenuItemSatisYap" Margin="-11,0" TranslationX="-2" TranslationY="-50" IsVisible="false" ImageSource="cartshopping24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-90" TranslationX="-40" Padding="-25,0,0,0"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemSatisYap" IsVisible="false" ImageSource="cartshopping24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+            <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" IsVisible="false" FontSize="15" TextColor="white" Padding="-30,0"/>
 
-            <Button x:Name="btnPopUpMenuItemFaturalar" Margin="-11,0" TranslationX="-2" TranslationY="-80" IsVisible="false" ImageSource="pen_to_square24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-116" TranslationX="-40" Padding="-25,0,0,0"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemFaturalar" IsVisible="false" ImageSource="pen_to_square24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+            <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
 
-            <Button x:Name="btnPopUpMenuItemFiyatGor" Margin="-11,0" TranslationX="-2" TranslationY="-105" IsVisible="false" ImageSource="file_dollar24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center"/>
-            <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" FontSize="15" TextColor="white" IsVisible="false" TranslationY="-140" TranslationX="-40" Padding="-25,0,0,0"/>
+            <Button TranslationX="-2" x:Name="btnPopUpMenuItemFiyatGor" IsVisible="false" ImageSource="file_dollar24x.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+            <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
 
-        </StackLayout>
-    </AbsoluteLayout>
-    -->
+        </Grid>
+    </AbsoluteLayout> -->
     <!--#endregion-->
     <!-- #region sağ menü v1 -->
     <!--

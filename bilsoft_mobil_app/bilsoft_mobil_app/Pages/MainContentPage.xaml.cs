@@ -11,6 +11,14 @@ using bilsoft_mobil_app.Helper;
 
 namespace bilsoft_mobil_app.Pages
 {
+
+    /* Yapılacaklar
+     * ilk açılışa logo yapılacak
+     * grafiklerin renkleri birbirine uyumlu yapılacak.    
+     * 7gün satış,7gün vade,banka bakiyeleri,7günlük kasa,kasa bakiyeleri font renkleri beyaz yapılacak.
+     * toolbara dönem yılı seçme, kullanıcı menüsü eklencek.
+     * yan menü tasarımı yapıkacak.
+     */
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainContentPage : ContentPage
     {
@@ -140,7 +148,7 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
                 #region 7 Günlük Banka Haraket Chart
-                _7GunlukBankaHaraketGraph.Chart = new LineChart { Entries = entries7gunbankaharaket, IsAnimated = true, LabelTextSize = 30, LabelColor = SKColor.Parse("#000000"), PointAreaAlpha = 255, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, LineSize = 5, PointSize = 30, EnableYFadeOutGradient = false };
+                _7GunlukBankaHaraketGraph.Chart = new LineChart { Entries = entries7gunbankaharaket, IsAnimated = true, LabelTextSize = 30, LabelColor = SKColors.White, PointAreaAlpha = 255, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, LineSize = 5, PointSize = 30, EnableYFadeOutGradient = false,BackgroundColor=SKColors.Transparent };
                 _7gunlukBankaHaraketPicker.ItemsSource = new List<string> { "Ziraat Bankası", "Garanti Bankası", "İş Bankası" };
                 #endregion
 
@@ -177,12 +185,14 @@ namespace bilsoft_mobil_app.Pages
                     createKasaListProp(i);
                 }
                 #endregion
+
             }
             catch (Exception e)
             {
                 DisplayAlert("", e.Message, "ok");
             }
         }
+
         #region Kasa Bakiye Liste
         async Task createKasaListProp(int sira)
         {
@@ -241,6 +251,7 @@ namespace bilsoft_mobil_app.Pages
 
         }
 #endregion
+
         #region Banka Bakieler Liste
         async Task createBankListProp(int sira)
         {
@@ -558,88 +569,103 @@ namespace bilsoft_mobil_app.Pages
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay1,
-                ValueLabel=_7GunBankaHaraketGiris1 + ""
+                ValueLabel=_7GunBankaHaraketGiris1 + "",
+                ValueLabelColor= SKColors.White,
             },
 
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis1))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay1,
-                ValueLabel=_7GunBankaHaraketCikis1 + ""
+                ValueLabel=_7GunBankaHaraketCikis1 + "",
+                ValueLabelColor= SKColors.White,
             },
 
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris2))
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay2,
-                ValueLabel=_7GunBankaHaraketGiris2 + ""
+                ValueLabel=_7GunBankaHaraketGiris2 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis2))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay2,
-                ValueLabel=_7GunBankaHaraketCikis2 + ""
+                ValueLabel=_7GunBankaHaraketCikis2 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris3))
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay3,
-                ValueLabel=_7GunBankaHaraketGiris3 + ""
+                ValueLabel=_7GunBankaHaraketGiris3 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis3))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay3,
-                ValueLabel=_7GunBankaHaraketCikis3 + ""
+                ValueLabel=_7GunBankaHaraketCikis3 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris4))
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay4,
-                ValueLabel=_7GunBankaHaraketGiris4 + ""
-            },new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis4))
+                ValueLabel=_7GunBankaHaraketGiris4 + "",
+                ValueLabelColor= SKColors.White,
+            },
+                    new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis4))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay4,
-                ValueLabel=_7GunBankaHaraketCikis4 + ""
+                ValueLabel=_7GunBankaHaraketCikis4 + "",
+                ValueLabelColor= SKColors.White,
             },
 
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris5))
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay5,
-                ValueLabel=_7GunBankaHaraketGiris5 + ""
+                ValueLabel=_7GunBankaHaraketGiris5 + "",
+                ValueLabelColor= SKColors.White,
             },
 
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis5))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay5,
-                ValueLabel=_7GunBankaHaraketCikis5 + ""
+                ValueLabel=_7GunBankaHaraketCikis5 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris6))
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay6,
-                ValueLabel=_7GunBankaHaraketGiris6 + ""
+                ValueLabel=_7GunBankaHaraketGiris6 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis6))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay6,
-                ValueLabel=_7GunBankaHaraketCikis6 + ""
+                ValueLabel=_7GunBankaHaraketCikis6 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris7))
             {
                 Color= SKColors.Green,
                 Label=_7GunBankaHaraketDay7,
-                ValueLabel=_7GunBankaHaraketGiris7 + ""
+                ValueLabel=_7GunBankaHaraketGiris7 + "",
+                ValueLabelColor= SKColors.White,
             },
             new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis7))
             {
                 Color= SKColors.Red,
                 Label=_7GunBankaHaraketDay7,
-                ValueLabel=_7GunBankaHaraketCikis7 + ""
+                ValueLabel=_7GunBankaHaraketCikis7 + "",
+                ValueLabelColor= SKColors.White,
             }
 
             };
@@ -870,129 +896,126 @@ namespace bilsoft_mobil_app.Pages
             //Menü arka button heightrequestler sırayla
             //55-80-120-160-200-240-280-320-340
 
-            if (!popupMenuBack.IsVisible)
+            if (!btnpopupMenuReturnBack.IsVisible)
             {
                 this.CancelAnimations();
-                btnPopUpMenu.ImageSource = "offmenuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
                 popupMenuBack.IsVisible = true;
                 btnpopupMenuReturnBack.IsVisible = true;
-                popupMenuBackBox.HeightRequest = 55;
+                btnpopupMenuReturnBackground.IsVisible=true;
+                //popupMenuBackBox.HeightRequest = 0;
+                popupMenuBackBox.TranslateTo(0, -45, _popuptimer);
 
 
                 //Panel 1
-                popupMenuBackBox.HeightRequest = 80;
+                //popupMenuBackBox.HeightRequest = 80;
                 btnPopUpMenuItemPanel.IsVisible = true;
                 lblPopUpMenuItemPanel.IsVisible = true;
                 btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
                 lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
 
                 //Hızlı Arama 2
-                popupMenuBackBox.HeightRequest = 120;
+               // popupMenuBackBox.HeightRequest = 120;
                 btnPopUpMenuItemAra.IsVisible = true;
                 lblPopUpMenuItemAra.IsVisible = true;
                 btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
                 lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
 
                 //Cari İşlem 3
-                popupMenuBackBox.HeightRequest = 160;
+                // popupMenuBackBox.HeightRequest = 160;
                 btnPopUpMenuItemCariIslem.IsVisible = true;
                 lblPopUpMenuItemCariIslem.IsVisible = true;
                 btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
                 lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
 
                 //Stok Kartları 4
-                popupMenuBackBox.HeightRequest = 200;
+                //popupMenuBackBox.HeightRequest = 200;
                 btnPopUpMenuItemStokKartlari.IsVisible = true;
                 lblPopUpMenuItemStokKartlari.IsVisible = true;
                 btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
                 lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
 
                 //Satış Yap 5
-                popupMenuBackBox.HeightRequest = 240;
+                // popupMenuBackBox.HeightRequest = 240;
                 btnPopUpMenuItemSatisYap.IsVisible = true;
                 lblPopUpMenuItemSatisYap.IsVisible = true;
                 btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
                 lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
 
                 //Faturalar 6
-                popupMenuBackBox.HeightRequest = 280;
+                // popupMenuBackBox.HeightRequest = 280;
                 btnPopUpMenuItemFaturalar.IsVisible = true;
                 lblPopUpMenuItemFaturalar.IsVisible = true;
                 btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
                 lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
 
                 //Fiyat Gör 7
-                popupMenuBackBox.HeightRequest = 320;
+                //popupMenuBackBox.HeightRequest = 320;
                 btnPopUpMenuItemFiyatGor.IsVisible = true;
                 lblPopUpMenuItemFiyatGor.IsVisible = true;
                 btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
                 lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
 
-                popupMenuBackBox.HeightRequest = 340;
+                //popupMenuBackBox.HeightRequest = 340;
             }
             else
             {
                 this.CancelAnimations();
+                popupMenuBackBox.TranslateTo(0, -350, _popuptimer);
                 //Fiyat Gör 7                
                 btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemFiyatGor.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemFiyatGor.TranslateTo(100, 297, _popuptimer);
 
                 //Faturalar 6
                 btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemFaturalar.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemFaturalar.TranslateTo(100, 255, _popuptimer);
 
                 //Satış Yap 5
                 btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemSatisYap.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemSatisYap.TranslateTo(100, 213, _popuptimer);
 
                 //Stok Kartları 4
                 btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemStokKartlari.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemStokKartlari.TranslateTo(100, 173, _popuptimer);
 
                 //Cari İşlem 3
                 btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemCariIslem.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemCariIslem.TranslateTo(100, 134, _popuptimer);
 
                 //Hızlı Arama 2
                 btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemAra.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemAra.TranslateTo(100, 93, _popuptimer);
 
                 //Panel 1
                 btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemPanel.TranslateTo(0, 0, _popuptimer);
+                lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
 
+                Task.Delay(((int)_popuptimer));
 
-                popupMenuBackBox.HeightRequest = 320;
+                /*//popupMenuBackBox.HeightRequest = 320;
                 btnPopUpMenuItemFaturalar.IsVisible = false;
                 lblPopUpMenuItemFaturalar.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 280;
+                //popupMenuBackBox.HeightRequest = 280;
                 btnPopUpMenuItemSatisYap.IsVisible = false;
                 lblPopUpMenuItemSatisYap.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 240;
+                //popupMenuBackBox.HeightRequest = 240;
                 btnPopUpMenuItemStokKartlari.IsVisible = false;
                 lblPopUpMenuItemStokKartlari.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 200;
+                //popupMenuBackBox.HeightRequest = 200;
                 btnPopUpMenuItemCariIslem.IsVisible = false;
                 lblPopUpMenuItemCariIslem.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 160;
+                //popupMenuBackBox.HeightRequest = 160;
                 btnPopUpMenuItemAra.IsVisible = false;
                 lblPopUpMenuItemAra.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
                 btnPopUpMenuItemPanel.IsVisible = false;
                 lblPopUpMenuItemPanel.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 120;
-                popupMenuBackBox.HeightRequest = 80;
-                popupMenuBackBox.HeightRequest = 55;
-                popupMenuBack.IsVisible = false;
+                btnPopUpMenuItemFiyatGor.IsVisible = false;
+                lblPopUpMenuItemFiyatGor.IsVisible = false;*/
+                //popupMenuBackBox.HeightRequest = 120;
+                //popupMenuBackBox.HeightRequest = 80;
+                //popupMenuBackBox.HeightRequest = 0;
+                popupMenuBack.IsVisible = true;
                 btnpopupMenuReturnBack.IsVisible = false;
-
-                btnPopUpMenu.ImageSource = "menuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
+                btnpopupMenuReturnBackground.IsVisible = false;
             }
             #region old v3 kapanma buglu
             /*
@@ -1272,69 +1295,7 @@ namespace bilsoft_mobil_app.Pages
 
         private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
         {
-            if (popupMenuBack.IsVisible)
-            {
-                this.CancelAnimations();
-                //Fiyat Gör 7                
-                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemFiyatGor.TranslateTo(0, 0, _popuptimer);
-
-                //Faturalar 6
-                btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemFaturalar.TranslateTo(0, 0, _popuptimer);
-
-                //Satış Yap 5
-                btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemSatisYap.TranslateTo(0, 0, _popuptimer);
-
-                //Stok Kartları 4
-                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemStokKartlari.TranslateTo(0, 0, _popuptimer);
-
-                //Cari İşlem 3
-                btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemCariIslem.TranslateTo(0, 0, _popuptimer);
-
-                //Hızlı Arama 2
-                btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemAra.TranslateTo(0, 0, _popuptimer);
-
-                //Panel 1
-                btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemPanel.TranslateTo(0, 0, _popuptimer);
-
-
-                popupMenuBackBox.HeightRequest = 320;
-                btnPopUpMenuItemFaturalar.IsVisible = false;
-                lblPopUpMenuItemFaturalar.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 280;
-                btnPopUpMenuItemSatisYap.IsVisible = false;
-                lblPopUpMenuItemSatisYap.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 240;
-                btnPopUpMenuItemStokKartlari.IsVisible = false;
-                lblPopUpMenuItemStokKartlari.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 200;
-                btnPopUpMenuItemCariIslem.IsVisible = false;
-                lblPopUpMenuItemCariIslem.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                popupMenuBackBox.HeightRequest = 160;
-                btnPopUpMenuItemAra.IsVisible = false;
-                lblPopUpMenuItemAra.IsVisible = false;
-                Task.Delay(_popuptimer / 7);
-                btnPopUpMenuItemPanel.IsVisible = false;
-                lblPopUpMenuItemPanel.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 120;
-                popupMenuBackBox.HeightRequest = 80;
-                popupMenuBackBox.HeightRequest = 55;
-                popupMenuBack.IsVisible = false;
-                btnpopupMenuReturnBack.IsVisible = false;
-
-                btnPopUpMenu.ImageSource = "menuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
-            }
+            btnPopUpMenu_Clicked(null, null);
         }
 
         #region Süresi Geçen Hatırlatmalar View
@@ -1400,52 +1361,57 @@ namespace bilsoft_mobil_app.Pages
         #region btnAnaSayfa
         private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
         private void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            var bt = (Button)sender;
-            DisplayAlert("", bt.Text, "ok");
+            var bt = (ImageButton)sender;
+            DisplayAlert("", bt.Source.ToString(), "ok");
         }
         #endregion
+
+        private void btnToolbarOpenpopup_Clicked(object sender, EventArgs e)
+        {
+            btnPopUpMenu_Clicked(null, null);
+        }
         private void btnTest_Clicked(object sender, EventArgs e)
         {
             UInt16 _popuptimer = 100;

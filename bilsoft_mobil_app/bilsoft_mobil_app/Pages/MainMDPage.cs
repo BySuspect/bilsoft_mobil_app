@@ -11,10 +11,10 @@ namespace bilsoft_mobil_app.Pages
         public MainMDPage(string mod)
         {
             this.Master = new MainMenuPage();
-            Detail = new NavigationPage(new MainContentPage(mod))
+            Detail = new NavigationPage(new MainContentPage(mod,mod))
             {
                 BarTextColor = Color.FromHex("#ffccff"),
-                BarBackgroundColor = Color.FromHex("#440c4d")
+                BarBackgroundColor = Color.FromHex("#ffa600")
             };
         }
     }
