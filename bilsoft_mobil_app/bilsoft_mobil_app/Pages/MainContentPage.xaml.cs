@@ -12,13 +12,13 @@ using bilsoft_mobil_app.Helper;
 namespace bilsoft_mobil_app.Pages
 {
 
-    /* Yapılacaklar
+     /*/ Yapılacaklar
      * ilk açılışa logo yapılacak
      * grafiklerin renkleri birbirine uyumlu yapılacak.    
      * 7gün satış,7gün vade,banka bakiyeleri,7günlük kasa,kasa bakiyeleri font renkleri beyaz yapılacak.
      * toolbara dönem yılı seçme, kullanıcı menüsü eklencek.
      * yan menü tasarımı yapıkacak.
-     */
+     /*/
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainContentPage : ContentPage
     {

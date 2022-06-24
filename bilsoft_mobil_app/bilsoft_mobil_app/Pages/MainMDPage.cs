@@ -14,6 +14,7 @@ namespace bilsoft_mobil_app.Pages
             Detail = new NavigationPage(new MainContentPage(mod,mod))
             {
                 BarTextColor = Color.FromHex("#ffccff"),
+                //BarBackgroundColor = Color.Transparent
                 BarBackgroundColor = Color.FromHex("#ffa600")
             };
         }
