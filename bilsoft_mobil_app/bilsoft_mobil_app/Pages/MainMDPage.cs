@@ -17,6 +17,7 @@ namespace bilsoft_mobil_app.Pages
                 //BarBackgroundColor = Color.Transparent
                 BarBackgroundColor = Color.FromHex("#ffa600")
             };
+            this.BackgroundImageSource = "background.jpg";
         }
     }
 }
