@@ -377,9 +377,9 @@
                                 </Frame>
                                 <Grid x:Name="gridKasaBakiye">
                                     <!--0. Satır-->
-                                    <Label Grid.Row="0" Grid.Column="0" Text="#" Margin="-5,5,5,5" FontSize="Body" TextColor="{Binding TextColor}"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="Kasa" Margin="-70,5,5,5" FontSize="Body" TextColor="{Binding TextColor}"/>
-                                    <Label Grid.Row="0" Grid.Column="2" Text="Bakiye" Margin="20,5,5,5" FontSize="Body" TextColor="{Binding TextColor}"/>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="#" Margin="-5,0,5,0" FontSize="Body" TextColor="{Binding TextColor}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Kasa" Margin="-70,0,5,0" FontSize="Body" TextColor="{Binding TextColor}"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="Bakiye" Margin="0,0,5,0" FontSize="Body" TextColor="{Binding TextColor}"/>
                                     <!--0. Satır End-->
                                     <BoxView Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="End" HeightRequest="1" Color="Green" Margin="-10,0"/>
                                     
@@ -401,8 +401,8 @@
 
         <!--#region Kullanici Menüsü-->
         <AbsoluteLayout x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="-300" TranslationX="0">
-            <Frame x:Name="_test" BackgroundColor="{Binding BackgroundColor}" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="220" CornerRadius="15" WidthRequest="118" BorderColor="{Binding BorderColor}"/>
-            <StackLayout TranslationY="50">
+            <BoxView Color="{Binding BackgroundColor}" VerticalOptions="Start" HorizontalOptions="End" HeightRequest="270" CornerRadius="0,0,15,0" WidthRequest="195"/>
+            <StackLayout TranslationY="50" TranslationX="5">
                 <Button Text="Mail Ayarları" ImageSource="home24x.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="2" BackgroundColor="Transparent"/>
                 <Button Text="Yetki Ayarları" ImageSource="home24x.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="2" BackgroundColor="Transparent"/>
                 <Button Text="Firma Bilgileri" ImageSource="home24x.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="2" BackgroundColor="Transparent"/>
