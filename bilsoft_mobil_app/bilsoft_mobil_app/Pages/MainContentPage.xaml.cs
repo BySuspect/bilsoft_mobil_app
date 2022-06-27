@@ -141,6 +141,7 @@ namespace bilsoft_mobil_app.Pages
 
         #region popUp Menu Veriler
         UInt16 _popuptimer = 200;
+        string openedPopUp;
         #endregion
 
         
@@ -780,6 +781,7 @@ namespace bilsoft_mobil_app.Pages
                 DisplayAlert("", e.Message, "ok");
             }
         }
+        #region chart voidler
         void setDemo7gunlukVadeG()
         {
             _7GunVadeOdemeGMoney1 = 12421.00;
@@ -895,12 +897,13 @@ namespace bilsoft_mobil_app.Pages
         {
 
         }
-
         private void btn7GunBankaGiris_Clicked(object sender, EventArgs e)
         {
 
         }
         #endregion
+        #endregion
+        #region popup voidler
         private void btnPopUpMenu_Clicked(object sender, EventArgs e)
         {
             //Menü arka button heightrequestler sırayla
@@ -1305,8 +1308,35 @@ namespace bilsoft_mobil_app.Pages
 
         private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnToolbarOpenpopup_Clicked(object sender, EventArgs e)
+        {
             btnPopUpMenu_Clicked(null, null);
         }
+        private void btnToolbarRefesh_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnToolbarOpenUserPopup_Clicked(object sender, EventArgs e)
+        {
+            userSettingsView.CancelAnimations();
+            if (!btnpopupMenuReturnBackground.IsVisible)
+            {
+                btnpopupMenuReturnBackground.IsVisible = true;
+                btnpopupMenuReturnBack.IsVisible = true;
+                userSettingsView.TranslateTo(0, -45, _popuptimer);
+            }
+            else
+            {
+                btnpopupMenuReturnBackground.IsVisible = false;
+                btnpopupMenuReturnBack.IsVisible = false;
+                userSettingsView.TranslateTo(0, -300, _popuptimer);
+            }
+        }
+
 
         #region Süresi Geçen Hatırlatmalar View
         void SuresiGecenHatirlatmalarListeAdder()
@@ -1368,6 +1398,7 @@ namespace bilsoft_mobil_app.Pages
         }
 
         #endregion
+        #endregion
 
         #region btnAnaSayfa
         private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
@@ -1419,36 +1450,5 @@ namespace bilsoft_mobil_app.Pages
         }
         #endregion
 
-        private void btnToolbarOpenpopup_Clicked(object sender, EventArgs e)
-        {
-            btnPopUpMenu_Clicked(null, null);
-        }
-        private void btnTest_Clicked(object sender, EventArgs e)
-        {
-            UInt16 _popuptimer = 100;
-
-            btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
-            lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
-
-            btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
-            lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
-
-            btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
-            lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
-
-            btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
-            lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
-
-            btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
-            lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
-
-            btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
-            lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
-
-            btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
-            lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
-
-
-        }
     }
 }

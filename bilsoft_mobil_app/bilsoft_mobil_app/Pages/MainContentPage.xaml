@@ -7,10 +7,10 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="btnToolbarOpenpopup" Clicked="btnToolbarOpenpopup_Clicked" IconImageSource="menu24px.png" Priority="2"/>
-        <ToolbarItem x:Name="btnToolbarOpenUserPopup" IconImageSource="user24px.png" Priority="1"/>
-        <ToolbarItem x:Name="btnToolbarRefesh" IconImageSource="refesh24px.png" Priority="0"/>
+        <ToolbarItem x:Name="btnToolbarOpenUserPopup" Clicked="btnToolbarOpenUserPopup_Clicked" IconImageSource="user24px.png" Priority="1"/>
+        <ToolbarItem x:Name="btnToolbarRefesh" Clicked="btnToolbarRefesh_Clicked" IconImageSource="refesh24px.png" Priority="0"/>
     </ContentPage.ToolbarItems>
-    <Grid Padding="0,5,0,0">
+    <Grid Padding="0,0,0,0">
         <!--#region Main Content-->
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -322,7 +322,7 @@
                         <!--#endregion-->
 
                         <!--#region Banka Bakiyeleri Tablo-->
-                        <Frame BackgroundColor="{Binding BackgroundColor}" Margin="20,20,20,-5" CornerRadius="15" BorderColor="Green">
+                        <Frame BackgroundColor="{Binding CardBackgroundColor}" Margin="20,20,20,-5" CornerRadius="15" BorderColor="Green">
                             <StackLayout>
                                 <Frame BackgroundColor="Green" Margin="-20,-20,-20,5">
                                     <Label Text="Banka Bakiyeleri" TextColor="White" FontSize="20" Margin="-10"/>
@@ -396,13 +396,13 @@
         <!--#endregion-->
         
         <!--#region popUplar-->
-        <Frame x:Name="btnpopupMenuReturnBackground" IsVisible="false" BackgroundColor="#AA000000"></Frame>
+        <Frame x:Name="btnpopupMenuReturnBackground" IsVisible="true" BackgroundColor="#AA000000"></Frame>
         <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#00000000" VerticalOptions="Fill"/>
 
         <!--#region Kullanici Menüsü-->
-        <AbsoluteLayout x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="0" TranslationX="0">
-            <BoxView x:Name="_test" Color="{Binding BackgroundColor}" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="215" WidthRequest="165" CornerRadius="0,0,10,10"/>
-            <StackLayout>
+        <AbsoluteLayout x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="-300" TranslationX="0">
+            <Frame x:Name="_test" BackgroundColor="{Binding BackgroundColor}" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="220" CornerRadius="15" WidthRequest="118" BorderColor="{Binding BorderColor}"/>
+            <StackLayout TranslationY="50">
                 <Button Text="Mail Ayarları" ImageSource="home24x.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="2" BackgroundColor="Transparent"/>
                 <Button Text="Yetki Ayarları" ImageSource="home24x.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="2" BackgroundColor="Transparent"/>
                 <Button Text="Firma Bilgileri" ImageSource="home24x.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="2" BackgroundColor="Transparent"/>
