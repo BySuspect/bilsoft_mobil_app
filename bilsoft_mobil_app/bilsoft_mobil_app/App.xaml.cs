@@ -20,6 +20,7 @@ namespace bilsoft_mobil_app
 
             //Test Page
             //MainPage = new MainPage();
+            //MainPage = new MainMenuPage();
         }
 
         public void SetMainPage(Page rootPage)

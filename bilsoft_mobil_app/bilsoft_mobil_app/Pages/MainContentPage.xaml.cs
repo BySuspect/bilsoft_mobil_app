@@ -23,49 +23,25 @@ namespace bilsoft_mobil_app.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainContentPage : ContentPage
     {
-        string mod = null, donemYili = null;
-        
-        #region Renkler
-        const string _chartKrediKartiColor = "#3706FF";
-        const string _chartNakitColor = "#FF0665";
-        const string _chartAcikHesapColor = "#29ba4d";
-        const string _chartCekColor = _chartAcikHesapColor;
-        const string _7GunSatisGColor = "#ffffff";
-        const string _7GunVadeTahsilatGColor = "#009c4e";
-        const string _7GunVadeOdemeGColor = "#003b99";
-        const string _7GunBankaHaraketGirisColor = "#009c4e";
-        const string _7GunBankaHaraketCikisColor = "#003b99";
-        const string _7GunlukKasaGirisColor = "#009c4e";
-        const string _7GunlukKasaCikisColor = "#003b99";
-
-        const string _borderColor = "#7AEC5E0F";
-        const string _backgroundColor = "#ffa600";
-        const string _cardBackgroundColor = "#7AFF6701";
-
-        const string _textColor = "#FFFFFF";
-        const string _textColorKoyu = "#101010";
-        const string _textColorWhite = "#FFFFFF";
-        const string _textColorBlack = "#FFFFFF";
-
-        #endregion
+        string mod = null, donemYili = null;              
 
         #region renk Bindleri
-        public Color TextColor { get; set; } = Color.FromHex(_textColor);
-        public Color TextColorKoyu { get; set; } = Color.FromHex(_textColorKoyu);
-        public Color BorderColor { get; set; } = Color.FromHex(_borderColor);
-        public Color BackgroundColor { get; set; } = Color.FromHex(_backgroundColor);
-        public Color CardBackgroundColor { get; set; } = Color.FromHex(_cardBackgroundColor);
+        public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
+        public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
+        public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
+        public Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+        public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
 
-        public Color KrediKartiColor { get; set; } = Color.FromHex(_chartKrediKartiColor);
-        public Color NakitColor { get; set; } = Color.FromHex(_chartNakitColor);
-        public Color AcikHesapColor { get; set; } = Color.FromHex(_chartAcikHesapColor);
-        public Color CekColor { get; set; } = Color.FromHex(_chartCekColor);
-        public Color _7GunVadeTahsilatColor { get; set; } = Color.FromHex(_7GunVadeTahsilatGColor);
-        public Color _7GunVadeOdemeColor { get; set; } = Color.FromHex(_7GunVadeOdemeGColor);
-        public Color _BankaHaraketGirisColor { get; set; } = Color.FromHex(_7GunBankaHaraketGirisColor);
-        public Color _BankaHaraketCikisColor { get; set; } = Color.FromHex(_7GunBankaHaraketCikisColor);
-        public Color _KasaGirisColor { get; set; } = Color.FromHex(_7GunlukKasaGirisColor);
-        public Color _KasaCikisColor { get; set; } = Color.FromHex(_7GunlukKasaCikisColor);
+        public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
+        public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
+        public Color AcikHesapColor { get; set; } = Color.FromHex(AppThemeColors._chartAcikHesapColor);
+        public Color CekColor { get; set; } = Color.FromHex(AppThemeColors._chartCekColor);
+        public Color _7GunVadeTahsilatColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeTahsilatGColor);
+        public Color _7GunVadeOdemeColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeOdemeGColor);
+        public Color _BankaHaraketGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketGirisColor);
+        public Color _BankaHaraketCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketCikisColor);
+        public Color _KasaGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaGirisColor);
+        public Color _KasaCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaCikisColor);
         #endregion
 
         #region Günlük Satış Tablo Verileri
@@ -149,6 +125,7 @@ namespace bilsoft_mobil_app.Pages
         {
             BindingContext = this;
             InitializeComponent();
+            #region start
             try
             {
                 donemYili = _donemYil;
@@ -191,17 +168,17 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
                 #region 7 Günlük Tablolar
-                _7GunlukSatisGraph.Chart = new PointChart { Entries = entries7GunlukTahsilat, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(_textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, BackgroundColor = SKColors.Transparent };
-                _7GunlukVadeGelenGraph.Chart = new PointChart { Entries = entries7GunlukVadeGelen, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(_textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), BackgroundColor = SKColors.Transparent };
+                _7GunlukSatisGraph.Chart = new PointChart { Entries = entries7GunlukTahsilat, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, BackgroundColor = SKColors.Transparent };
+                _7GunlukVadeGelenGraph.Chart = new PointChart { Entries = entries7GunlukVadeGelen, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), BackgroundColor = SKColors.Transparent };
                 #endregion
 
                 #region 7 Günlük Banka Haraket Chart
-                _7GunlukBankaHaraketGraph.Chart = new LineChart { Entries = entries7gunbankaharaket, IsAnimated = true, LabelTextSize = 30, LabelColor = SKColor.Parse(_textColor), PointAreaAlpha = 255, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, LineSize = 5, PointSize = 30, EnableYFadeOutGradient = false,BackgroundColor=SKColors.Transparent };
+                _7GunlukBankaHaraketGraph.Chart = new LineChart { Entries = entries7gunbankaharaket, IsAnimated = true, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, LineSize = 5, PointSize = 30, EnableYFadeOutGradient = false,BackgroundColor=SKColors.Transparent };
                 _7gunlukBankaHaraketPicker.ItemsSource = new List<string> { "Ziraat Bankası", "Garanti Bankası", "İş Bankası" };
                 #endregion
 
                 #region 7 Günlük Kasa Haraket Chart
-                _7GunlukKasaHareketleriChart.Chart = new PointChart { Entries = entries7GunlukKasaHareketleri, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(_textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), BackgroundColor = SKColors.Transparent };
+                _7GunlukKasaHareketleriChart.Chart = new PointChart { Entries = entries7GunlukKasaHareketleri, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), BackgroundColor = SKColors.Transparent };
                 #endregion
 
                 #region Süresi Geçen Hatırlatma Check
@@ -241,6 +218,7 @@ namespace bilsoft_mobil_app.Pages
             {
                 DisplayAlert("", e.Message, "ok");
             }
+            #endregion
         }
 
         #region Kasa Bakiye Liste
@@ -251,7 +229,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = (sira + 1).ToString(),
                 FontSize = 12,
                 Margin = new Thickness(-5, 5, 5, 5),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(0, 5),
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center
@@ -261,7 +239,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = KasaBakiyelerListe[sira].Kasa,
                 FontSize = 12,
                 Margin = new Thickness(-70, 5, 5, 5),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(0, 5),
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center
@@ -271,7 +249,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = KasaBakiyelerListe[sira].KasaBakiye.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
                 FontSize = 12,
                 Margin = new Thickness(-20, 5, 5, -5),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(5),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Start,
@@ -310,7 +288,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = (sira + 1).ToString(),
                 FontSize = 12,
                 Margin = new Thickness(-5, 0, 5, 0),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(0, 5),
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center
@@ -320,7 +298,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = BankaBakiyelerListe[sira].Banka_Hesap,
                 FontSize = 12,
                 Margin = new Thickness(-70, 0, 5, 0),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(0, 5),
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center
@@ -330,7 +308,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = BankaBakiyelerListe[sira].HesapNo,
                 FontSize = 12,
                 Margin = new Thickness(-30, 0, -10, 0),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(0, 5),
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center
@@ -340,7 +318,7 @@ namespace bilsoft_mobil_app.Pages
                 Text = BankaBakiyelerListe[sira].HesapBakiye.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
                 FontSize = 12,
                 Margin = new Thickness(-10, 0, -10, 0),
-                TextColor = Color.FromHex(_textColor),
+                TextColor = Color.FromHex(AppThemeColors._textColor),
                 Padding = new Thickness(0, 5),
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center
@@ -385,15 +363,15 @@ namespace bilsoft_mobil_app.Pages
                 #region Günlük Satış Entry
                 entriesGunlukSatis = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(GSNakit)) {
-                                Color = SKColor.Parse(_chartNakitColor)
+                                Color = SKColor.Parse(AppThemeColors._chartNakitColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GSKrediKarti)) {
-                                Color = SKColor.Parse(_chartKrediKartiColor)
+                                Color = SKColor.Parse(AppThemeColors._chartKrediKartiColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GSAcikHesap)) {
-                                Color = SKColor.Parse(_chartAcikHesapColor)
+                                Color = SKColor.Parse(AppThemeColors._chartAcikHesapColor)
                         }
                 };
                 #endregion
@@ -401,15 +379,15 @@ namespace bilsoft_mobil_app.Pages
                 #region Günlük Alış Entry
                 entriesGunlukAlis = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(GANakit)) {
-                                Color = SKColor.Parse(_chartNakitColor)
+                                Color = SKColor.Parse(AppThemeColors._chartNakitColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GAKrediKarti)) {
-                                Color = SKColor.Parse(_chartKrediKartiColor)
+                                Color = SKColor.Parse(AppThemeColors._chartKrediKartiColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GAAcikHesap)) {
-                                Color = SKColor.Parse(_chartAcikHesapColor)
+                                Color = SKColor.Parse(AppThemeColors._chartAcikHesapColor)
                         }
                 };
                 #endregion
@@ -417,15 +395,15 @@ namespace bilsoft_mobil_app.Pages
                 #region Günlük Tahsilat Entry
                 entriesGunlukTahsilat = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(GTNakit)) {
-                                Color = SKColor.Parse(_chartNakitColor)
+                                Color = SKColor.Parse(AppThemeColors._chartNakitColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GTKrediKarti)) {
-                                Color = SKColor.Parse(_chartKrediKartiColor)
+                                Color = SKColor.Parse(AppThemeColors._chartKrediKartiColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GTCek)) {
-                                Color = SKColor.Parse(_chartCekColor)
+                                Color = SKColor.Parse(AppThemeColors._chartCekColor)
                         }
                 };
                 #endregion
@@ -433,15 +411,15 @@ namespace bilsoft_mobil_app.Pages
                 #region Günlük Ödeme Entry
                 entriesGunlukOdeme = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(GONakit)) {
-                                Color = SKColor.Parse(_chartNakitColor)
+                                Color = SKColor.Parse(AppThemeColors._chartNakitColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GOKrediKarti)) {
-                                Color = SKColor.Parse(_chartKrediKartiColor)
+                                Color = SKColor.Parse(AppThemeColors._chartKrediKartiColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(GOCek)) {
-                                Color = SKColor.Parse(_chartCekColor)
+                                Color = SKColor.Parse(AppThemeColors._chartCekColor)
                         }
                 };
                 #endregion
@@ -449,48 +427,48 @@ namespace bilsoft_mobil_app.Pages
                 #region 7 Günlük Satış Entry
                 entries7GunlukTahsilat = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney1)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay1,
                                         ValueLabel = _7GunSatisGMoney1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney2)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay2,
                                         ValueLabel = _7GunSatisGMoney2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney3)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay3,
                                         ValueLabel = _7GunSatisGMoney3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney4)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay4,
                                         ValueLabel = _7GunSatisGMoney4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney5)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay5,
                                         ValueLabel = _7GunSatisGMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney6)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay6,
                                         ValueLabel = _7GunSatisGMoney6.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunSatisGMoney7)) {
-                                Color = SKColor.Parse(_7GunSatisGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunSatisGColor),
                                         Label = _7GunSatisGDay7,
                                         ValueLabel = _7GunSatisGMoney7.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_textColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._textColor)
                         }
                 };
                 #endregion
@@ -498,92 +476,92 @@ namespace bilsoft_mobil_app.Pages
                 #region 7 Günlük Vadesi Gelecek Entry
                 entries7GunlukVadeGelen = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney1)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay1,
                                         ValueLabel = _7GunVadeTahsilatGMoney1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor),                                        
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),                                        
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney1)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay1,
                                         ValueLabel = _7GunVadeOdemeGMoney1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney2)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay2,
                                         ValueLabel = _7GunVadeTahsilatGMoney2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney2)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay2,
                                         ValueLabel = _7GunVadeOdemeGMoney2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney3)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay3,
                                         ValueLabel = _7GunVadeTahsilatGMoney3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney3)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay3,
                                         ValueLabel = _7GunVadeOdemeGMoney3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney4)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay4,
                                         ValueLabel = _7GunVadeTahsilatGMoney4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney4)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay4,
                                         ValueLabel = _7GunVadeOdemeGMoney4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney5)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay5,
                                         ValueLabel = _7GunVadeTahsilatGMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor)
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney5)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay5,
                                         ValueLabel = _7GunVadeOdemeGMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney6)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay6,
                                         ValueLabel = _7GunVadeTahsilatGMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney6)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay6,
                                         ValueLabel = _7GunVadeOdemeGMoney6.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeTahsilatGMoney7)) {
-                                Color = SKColor.Parse(_7GunVadeTahsilatGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay7,
                                         ValueLabel = _7GunVadeTahsilatGMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeTahsilatGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor)
                         },
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney7)) {
-                                Color = SKColor.Parse(_7GunVadeOdemeGColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor),
                                         Label = _7GunVadeGDay7,
                                         ValueLabel = _7GunVadeOdemeGMoney7.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(_7GunVadeOdemeGColor)
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeOdemeGColor)
                         }
                 };
                 #endregion
@@ -591,92 +569,92 @@ namespace bilsoft_mobil_app.Pages
                 #region 7 Günlük Banka Haraketleri Entry
                 entries7gunbankaharaket = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris1)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay1,
                                         ValueLabel = _7GunBankaHaraketGiris1 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis1)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay1,
                                         ValueLabel = _7GunBankaHaraketCikis1 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris2)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay2,
                                         ValueLabel = _7GunBankaHaraketGiris2 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis2)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay2,
                                         ValueLabel = _7GunBankaHaraketCikis2 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris3)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay3,
                                         ValueLabel = _7GunBankaHaraketGiris3 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis3)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay3,
                                         ValueLabel = _7GunBankaHaraketCikis3 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris4)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay4,
                                         ValueLabel = _7GunBankaHaraketGiris4 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis4)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay4,
                                         ValueLabel = _7GunBankaHaraketCikis4 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris5)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay5,
                                         ValueLabel = _7GunBankaHaraketGiris5 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis5)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay5,
                                         ValueLabel = _7GunBankaHaraketCikis5 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris6)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay6,
                                         ValueLabel = _7GunBankaHaraketGiris6 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis6)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay6,
                                         ValueLabel = _7GunBankaHaraketCikis6 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketGiris7)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                                         Label = _7GunBankaHaraketDay7,
                                         ValueLabel = _7GunBankaHaraketGiris7 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketGirisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketGirisColor),
                         },
                         new ChartEntry(Convert.ToInt32(_7GunBankaHaraketCikis7)) {
-                                Color = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                                         Label = _7GunBankaHaraketDay7,
                                         ValueLabel = _7GunBankaHaraketCikis7 + "",
-                                        ValueLabelColor = SKColor.Parse(_7GunBankaHaraketCikisColor),
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunBankaHaraketCikisColor),
                         }
 
                 };
@@ -685,90 +663,90 @@ namespace bilsoft_mobil_app.Pages
                 #region 7 Günlük Kasa Haraketleri Entry
                 entries7GunlukKasaHareketleri = new List<ChartEntry> {
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney1)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay1,
                                         ValueLabel = _7GunlukKasaGirisMoney1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney1)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay1,
                                         ValueLabel = _7GunlukKasaCikisMoney1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney2)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay2,
                                         ValueLabel = _7GunlukKasaGirisMoney2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney2)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay2,
                                         ValueLabel = _7GunlukKasaCikisMoney2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney3)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay3,
                                         ValueLabel = _7GunlukKasaGirisMoney3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney3)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay3,
                                         ValueLabel = _7GunlukKasaCikisMoney3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney4)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay4,
                                         ValueLabel = _7GunlukKasaGirisMoney4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney4)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay4,
                                         ValueLabel = _7GunlukKasaCikisMoney4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney5)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay5,
                                         ValueLabel = _7GunlukKasaGirisMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney5)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay5,
                                         ValueLabel = _7GunlukKasaCikisMoney5.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney6)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay6,
                                         ValueLabel = _7GunlukKasaGirisMoney6.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney6)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay6,
                                         ValueLabel = _7GunlukKasaCikisMoney6.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaGirisMoney7)) {
-                                Color = SKColor.Parse(_7GunlukKasaGirisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaGirisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaGirisColor),
                                         Label = _7GunKasaHareketDay7,
                                         ValueLabel = _7GunlukKasaGirisMoney7.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         },
                         new ChartEntry(Convert.ToInt32(_7GunlukKasaCikisMoney7)) {
-                                Color = SKColor.Parse(_7GunlukKasaCikisColor),
-                                        ValueLabelColor=SKColor.Parse(_7GunlukKasaCikisColor),
+                                Color = SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
+                                        ValueLabelColor=SKColor.Parse(AppThemeColors._7GunlukKasaCikisColor),
                                         Label = _7GunKasaHareketDay7,
                                         ValueLabel = _7GunlukKasaCikisMoney7.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"))
                         }
@@ -1667,7 +1645,7 @@ namespace bilsoft_mobil_app.Pages
                     new Label
                     {
                         Text=_adSoyad,
-                        TextColor=Color.FromHex(_textColor),
+                        TextColor=Color.FromHex(AppThemeColors._textColor),
                         FontSize=12,
                         FontAttributes=FontAttributes.Bold,
                         HorizontalOptions=LayoutOptions.StartAndExpand
@@ -1675,7 +1653,7 @@ namespace bilsoft_mobil_app.Pages
                     new Label
                     {
                         Text=_firma,
-                        TextColor=Color.FromHex(_textColor),
+                        TextColor=Color.FromHex(AppThemeColors._textColor),
                         FontSize=12,
                         FontAttributes=FontAttributes.Bold,
                         HorizontalOptions=LayoutOptions.CenterAndExpand
@@ -1683,7 +1661,7 @@ namespace bilsoft_mobil_app.Pages
                     new Label
                     {
                         Text=_aciklama,
-                        TextColor=Color.FromHex(_textColor),
+                        TextColor=Color.FromHex(AppThemeColors._textColor),
                         FontSize=12,
                         FontAttributes=FontAttributes.Bold,
                         HorizontalOptions=LayoutOptions.EndAndExpand,
