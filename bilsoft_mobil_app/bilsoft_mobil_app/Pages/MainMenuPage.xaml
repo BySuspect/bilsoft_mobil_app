@@ -10,74 +10,107 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ScrollView x:Name="MainScrollView">
+        <ScrollView x:Name="MainScrollView" Scrolled="MainScrollView_Scrolled">
             <StackLayout Orientation="Vertical">
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="house32x.png"            Text="Giriş Ekranı"   Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="cartshopping32x.png"     Text="Satış Yap"      Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="users32x.png"            Text="Cari Hesaplar"  Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="dropbox32x.png"          Text="Stok Kartları"  Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="pen_to_square32.png"     Text="Faturalar"      Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="pen_to_square32.png"     Text="E-Fatura"       Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="pen_to_square32.png"     Text="E-İrsaliye"     Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="chartcolumn32.png"       Text="Gelir Gider"    Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="money32x.png"            Text="Kasa"           Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="building_columns32x.png" Text="Banka"          Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="file_dollar32x.png"      Text="Çek/Senet"      Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="calendar32.png"          Text="Taksit Yap"     Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="file_lines32x.png"       Text="Teklif Sipariş" Margin="25,5,25,-10" Padding="65,10"/>
-                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" ImageSource="book32x.png"             Text="Ajanda"         Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="house32x.png"            Text="Giriş Ekranı"   Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="cartshopping32x.png"     Text="Satış Yap"      Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="users32x.png"            Text="Cari Hesaplar"  Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="dropbox32x.png"          Text="Stok Kartları"  Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="pen_to_square32.png"     Text="Faturalar"      Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="pen_to_square32.png"     Text="E-Fatura"       Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="pen_to_square32.png"     Text="E-İrsaliye"     Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="chartcolumn32.png"       Text="Gelir Gider"    Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="money32x.png"            Text="Kasa"           Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="building_columns32x.png" Text="Banka"          Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="file_dollar32x.png"      Text="Çek/Senet"      Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="calendar32.png"          Text="Taksit Yap"     Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="file_lines32x.png"       Text="Teklif Sipariş" Margin="25,5,25,-10" Padding="65,10"/>
+                <Button BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" CornerRadius="15" ImageSource="book32x.png"             Text="Ajanda"         Margin="25,5,25,-10" Padding="65,10"/>
                 <!--#region Raporlar Tree View -->
                 <Frame  BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="25,5,25,0" Padding="65,0">
                     <StackLayout>
-                        <Button x:Name="btnMenuRaporlarTreeView" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarTreeView_Clicked" CornerRadius="15" ImageSource="file_lines32x.png" Text="Raporlar" Padding="70,0" Margin="-70,0"/>
+                        <Button x:Name="btnMenuRaporlarTreeView" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" FontSize="Body" Clicked="btnMenuRaporlarTreeView_Clicked" CornerRadius="15" ImageSource="file_lines32x.png" Text="Raporlar" Padding="70,0" Margin="-70,0"/>
                         <!--#region Raporlar Toggle-->
                         <StackLayout x:Name="RaporlarToggle" IsVisible="false">
-                            <Button x:Name="btnMenuRaporlarCari" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarCari_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Cari" Padding="90,0,110,0" Margin="-70,0"/>
+                            <Button x:Name="btnMenuRaporlarCari" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" FontSize="Caption" Clicked="btnMenuRaporlarCari_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Cari" Padding="90,0,110,0" Margin="-70,0"/>
                             <!--#region Cari-->
                             <StackLayout x:Name="RaporlarCariToggle" IsVisible="false">
-                                <Button x:Name="btnMenuRaporlarCariBakiyeRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariBakiyeRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Bakiye Raporu" Padding="110,0,40,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarCariHesapEkstreRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariHesapEkstreRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Hesap Ekstre Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarCariIslemRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariIslemRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="İşlem Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarCariMutabakatRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariMutabakatRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Mukabakat Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarCariBA_BSRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariBA_BSRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="BA-BS Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarCariBakiyeRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariBakiyeRaporu_Clicked"            FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Bakiye Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarCariHesapEkstreRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariHesapEkstreRaporu_Clicked"  FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Hesap Ekstre Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarCariIslemRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariIslemRaporu_Clicked"              FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="İşlem Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarCariMutabakatRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariMutabakatRaporu_Clicked"      FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Mukabakat Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarCariBA_BSRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarCariBA_BSRaporu_Clicked"              FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="BA-BS Raporu" Padding="110,0,30,0" Margin="-70,0"/>
                             </StackLayout>
                             <!--#endregion-->
 
-                            <Button x:Name="btnMenuRaporlarStok" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStok_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Stok" Padding="90,0,110,0" Margin="-70,0"/>
+                            <Button x:Name="btnMenuRaporlarStok" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" FontSize="Caption" BorderWidth="1" Clicked="btnMenuRaporlarStok_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Stok" Padding="90,0,110,0" Margin="-70,0"/>
                             <!--#region Stok-->
                             <StackLayout x:Name="RaporlarStokToggle" IsVisible="false">
-                                <Button x:Name="btnMenuRaporlarStokHaraketleriRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokHaraketleriRaporu_Clicked" FontSize="Caption" CornerRadius="15"         ImageSource="menu24px.png" Text="Stok Haraketleri Raporu" Padding="110,0,40,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokBakiyeRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokBakiyeRaporu_Clicked" FontSize="Caption" CornerRadius="15"                   ImageSource="menu24px.png" Text="Bakiye Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokFiyatListesi" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokFiyatListesi_Clicked" FontSize="Caption" CornerRadius="15"                   ImageSource="menu24px.png" Text="Fiyat Listesi" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokDepoHaraketleriRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoHaraketleriRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Depo Haraketleri Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokDepoAktarimRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoAktarimRaporu_Clicked" FontSize="Caption" CornerRadius="15"         ImageSource="menu24px.png" Text="Depo Aktarım Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarStokHaraketleriRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokHaraketleriRaporu_Clicked" FontSize="Micro" CornerRadius="15"         ImageSource="menu24px.png" Text="Stok Haraketleri Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarStokBakiyeRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokBakiyeRaporu_Clicked" FontSize="Micro" CornerRadius="15"                   ImageSource="menu24px.png" Text="Bakiye Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarStokFiyatListesi" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokFiyatListesi_Clicked" FontSize="Micro" CornerRadius="15"                   ImageSource="menu24px.png" Text="Fiyat Listesi" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarStokDepoHaraketleriRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoHaraketleriRaporu_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Depo Haraketleri Raporu" Padding="110,0,30,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarStokDepoAktarimRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoAktarimRaporu_Clicked" FontSize="Micro" CornerRadius="15"         ImageSource="menu24px.png" Text="Depo Aktarım Raporu" Padding="110,0,30,0" Margin="-70,0"/>
                             </StackLayout>
                             <!--#endregion-->
 
-                            <Button x:Name="btnMenuRaporlarTaksit" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarTaksit_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Taksit" Padding="90,0,110,0" Margin="-70,0"/>
+                            <Button x:Name="btnMenuRaporlarTaksit" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarTaksit_Clicked" CornerRadius="15" FontSize="Caption" ImageSource="users24x.png" Text="Taksit" Padding="90,0,110,0" Margin="-70,0"/>
                             <!--#region Taksit-->
                             <StackLayout x:Name="RaporlarTaksitToggle" IsVisible="false">
-                                <Button x:Name="btnMenuRaporlarTaksitRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarTaksitRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Taksit Raporu Gelişmiş" Padding="110,0,40,0" Margin="-70,0"/>
-                                <!--<Button x:Name="btnMenuRaporlarStokBakiyeRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokBakiyeRaporu_Clicked" FontSize="Caption" CornerRadius="15"                   ImageSource="menu24px.png" Text="Bakiye Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokFiyatListesi" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokFiyatListesi_Clicked" FontSize="Caption" CornerRadius="15"                   ImageSource="menu24px.png" Text="Fiyat Listesi" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokDepoHaraketleriRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoHaraketleriRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Depo Haraketleri Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokDepoAktarimRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoAktarimRaporu_Clicked" FontSize="Caption" CornerRadius="15"         ImageSource="menu24px.png" Text="Depo Aktarım Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                -->
-                                </StackLayout>
+                                <Button x:Name="btnMenuRaporlarTaksitRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarTaksitRaporu_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Taksit Raporu Gelişmiş" Padding="110,0,40,0" Margin="-70,0"/>
+                            </StackLayout>
                             <!--#endregion-->
-
-                            <Button x:Name="btnMenuRaporlarSatis" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarSatis_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Satış" Padding="90,0,110,0" Margin="-70,0"/>
+                            
+                            <Button x:Name="btnMenuRaporlarSatis" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" FontSize="Caption" Clicked="btnMenuRaporlarSatis_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Satış" Padding="90,0,110,0" Margin="-70,0"/>
                             <!--#region Satış-->
                             <StackLayout x:Name="RaporlarSatisToggle" IsVisible="false">
-                                <Button x:Name="btnMenuRaporlarSatisRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarSatisRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Satış Raporu" Padding="110,0,40,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarSatisGrafigi" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarSatisGrafigi_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Satış Grafiği" Padding="110,0,30,0" Margin="-70,0"/>
-                                <!--<Button x:Name="btnMenuRaporlarStokFiyatListesi" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokFiyatListesi_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Fiyat Listesi" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokDepoHaraketleriRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoHaraketleriRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Depo Haraketleri Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                <Button x:Name="btnMenuRaporlarStokDepoAktarimRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" Clicked="btnMenuRaporlarStokDepoAktarimRaporu_Clicked" FontSize="Caption" CornerRadius="15" ImageSource="menu24px.png" Text="Depo Aktarım Raporu" Padding="110,0,30,0" Margin="-70,0"/>
-                                -->
+                                <Button x:Name="btnMenuRaporlarSatisRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarSatisRaporu_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Satış Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarSatisGrafigi" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarSatisGrafigi_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Satış Grafiği" Padding="110,0,30,0" Margin="-70,0"/>
                             </StackLayout>
                             <!--#endregion-->
 
+                            <Button x:Name="btnMenuRaporlarKasa" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" FontSize="Caption" BorderWidth="1" Clicked="btnMenuRaporlarKasa_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Kasa" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--#region Kasa-->
+                            <StackLayout x:Name="RaporlarKasaToggle" IsVisible="false">
+                                <Button x:Name="btnMenuRaporlarKasaRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarKasaRaporu_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Kasa Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                            </StackLayout>
+                            <!--#endregion-->
+
+                            <Button x:Name="btnMenuRaporlarBanka" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" FontSize="Caption" BorderWidth="1" Clicked="btnMenuRaporlarBanka_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Banka" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--#region Banka-->
+                            <StackLayout x:Name="RaporlarBankaToggle" IsVisible="false">
+                                <Button x:Name="btnMenuRaporlarBankaRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarBankaRaporu_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Banka Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                            </StackLayout>
+                            <!--#endregion-->
+
+                            <Button x:Name="btnMenuRaporlarCekSenet" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" FontSize="Caption" BorderWidth="1" Clicked="btnMenuRaporlarCekSenet_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Çek/Senet" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--#region Cek-Senet-->
+                            <StackLayout x:Name="RaporlarCekSenetToggle" IsVisible="false">
+                                <Button x:Name="btnMenuRaporlarCekSenetRaporu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarCekSenetRaporu_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Çek/Senet Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                            </StackLayout>
+                            <!--#endregion-->
+
+                            <Button x:Name="btnMenuRaporlarDiger" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" FontSize="Caption" BorderWidth="1" Clicked="btnMenuRaporlarDiger_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Diğer" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--#region Diger-->
+                            <StackLayout x:Name="RaporlarDigerToggle" IsVisible="false">
+                                <Button x:Name="btnMenuRaporlarBankaHasaHaraketleri" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarBankaHasaHaraketleri_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Banka Kasa Haraketleri" Padding="110,0,40,0" Margin="-70,0"/>
+                            </StackLayout>
+                            <!--#endregion-->
+
+                            <Button x:Name="btnMenuRaporlarGunSonu" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" FontSize="Caption" Clicked="btnMenuRaporlarGunSonu_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Gün Sonu" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--GünSonu-->
+
+                            <Button x:Name="btnMenuRaporlarKarZarar" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" FontSize="Caption" Clicked="btnMenuRaporlarKarZarar_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Kar Zarar Analizi" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--Kar Zarar Analizi-->
+
+                            <Button x:Name="btnMenuRaporlarGelirGider" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" FontSize="Caption" Clicked="btnMenuRaporlarGelirGider_Clicked" CornerRadius="15" ImageSource="users24x.png" Text="Gelir Gider" Padding="90,0,110,0" Margin="-70,0"/>
+                            <!--#region Gelir-Gider-->
+                            <StackLayout x:Name="RaporlarGelirGiderToggle" IsVisible="false">
+                                <Button x:Name="btnMenuRaporlarGelirGiderBakiyeRapor" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarGelirGiderBakiyeRapor_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Gelir Gider Bakiye Raporu" Padding="110,0,40,0" Margin="-70,0"/>
+                                <Button x:Name="btnMenuRaporlarGelirGiderDetayliRapor" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" TextColor="{Binding TextColor}" BorderWidth="1" Clicked="btnMenuRaporlarGelirGiderDetayliRapor_Clicked" FontSize="Micro" CornerRadius="15" ImageSource="menu24px.png" Text="Gelir Gider Detaylı Rapor" Padding="110,0,30,0" Margin="-70,0"/>
+                            </StackLayout>
+                            <!--#endregion-->
+                            
                         </StackLayout>
                         <!--#endregion-->
                     </StackLayout>
@@ -85,5 +118,6 @@
                 <!--#endregion-->
             </StackLayout>
         </ScrollView>
+        <Label VerticalOptions="Start" HorizontalOptions="Center" x:Name="lblScrollTest" Text="ScrollY: 0" FontSize="15"/>
     </Grid>
 </ContentPage>

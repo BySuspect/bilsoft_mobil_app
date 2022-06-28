@@ -30,7 +30,7 @@ namespace bilsoft_mobil_app.Pages
 
         #endregion
 
-        //cari-stok
+        //cari, stok, taksit, satis, kasa, banka, cek-senet, diger, gelir-gider
         string openedTree;
         public MainMenuPage()
         {
@@ -43,13 +43,23 @@ namespace bilsoft_mobil_app.Pages
             if (RaporlarCariToggle.IsVisible)
             {
                 RaporlarCariToggle.IsVisible = false;
-                openedTree = "";
+                openedTree = null;
             }
             else
             {
                 RaporlarCariToggle.IsVisible = true;
                 MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 600, true);
                 openedTree = "cari";
+                
+                //RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
             }
         }
 
@@ -84,13 +94,23 @@ namespace bilsoft_mobil_app.Pages
             if (RaporlarStokToggle.IsVisible)
             {
                 RaporlarStokToggle.IsVisible = false;
-                openedTree = "";
+                openedTree = null;
             }
             else
             {
                 RaporlarStokToggle.IsVisible = true;
                 MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 1000, true);
                 openedTree = "stok";
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                //RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
             }
         }
         private void btnMenuRaporlarStokHaraketleriRaporu_Clicked(object sender, EventArgs e)
@@ -130,12 +150,24 @@ namespace bilsoft_mobil_app.Pages
         {
             if (RaporlarTaksitToggle.IsVisible)
             {
+                openedTree = null;
                 RaporlarTaksitToggle.IsVisible = false;
             }
             else
             {
+                openedTree = "taksit";
                 RaporlarTaksitToggle.IsVisible = true;
                 MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 1500, true);
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                //RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
             }
         }
         private void btnMenuRaporlarTaksitRaporu_Clicked(object sender, EventArgs e)
@@ -149,12 +181,24 @@ namespace bilsoft_mobil_app.Pages
         {
             if (RaporlarSatisToggle.IsVisible)
             {
+                openedTree = null;
                 RaporlarSatisToggle.IsVisible = false;
             }
             else
             {
+                openedTree = "satis";
                 RaporlarSatisToggle.IsVisible = true;
                 MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 2000, true);
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                //RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
             }
         }
 
@@ -169,6 +213,184 @@ namespace bilsoft_mobil_app.Pages
         }
         #endregion
 
+        #region Raporlar/Kasa
+        private void btnMenuRaporlarKasa_Clicked(object sender, EventArgs e)
+        {
+            if (RaporlarKasaToggle.IsVisible)
+            {
+                openedTree = null;
+                RaporlarKasaToggle.IsVisible = false;
+            }
+            else
+            {
+                openedTree = "kasa";
+                RaporlarKasaToggle.IsVisible = true;
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 2000, true);
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                //RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
+            }
+        }
+
+        private void btnMenuRaporlarKasaRaporu_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Raporlar/Banka
+        private void btnMenuRaporlarBanka_Clicked(object sender, EventArgs e)
+        {
+            if (RaporlarBankaToggle.IsVisible)
+            {
+                RaporlarBankaToggle.IsVisible = false;
+                openedTree = null;
+            }
+            else
+            {
+                RaporlarBankaToggle.IsVisible = true;
+                openedTree = "banka";
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 3000, true);
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                //RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
+            }
+        }
+
+        private void btnMenuRaporlarBankaRaporu_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Raporlar/Cek-Senet
+        private void btnMenuRaporlarCekSenet_Clicked(object sender, EventArgs e)
+        {
+            if (RaporlarCekSenetToggle.IsVisible)
+            {
+                RaporlarCekSenetToggle.IsVisible = false;
+                openedTree = null;
+            }
+            else
+            {
+                RaporlarCekSenetToggle.IsVisible = true;
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                openedTree = "cek-senet";
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                //RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
+            }
+        }
+
+        private void btnMenuRaporlarCekSenetRaporu_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Raporlar/Diger
+        private void btnMenuRaporlarDiger_Clicked(object sender, EventArgs e)
+        {
+            if (RaporlarDigerToggle.IsVisible)
+            {
+                RaporlarDigerToggle.IsVisible = false;
+                openedTree = null;
+            }
+            else
+            {
+                RaporlarDigerToggle.IsVisible = true;
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                openedTree = "diger";
+
+                RaporlarCariToggle.IsVisible = false;
+                //RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
+            }
+        }
+
+        private void btnMenuRaporlarBankaHasaHaraketleri_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Gun Sonu
+        private void btnMenuRaporlarGunSonu_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Kar Zarar Analizi
+        private void btnMenuRaporlarKarZarar_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Gelir-Gider
+        private void btnMenuRaporlarGelirGider_Clicked(object sender, EventArgs e)
+        {
+            if (RaporlarGelirGiderToggle.IsVisible)
+            {
+                RaporlarGelirGiderToggle.IsVisible = false;
+                openedTree = null;
+            }
+            else
+            {
+                RaporlarGelirGiderToggle.IsVisible = true;
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                openedTree = "gelir-gider";
+
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                //RaporlarGelirGiderToggle.IsVisible = false;
+            }
+        }
+
+        private void btnMenuRaporlarGelirGiderBakiyeRapor_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMenuRaporlarGelirGiderDetayliRapor_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
         private void btnMenuRaporlarTreeView_Clicked(object sender, EventArgs e)
         {
             if (RaporlarToggle.IsVisible)
@@ -178,9 +400,13 @@ namespace bilsoft_mobil_app.Pages
             else
             {
                 RaporlarToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 300, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
             }
         }
 
+        private void MainScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            lblScrollTest.Text = "ScrollY: " + MainScrollView.ScrollY;
+        }
     }
 }
