@@ -1,21 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:custom1="clr-namespace:bilsoft_mobil_app.CustomItems"
              x:Class="bilsoft_mobil_app.MainPage"
             BackgroundImageSource="background.jpg">
 
-    <Grid BackgroundColor="LightGray">
+    <Grid>        
+        <!--#region test Content down-->
         <ScrollView>
-            <AbsoluteLayout BackgroundColor="White">
-                <Grid>
-                    <StackLayout>
-                        <Frame HeightRequest="800" WidthRequest="500" Margin="20" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Red">
-                            <Button Clicked="Button_Clicked"/>
-                        </Frame>
+            <StackLayout Padding="0,10,0,25">
+                <ScrollView  HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always" Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
                     </StackLayout>
-                </Grid>
-            </AbsoluteLayout>
-        </ScrollView>
+                </ScrollView>
+                <Frame BackgroundColor="Transparent" Margin="35,20" Padding="25,10" CornerRadius="15">
+                    <StackLayout HeightRequest="5000" VerticalOptions="FillAndExpand">
+                        <Button VerticalOptions="Start" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Start" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                        <Button VerticalOptions="End" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                </Frame>
+                
+            </StackLayout>
+        </ScrollView> 
+        <!--#endregion-->
     </Grid>
 </ContentPage>

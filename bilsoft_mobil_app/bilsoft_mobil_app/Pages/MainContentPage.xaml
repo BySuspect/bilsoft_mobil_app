@@ -14,8 +14,34 @@
         <!--#region Main Content-->
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <!--#region Main Menüler-->
+                <ScrollView Orientation="Horizontal" Padding="15,0">
+                    <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15">
+                        <StackLayout Orientation="Horizontal">
+                            <!--Not
+                            *64px button tasarlanıcak 
+                            *ağac görünümleri için popup tasarlanıcak
+                            -->
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="home64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="shop64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="users64px.png" />
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="dropbox64px.png" />
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="edit64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="edit64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="edit64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="grafik64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="kasa64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="banka64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="file_dolar64px.png" />
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="takvimsure64px.png" />
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="order64px.png"/>
+                            <ImageButton BorderWidth="2" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" Padding="5" Source="raports64px.png"/>
+                        </StackLayout>
+                    </Frame>
+                </ScrollView>
+                <!--#endregion-->
                 <!--#region Menüler-->
-                <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding _borderColor}" CornerRadius="15" Margin="15">
+                <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,15">
                     <StackLayout>
                         <!--#region cari hesaplar - Stok Kartları-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
