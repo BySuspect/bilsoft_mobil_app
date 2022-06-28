@@ -13,17 +13,14 @@ namespace bilsoft_mobil_app.Pages
 {
 
     /*/ Yapılacaklar
-    *-- splash screen yapılacak
-    *-- grafiklerin renkleri birbirine uyumlu yapılacak.    
-    *-- 7gün satış,7gün vade,7günlük kasa,kasa bakiyeleri,banka bakiyeleri font renkleri beyaz yapılacak.
-    *-- toolbara dönem yılı seçme, kullanıcı menüsü eklencek.
-    *-- toolbar menüleri senkronize edilicek aynı anda açılmayacak
-    * yan menü tasarımı yapılacak.
+    * Iconlar yennilenicek
+    * Yan menu tasarım yenilenicek o menu ana sayfaya alınıcak
+    * 
     /*/
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainContentPage : ContentPage
     {
-        string mod = null, donemYili = null;              
+        string mod = null, donemYili = null;
 
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
@@ -1021,7 +1018,7 @@ namespace bilsoft_mobil_app.Pages
                         #region userpanel
                         btnpopupMenuReturnBackground.IsVisible = false;
                         btnpopupMenuReturnBack.IsVisible = false;
-                        userSettingsView.TranslateTo(0, -300, _popuptimer);
+                        userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
                         openedPopUp = "menu";
                         #endregion
                         goto default;
@@ -1477,7 +1474,7 @@ namespace bilsoft_mobil_app.Pages
                     this.CancelAnimations();
                     btnpopupMenuReturnBackground.IsVisible = false;
                     btnpopupMenuReturnBack.IsVisible = false;
-                    userSettingsView.TranslateTo(0, -300, _popuptimer);
+                    userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
                     #endregion
                     break;
                 default:
@@ -1522,7 +1519,7 @@ namespace bilsoft_mobil_app.Pages
                     this.CancelAnimations();
                     btnpopupMenuReturnBackground.IsVisible = false;
                     btnpopupMenuReturnBack.IsVisible = false;
-                    userSettingsView.TranslateTo(0, -300, _popuptimer);
+                    userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
                     #endregion
                     break;
             }
@@ -1593,13 +1590,13 @@ namespace bilsoft_mobil_app.Pages
                         {
                             btnpopupMenuReturnBackground.IsVisible = true;
                             btnpopupMenuReturnBack.IsVisible = true;
-                            userSettingsView.TranslateTo(0, -45, _popuptimer);
+                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -45, _popuptimer);
                         }
                         else
                         {
                             btnpopupMenuReturnBackground.IsVisible = false;
                             btnpopupMenuReturnBack.IsVisible = false;
-                            userSettingsView.TranslateTo(0, -300, _popuptimer);
+                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
                         }
                         #endregion
                         break;
@@ -1611,13 +1608,13 @@ namespace bilsoft_mobil_app.Pages
                         {
                             btnpopupMenuReturnBackground.IsVisible = true;
                             btnpopupMenuReturnBack.IsVisible = true;
-                            userSettingsView.TranslateTo(0, -45, _popuptimer);
+                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -45, _popuptimer);
                         }
                         else
                         {
                             btnpopupMenuReturnBackground.IsVisible = false;
                             btnpopupMenuReturnBack.IsVisible = false;
-                            userSettingsView.TranslateTo(0, -300, _popuptimer);
+                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
                         }
                         #endregion
                         break;

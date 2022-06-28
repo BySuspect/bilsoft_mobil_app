@@ -14,9 +14,7 @@ namespace bilsoft_mobil_app.Pages
     public partial class MainMenuPage : ContentPage
     {
         /* Not */
-        /* menu iconları 32px
-        /* menu altı iconları 20px
-        /* menu alt altı iconları 16px
+        /* semboller: ◀▼
         /* Not */
 
 
@@ -44,13 +42,15 @@ namespace bilsoft_mobil_app.Pages
             {
                 RaporlarCariToggle.IsVisible = false;
                 openedTree = null;
+                btnMenuRaporlarCari.Text = "Cari ◀";
             }
             else
             {
                 RaporlarCariToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 600, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 650, true);
                 openedTree = "cari";
-                
+                btnMenuRaporlarCari.Text = "Cari ▼";
+
                 //RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
                 RaporlarCekSenetToggle.IsVisible = false;
@@ -95,12 +95,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 RaporlarStokToggle.IsVisible = false;
                 openedTree = null;
+                btnMenuRaporlarStok.Text = "Stok ◀";
             }
             else
             {
                 RaporlarStokToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 1000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 750, true);
                 openedTree = "stok";
+                btnMenuRaporlarStok.Text = "Stok ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -152,12 +154,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 openedTree = null;
                 RaporlarTaksitToggle.IsVisible = false;
+                btnMenuRaporlarTaksit.Text = "Taksit ◀";
             }
             else
             {
                 openedTree = "taksit";
                 RaporlarTaksitToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 1500, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 650, true);
+                btnMenuRaporlarTaksit.Text = "Taksit ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -183,12 +187,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 openedTree = null;
                 RaporlarSatisToggle.IsVisible = false;
+                btnMenuRaporlarSatis.Text = "Satış ◀";
             }
             else
             {
                 openedTree = "satis";
                 RaporlarSatisToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 2000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 750, true);
+                btnMenuRaporlarSatis.Text = "Satış ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -220,12 +226,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 openedTree = null;
                 RaporlarKasaToggle.IsVisible = false;
+                btnMenuRaporlarKasa.Text = "Kasa ◀";
             }
             else
             {
                 openedTree = "kasa";
                 RaporlarKasaToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 2000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 800, true);
+                btnMenuRaporlarKasa.Text = "Kasa ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -252,12 +260,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 RaporlarBankaToggle.IsVisible = false;
                 openedTree = null;
+                btnMenuRaporlarBanka.Text = "Banka ◀";
             }
             else
             {
                 RaporlarBankaToggle.IsVisible = true;
                 openedTree = "banka";
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 3000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 800, true);
+                btnMenuRaporlarBanka.Text = "Banka ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -284,12 +294,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 RaporlarCekSenetToggle.IsVisible = false;
                 openedTree = null;
+                btnMenuRaporlarCekSenet.Text = "Çek/Senet ◀";
             }
             else
             {
                 RaporlarCekSenetToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 800, true);
                 openedTree = "cek-senet";
+                btnMenuRaporlarCekSenet.Text = "Çek/Senet ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -316,12 +328,14 @@ namespace bilsoft_mobil_app.Pages
             {
                 RaporlarDigerToggle.IsVisible = false;
                 openedTree = null;
+                btnMenuRaporlarDiger.Text = "Diğer ◀";
             }
             else
             {
                 RaporlarDigerToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 800, true);
                 openedTree = "diger";
+                btnMenuRaporlarDiger.Text = "Diğer ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 //RaporlarDigerToggle.IsVisible = false;
@@ -356,18 +370,21 @@ namespace bilsoft_mobil_app.Pages
         #endregion
 
         #region Gelir-Gider
-        private void btnMenuRaporlarGelirGider_Clicked(object sender, EventArgs e)
+        private async void btnMenuRaporlarGelirGider_Clicked(object sender, EventArgs e)
         {
             if (RaporlarGelirGiderToggle.IsVisible)
             {
+                await MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 740, true);
                 RaporlarGelirGiderToggle.IsVisible = false;
                 openedTree = null;
+                btnMenuRaporlarGelirGider.Text = "Gelir Gider ◀";
             }
             else
             {
                 RaporlarGelirGiderToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 860, true);
                 openedTree = "gelir-gider";
+                btnMenuRaporlarGelirGider.Text = "Gelir Gider ▼";
 
                 RaporlarCariToggle.IsVisible = false;
                 RaporlarDigerToggle.IsVisible = false;
@@ -391,16 +408,37 @@ namespace bilsoft_mobil_app.Pages
 
         }
         #endregion
-        private void btnMenuRaporlarTreeView_Clicked(object sender, EventArgs e)
+        private async void btnMenuRaporlarTreeView_Clicked(object sender, EventArgs e)
         {
             if (RaporlarToggle.IsVisible)
             {
+                await MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 150, true);
                 RaporlarToggle.IsVisible = false;
+                RaporlarCariToggle.IsVisible = false;
+                RaporlarDigerToggle.IsVisible = false;
+                RaporlarCekSenetToggle.IsVisible = false;
+                RaporlarBankaToggle.IsVisible = false;
+                RaporlarKasaToggle.IsVisible = false;
+                RaporlarSatisToggle.IsVisible = false;
+                RaporlarTaksitToggle.IsVisible = false;
+                RaporlarStokToggle.IsVisible = false;
+                RaporlarGelirGiderToggle.IsVisible = false;
+                btnMenuRaporlarTreeView.Text = "Raporlar ◀";
+                btnMenuRaporlarCari.Text = "Cari ◀";
+                btnMenuRaporlarStok.Text = "Stok ◀";
+                btnMenuRaporlarTaksit.Text = "Taksit ◀";
+                btnMenuRaporlarSatis.Text = "Satış ◀";
+                btnMenuRaporlarKasa.Text = "Kasa ◀";
+                btnMenuRaporlarBanka.Text = "Banka ◀";
+                btnMenuRaporlarCekSenet.Text = "Çek/Senet ◀";
+                btnMenuRaporlarDiger.Text = "Diğer ◀";
+                btnMenuRaporlarGelirGider.Text = "Gelir Gider ◀";
             }
             else
             {
                 RaporlarToggle.IsVisible = true;
-                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 5000, true);
+                btnMenuRaporlarTreeView.Text = "Raporlar ▼";
+                MainScrollView.ScrollToAsync(MainScrollView.ScrollX, 750, true);
             }
         }
 
