@@ -16,12 +16,12 @@ namespace bilsoft_mobil_app
             //MainPage = new LoginPage();
 
             //Ana Sayfa
-            //MainPage = new MainMDPage("demo");
+            //MainPage = new MainMDPage("demo","index");
 
             //Ana Sayfa 2. tip
-            MainPage= new NavigationPage(new MainContentPage("demo", "demo"))
+            /*MainPage= new NavigationPage(new MainContentPage("demo", "demo"))
             {
-                BarTextColor = Color.FromHex("#ffccff"),
+                BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent
                 BarBackgroundColor = Color.FromHex("#ffa600")
             };/**/
@@ -29,6 +29,12 @@ namespace bilsoft_mobil_app
             //Test Page
             //MainPage = new MainPage();
             //MainPage = new MainMenuPage();
+            MainPage = new NavigationPage(new CariHesaplarPage())
+            {
+                BarTextColor = Color.FromHex("#ffffff"),
+                //BarBackgroundColor = Color.Transparent
+                BarBackgroundColor = Color.FromHex("#ffa600")
+            };/**/
         }
 
         public void SetMainPage(Page rootPage)

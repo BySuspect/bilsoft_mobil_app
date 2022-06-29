@@ -8,16 +8,22 @@ namespace bilsoft_mobil_app.Pages
     [Obsolete]
     internal class MainMDPage : MasterDetailPage
     {
-        public MainMDPage(string mod)
+        public MainMDPage(string mod, string page)
         {
             this.Master = new MainMenuPage();
-            Detail = new NavigationPage(new MainContentPage(mod,mod))
+            switch (page)
             {
-                BarTextColor = Color.FromHex("#ffccff"),
-                //BarBackgroundColor = Color.Transparent
-                BarBackgroundColor = Color.FromHex("#ffa600")
-            };
-            this.BackgroundImageSource = "background.jpg";
+                case "index":
+                    goto default;
+                default:
+                    Detail = new NavigationPage(new MainContentPage(mod, mod))
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+            }
         }
     }
 }

@@ -90,7 +90,7 @@ namespace bilsoft_mobil_app.Pages
                         res = await httpHelper.callAPI(webURL, _logindata);
                         RootGirisYapTokenAl tokenData = JsonConvert.DeserializeObject<RootGirisYapTokenAl>(res.data.ToString());
 
-                        await Navigation.PushModalAsync(new MainMDPage("login"), true);
+                        await Navigation.PushModalAsync(new MainMDPage("login","index"), true);
                     }
                     else if (action == "Çıkış")
                     {
@@ -169,7 +169,7 @@ namespace bilsoft_mobil_app.Pages
             Loodinglayout.IsVisible = true;
             LoodingActivity.IsVisible = true;
             LoodingActivity.IsRunning = true;
-            await Navigation.PushModalAsync(new MainMDPage("demo"),true);
+            await Navigation.PushModalAsync(new MainMDPage("demo","index"),true);
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsVisible = false;
             LoodingActivity.IsRunning = false;
