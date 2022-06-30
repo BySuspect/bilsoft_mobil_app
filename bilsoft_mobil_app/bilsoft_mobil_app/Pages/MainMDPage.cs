@@ -40,6 +40,15 @@ namespace bilsoft_mobil_app.Pages
                     };
                     break;
 
+                case "SatisYap":
+                    Detail = new NavigationPage(new SatisYapPage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+
                 case "index":
                     goto default;
                 default:

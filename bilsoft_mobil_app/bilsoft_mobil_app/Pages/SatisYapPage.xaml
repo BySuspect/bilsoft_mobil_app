@@ -1,19 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="bilsoft_mobil_app.Pages.TaksitListesiPage"
-             BackgroundImageSource="background.jpg" Title="Taksit Takip">
-    
+             x:Class="bilsoft_mobil_app.Pages.SatisYapPage"
+             BackgroundImageSource="background.jpg" Title="Satış Yap">
     <Grid>
         <ScrollView>
             <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
                 <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
-                    <StackLayout>
-                        <xct:UniformGrid HorizontalOptions="Center">
-                            <Button x:Name="btnYeniTaksit" Text="Yeni Taksit" FontSize="Caption" BackgroundColor="Transparent" ImageSource="banka20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Start"/>
-                            <Button x:Name="btnGelismisRapor" Text="Gelişmiş Rapor" FontSize="Caption" BackgroundColor="Transparent" ImageSource="users20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        </xct:UniformGrid>
+                    <StackLayout HorizontalOptions="Center">
+                            <Button x:Name="btnYeniCari" Text="Yeni Cari" FontSize="Caption" BackgroundColor="Transparent" ImageSource="banka20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,5">
@@ -49,7 +44,6 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <BoxView Color="{Binding BorderColor}" HeightRequest="1" Margin="-20,0"/>
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="25" />

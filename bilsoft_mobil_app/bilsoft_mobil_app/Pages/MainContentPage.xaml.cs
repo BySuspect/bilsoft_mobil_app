@@ -1710,16 +1710,14 @@ namespace bilsoft_mobil_app.Pages
             DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
-        private void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
         {
-            var bt = (ImageButton)sender;
-            DisplayAlert("", bt.Source.ToString(), "ok");
+            await Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap"), false);
         }
 
         private async void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip"), false);
-
         }
 
         private async void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)

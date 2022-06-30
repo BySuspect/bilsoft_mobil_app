@@ -29,7 +29,7 @@ namespace bilsoft_mobil_app
             //Test Page
             //MainPage = new MainPage();
             //MainPage = new MainMenuPage();
-            MainPage = new NavigationPage(new TaksitListesiPage())
+            MainPage = new NavigationPage(new SatisYapPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent
