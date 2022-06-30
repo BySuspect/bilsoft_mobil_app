@@ -10,6 +10,7 @@ namespace bilsoft_mobil_app.Helper
         public static string loginDonemGetirAPI = url + "api/Auth/GirisYapDonemGetir";
         public static string tokeApi = url + "api/Auth/GirisYap";
         public static string loginData { get; set; }
+        public static string loginMod { get; set; } = "demo";
         public static string loginToken { get; set; }
         public static string vergiNo { get; set; }
         public static string kullaniciAdi { get; set; }

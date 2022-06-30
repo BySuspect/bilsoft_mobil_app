@@ -27,9 +27,17 @@ namespace bilsoft_mobil_app.Pages
         {
             BindingContext = this;
             InitializeComponent();
+
+            pickerCariListe.ItemsSource = new List<string> { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" };
+
+            MainListView.Children.Clear();
+            for (int i = 0; i < 10; i++)
+            {
+                CreateList(i);
+            }
         }
 
-        private void EditButton_Clicked(object sender, EventArgs e)
+        private void CariEditButton_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             var test = btn.AutomationId;
@@ -39,9 +47,8 @@ namespace bilsoft_mobil_app.Pages
             Button btn = sender as Button;
             var test = btn.AutomationId;
         }
-        async Task CreateList(int count)
+        void CreateList(int count)
         {
-            MainListView.Children.Clear();
 
             //Main Frame
             Frame mainFrame = new Frame
@@ -49,12 +56,12 @@ namespace bilsoft_mobil_app.Pages
                 CornerRadius = 15,
                 BackgroundColor = Color.FromHex(AppThemeColors._backgroundColor),
                 BorderColor = Color.FromHex(AppThemeColors._borderColor),
-                Margin = new Thickness(-15, 0, -15, 0)
+                Margin = new Thickness(-15, 0, -15, 0),
             };
 
             //Main StackLayout
             StackLayout mainStacklayout = new StackLayout();
-            Label Count = new Label
+            Label lblCount = new Label
             {
                 Text = (count + 1) + ".",
                 FontSize = 18,
@@ -69,45 +76,51 @@ namespace bilsoft_mobil_app.Pages
             {
                 RowDefinitions =
                 {
-                new RowDefinition { Height = new GridLength(50) }
+                new RowDefinition { Height = new GridLength(25) }
                 },
                 ColumnDefinitions =
                 {
-                new ColumnDefinition(),
+                new ColumnDefinition(){ Width = GridLength.Star},
                 new ColumnDefinition(){ Width = new GridLength(135)}
                 }
             };
 
             //Cari Adı
-            StackLayout cariadlayout = new StackLayout();
-            cariadlayout.Children.Add(new Label
+            FormattedString caristring = new FormattedString
             {
-                FontSize = 16,
-                TextColor = Color.FromHex(AppThemeColors._textColor),
-                FormattedText =
+                Spans =
                 {
-                    Spans =
+                    new Span
                     {
-                        new Span
-                        {
-                            Text="Cari Adı: ",
-                            TextColor=Color.LightGray,
-                            FontSize=12
-                        },
-                        new Span
-                        {
-                            Text="Mutlu Market"
-                        }
+                        Text="Cari Adı: ",
+                        TextColor=Color.LightGray,
+                        FontSize=12
+                    },
+                    new Span
+                    {
+                        Text="Mutlu Market"
                     }
                 }
-            });
+            };
+            StackLayout cariadlayout = new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        FontSize = 16,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        FormattedText = caristring
+                    }
+                }
+            };
 
             //Bakiye text Label
             Label lblbakiyetext = new Label
             {
-                FontSize=12,
-                TextColor=Color.FromHex(AppThemeColors._textColor),
-                Text="Bakiye: "
+                FontSize = 12,
+                TextColor = Color.FromHex(AppThemeColors._textColor),
+                Text = "Bakiye: "
             };
 
             //Para Label
@@ -115,35 +128,155 @@ namespace bilsoft_mobil_app.Pages
             {
                 FontSize = 12,
                 TextColor = Color.FromHex(AppThemeColors._textColor),
-                Text = "1.254.125.125,43₺"
+                Text = "1.254.125.125,43₺",
+                BackgroundColor = Color.Green,
+                TranslationY = -10
             };
 
             //Cari Adı
-            StackLayout yetkiliadlayout = new StackLayout();
-            cariadlayout.Children.Add(new Label
+            FormattedString yetkilistring = new FormattedString
             {
-                FontSize = 16,
-                TextColor = Color.FromHex(AppThemeColors._textColor),
-                FormattedText =
+                Spans =
                 {
-                    Spans =
+                    new Span
                     {
-                        new Span
-                        {
-                            Text="Yetkili Adı: ",
-                            TextColor=Color.LightGray,
-                            FontSize=12
-                        },
-                        new Span
-                        {
-                            Text="Hasan Mutlu"
-                        }
+                        Text="Yetkili Adı: ",
+                        TextColor=Color.LightGray,
+                        FontSize=12
+                    },
+                    new Span
+                    {
+                        Text="Veli Mutlu"
                     }
                 }
-            });
+            };
+            StackLayout yetkiliadlayout = new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        FontSize = 16,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        FormattedText = yetkilistring
+                    }
+                }
+            };
 
 
+            //Sabit Tel
+            FormattedString sabittelstring = new FormattedString
+            {
+                Spans =
+                {
+                    new Span
+                    {
+                        Text="Sabit Tel: ",
+                        TextColor=Color.LightGray,
+                        FontSize=12
+                    },
+                    new Span
+                    {
+                        Text="0212 222 43 23"
+                    }
+                }
+            };
+            StackLayout sabitTellayout = new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        FontSize = 16,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        FormattedText = sabittelstring
+                    }
+                }
+            };
+
+            //Edit Buttıon
+            Button btncariedit = new Button
+            {
+                AutomationId = "CARIEDIT" + count,
+                Text = "Düzenle",
+                ImageSource = "info24px.png",
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                CornerRadius = 15,
+                TextColor = Color.FromHex(AppThemeColors._textColor),
+                BorderColor = Color.FromHex(AppThemeColors._borderColor),
+                BorderWidth = 1,
+                BackgroundColor = Color.Transparent,
+                HeightRequest = 25,
+                Padding = new Thickness(5, 0, 10, 0)
+            };
+
+            //Cep Tel
+            StackLayout cepTellayout = new StackLayout
+            {
+                Children =
+                {
+                    new Label
+                    {
+                        FontSize = 16,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        FormattedText = new FormattedString
+                        {
+                            Spans =
+                            {
+                                new Span
+                                {
+                                    Text="Cep Tel: ",
+                                    TextColor=Color.LightGray,
+                                    FontSize=12
+                                },
+                                new Span
+                                {
+                                    Text="0543 232 41 26"
+                                }
+                            }
+                        }                        
+                    }
+                }
+            };
+
+            //Cariyi ac button
+            Button btncariac = new Button
+            {
+                AutomationId = "CARIAC" + count,
+                Text = "Cariyi Aç",
+                ImageSource = "info24px.png",
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                CornerRadius = 15,
+                TextColor = Color.FromHex(AppThemeColors._textColor),
+                BackgroundColor = Color.FromHex(AppThemeColors._success),
+                BorderColor = Color.FromHex(AppThemeColors._borderColor),
+                BorderWidth = 1,
+                HeightRequest = 25,
+                Padding = new Thickness(5, 0, 10, 0)
+            };
+
+            //Ekleme
+            btncariac.Clicked += CariAcButton_Clicked;
+            btncariedit.Clicked += CariEditButton_Clicked;
+            ListGrid.Children.Add(cariadlayout, 0, 0);
+            ListGrid.Children.Add(yetkiliadlayout, 0, 1);
+            ListGrid.Children.Add(lblbakiyetext, 1, 0);
+            ListGrid.Children.Add(lblpara, 1, 1);
+            ListGrid.Children.Add(sabitTellayout, 0, 2);
+            ListGrid.Children.Add(btncariedit, 1, 2);
+            ListGrid.Children.Add(cepTellayout, 0, 3);
+            ListGrid.Children.Add(btncariac, 1, 3);
+            mainStacklayout.Children.Add(lblCount);
+            mainStacklayout.Children.Add(ListGrid);
+            mainFrame.Content = mainStacklayout;
             MainListView.Children.Add(mainFrame);
+        }
+
+        private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

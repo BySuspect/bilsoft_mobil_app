@@ -13,6 +13,14 @@ namespace bilsoft_mobil_app.Pages
             this.Master = new MainMenuPage();
             switch (page)
             {
+                case "CariHesaplar":
+                    Detail = new NavigationPage(new CariHesaplarPage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
                 case "index":
                     goto default;
                 default:

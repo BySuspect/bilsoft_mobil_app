@@ -1728,10 +1728,9 @@ namespace bilsoft_mobil_app.Pages
             DisplayAlert("", bt.Source.ToString(), "ok");
         }
 
-        private void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            var bt = (ImageButton)sender;
-            DisplayAlert("", bt.Source.ToString(), "ok");
+            await Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar"));
         }
         #endregion
 

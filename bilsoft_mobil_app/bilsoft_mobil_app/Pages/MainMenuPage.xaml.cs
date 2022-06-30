@@ -446,5 +446,10 @@ namespace bilsoft_mobil_app.Pages
         {
             lblScrollTest.Text = "ScrollY: " + MainScrollView.ScrollY;
         }
+
+        private async void btnGirisEkrani_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "index"));
+        }
     }
 }
