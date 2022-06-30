@@ -21,6 +21,25 @@ namespace bilsoft_mobil_app.Pages
                         BarBackgroundColor = Color.FromHex("#ffa600")
                     };
                     break;
+
+                case "StokKartlari":
+                    Detail = new NavigationPage(new StokKartlariPage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+
+                case "TaksitTakip":
+                    Detail = new NavigationPage(new TaksitListesiPage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+
                 case "index":
                     goto default;
                 default:

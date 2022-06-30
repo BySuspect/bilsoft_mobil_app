@@ -29,7 +29,7 @@ namespace bilsoft_mobil_app.Helper
         public const string _textColorBlack = "#FFFFFF";
         public const string _success = "#00C851";
         public const string _money = "#118C4F";
-        public const string _moneyBackground = "#5B0055CC";
+        public const string _moneyBackground = "#FFFFFF";
 
         #endregion
     }
