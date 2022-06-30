@@ -15,6 +15,7 @@ namespace bilsoft_mobil_app.Pages
     {
         /*/
          * Picker içi ilk açıldında arama butonuna eğer seçim yoksa otomatik stok adı arama yapılacak
+         * telefonda sorunlu
         /*/
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);

@@ -13,7 +13,7 @@ namespace bilsoft_mobil_app
             InitializeComponent();
 
             //Giriş
-            MainPage = new LoginPage();
+            //MainPage = new LoginPage();
 
             //Ana Sayfa
             //MainPage = new MainMDPage("demo","index");
@@ -29,7 +29,7 @@ namespace bilsoft_mobil_app
             //Test Page
             //MainPage = new MainPage();
             //MainPage = new MainMenuPage();
-            /*MainPage = new NavigationPage(new StokKartlariPage())
+            MainPage = new NavigationPage(new TaksitListesiPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent

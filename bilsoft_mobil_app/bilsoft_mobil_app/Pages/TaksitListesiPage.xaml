@@ -1,12 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="bilsoft_mobil_app.Pages.TaksitListesiPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="bilsoft_mobil_app.Pages.TaksitListesiPage"
+             BackgroundImageSource="background.jpg" Title="Taksit Takip">
+    
+    <Grid>
+        <ScrollView>
+            <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="btnYeniTaksit" Text="Yeni Taksit Oluştur" FontSize="Caption" BackgroundColor="Transparent" ImageSource="banka20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Button x:Name="btnGelismisRapor" Text="Gelişmiş Rapor" FontSize="Caption" BackgroundColor="Transparent" ImageSource="users20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,5">
+                    <StackLayout VerticalOptions="Fill">
+                        <Frame BackgroundColor="{Binding BackgroundColor}" Margin="-20,-20,-20,0" CornerRadius="15">
+                            <StackLayout Orientation="Horizontal" Margin="-10">
+                                <Image Source="users20px.png"/>
+                                <Label Text="Taksit Listesi" FontSize="Body" TextColor="{Binding TextColor}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="160" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Entry x:Name="entryCariArama" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="{Binding TextColor}" PlaceholderColor="LightGray" Placeholder="Ara..." VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                            <Button x:Name="btnCariArama" Grid.Row="0" Grid.Column="2" ImageSource="search24px" Text="Ara" BackgroundColor="Transparent" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+
+                            <StackLayout x:Name="MainListView" Grid.Row="1" Grid.ColumnSpan="3">
+                                <Frame CornerRadius="15" BackgroundColor="{Binding BackgroundColor}" BorderColor="{Binding BorderColor}" Margin="-15,0,-15,0">
+                                    <StackLayout>
+                                        <Label FontSize="Medium" TextColor="{Binding TextColor}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="-5,-10,-5,1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Ünvan: " FontSize="Caption"/>
+                                                    <Span Text="Sancak İletişim"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <BoxView Color="{Binding BorderColor}" HeightRequest="1" Margin="-20,0"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="135" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                                                <Label FontSize="Body" TextColor="{Binding TextColor}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Tutar: " TextColor="LightGray" FontSize="Caption"/>
+                                                            <Span Text="1179.4"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                            <Label Grid.Column="1" Grid.Row="0" FontSize="Caption" TextColor="{Binding TextColor}" Text="Tahsilat: "/>
+                                            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                                                <Label FontSize="Body" TextColor="{Binding TextColor}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Kalan: " TextColor="LightGray" FontSize="Caption"/>
+                                                            <Span Text="0"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                            <Label Grid.Column="1" Grid.Row="1" TranslationY="-10" FontSize="Body" HorizontalOptions="Start" TextColor="{Binding Money}" BackgroundColor="{Binding MoneyBackground}" Text="1.179,40₺"/>
+                                            <ImageButton AutomationId="STOKAC1" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Clicked="StokAcButton_Clicked" VerticalOptions="Center" Source="search24px.png" HorizontalOptions="End" CornerRadius="15" BackgroundColor="{Binding Success}" Padding="5,5,5,5" HeightRequest="35"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
