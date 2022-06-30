@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:custom1="clr-namespace:bilsoft_mobil_app.CustomItems"
-             x:Class="bilsoft_mobil_app.Pages.LoginPage" Title="Login">
+             x:Class="bilsoft_mobil_app.Pages.LoginPage" 
+             BackgroundImageSource="background.jpg"
+             Title="Login">
 
-    <StackLayout BackgroundColor="Green">
+    <StackLayout>
         <ScrollView>
             <Grid Padding="0,10,0,25">
                 <Frame  Margin="35,20" Padding="25,10" CornerRadius="15">
@@ -70,7 +72,6 @@
                     </StackLayout>
                 </Frame>
                 <Label Text="2022 © Bilsoft Online Muhasebe" VerticalOptions="End" HorizontalOptions="CenterAndExpand" TextColor="White"/>
-                <Button x:Name="ResetBTN" Text="Reset" Clicked="ResetBTN_Clicked" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
                 <AbsoluteLayout x:Name="Loodinglayout" IsVisible="false" BackgroundColor="#77767676" VerticalOptions="Center" HorizontalOptions="Center">
                     <StackLayout Orientation="Vertical" Padding="50">
                         <ActivityIndicator x:Name="LoodingActivity" IsRunning="False" Color="White" />
@@ -78,5 +79,6 @@
                 </AbsoluteLayout>
             </Grid>
         </ScrollView>
+        <Button x:Name="ResetBTN" Text="Reset" Clicked="ResetBTN_Clicked" TranslationY="50" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
     </StackLayout>
 </ContentPage>
