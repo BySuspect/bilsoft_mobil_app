@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bilsoft_mobil_app.Pages.CekSenetListesiPage"
+             BackgroundImageSource="background.jpg" Title="Çek Senet İşlemleri">
+    <Grid>
+        <ScrollView>
+            <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
+                    <StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Button x:Name="btnYeniVerilen" Text="Yeni Verilen Çek/Senet" FontSize="Caption" BackgroundColor="Transparent" ImageSource="banka20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Button x:Name="btnYeniAlinan" Text="Yeni Alınan Çek/Senet" FontSize="Caption" BackgroundColor="Transparent" ImageSource="users20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <Button x:Name="btnRapor" Text="Raporlar" FontSize="Caption" BackgroundColor="Transparent" ImageSource="raports20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,5">
+                    <StackLayout VerticalOptions="Fill">
+                        <Frame BackgroundColor="{Binding BackgroundColor}" Margin="-20,-20,-20,0" CornerRadius="15">
+                            <StackLayout Orientation="Horizontal" Margin="-10">
+                                <Image Source="users20px.png"/>
+                                <Label Text="Cari Listesi" FontSize="Body" TextColor="{Binding TextColor}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Picker x:Name="pickerArama" SelectedIndexChanged="pickerCariListe_SelectedIndexChanged" HorizontalOptions="Start" Title="Sıralama" TitleColor="LightGray" WidthRequest="100" TextColor="{Binding TextColor}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name="entryArama" TextColor="{Binding TextColor}" PlaceholderColor="LightGray" Placeholder="Ara..." WidthRequest="200" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+                            <Button x:Name="btnArama" ImageSource="search24px" Text="Ara" BackgroundColor="Transparent" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout x:Name="MainListView">
+                            <!-- List items -->
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

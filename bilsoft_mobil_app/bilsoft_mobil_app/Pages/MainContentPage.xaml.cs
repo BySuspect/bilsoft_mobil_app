@@ -1694,40 +1694,37 @@ namespace bilsoft_mobil_app.Pages
 
         private void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
         {
-            var bt = (ImageButton)sender;
-            DisplayAlert("", bt.Source.ToString(), "ok");
+            Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe"), false);
         }
 
         private void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
         {
-            var bt = (ImageButton)sender;
-            DisplayAlert("", bt.Source.ToString(), "ok");
+            Navigation.PushModalAsync(new MainMDPage(mod, "BankaListe"), false);
         }
 
         private void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
         {
-            var bt = (ImageButton)sender;
-            DisplayAlert("", bt.Source.ToString(), "ok");
+            Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe"), false);
         }
 
-        private async void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
+        private void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap"), false);
+             Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap"), false);
         }
 
-        private async void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
+        private void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip"), false);
         }
 
-        private async void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
+        private void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari"), false);
         }
 
-        private async void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
+        private void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar"), false);
         }
         #endregion
 

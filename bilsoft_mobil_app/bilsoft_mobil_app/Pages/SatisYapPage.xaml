@@ -15,8 +15,8 @@
                     <StackLayout VerticalOptions="Fill">
                         <Frame BackgroundColor="{Binding BackgroundColor}" Margin="-20,-20,-20,0" CornerRadius="15">
                             <StackLayout Orientation="Horizontal" Margin="-10">
-                                <Image Source="users20px.png"/>
-                                <Label Text="Taksit Listesi" FontSize="Body" TextColor="{Binding TextColor}"/>
+                                <Image Source="sales24px.png"/>
+                                <Label Text="SATIŞ YAPILACAK CARİ SEÇİMİ" FontSize="Body" TextColor="{Binding TextColor}"/>
                             </StackLayout>
                         </Frame>
                         <Grid>

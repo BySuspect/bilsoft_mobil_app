@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace bilsoft_mobil_app.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SatisYapPage : ContentPage
+    public partial class CekSenetListesiPage : ContentPage
     {
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
@@ -23,10 +23,11 @@ namespace bilsoft_mobil_app.Pages
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
-        public SatisYapPage()
+        public CekSenetListesiPage()
         {
             BindingContext = this;
             InitializeComponent();
+            pickerArama.ItemsSource = new List<string> { "Tarihi Eskiden Yeniye", "Tarihi Yeniden Eskiye", "Vade Eskiden Yeniye", "Vade Yeniden Eskiye" };
             MainListView.Children.Clear();
             for (int i = 0; i < 10; i++)
             {
@@ -34,9 +35,14 @@ namespace bilsoft_mobil_app.Pages
             }
         }
 
-        private void StokAcButton_Clicked(object sender, EventArgs e)
+        private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        private void CariAcButton_Clicked(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            var test = btn.AutomationId;
         }
         void CreateList(int count)
         {
@@ -61,23 +67,32 @@ namespace bilsoft_mobil_app.Pages
                 {
                     new Label
                     {
+                        Text = (count + 1) + ".",
+                        FontSize = 18,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        VerticalOptions = LayoutOptions.Start,
+                        HorizontalOptions = LayoutOptions.Start,
+                        Margin = new Thickness(-5, -10, -5, -5)
+                    },
+                    new Label
+                    {
                         FontSize = 18,
                         TextColor = Color.FromHex(AppThemeColors._textColor),
                         VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.StartAndExpand,
-                        Margin = new Thickness(-5,-10,-5,1),
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        Margin = new Thickness(0, -10, 0, 1),
                         FormattedText = new FormattedString
                         {
                             Spans =
                             {
                                 new Span
                                 {
-                                    Text = "Ünvan: ",
+                                    Text = "Durumu: ",
                                     FontSize = 12
                                 },
                                 new Span
                                 {
-                                    Text = "Sancak İletişim"
+                                    Text = "BEKLEMEDE"
                                 }
                             }
                         }
@@ -99,7 +114,7 @@ namespace bilsoft_mobil_app.Pages
                 }
             };
 
-            //Stok Adı
+            //Adı
             StackLayout stokadlayout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -115,13 +130,13 @@ namespace bilsoft_mobil_app.Pages
                             {
                                 new Span
                                 {
-                                    Text = "Tutar: ",
+                                    Text = "Firma: ",
                                     TextColor = Color.LightGray,
                                     FontSize = 12
                                 },
                                 new Span
                                 {
-                                    Text = "1179.4"
+                                    Text = "Sancak İletişim"
                                 }
                             }
                         }
@@ -134,10 +149,10 @@ namespace bilsoft_mobil_app.Pages
             {
                 FontSize = 12,
                 TextColor = Color.FromHex(AppThemeColors._textColor),
-                Text = "Tahsilat: "
+                Text = "Tutar: "
             };
 
-            //Bakiye
+            //Tarih
             StackLayout bakiyelayout = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -153,13 +168,13 @@ namespace bilsoft_mobil_app.Pages
                             {
                                 new Span
                                 {
-                                    Text = "Kalan: ",
+                                    Text = "Tarih: ",
                                     TextColor = Color.LightGray,
                                     FontSize = 12
                                 },
                                 new Span
                                 {
-                                    Text="0"
+                                    Text="30.06.2022"
                                 }
                             }
                         }
@@ -167,7 +182,37 @@ namespace bilsoft_mobil_app.Pages
                 }
             };
 
-            //Fiyat
+            //Vade
+            StackLayout Vadelayout = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children =
+                {
+                    new Label
+                    {
+                        FontSize = 16,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        FormattedText = new FormattedString
+                        {
+                            Spans =
+                            {
+                                new Span
+                                {
+                                    Text = "Vade: ",
+                                    TextColor = Color.LightGray,
+                                    FontSize = 12
+                                },
+                                new Span
+                                {
+                                    Text="30.06.2022"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            //Tutar
             Label lblfiyat = new Label
             {
                 FontSize = 16,
@@ -175,13 +220,13 @@ namespace bilsoft_mobil_app.Pages
                 HorizontalOptions = LayoutOptions.Start,
                 TextColor = Color.FromHex(AppThemeColors._money),
                 BackgroundColor = Color.FromHex(AppThemeColors._moneyBackground),
-                Text = "1.179,40₺"
+                Text = "200000"
             };
 
-            //Stok ac
+            //ac button
             ImageButton btnStokAc = new ImageButton
             {
-                AutomationId = "STOKAC" + count,
+                AutomationId = "LISTEAC" + count,
                 Source = "search24px.png",
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
@@ -190,7 +235,6 @@ namespace bilsoft_mobil_app.Pages
                 HeightRequest = 35,
                 Padding = new Thickness(5),
             };
-            btnStokAc.Clicked += StokAcButton_Clicked;
 
             //Ekleme
             mainStacklayout.Children.Add(titlelayout);
@@ -200,8 +244,9 @@ namespace bilsoft_mobil_app.Pages
             ListGrid.Children.Add(lblFiyat, 1, 0);
             ListGrid.Children.Add(bakiyelayout, 0, 1);
             ListGrid.Children.Add(lblfiyat, 1, 1);
+            ListGrid.Children.Add(Vadelayout, 0, 2);
             ListGrid.Children.Add(btnStokAc, 1, 0);
-            Grid.SetRowSpan(btnStokAc, 2);
+            Grid.SetRowSpan(btnStokAc, 3);
             mainFrame.Content = mainStacklayout;
             MainListView.Children.Add(mainFrame);
         }

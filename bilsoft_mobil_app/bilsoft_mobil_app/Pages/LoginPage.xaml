@@ -8,7 +8,7 @@
     <StackLayout>
         <ScrollView>
             <Grid Padding="0,10,0,25">
-                <Frame  Margin="35,20" Padding="25,10" CornerRadius="15">
+                <Frame  Margin="35,20" Padding="25,10" CornerRadius="15" BackgroundColor="{Binding BackgroundColor}">
                     <StackLayout>
                         <StackLayout Margin="0,20,0,10">
                             <Image Source="bilsoft_logo"/>
@@ -80,5 +80,6 @@
             </Grid>
         </ScrollView>
         <Button x:Name="ResetBTN" Text="Reset" Clicked="ResetBTN_Clicked" TranslationY="50" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
+        <Button x:Name="TestBTN" Text="Test" Clicked="TestBTN_Clicked" TranslationY="50" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
     </StackLayout>
 </ContentPage>

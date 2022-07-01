@@ -11,8 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace bilsoft_mobil_app.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SatisYapPage : ContentPage
+    public partial class BankaPage : ContentPage
     {
+
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
         public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
@@ -23,7 +24,7 @@ namespace bilsoft_mobil_app.Pages
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
-        public SatisYapPage()
+        public BankaPage()
         {
             BindingContext = this;
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace bilsoft_mobil_app.Pages
             }
         }
 
-        private void StokAcButton_Clicked(object sender, EventArgs e)
+        private void ListAcButton_Clicked(object sender, EventArgs e)
         {
 
         }
@@ -72,12 +73,26 @@ namespace bilsoft_mobil_app.Pages
                             {
                                 new Span
                                 {
-                                    Text = "Ünvan: ",
-                                    FontSize = 12
-                                },
+                                    Text = (count + 1)+"." ,
+                                    FontSize = 18
+                                }
+                            }
+                        }
+                    },
+                    new Label
+                    {
+                        FontSize = 18,
+                        TextColor = Color.FromHex(AppThemeColors._textColor),
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        Margin = new Thickness(-50, -10, 0, 1),
+                        FormattedText = new FormattedString
+                        {
+                            Spans =
+                            {
                                 new Span
                                 {
-                                    Text = "Sancak İletişim"
+                                    Text = "Ziraat Bankası - Düzce"
                                 }
                             }
                         }
@@ -115,26 +130,18 @@ namespace bilsoft_mobil_app.Pages
                             {
                                 new Span
                                 {
-                                    Text = "Tutar: ",
+                                    Text = "Hesap No: ",
                                     TextColor = Color.LightGray,
                                     FontSize = 12
                                 },
                                 new Span
                                 {
-                                    Text = "1179.4"
+                                    Text = "124534362372"
                                 }
                             }
                         }
                     }
                 }
-            };
-
-            //Fiyat
-            Label lblFiyat = new Label
-            {
-                FontSize = 12,
-                TextColor = Color.FromHex(AppThemeColors._textColor),
-                Text = "Tahsilat: "
             };
 
             //Bakiye
@@ -153,13 +160,13 @@ namespace bilsoft_mobil_app.Pages
                             {
                                 new Span
                                 {
-                                    Text = "Kalan: ",
+                                    Text = "Bakiye: ",
                                     TextColor = Color.LightGray,
                                     FontSize = 12
                                 },
                                 new Span
                                 {
-                                    Text="0"
+                                    Text="0,0₺"
                                 }
                             }
                         }
@@ -167,21 +174,10 @@ namespace bilsoft_mobil_app.Pages
                 }
             };
 
-            //Fiyat
-            Label lblfiyat = new Label
-            {
-                FontSize = 16,
-                TranslationY = -10,
-                HorizontalOptions = LayoutOptions.Start,
-                TextColor = Color.FromHex(AppThemeColors._money),
-                BackgroundColor = Color.FromHex(AppThemeColors._moneyBackground),
-                Text = "1.179,40₺"
-            };
-
             //Stok ac
             ImageButton btnStokAc = new ImageButton
             {
-                AutomationId = "STOKAC" + count,
+                AutomationId = "LISTEAC" + count,
                 Source = "search24px.png",
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
@@ -190,16 +186,14 @@ namespace bilsoft_mobil_app.Pages
                 HeightRequest = 35,
                 Padding = new Thickness(5),
             };
-            btnStokAc.Clicked += StokAcButton_Clicked;
+            btnStokAc.Clicked += ListAcButton_Clicked;
 
             //Ekleme
             mainStacklayout.Children.Add(titlelayout);
             mainStacklayout.Children.Add(new BoxView { Color = Color.FromHex(AppThemeColors._borderColor), HeightRequest = 1, Margin = new Thickness(-20, 0) });
             mainStacklayout.Children.Add(ListGrid);
             ListGrid.Children.Add(stokadlayout, 0, 0);
-            ListGrid.Children.Add(lblFiyat, 1, 0);
             ListGrid.Children.Add(bakiyelayout, 0, 1);
-            ListGrid.Children.Add(lblfiyat, 1, 1);
             ListGrid.Children.Add(btnStokAc, 1, 0);
             Grid.SetRowSpan(btnStokAc, 2);
             mainFrame.Content = mainStacklayout;

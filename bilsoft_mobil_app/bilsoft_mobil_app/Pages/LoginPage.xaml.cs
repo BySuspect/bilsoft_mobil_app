@@ -14,10 +14,21 @@ namespace bilsoft_mobil_app.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        #region renk Bindleri
+        public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
+        public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
+        public Color Success { get; set; } = Color.FromHex(AppThemeColors._success);
+        public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
+        public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+        public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
+        public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
+        public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
+        #endregion
         private Users _users { get; set; }
         string _logindata;
         public LoginPage()
         {
+            BindingContext = this;
             InitializeComponent();
         }
         protected override async void OnAppearing()
@@ -81,27 +92,27 @@ namespace bilsoft_mobil_app.Pages
                     {
                         await beniHatırla();
                     }
+
                     string action = await DisplayActionSheet("Dönem Seçiniz", "İptal","Çıkış", donemYillar);
                     if (action != "İptal" && action !="Çıkış")
-                    {
-                        GirisYapConvert(action);
-                        await Task.Delay(100);
-                        webURL = APIHelper.tokeApi;
-                        res = await httpHelper.callAPI(webURL, _logindata);
-                        RootGirisYapTokenAl tokenData = JsonConvert.DeserializeObject<RootGirisYapTokenAl>(res.data.ToString());
+                     {
+                         GirisYapConvert(action);
+                         await Task.Delay(100);
+                         webURL = APIHelper.tokeApi;
+                         res = await httpHelper.callAPI(webURL, _logindata);
+                         RootGirisYapTokenAl tokenData = JsonConvert.DeserializeObject<RootGirisYapTokenAl>(res.data.ToString());
 
-                        await Navigation.PushAsync(new MainMDPage(APIHelper.loginMod,"index"), true);
-                    }
-                    else if (action == "Çıkış")
-                    {
-                        Preferences.Clear();
-                        APIHelper.vergiNo = null;
-                        APIHelper.kullaniciAdi = null;
-                        APIHelper.kullaniciSifre = null;
-                        APIHelper.veritabaniAd = null;
-                        APIHelper.logindonemYil.Clear();
-                    }
-                    
+                         await Navigation.PushAsync(new MainMDPage(APIHelper.loginMod,"index"), true);
+                     }
+                     else if (action == "Çıkış")
+                     {
+                         Preferences.Clear();
+                         APIHelper.vergiNo = null;
+                         APIHelper.kullaniciAdi = null;
+                         APIHelper.kullaniciSifre = null;
+                         APIHelper.veritabaniAd = null;
+                         APIHelper.logindonemYil.Clear();
+                     }/**/
                 }             
 
                 Loodinglayout.IsVisible = false;
@@ -116,6 +127,7 @@ namespace bilsoft_mobil_app.Pages
             }
 
         }
+
         public Users users
         {
             get { return _users; }
@@ -176,5 +188,9 @@ namespace bilsoft_mobil_app.Pages
             LoodingActivity.IsRunning = false;
         }
 
+        private async void TestBTN_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

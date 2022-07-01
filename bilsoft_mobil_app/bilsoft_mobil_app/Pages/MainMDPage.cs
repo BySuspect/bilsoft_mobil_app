@@ -49,6 +49,33 @@ namespace bilsoft_mobil_app.Pages
                     };
                     break;
 
+                case "CekSenetListe":
+                    Detail = new NavigationPage(new CekSenetListesiPage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+
+                case "BankaListe":
+                    Detail = new NavigationPage(new BankaPage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+
+                case "KasaListe":
+                    Detail = new NavigationPage(new KasaListePage())
+                    {
+                        BarTextColor = Color.FromHex("#ffccff"),
+                        //BarBackgroundColor = Color.Transparent
+                        BarBackgroundColor = Color.FromHex("#ffa600")
+                    };
+                    break;
+
                 case "index":
                     goto default;
                 default:
