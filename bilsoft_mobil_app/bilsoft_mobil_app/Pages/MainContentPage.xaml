@@ -428,7 +428,7 @@
         
         <!--#region Kullanici Menüsü-->
         <Grid x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="-370" TranslationX="-40">
-            <BoxView x:Name="toolbarUserSettingsView" Color="{Binding BackgroundColor}" VerticalOptions="Start" HorizontalOptions="Fill" HeightRequest="270" CornerRadius="15"/>
+            <BoxView x:Name="toolbarUserSettingsView" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="Fill" HeightRequest="270" CornerRadius="15"/>
             <StackLayout TranslationY="50" TranslationX="0" Padding="5,0,5,0">
                 <Button x:Name="toolbarPopupbtnMailAyarlari" Text="Mail Ayarları" ImageSource="mailsettings24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
                 <Button x:Name="toolbarPopupbtnYetkiAyarlari" Text="Yetki Ayarları" ImageSource="usersettings24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
@@ -468,7 +468,7 @@
         
         <!--#region Sağ Menü-->
         <AbsoluteLayout x:Name="popupMenuBack" IsVisible="true" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,-5,0">
-            <BoxView x:Name="popupMenuBackBox" Color="{Binding BackgroundColor}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" WidthRequest="55" HeightRequest="350" TranslationY="-370" CornerRadius="0,0,25,25"/>
+            <BoxView x:Name="popupMenuBackBox" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" WidthRequest="55" HeightRequest="350" TranslationY="-370" CornerRadius="0,0,25,25"/>
             <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start" TranslationY="-45">
 
                 <Button TranslationX="-2" x:Name="btnPopUpMenuItemPanel" IsVisible="false" ImageSource="home24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>

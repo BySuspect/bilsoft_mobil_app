@@ -8,7 +8,7 @@ namespace bilsoft_mobil_app.Pages
     [Obsolete]
     internal class MainMDPage : MasterDetailPage
     {
-        public MainMDPage(string mod, string page)
+        public MainMDPage(string mod, string page, string donemyil)
         {
             this.Master = new MainMenuPage();
             switch (page)
@@ -79,7 +79,7 @@ namespace bilsoft_mobil_app.Pages
                 case "index":
                     goto default;
                 default:
-                    Detail = new NavigationPage(new MainContentPage(mod, mod))
+                    Detail = new NavigationPage(new MainContentPage(mod, donemyil))
                     {
                         BarTextColor = Color.FromHex("#ffccff"),
                         //BarBackgroundColor = Color.Transparent

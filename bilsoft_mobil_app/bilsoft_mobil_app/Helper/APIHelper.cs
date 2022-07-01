@@ -15,11 +15,12 @@ namespace bilsoft_mobil_app.Helper
         public static string vergiNo { get; set; }
         public static string kullaniciAdi { get; set; }
         public static string kullaniciSifre { get; set; }
-        public static int totalCount { get; set; }
+        public DateTime TokenBitisTime { get; set; } = new DateTime();
         public static string veritabaniAd { get; set; }
         public static string subeAd = "bilsoft";
         public static string apiKullaniciAdi = "bilsoft";
         public static string apiKullaniciSifre = "1234";
         public static List<String> logindonemYil { get; set; } = new List<string>();
+        public static string secilenlogindonemYil { get; set; }
 }
 }

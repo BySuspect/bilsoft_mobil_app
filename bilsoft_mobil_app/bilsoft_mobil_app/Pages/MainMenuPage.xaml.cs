@@ -449,7 +449,7 @@ namespace bilsoft_mobil_app.Pages
 
         private async void btnGirisEkrani_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "index"));
+            await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "index", APIHelper.secilenlogindonemYil));
         }
     }
 }

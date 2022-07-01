@@ -1,55 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:custom1="clr-namespace:bilsoft_mobil_app.CustomItems"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:customItem="clr-namespace:bilsoft_mobil_app.CustomItems"
              x:Class="bilsoft_mobil_app.Pages.LoginPage" 
              BackgroundImageSource="background.jpg"
              Title="Login">
 
-    <StackLayout>
+    <Grid>
         <ScrollView>
             <Grid Padding="0,10,0,25">
-                <Frame  Margin="35,20" Padding="25,10" CornerRadius="15" BackgroundColor="{Binding BackgroundColor}">
+                <Frame  Margin="35,20" Padding="25,10" CornerRadius="15" VerticalOptions="Center" BackgroundColor="{Binding CardBackgroundColor}">
                     <StackLayout>
                         <StackLayout Margin="0,20,0,10">
                             <Image Source="bilsoft_logo"/>
                         </StackLayout>
 
-                        <custom1:CustomEntry x:Name="entry_loginvergino"
+                        <customItem:CustomEntry x:Name="entry_loginvergino"
                                         CornerRadius="15"  
                                         IsCurvedCornersEnabled="True"  
-                                        BorderColor="Black"      
+                                        BorderColor="{Binding BorderColor}"      
                                         HorizontalTextAlignment="Center"  
                                         FontSize="17"  
                                         HeightRequest="40"  
                                         Placeholder="Vergi No"  
-                                        PlaceholderColor="Gray"  
-                                        TextColor="Black"  
+                                        PlaceholderColor="LightGray"  
+                                        TextColor="{Binding TextColor}"  
                                         FontAttributes="None"  
                                         WidthRequest="100"/>
 
-                        <custom1:CustomEntry x:Name="entry_loginkullaniciadi"
-                                        CornerRadius="18"  
+                        <customItem:CustomEntry x:Name="entry_loginkullaniciadi"
+                                        CornerRadius="15"  
                                         IsCurvedCornersEnabled="True"  
-                                        BorderColor="Black"      
+                                        BorderColor="{Binding BorderColor}"      
                                         HorizontalTextAlignment="Center"  
                                         FontSize="17"  
                                         HeightRequest="40"  
                                         Placeholder="Kullanıcı Adı"  
-                                        PlaceholderColor="Gray"  
-                                        TextColor="Black"  
+                                        PlaceholderColor="LightGray"  
+                                        TextColor="{Binding TextColor}"  
                                         FontAttributes="None"  
                                         WidthRequest="100"/>
 
-                        <custom1:CustomEntry x:Name="entry_loginsifre"
-                                        CornerRadius="18"  
+                        <customItem:CustomEntry x:Name="entry_loginsifre"
+                                        CornerRadius="15"  
                                         IsCurvedCornersEnabled="True"  
-                                        BorderColor="Black"      
+                                        BorderColor="{Binding BorderColor}"      
                                         HorizontalTextAlignment="Center"  
                                         FontSize="17"  
                                         HeightRequest="40"  
                                         Placeholder="Şifre"  
-                                        PlaceholderColor="Gray"  
-                                        TextColor="Black"  
+                                        PlaceholderColor="LightGray"  
+                                        TextColor="{Binding TextColor}"  
                                         FontAttributes="None"  
                                         WidthRequest="100"/>
 
@@ -72,14 +73,59 @@
                     </StackLayout>
                 </Frame>
                 <Label Text="2022 © Bilsoft Online Muhasebe" VerticalOptions="End" HorizontalOptions="CenterAndExpand" TextColor="White"/>
-                <AbsoluteLayout x:Name="Loodinglayout" IsVisible="false" BackgroundColor="#77767676" VerticalOptions="Center" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical" Padding="50">
-                        <ActivityIndicator x:Name="LoodingActivity" IsRunning="False" Color="White" />
-                    </StackLayout>
-                </AbsoluteLayout>
             </Grid>
         </ScrollView>
-        <Button x:Name="ResetBTN" Text="Reset" Clicked="ResetBTN_Clicked" TranslationY="50" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
-        <Button x:Name="TestBTN" Text="Test" Clicked="TestBTN_Clicked" TranslationY="50" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
-    </StackLayout>
+        <Button x:Name="ResetBTN" Text="Reset" Clicked="ResetBTN_Clicked" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
+        <Button x:Name="TestBTN" Text="Test" Clicked="TestBTN_Clicked" TranslationY="-50" TextColor="Black" VerticalOptions="End" HorizontalOptions="Center"/>
+        <Grid x:Name="GirisDonemLayout" IsVisible="false" BackgroundColor="#BA151515">
+            <Frame CornerRadius="15" BackgroundColor="{Binding BackgroundColor}" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="250" WidthRequest="300">
+                <StackLayout  Margin="10,25,10,0">
+                    <Frame CornerRadius="15" BorderColor="{Binding BorderColor}"  Padding="0" Margin="0, 10, 0, 0" BackgroundColor="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="48" />
+                                <ColumnDefinition Width="1" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+
+                            <customItem:BorderlessPicker x:Name="pickerDonem" Title="Dönem Yılı" TitleColor="Gray" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="10, 0, 10, 0"  />
+
+                            <BoxView Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{Binding BorderColor}"  />
+
+                            <Button x:Name="btnDonemPickerOpen" Grid.Row="0" Grid.Column="2" Image="LessSuckyPicker.png" Clicked="btnDonemPickerOpen_Clicked" VerticalOptions="Center" HorizontalOptions="Center" BorderRadius="0" BorderWidth="0" BackgroundColor="Transparent" Margin="0" WidthRequest="48" />
+
+                        </Grid>
+                    </Frame>
+                    <!--<Picker x:Name="pickerDonem" Title="Dönem" TitleColor="{Binding TextColor}" TextColor="{Binding TextColor}" HorizontalOptions="Center" WidthRequest="100"/>-->
+                    <customItem:CustomEntry x:Name="entrySubeAd" CornerRadius="15"  
+                                            IsCurvedCornersEnabled="True"  
+                                            BorderColor="{Binding BorderColor}"      
+                                            HorizontalTextAlignment="Center"  
+                                            FontSize="17"  
+                                            HeightRequest="40"  
+                                            Placeholder="Şube Adı"  
+                                            PlaceholderColor="LightGray"  
+                                            TextColor="{Binding TextColor}"  
+                                            FontAttributes="None"  
+                                            WidthRequest="100"
+                                            BorderWidth="2"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,35,0,0">
+                        <Button x:Name="btnDonemPopupIptal" Text="İptal" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" HorizontalOptions="Center"/>
+                        <Button x:Name="btnDonemPopupOnayla" Text="Onayla" BackgroundColor="Transparent" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </Grid>
+        <Grid BackgroundColor="#77767676">
+            <AbsoluteLayout x:Name="Loodinglayout" IsVisible="false" BackgroundColor="#77767676" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical" Padding="50">
+                    <ActivityIndicator x:Name="LoodingActivity" IsRunning="False" Color="White" />
+                </StackLayout>
+            </AbsoluteLayout>
+        </Grid>
+    </Grid>
 </ContentPage>

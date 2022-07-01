@@ -26,8 +26,9 @@ namespace bilsoft_mobil_app.Pages
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
         public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
         public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
-        public Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+        public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
+        public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
 
         public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
         public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
@@ -1534,7 +1535,11 @@ namespace bilsoft_mobil_app.Pages
             if (!SuresiGecenHatirlatmaView.IsVisible)
             {
                 string[] dactionbtns = APIHelper.logindonemYil.ToArray<string>();
-                var result = await DisplayActionSheet("Dönem Seçiniz", "Cancel", null, dactionbtns);
+                var result = await DisplayActionSheet("Seçili Dönem: " + APIHelper.secilenlogindonemYil, "İptal", null, dactionbtns);
+                if (result != "İptal" && result != null)
+                {
+
+                }
             }
         }
 
@@ -1694,37 +1699,37 @@ namespace bilsoft_mobil_app.Pages
 
         private void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe", APIHelper.secilenlogindonemYil), false);
         }
 
         private void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "BankaListe"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "BankaListe", APIHelper.secilenlogindonemYil), false);
         }
 
         private void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe", APIHelper.secilenlogindonemYil), false);
         }
 
         private void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
         {
-             Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap"), false);
+             Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap", APIHelper.secilenlogindonemYil), false);
         }
 
         private void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip", APIHelper.secilenlogindonemYil), false);
         }
 
         private void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari", APIHelper.secilenlogindonemYil), false);
         }
 
         private void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar"), false);
+            Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
         }
         #endregion
 
