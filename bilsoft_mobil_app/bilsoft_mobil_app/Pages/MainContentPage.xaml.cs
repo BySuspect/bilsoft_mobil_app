@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using Microcharts;
 using SkiaSharp;
 using bilsoft_mobil_app.Helper;
+using Xamarin.Essentials;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -1627,6 +1628,12 @@ namespace bilsoft_mobil_app.Pages
             }            
         }
 
+        private void toolbarPopupbtnLogout_Clicked(object sender, EventArgs e)
+        {
+            Preferences.Clear();
+            Navigation.PushModalAsync(new LoginPage());
+        }
+
         #region Süresi Geçen Hatırlatmalar View
         void SuresiGecenHatirlatmalarListeAdder()
         {
@@ -1695,6 +1702,7 @@ namespace bilsoft_mobil_app.Pages
         {
             var bt = (ImageButton)sender;
             DisplayAlert("", bt.Source.ToString(), "ok");
+            var test1 = Navigation.ModalStack;
         }
 
         private void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
@@ -1732,6 +1740,12 @@ namespace bilsoft_mobil_app.Pages
             Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
         }
         #endregion
+
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
 
     }
 }

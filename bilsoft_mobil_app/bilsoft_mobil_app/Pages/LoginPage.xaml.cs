@@ -325,5 +325,9 @@ namespace bilsoft_mobil_app.Pages
         {
             pickerDonem.Focus();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

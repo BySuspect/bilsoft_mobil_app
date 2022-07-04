@@ -23,6 +23,7 @@ namespace bilsoft_mobil_app.Pages
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
+
         public CariHesaplarPage()
         {
             BindingContext = this;

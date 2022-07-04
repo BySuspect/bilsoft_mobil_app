@@ -57,12 +57,12 @@
                         <Button x:Name="btn_sifreunuttum" Clicked="btn_sifreunuttum_Clicked" BackgroundColor="Transparent" CornerRadius="25" Margin="15,0" Text="Şifremi Unuttum" HorizontalOptions="Start" TextColor="Red" HeightRequest="30" Padding="5,5,5,5"/>
                         <StackLayout Margin="25,0">
                             <StackLayout Margin="15,10,0,0" Orientation="Horizontal">
-                                <CheckBox x:Name="cb_benihatirla" VerticalOptions="Center" Color="#8290a3"/>
-                                <Label Text="Beni Hatırla" VerticalOptions="Center" TextColor="#8290a3"/>
+                                <CheckBox x:Name="cb_benihatirla" VerticalOptions="Center" Color="{Binding TextColor}"/>
+                                <Label Text="Beni Hatırla" VerticalOptions="Center" TextColor="{Binding TextColor}"/>
                             </StackLayout>
                             <StackLayout Margin="15,0,0,0" Orientation="Horizontal">
-                                <CheckBox x:Name="cb_oturumuaciktut" VerticalOptions="Center" Color="#8290a3"/>
-                                <Label Text="Oturumu Açık Tut" VerticalOptions="Center" TextColor="#8290a3"/>
+                                <CheckBox x:Name="cb_oturumuaciktut" VerticalOptions="Center" Color="{Binding TextColor}"/>
+                                <Label Text="Oturumu Açık Tut" VerticalOptions="Center" TextColor="{Binding TextColor}"/>
                             </StackLayout>
                             <Button x:Name="bt_login" Clicked="bt_login_Clicked" Margin="15,0,15,5" HeightRequest="40" Padding="5,0,5,0" ScaleY="1" BackgroundColor="#32c5d2" Text="Giriş Yap" CornerRadius="15" TextColor="White"/>
                         </StackLayout>
@@ -120,8 +120,8 @@
                 </StackLayout>
             </Frame>
         </Grid>
-        <Grid BackgroundColor="#77767676">
-            <AbsoluteLayout x:Name="Loodinglayout" IsVisible="false" BackgroundColor="#77767676" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Grid x:Name="Loodinglayout" BackgroundColor="#77767676" IsVisible="false">
+            <AbsoluteLayout BackgroundColor="#77767676" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <StackLayout Orientation="Vertical" Padding="50">
                     <ActivityIndicator x:Name="LoodingActivity" IsRunning="False" Color="White" />
                 </StackLayout>

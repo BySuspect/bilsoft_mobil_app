@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bilsoft_mobil_app.Helper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -10,6 +11,7 @@ namespace bilsoft_mobil_app.Pages
     {
         public MainMDPage(string mod, string page, string donemyil)
         {
+            Navigation.RemovePage(this);
             this.Master = new MainMenuPage();
             switch (page)
             {
