@@ -118,6 +118,6 @@
                 <!--#endregion-->
             </StackLayout>
         </ScrollView>
-        <Label VerticalOptions="Start" HorizontalOptions="Center" x:Name="lblScrollTest" Text="ScrollY: 0" FontSize="15"/>
+        <Label x:Name="lblScrollTest" IsVisible="false" VerticalOptions="Start" HorizontalOptions="Center" Text="ScrollY: 0" FontSize="15"/>
     </Grid>
 </ContentPage>

@@ -9,13 +9,14 @@
         <ToolbarItem x:Name="btnToolbarOpenpopup" Clicked="btnToolbarOpenpopup_Clicked" IconImageSource="toolbar_menu24px.png" Priority="2"/>
         <ToolbarItem x:Name="btnToolbarOpenUserPopup" Clicked="btnToolbarOpenUserPopup_Clicked" IconImageSource="toolbar_user24px.png" Priority="1"/>
         <ToolbarItem x:Name="btnToolbarRefesh" Clicked="btnToolbarRefesh_Clicked" IconImageSource="toolbar_refesh24px.png" Priority="0"/>
-        <ToolbarItem IconImageSource="toolbar_menu24px.png"/>
     </ContentPage.ToolbarItems>
-    <Grid Padding="0,0,0,0">
+    <NavigationPage.HasNavigationBar>true</NavigationPage.HasNavigationBar>
+
+    <Grid>
         <!--#region Main Content-->
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                
+
                 <!-- #region Main Menüler               
                 <ScrollView Orientation="Horizontal" Padding="15,0" HorizontalScrollBarVisibility="Never">
                     <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15">
@@ -39,7 +40,7 @@
                     </Frame>
                 </ScrollView>-->
                 <!--#endregion-->
-                
+
                 <!--#region Menüler-->
                 <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,15">
                     <StackLayout>
@@ -49,21 +50,21 @@
                             <ImageButton x:Name="btnAnaSayfaStokKartlari" Clicked="btnAnaSayfaStokKartlari_Clicked" BorderColor="LightGray" BorderWidth="1" CornerRadius="15" Source="maincontent_menu_stokkartlarbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
                         </StackLayout>
                         <!--#endregion-->
-                        
+
                         <!--#region Taksit Takip - Satış Yap-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <ImageButton x:Name="btnAnaSayfaTaksitTakip" Clicked="btnAnaSayfaTaksitTakip_Clicked" BorderColor="LightGray" BorderWidth="1" CornerRadius="15" Source="maincontent_menu_taksittakipbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
                             <ImageButton x:Name="btnAnaSayfaSatisYap" Clicked="btnAnaSayfaSatisYap_Clicked" BorderColor="LightGray" BorderWidth="1" CornerRadius="15" Source="maincontent_menu_satisyapbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
                         </StackLayout>
                         <!--#endregion-->
-                        
+
                         <!--#region Çek Senet - Banka-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <ImageButton x:Name="btnAnaSayfaCekSenet" Clicked="btnAnaSayfaCekSenet_Clicked" BorderColor="LightGray" BorderWidth="1" CornerRadius="15" Source="maincontent_menu_ceksenetbtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
                             <ImageButton x:Name="btnAnaSayfaBanka" Clicked="btnAnaSayfaBanka_Clicked" BorderColor="LightGray" BorderWidth="1" CornerRadius="15" Source="maincontent_menu_bankabtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
                         </StackLayout>
                         <!--#endregion-->
-                        
+
                         <!--#region Kasa - Faturalar-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <ImageButton x:Name="btnAnaSayfaKasa" Clicked="btnAnaSayfaKasa_Clicked" BorderColor="LightGray" BorderWidth="1" CornerRadius="15" Source="maincontent_menu_kasabtn.png" BackgroundColor="#AAEC5E0F" VerticalOptions="Center" HorizontalOptions="Center"/>
@@ -73,7 +74,7 @@
                     </StackLayout>
                 </Frame>
                 <!--#endregion-->
-                
+
                 <!--#region Chartlar-->
                 <Grid>
                     <StackLayout>
@@ -90,7 +91,7 @@
                                         </Label.FormattedText>
                                     </Label>
                                 </StackLayout>
-                                
+
                                 <forms:ChartView x:Name="GunlukSatisChart" HeightRequest="400" WidthRequest="400" Margin="-90,-40,-90,-20" IgnorePixelScaling="False"/>
 
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" TranslationX="-90">
@@ -363,7 +364,7 @@
                                     <!--0. Satır End-->
                                     <BoxView Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="End" HeightRequest="1" Color="Green" Margin="-10,0"/>
                                     <!-- Custom List Start -->
-                                    
+
                                 </Grid>
                             </StackLayout>
                         </Frame>
@@ -409,7 +410,7 @@
                                     <Label Grid.Row="0" Grid.Column="2" Text="Bakiye" Margin="0,0,5,0" FontSize="Body" TextColor="{Binding TextColor}"/>
                                     <!--0. Satır End-->
                                     <BoxView Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="End" HeightRequest="1" Color="Green" Margin="-10,0"/>
-                                    
+
                                 </Grid>
                             </StackLayout>
                         </Frame>
@@ -418,15 +419,15 @@
                     </StackLayout>
                 </Grid>
                 <!--#endregion-->
-                
+
             </StackLayout>
         </ScrollView>
         <!--#endregion-->
-        
+
         <!--#region popUplar-->
         <Frame x:Name="btnpopupMenuReturnBackground" IsVisible="true" BackgroundColor="#AA000000"></Frame>
         <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#00000000" VerticalOptions="Fill"/>
-        
+
         <!--#region Kullanici Menüsü-->
         <Grid x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="-370" TranslationX="-40">
             <BoxView x:Name="toolbarUserSettingsView" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="Fill" HeightRequest="270" CornerRadius="15"/>
@@ -465,9 +466,9 @@
                 </StackLayout>
             </Frame>
         </ScrollView>
-        <!--#endregion-->        
-        
-        <!--#region Sağ Menü-->
+        <!--#endregion-->
+
+        <!--#region Hızlı Menü-->
         <AbsoluteLayout x:Name="popupMenuBack" IsVisible="true" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,-5,0">
             <BoxView x:Name="popupMenuBackBox" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" WidthRequest="55" HeightRequest="350" TranslationY="-370" CornerRadius="0,0,25,25"/>
             <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start" TranslationY="-45">
@@ -496,10 +497,10 @@
             </Grid>
         </AbsoluteLayout>
         <!--#endregion-->
-        
+
         <!-- <Button x:Name="btnTest" Clicked="btnTest_Clicked" Text="test" VerticalOptions="Start" HorizontalOptions="Center"/> -->
         <!-- <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" TranslationX="-1" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="#9A36c6d3" HorizontalOptions="End" VerticalOptions="Start"/>-->
-    <!--#endregion-->
+        <!--#endregion-->
     </Grid>
 
     <!--#region Main V1-->
@@ -1071,5 +1072,5 @@
         </Grid>    
         
         -->
-        <!--#endregion -->
+    <!--#endregion -->
 </ContentPage>

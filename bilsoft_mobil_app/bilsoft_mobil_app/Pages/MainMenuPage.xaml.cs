@@ -453,19 +453,19 @@ namespace bilsoft_mobil_app.Pages
         [Obsolete]
         private async void btnGirisEkrani_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "index", APIHelper.secilenlogindonemYil), false);
+            await Navigation.PushAsync(new MainMDPage(APIHelper.loginMod, "index", APIHelper.secilenlogindonemYil), false);
         }
 
         [Obsolete]
-        private async void btnSatisYap_Clicked(object sender, EventArgs e)
+        private void btnSatisYap_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "SatisYap", APIHelper.secilenlogindonemYil), false);
+            Navigation.PushAsync(new MainMDPage(APIHelper.loginMod, "SatisYap", APIHelper.secilenlogindonemYil), false);
         }
 
         [Obsolete]
         private void btnCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
+            Navigation.PushAsync(new MainMDPage(APIHelper.loginMod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
         }
     }
 }
