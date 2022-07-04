@@ -445,9 +445,11 @@ namespace bilsoft_mobil_app.Pages
         private void MainScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
             lblScrollTest.Text = "ScrollY: " + MainScrollView.ScrollY;
+        #if DEBUG
+            lblScrollTest.IsVisible = true;
+        #endif
         }
 
-        Page page = new MainPage();
         [Obsolete]
         private async void btnGirisEkrani_Clicked(object sender, EventArgs e)
         {
@@ -455,7 +457,7 @@ namespace bilsoft_mobil_app.Pages
         }
 
         [Obsolete]
-        private void btnSatisYap_Clicked(object sender, EventArgs e)
+        private async void btnSatisYap_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "SatisYap", APIHelper.secilenlogindonemYil), false);
         }

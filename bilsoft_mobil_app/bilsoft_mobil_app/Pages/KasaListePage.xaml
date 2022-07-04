@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="bilsoft_mobil_app.Pages.KasaListePage"
              BackgroundImageSource="background.jpg" Title="Kasa">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnToolbarOpenpopup" Clicked="btnToolbarOpenpopup_Clicked" IconImageSource="toolbar_menu24px.png" Priority="2"/>
+        <ToolbarItem x:Name="btnToolbarOpenUserPopup" Clicked="btnToolbarOpenUserPopup_Clicked" IconImageSource="toolbar_user24px.png" Priority="1"/>
+        <ToolbarItem x:Name="btnToolbarRefesh" Clicked="btnToolbarRefesh_Clicked" IconImageSource="toolbar_refesh24px.png" Priority="0"/>
+    </ContentPage.ToolbarItems>
     <Grid>
+        <!--#region Main Content-->
         <ScrollView>
             <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
                 <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
@@ -81,5 +87,56 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
+        <!--#endregion-->
+
+        <!--#region popUplar-->
+        <Frame x:Name="btnpopupMenuReturnBackground" IsVisible="false" BackgroundColor="#AA000000"></Frame>
+        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#00000000" VerticalOptions="Fill"/>
+
+        <!--#region Kullanici Menüsü-->
+        <Grid x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="-370" TranslationX="-40">
+            <BoxView x:Name="toolbarUserSettingsView" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="Fill" HeightRequest="270" CornerRadius="15"/>
+            <StackLayout TranslationY="50" TranslationX="0" Padding="5,0,5,0">
+                <Button x:Name="toolbarPopupbtnMailAyarlari" Text="Mail Ayarları" ImageSource="mailsettings24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
+                <Button x:Name="toolbarPopupbtnYetkiAyarlari" Text="Yetki Ayarları" ImageSource="usersettings24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
+                <Button x:Name="toolbarPopupbtnFirmaInfo" Text="Firma Bilgileri" ImageSource="info24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
+                <Button x:Name="toolbarPopupbtnLogout" Text="Çıkış Yap" Clicked="toolbarPopupbtnLogout_Clicked" ImageSource="logout24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
+            </StackLayout>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Sağ Menü-->
+        <AbsoluteLayout x:Name="popupMenuBack" IsVisible="true" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,-5,0">
+            <BoxView x:Name="popupMenuBackBox" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" WidthRequest="55" HeightRequest="350" TranslationY="-370" CornerRadius="0,0,25,25"/>
+            <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start" TranslationY="-45">
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemPanel" IsVisible="false" ImageSource="home24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" TranslationY="56" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemAra" IsVisible="false" ImageSource="search24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" />
+                <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" TranslationY="93" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemCariIslem" IsVisible="false" ImageSource="file_dolar24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" TranslationY="134" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemStokKartlari" IsVisible="false" ImageSource="dropbox24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" TranslationY="173" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemSatisYap" IsVisible="false" ImageSource="sales24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" TranslationY="213" IsVisible="false" FontSize="15" TextColor="white" Padding="-30,0"/>
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemFaturalar" IsVisible="false" ImageSource="fatura24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" TranslationY="255" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+
+                <Button TranslationX="-2" x:Name="btnPopUpMenuItemFiyatGor" IsVisible="false" ImageSource="lookprice24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
+                <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" TranslationY="297" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+
+            </Grid>
+        </AbsoluteLayout>
+        <!--#endregion-->
+
+        <!-- <Button x:Name="btnTest" Clicked="btnTest_Clicked" Text="test" VerticalOptions="Start" HorizontalOptions="Center"/> -->
+        <!-- <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" TranslationX="-1" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="#9A36c6d3" HorizontalOptions="End" VerticalOptions="Start"/>-->
+        <!--#endregion-->
     </Grid>
 </ContentPage>

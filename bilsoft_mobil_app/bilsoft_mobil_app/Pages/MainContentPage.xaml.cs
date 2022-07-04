@@ -9,6 +9,7 @@ using Microcharts;
 using SkiaSharp;
 using bilsoft_mobil_app.Helper;
 using Xamarin.Essentials;
+using Android.Content.Res;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -119,7 +120,7 @@ namespace bilsoft_mobil_app.Pages
         string openedPopUp;
         #endregion
 
-        
+
         public MainContentPage(string _mod, string _donemYil)
         {
             BindingContext = this;
@@ -1698,46 +1699,80 @@ namespace bilsoft_mobil_app.Pages
         #endregion
 
         #region btnAnaSayfa
-        private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
         {
             var bt = (ImageButton)sender;
             DisplayAlert("", bt.Source.ToString(), "ok");
             var test1 = Navigation.ModalStack;
+            var test2 = Navigation.NavigationStack;
+            try
+            {
+                //ResetNavigationStack();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public void ResetNavigationStack()
+        {
+            if (Navigation != null && Navigation.ModalStack.Count() > 0)
+            {
+                var existingPages = Navigation.ModalStack.ToList();
+                foreach (var page in existingPages)
+                {
+                    Navigation.RemovePage(page);
+                }
+            }
+        }
+        private async void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new KasaListePage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe", APIHelper.secilenlogindonemYil), false);
         }
 
-        private void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe", APIHelper.secilenlogindonemYil), false);
+            //Navigation.PushAsync(new BankaPage());
+            //Navigation.InsertPageBefore(new MainMDPage(mod, "BankaListe", APIHelper.secilenlogindonemYil), this);
+            Navigation.InsertPageBefore(new BankaPage(), this);
+            await Navigation.PopAsync();
         }
 
-        private void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "BankaListe", APIHelper.secilenlogindonemYil), false);
+            Navigation.InsertPageBefore(new CekSenetListesiPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe", APIHelper.secilenlogindonemYil), false);
         }
 
-        private void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe", APIHelper.secilenlogindonemYil), false);
+            Navigation.InsertPageBefore(new SatisYapPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap", APIHelper.secilenlogindonemYil), false);
         }
 
-        private void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
         {
-             Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap", APIHelper.secilenlogindonemYil), false);
+            Navigation.InsertPageBefore(new TaksitListesiPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip", APIHelper.secilenlogindonemYil), false);
         }
 
-        private void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip", APIHelper.secilenlogindonemYil), false);
+            Navigation.InsertPageBefore(new StokKartlariPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari", APIHelper.secilenlogindonemYil), false);
         }
 
-        private void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari", APIHelper.secilenlogindonemYil), false);
-        }
-
-        private void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
+            Navigation.InsertPageBefore(new CariHesaplarPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
         }
         #endregion
 
