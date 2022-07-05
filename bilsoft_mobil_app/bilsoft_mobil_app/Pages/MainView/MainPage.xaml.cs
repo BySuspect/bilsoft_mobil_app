@@ -22,6 +22,13 @@ namespace bilsoft_mobil_app.Pages.MainView
                 if (item == null)
                     return;
 
+                if (item.name=="btnAjanda")
+                {
+                    (e.SelectedItem as MainPageFlyoutMenuItem).Title = "test";
+
+                    FlyoutPage.listView.SelectedItem = null;/**/
+                    return;
+                }
                 var page = (Page)Activator.CreateInstance(item.TargetType);
                 page.Title = item.Title;
 
