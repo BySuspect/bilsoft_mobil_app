@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.MainView"
+             xmlns:pages="clr-namespace:bilsoft_mobil_app.Pages"
+             x:Class="bilsoft_mobil_app.Pages.MainView.MainPageFlyout"
+             Title="Flyout" BackgroundColor="{Binding BackgroundColor}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="test1"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <ListView x:Name="listView" x:FieldModifier="public">
+            <ListView.Header>
+                <Image Source="Bilsoft_Logo.png" Margin="0,20,0,20"/>
+            </ListView.Header>
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MainPageFlyoutMenuItem}">
+                    <local:MainPageFlyoutMenuItem Title="Ana Sayfa"         IconSource="home32px.png"       TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Cari Hesaplar"     IconSource="users32px.png"      TargetType="{x:Type pages:CariHesaplarPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Satış Yap"         IconSource="shop32px.png"       TargetType="{x:Type pages:SatisYapPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Stok Kartları"     IconSource="dropbox32px.png"    TargetType="{x:Type pages:StokKartlariPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Faturalar"         IconSource="edit32px.png"       TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="E-Fatura"          IconSource="edit32px.png"       TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="E-İrsaliye"        IconSource="edit32px.png"       TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Gelir Gider"       IconSource="grafik32px.png"     TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Kasa"              IconSource="kasa32px.png"       TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Banka"             IconSource="banka32px.png"      TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Çek/Senet"         IconSource="file_dolar32px.png" TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Taksit Yap"        IconSource="takvimsure32px.png" TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Teklif Sipariş"    IconSource="order32px.png"      TargetType="{x:Type pages:MainContentPage}" />
+                    <local:MainPageFlyoutMenuItem Title="Ajanda◀"           IconSource="book32px.png"       TargetType="{x:Type pages:MainContentPage}" name="btnAjanda"/>
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" CornerRadius="15" BorderColor="{Binding BorderColor}">
+                            <Grid>
+                                <Grid HorizontalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="{Binding IconSource}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="1" Text="{Binding Title}" TextColor="{Binding TextColor}" FontSize="Body" VerticalTextAlignment="Center"/>
+                                </Grid>
+                                <Grid HorizontalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

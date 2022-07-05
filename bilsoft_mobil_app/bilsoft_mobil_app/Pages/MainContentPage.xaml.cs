@@ -10,6 +10,7 @@ using SkiaSharp;
 using bilsoft_mobil_app.Helper;
 using Xamarin.Essentials;
 using Android.Content.Res;
+using bilsoft_mobil_app.Pages.MainView;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -120,16 +121,15 @@ namespace bilsoft_mobil_app.Pages
         string openedPopUp;
         #endregion
 
-
-        public MainContentPage(string _mod, string _donemYil)
+        public MainContentPage()
         {
             BindingContext = this;
             InitializeComponent();
             #region start
             try
             {
-                donemYili = _donemYil;
-                mod = _mod;
+                donemYili = APIHelper.secilenlogindonemYil;
+                mod = APIHelper.loginMod;
 
                 #region setDemo
                 setDemo7gunlukSatisG();
@@ -880,9 +880,87 @@ namespace bilsoft_mobil_app.Pages
 
         }
         #endregion
+        #endregion        
+
+        #region btnAnaSayfa
+        private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
+        {
+            var bt = (ImageButton)sender;
+            //DisplayAlert("", bt.Source.ToString(), "ok");
+            var test1 = Navigation.ModalStack;
+            var test2 = Navigation.NavigationStack;
+            try
+            {
+                //ResetNavigationStack();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public void ResetNavigationStack()
+        {
+            if (Navigation != null && Navigation.ModalStack.Count() > 0)
+            {
+                var existingPages = Navigation.ModalStack.ToList();
+                foreach (var page in existingPages)
+                {
+                    Navigation.RemovePage(page);
+                }
+            }
+        }
+        private async void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new KasaListePage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe", APIHelper.secilenlogindonemYil), false);
+        }
+
+        private async void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
+        {
+            //Navigation.PushAsync(new BankaPage());
+            //Navigation.InsertPageBefore(new MainMDPage(mod, "BankaListe", APIHelper.secilenlogindonemYil), this);
+            Navigation.InsertPageBefore(new BankaPage(), this);
+            await Navigation.PopAsync();
+        }
+
+        private async void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new CekSenetListesiPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe", APIHelper.secilenlogindonemYil), false);
+        }
+
+        private async void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new SatisYapPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap", APIHelper.secilenlogindonemYil), false);
+        }
+
+        private async void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new TaksitListesiPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip", APIHelper.secilenlogindonemYil), false);
+        }
+
+        private async void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new StokKartlariPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari", APIHelper.secilenlogindonemYil), false);
+        }
+
+        private async void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new CariHesaplarPage(),this);
+            await Navigation.PopAsync();
+            //Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
+        }
         #endregion
 
-        #region popup voidler
+
         private void btnPopUpMenu_Clicked(object sender, EventArgs e)
         {
             //Menü arka button heightrequestler sırayla
@@ -988,28 +1066,6 @@ namespace bilsoft_mobil_app.Pages
 
                             Task.Delay(((int)_popuptimer));
 
-                            /*//popupMenuBackBox.HeightRequest = 320;
-                            btnPopUpMenuItemFaturalar.IsVisible = false;
-                            lblPopUpMenuItemFaturalar.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 280;
-                            btnPopUpMenuItemSatisYap.IsVisible = false;
-                            lblPopUpMenuItemSatisYap.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 240;
-                            btnPopUpMenuItemStokKartlari.IsVisible = false;
-                            lblPopUpMenuItemStokKartlari.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 200;
-                            btnPopUpMenuItemCariIslem.IsVisible = false;
-                            lblPopUpMenuItemCariIslem.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 160;
-                            btnPopUpMenuItemAra.IsVisible = false;
-                            lblPopUpMenuItemAra.IsVisible = false;
-                            btnPopUpMenuItemPanel.IsVisible = false;
-                            lblPopUpMenuItemPanel.IsVisible = false;
-                            btnPopUpMenuItemFiyatGor.IsVisible = false;
-                            lblPopUpMenuItemFiyatGor.IsVisible = false;*/
-                            //popupMenuBackBox.HeightRequest = 120;
-                            //popupMenuBackBox.HeightRequest = 80;
-                            //popupMenuBackBox.HeightRequest = 0;
                             popupMenuBack.IsVisible = true;
                             btnpopupMenuReturnBack.IsVisible = false;
                             btnpopupMenuReturnBackground.IsVisible = false;
@@ -1122,29 +1178,6 @@ namespace bilsoft_mobil_app.Pages
                             lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
 
                             Task.Delay(((int)_popuptimer));
-
-                            /*//popupMenuBackBox.HeightRequest = 320;
-                            btnPopUpMenuItemFaturalar.IsVisible = false;
-                            lblPopUpMenuItemFaturalar.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 280;
-                            btnPopUpMenuItemSatisYap.IsVisible = false;
-                            lblPopUpMenuItemSatisYap.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 240;
-                            btnPopUpMenuItemStokKartlari.IsVisible = false;
-                            lblPopUpMenuItemStokKartlari.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 200;
-                            btnPopUpMenuItemCariIslem.IsVisible = false;
-                            lblPopUpMenuItemCariIslem.IsVisible = false;
-                            //popupMenuBackBox.HeightRequest = 160;
-                            btnPopUpMenuItemAra.IsVisible = false;
-                            lblPopUpMenuItemAra.IsVisible = false;
-                            btnPopUpMenuItemPanel.IsVisible = false;
-                            lblPopUpMenuItemPanel.IsVisible = false;
-                            btnPopUpMenuItemFiyatGor.IsVisible = false;
-                            lblPopUpMenuItemFiyatGor.IsVisible = false;*/
-                            //popupMenuBackBox.HeightRequest = 120;
-                            //popupMenuBackBox.HeightRequest = 80;
-                            //popupMenuBackBox.HeightRequest = 0;
                             popupMenuBack.IsVisible = true;
                             btnpopupMenuReturnBack.IsVisible = false;
                             btnpopupMenuReturnBackground.IsVisible = false;
@@ -1152,282 +1185,7 @@ namespace bilsoft_mobil_app.Pages
                         #endregion
                         break;
                 }
-            }
-                       
-            #region old v3 kapanma buglu
-            /*
-             //Menü arka button heightrequestler sırayla
-            //55-80-120-160-200-240-280-320-340
-
-            if (!popupMenuBack.IsVisible)
-            {
-                this.CancelAnimations();
-                btnPopUpMenu.ImageSource = "offmenuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
-                popupMenuBack.IsVisible = true;
-                btnpopupMenuReturnBack.IsVisible = true;
-                popupMenuBackBox.HeightRequest = 55;
-
-
-                //Panel 1
-                popupMenuBackBox.HeightRequest = 80;
-                btnPopUpMenuItemPanel.IsVisible = true;
-                lblPopUpMenuItemPanel.IsVisible = true;
-                btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
-                lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
-
-                //Hızlı Arama 2
-                popupMenuBackBox.HeightRequest = 120;
-                btnPopUpMenuItemAra.IsVisible = true;
-                lblPopUpMenuItemAra.IsVisible = true;
-                btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
-                lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
-
-                //Cari İşlem 3
-                popupMenuBackBox.HeightRequest = 160;
-                btnPopUpMenuItemCariIslem.IsVisible = true;
-                lblPopUpMenuItemCariIslem.IsVisible = true;
-                btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
-                lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
-
-                //Stok Kartları 4
-                popupMenuBackBox.HeightRequest = 200;
-                btnPopUpMenuItemStokKartlari.IsVisible = true;
-                lblPopUpMenuItemStokKartlari.IsVisible = true;
-                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
-                lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
-
-                //Satış Yap 5
-                popupMenuBackBox.HeightRequest = 240;
-                btnPopUpMenuItemSatisYap.IsVisible = true;
-                lblPopUpMenuItemSatisYap.IsVisible = true;
-                btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
-                lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
-
-                //Faturalar 6
-                popupMenuBackBox.HeightRequest = 280;
-                btnPopUpMenuItemFaturalar.IsVisible = true;
-                lblPopUpMenuItemFaturalar.IsVisible = true;
-                btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
-                lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
-
-                //Fiyat Gör 7
-                popupMenuBackBox.HeightRequest = 320;
-                btnPopUpMenuItemFiyatGor.IsVisible = true;
-                lblPopUpMenuItemFiyatGor.IsVisible = true;
-                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
-                lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
-
-                popupMenuBackBox.HeightRequest = 340;
-            }
-            else
-            {
-                this.CancelAnimations();
-                //Fiyat Gör 7
-                btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemFiyatGor.TranslateTo(0, 0, _popuptimer);
-                btnPopUpMenuItemFiyatGor.IsVisible = false;
-                lblPopUpMenuItemFiyatGor.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 320;
-
-                //Faturalar 6
-                btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemFaturalar.TranslateTo(0, 0, _popuptimer);
-                btnPopUpMenuItemFaturalar.IsVisible = false;
-                lblPopUpMenuItemFaturalar.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 280;
-
-                //Satış Yap 5
-                btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemSatisYap.TranslateTo(0, 0, _popuptimer);
-                btnPopUpMenuItemSatisYap.IsVisible = false;
-                lblPopUpMenuItemSatisYap.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 240;
-
-                //Stok Kartları 4
-                btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemStokKartlari.TranslateTo(0, 0, _popuptimer);
-                btnPopUpMenuItemStokKartlari.IsVisible = false;
-                lblPopUpMenuItemStokKartlari.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 200;
-
-                //Cari İşlem 3
-                btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemCariIslem.TranslateTo(0, 0, _popuptimer);
-                btnPopUpMenuItemCariIslem.IsVisible = false;
-                lblPopUpMenuItemCariIslem.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 160;
-
-                //Hızlı Arama 2
-                btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemAra.TranslateTo(0, 0, _popuptimer);
-                btnPopUpMenuItemAra.IsVisible = false;
-                lblPopUpMenuItemAra.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 120;
-
-                //Panel 1
-                popupMenuBackBox.HeightRequest = 80;
-                btnPopUpMenuItemPanel.IsVisible = false;
-                lblPopUpMenuItemPanel.IsVisible = false;
-                btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                lblPopUpMenuItemPanel.TranslateTo(0, 0, _popuptimer);
-
-                await Task.Delay(500);
-
-                popupMenuBackBox.HeightRequest = 55;
-                btnPopUpMenu.ImageSource = "menuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
-                popupMenuBack.IsVisible = false;
-                btnpopupMenuReturnBack.IsVisible = false;
-            }
-             */
-            #endregion
-            #region old v2 bugfix
-            //Menü arka button heightrequestler sırayla
-            //55-80-120-160-200-240-280-320-340
-            /*
-            if (!popupMenuBack.IsVisible)
-            {
-                btnPopUpMenu.ImageSource = "offmenuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
-                popupMenuBack.IsVisible = true;
-                btnpopupMenuReturnBack.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 55;
-                popupMenuBackBox.HeightRequest = 80;
-                //Panel
-                btnPopUpMenuItemPanel.IsVisible = true;
-                lblPopUpMenuItemPanel.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 120;
-                //Hızlı Arama
-                btnPopUpMenuItemAra.IsVisible = true;
-                lblPopUpMenuItemAra.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 160;
-                //Cari İşlem
-                btnPopUpMenuItemCariIslem.IsVisible = true;
-                lblPopUpMenuItemCariIslem.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 200;
-                //Stok Kartları
-                btnPopUpMenuItemStokKartlari.IsVisible = true;
-                lblPopUpMenuItemStokKartlari.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 240;
-                //Satış Yap
-                btnPopUpMenuItemSatisYap.IsVisible = true;
-                lblPopUpMenuItemSatisYap.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 280;
-                //Faturalar
-                btnPopUpMenuItemFaturalar.IsVisible = true;
-                lblPopUpMenuItemFaturalar.IsVisible = true;
-                popupMenuBackBox.HeightRequest = 320;
-                //Fiyat Gör
-                btnPopUpMenuItemFiyatGor.IsVisible = true;
-                lblPopUpMenuItemFiyatGor.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 340;
-            }
-            else
-            {
-                btnPopUpMenu.ImageSource = "menuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
-                popupMenuBack.IsVisible = false;
-                btnpopupMenuReturnBack.IsVisible = false;
-                btnPopUpMenuItemPanel.IsVisible = false;
-                lblPopUpMenuItemPanel.IsVisible = false;
-                btnPopUpMenuItemAra.IsVisible = false;
-                lblPopUpMenuItemAra.IsVisible = false;
-                btnPopUpMenuItemCariIslem.IsVisible = false;
-                lblPopUpMenuItemCariIslem.IsVisible = false;
-                btnPopUpMenuItemStokKartlari.IsVisible = false;
-                lblPopUpMenuItemStokKartlari.IsVisible = false;
-                btnPopUpMenuItemSatisYap.IsVisible = false;
-                lblPopUpMenuItemSatisYap.IsVisible = false;
-                btnPopUpMenuItemFaturalar.IsVisible = false;
-                lblPopUpMenuItemFaturalar.IsVisible = false;
-                btnPopUpMenuItemFiyatGor.IsVisible = false;
-                lblPopUpMenuItemFiyatGor.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 55;
-            }*/
-            #endregion
-            #region old v1 buglu olan
-            //Menü arka button heightrequestler sırayla
-            //55-100-150-200-240-280-330-380
-            /*
-            if (!popupMenuBack.IsVisible)
-            {
-                btnPopUpMenu.ImageSource = "offmenuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#36c6d3");
-                popupMenuBack.IsVisible = true;
-                btnpopupMenuReturnBack.IsVisible = true;
-
-                popupMenuBackBox.HeightRequest = 100;
-                btnPopUpMenuItemPanel.IsVisible = true;
-                lblPopUpMenuItemPanel.IsVisible = true;
-                
-                await Task.Delay(50);
-
-                popupMenuBackBox.HeightRequest = 150;
-                btnPopUpMenuItemAra.IsVisible = true;
-                lblPopUpMenuItemAra.IsVisible = true;
-
-                await Task.Delay(50);
-
-                popupMenuBackBox.HeightRequest = 200;
-                btnPopUpMenuItemCariIslem.IsVisible = true;
-                lblPopUpMenuItemCariIslem.IsVisible = true;
-
-                await Task.Delay(50);
-
-                popupMenuBackBox.HeightRequest = 240;
-                btnPopUpMenuItemStokKartlari.IsVisible = true;
-                lblPopUpMenuItemStokKartlari.IsVisible = true;
-
-                await Task.Delay(50);
-
-                popupMenuBackBox.HeightRequest = 280;
-                btnPopUpMenuItemSatisYap.IsVisible = true;
-                lblPopUpMenuItemSatisYap.IsVisible = true;
-
-                await Task.Delay(50);
-
-                popupMenuBackBox.HeightRequest = 330;
-                btnPopUpMenuItemFaturalar.IsVisible = true;
-                lblPopUpMenuItemFaturalar.IsVisible = true;
-
-                await Task.Delay(50);
-
-                popupMenuBackBox.HeightRequest = 380;
-                btnPopUpMenuItemFiyatGor.IsVisible = true;
-                lblPopUpMenuItemFiyatGor.IsVisible = true;
-
-            }
-            else
-            {
-                btnPopUpMenu.ImageSource = "menuicon.png";
-                btnPopUpMenu.BackgroundColor = Color.FromHex("#9A36c6d3");
-                popupMenuBack.IsVisible = false;
-                btnpopupMenuReturnBack.IsVisible = false;
-                btnPopUpMenuItemPanel.IsVisible = false;
-                lblPopUpMenuItemPanel.IsVisible = false;
-                btnPopUpMenuItemAra.IsVisible = false;
-                lblPopUpMenuItemAra.IsVisible = false;
-                btnPopUpMenuItemCariIslem.IsVisible = false;
-                lblPopUpMenuItemCariIslem.IsVisible = false;
-                btnPopUpMenuItemStokKartlari.IsVisible = false;
-                lblPopUpMenuItemStokKartlari.IsVisible = false;
-                btnPopUpMenuItemSatisYap.IsVisible = false;
-                lblPopUpMenuItemSatisYap.IsVisible = false;
-                btnPopUpMenuItemFaturalar.IsVisible = false;
-                lblPopUpMenuItemFaturalar.IsVisible = false;
-                btnPopUpMenuItemFiyatGor.IsVisible = false;
-                lblPopUpMenuItemFiyatGor.IsVisible = false;
-                popupMenuBackBox.HeightRequest = 55;
-            }*/
-            #endregion
+            }           
         }
 
         private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
@@ -1626,7 +1384,7 @@ namespace bilsoft_mobil_app.Pages
                         #endregion
                         break;
                 }
-            }            
+            }
         }
 
         private void toolbarPopupbtnLogout_Clicked(object sender, EventArgs e)
@@ -1695,87 +1453,6 @@ namespace bilsoft_mobil_app.Pages
         }
 
         #endregion
-
-        #endregion
-
-        #region btnAnaSayfa
-        private async void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
-        {
-            var bt = (ImageButton)sender;
-            //DisplayAlert("", bt.Source.ToString(), "ok");
-            var test1 = Navigation.ModalStack;
-            var test2 = Navigation.NavigationStack;
-            try
-            {
-                //ResetNavigationStack();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-        public void ResetNavigationStack()
-        {
-            if (Navigation != null && Navigation.ModalStack.Count() > 0)
-            {
-                var existingPages = Navigation.ModalStack.ToList();
-                foreach (var page in existingPages)
-                {
-                    Navigation.RemovePage(page);
-                }
-            }
-        }
-        private async void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
-        {
-            Navigation.InsertPageBefore(new KasaListePage(),this);
-            await Navigation.PopAsync();
-            //Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe", APIHelper.secilenlogindonemYil), false);
-        }
-
-        private async void btnAnaSayfaBanka_Clicked(object sender, EventArgs e)
-        {
-            //Navigation.PushAsync(new BankaPage());
-            //Navigation.InsertPageBefore(new MainMDPage(mod, "BankaListe", APIHelper.secilenlogindonemYil), this);
-            Navigation.InsertPageBefore(new BankaPage(), this);
-            await Navigation.PopAsync();
-        }
-
-        private async void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
-        {
-            Navigation.InsertPageBefore(new CekSenetListesiPage(),this);
-            await Navigation.PopAsync();
-            //Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe", APIHelper.secilenlogindonemYil), false);
-        }
-
-        private async void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
-        {
-            Navigation.InsertPageBefore(new SatisYapPage(),this);
-            await Navigation.PopAsync();
-            //Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap", APIHelper.secilenlogindonemYil), false);
-        }
-
-        private async void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
-        {
-            Navigation.InsertPageBefore(new TaksitListesiPage(),this);
-            await Navigation.PopAsync();
-            //Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip", APIHelper.secilenlogindonemYil), false);
-        }
-
-        private async void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
-        {
-            Navigation.InsertPageBefore(new StokKartlariPage(),this);
-            await Navigation.PopAsync();
-            //Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari", APIHelper.secilenlogindonemYil), false);
-        }
-
-        private async void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
-        {
-            Navigation.InsertPageBefore(new CariHesaplarPage(),this);
-            await Navigation.PopAsync();
-            //Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
-        }
-        #endregion
-
 
         protected override bool OnBackButtonPressed()
         {

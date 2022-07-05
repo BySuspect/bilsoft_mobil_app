@@ -29,7 +29,7 @@ namespace bilsoft_mobil_app.Pages
         #endregion
 
         //cari, stok, taksit, satis, kasa, banka, cek-senet, diger, gelir-gider
-        string openedTree;
+        private string openedTree;
         public MainMenuPage()
         {
             BindingContext = this;

@@ -17,9 +17,9 @@ using Xamarin.Forms;
 
 namespace bilsoft_mobil_app
 {
-    public partial class MainPage : ContentPage
+    public partial class TestPage : ContentPage
     {
-        public MainPage()
+        public TestPage()
         {
             InitializeComponent();
         }

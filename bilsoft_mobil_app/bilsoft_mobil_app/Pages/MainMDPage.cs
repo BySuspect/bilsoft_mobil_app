@@ -81,7 +81,7 @@ namespace bilsoft_mobil_app.Pages
                 case "index":
                     goto default;
                 default:
-                    Detail = new NavigationPage(new MainContentPage(mod, donemyil))
+                    Detail = new NavigationPage(new MainContentPage())
                     {
                         BarTextColor = Color.FromHex("#ffccff"),
                         //BarBackgroundColor = Color.Transparent

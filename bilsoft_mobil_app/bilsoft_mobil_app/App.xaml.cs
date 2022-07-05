@@ -1,4 +1,5 @@
 ﻿using bilsoft_mobil_app.Pages;
+using bilsoft_mobil_app.Pages.MainView;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,7 +17,7 @@ namespace bilsoft_mobil_app
             //MainPage = new LoginPage();
 
             //Ana Sayfa
-            MainPage = new MainMDPage("demo","index",null);
+            //MainPage = new MainMDPage("demo","index",null);
 
             //Ana Sayfa 2. tip
             /*MainPage= new NavigationPage(new MainContentPage("demo", "demo"))
@@ -27,7 +28,7 @@ namespace bilsoft_mobil_app
             };/**/
 
             //Test Page
-            //MainPage = new MainPage();
+            MainPage = new MainPage();
             //MainPage = new MainMenuPage();
             /*MainPage = new NavigationPage(new KasaListePage())
             {
