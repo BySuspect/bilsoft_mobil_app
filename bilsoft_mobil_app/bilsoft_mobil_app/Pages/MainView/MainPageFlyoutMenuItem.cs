@@ -15,8 +15,10 @@ namespace bilsoft_mobil_app.Pages.MainView
             TargetType = typeof(MainPageFlyoutMenuItem);
         }
         public string name { get; set; }
+        public int fontSize { get; set; }
         public string Title { get; set; }
         public string IconSource { get; set; }
+        public Thickness margin { get; set; }
 
         public Type TargetType { get; set; }
 

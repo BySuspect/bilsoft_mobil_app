@@ -1,5 +1,6 @@
 ﻿using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Pages.MainView;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -137,7 +138,7 @@ namespace bilsoft_mobil_app.Pages
                                 {
                                     oturumuAciktut();
                                 }
-                                await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "index", pickerDonem.SelectedItem.ToString()), false);/**/
+                                await Navigation.PushModalAsync(new MainPage(), false);/**/
                             }
                             else
                                 await DisplayAlert("Hata", tokenData.message.ToString(), "Tamam");
@@ -270,7 +271,7 @@ namespace bilsoft_mobil_app.Pages
                         if (tokenData.message == null)
                         {
                             APIHelper.secilenlogindonemYil = Preferences.Get("OturumuAcikTutDonem", "Yok");
-                            await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod, "index", Preferences.Get("OturumuAcikTutDonem", "Yok")), false);/**/
+                            await Navigation.PushModalAsync(new MainPage(),false);/**/
                         }
                         else
                             await DisplayAlert("Hata", tokenData.message.ToString(), "Tamam");
@@ -310,7 +311,7 @@ namespace bilsoft_mobil_app.Pages
             LoodingActivity.IsVisible = true;
             LoodingActivity.IsRunning = true;
             APIHelper.loginMod = "demo";
-            await Navigation.PushModalAsync(new MainMDPage(APIHelper.loginMod,"index","Yok"),true);
+            await Navigation.PushModalAsync(new MainPage(), false);/**/
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsVisible = false;
             LoodingActivity.IsRunning = false;
