@@ -16,17 +16,18 @@ namespace bilsoft_mobil_app.Pages.MainView
         public MainPage()
         {
             InitializeComponent();
-            FlyoutPage.listView.ItemSelected += (sender, e) =>
+            FlyoutPage.MenulistView.ItemSelected += (sender, e) =>
             {
                 var item = e.SelectedItem as MainPageFlyoutMenuItem;
                 if (item == null)
-                    return;
-
-                if (item.name=="btnAjanda")
                 {
-                    (e.SelectedItem as MainPageFlyoutMenuItem).Title = "test";
+                    FlyoutPage.MenulistView.SelectedItem = null;/**/
+                    return;
+                }
 
-                    FlyoutPage.listView.SelectedItem = null;/**/
+                if (item.name != null)
+                {
+                    FlyoutPage.MenulistView.SelectedItem = null;/**/
                     return;
                 }
                 var page = (Page)Activator.CreateInstance(item.TargetType);
@@ -38,7 +39,7 @@ namespace bilsoft_mobil_app.Pages.MainView
                 };
                 IsPresented = false;
 
-                FlyoutPage.listView.SelectedItem = null;/**/
+                FlyoutPage.MenulistView.SelectedItem = null;/**/
             };
         }
     }
