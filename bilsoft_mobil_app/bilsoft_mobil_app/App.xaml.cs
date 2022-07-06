@@ -28,9 +28,9 @@ namespace bilsoft_mobil_app
             };/**/
 
             //Test Page
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
             //MainPage = new MainMenuPage();
-            /*MainPage = new NavigationPage(new KasaListePage())
+            MainPage = new NavigationPage(new FaturalarPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent

@@ -173,7 +173,7 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
                 #region 7 Günlük Banka Haraket Chart
-                _7GunlukBankaHaraketGraph.Chart = new LineChart { Entries = entries7gunbankaharaket, IsAnimated = true, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, LineSize = 5, PointSize = 30, EnableYFadeOutGradient = false,BackgroundColor=SKColors.Transparent };
+                _7GunlukBankaHaraketGraph.Chart = new LineChart { Entries = entries7gunbankaharaket, IsAnimated = true, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, AnimationDuration = TimeSpan.FromSeconds(3), Margin = 30, LineSize = 5, PointSize = 30, EnableYFadeOutGradient = false, BackgroundColor = SKColors.Transparent };
                 _7gunlukBankaHaraketPicker.ItemsSource = new List<string> { "Ziraat Bankası", "Garanti Bankası", "İş Bankası" };
                 #endregion
 
@@ -205,7 +205,7 @@ namespace bilsoft_mobil_app.Pages
                 #region Kasa Bakiye Liste Check
                 KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 0, Kasa = "Name1", KasaBakiye = 23543654.22 });
                 KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 1, Kasa = "Name2", KasaBakiye = 7643654.50 });
-                KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 2, Kasa = "Name3",  KasaBakiye = 23554.00 });
+                KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 2, Kasa = "Name3", KasaBakiye = 23554.00 });
                 KasaBakiyelerListe.Add(new KasaBakiyeListeVeriler { sira = 3, Kasa = "Name4", KasaBakiye = 3432432.56 });
                 for (int i = 0; i < KasaBakiyelerListe.Count; i++)
                 {
@@ -253,7 +253,7 @@ namespace bilsoft_mobil_app.Pages
                 Padding = new Thickness(5),
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Start,
-                BackgroundColor=Color.FromHex("#BA0c9100")
+                BackgroundColor = Color.FromHex("#BA0c9100")
             }, 2, sira + 1);
             gridKasaBakiye.Children.Add(new BoxView
             {
@@ -329,28 +329,28 @@ namespace bilsoft_mobil_app.Pages
                 Color = Color.Green,
                 VerticalOptions = LayoutOptions.End,
                 Margin = new Thickness(-10, 0)
-            },0, sira + 1);
+            }, 0, sira + 1);
             gridBankaList.Children.Add(new BoxView
             {
                 HeightRequest = 1,
                 Color = Color.Green,
                 VerticalOptions = LayoutOptions.End,
                 Margin = new Thickness(-10, 0)
-            },1, sira + 1);
+            }, 1, sira + 1);
             gridBankaList.Children.Add(new BoxView
             {
                 HeightRequest = 1,
                 Color = Color.Green,
                 VerticalOptions = LayoutOptions.End,
                 Margin = new Thickness(-10, 0)
-            },2, sira + 1);
+            }, 2, sira + 1);
             gridBankaList.Children.Add(new BoxView
             {
                 HeightRequest = 1,
                 Color = Color.Green,
                 VerticalOptions = LayoutOptions.End,
                 Margin = new Thickness(-10, 0)
-            },3, sira + 1);
+            }, 3, sira + 1);
 
         }
         #endregion
@@ -479,7 +479,7 @@ namespace bilsoft_mobil_app.Pages
                                 Color = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                                         Label = _7GunVadeGDay1,
                                         ValueLabel = _7GunVadeTahsilatGMoney1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),                                        
+                                        ValueLabelColor = SKColor.Parse(AppThemeColors._7GunVadeTahsilatGColor),
                         },
 
                         new ChartEntry(Convert.ToInt32(_7GunVadeOdemeGMoney1)) {
@@ -898,20 +898,14 @@ namespace bilsoft_mobil_app.Pages
                 throw;
             }
         }
-        public void ResetNavigationStack()
+        public async void ResetNavigationStack()
         {
-            if (Navigation != null && Navigation.ModalStack.Count() > 0)
-            {
-                var existingPages = Navigation.ModalStack.ToList();
-                foreach (var page in existingPages)
-                {
-                    Navigation.RemovePage(page);
-                }
-            }
+            Navigation.InsertPageBefore(new FaturalarPage(), this);
+            await Navigation.PopAsync();
         }
         private async void btnAnaSayfaKasa_Clicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new KasaListePage(),this);
+            Navigation.InsertPageBefore(new KasaListePage(), this);
             await Navigation.PopAsync();
             //Navigation.PushModalAsync(new MainMDPage(mod, "KasaListe", APIHelper.secilenlogindonemYil), false);
         }
@@ -926,35 +920,35 @@ namespace bilsoft_mobil_app.Pages
 
         private async void btnAnaSayfaCekSenet_Clicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new CekSenetListesiPage(),this);
+            Navigation.InsertPageBefore(new CekSenetListesiPage(), this);
             await Navigation.PopAsync();
             //Navigation.PushModalAsync(new MainMDPage(mod, "CekSenetListe", APIHelper.secilenlogindonemYil), false);
         }
 
         private async void btnAnaSayfaSatisYap_Clicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new SatisYapPage(),this);
+            Navigation.InsertPageBefore(new SatisYapPage(), this);
             await Navigation.PopAsync();
             //Navigation.PushModalAsync(new MainMDPage(mod, "SatisYap", APIHelper.secilenlogindonemYil), false);
         }
 
         private async void btnAnaSayfaTaksitTakip_Clicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new TaksitListesiPage(),this);
+            Navigation.InsertPageBefore(new TaksitListesiPage(), this);
             await Navigation.PopAsync();
             //Navigation.PushModalAsync(new MainMDPage(mod, "TaksitTakip", APIHelper.secilenlogindonemYil), false);
         }
 
         private async void btnAnaSayfaStokKartlari_Clicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new StokKartlariPage(),this);
+            Navigation.InsertPageBefore(new StokKartlariPage(), this);
             await Navigation.PopAsync();
             //Navigation.PushModalAsync(new MainMDPage(mod, "StokKartlari", APIHelper.secilenlogindonemYil), false);
         }
 
         private async void btnAnaSayfaCariHesaplar_Clicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new CariHesaplarPage(),this);
+            Navigation.InsertPageBefore(new CariHesaplarPage(), this);
             await Navigation.PopAsync();
             //Navigation.PushModalAsync(new MainMDPage(mod, "CariHesaplar", APIHelper.secilenlogindonemYil), false);
         }
@@ -1185,7 +1179,7 @@ namespace bilsoft_mobil_app.Pages
                         #endregion
                         break;
                 }
-            }           
+            }
         }
 
         private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
