@@ -1,13 +1,293 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="bilsoft_mobil_app.Pages.FaturalarPage"
-             Title="Faturalar" BackgroundImageSource="background.jpg">
-    <Grid>
-        <ScrollView>
-            <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-                <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.FaturalarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Helper"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Faturalar"
+    BackgroundImageSource="background.jpg">
+    <Grid Padding="20,5">
+        <Frame
+            BackgroundColor="{Binding CardBackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15">
+            <ListView
+                x:Name="MenulistView"
+                x:FieldModifier="public"
+                HasUnevenRows="True"
+                SelectionMode="None">
+                <ListView.Header>
+                    <StackLayout>
+                        <xct:UniformGrid HorizontalOptions="Fill">
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Yeni Satış Faturası"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Yeni Alış Faturası"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Satış İrsaliyesi"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Alış İrsaliyesi"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Satış İade"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Alış İade"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="E-Fatura"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="E-Mühstashil"
+                                TextColor="{Binding TextColor}" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                Text="Fatura Rapor"
+                                TextColor="{Binding TextColor}" />
+                        </xct:UniformGrid>
+                        <BoxView
+                            Margin="-25,0"
+                            HeightRequest="2"
+                            HorizontalOptions="Fill"
+                            Color="{Binding BorderColor}" />
+                        <StackLayout>
+                            <Frame
+                                Margin="-20,0"
+                                BackgroundColor="{Binding BackgroundColor}"
+                                CornerRadius="15">
+                                <StackLayout Margin="-10" Orientation="Horizontal">
+                                    <Image Source="fatura24px.png" VerticalOptions="Center" />
+                                    <Label
+                                        FontSize="Body"
+                                        Text="Fatura Listesi"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </Frame>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Caption"
+                                    Text="Başlangıç Tarihi:"
+                                    TextColor="{Binding TextColor}" />
+                                <DatePicker x:Name="dpBaslangic" TextColor="{Binding TextColor}" />
+
+                                <Label
+                                    FontSize="Caption"
+                                    Text="Bitiş Tarihi:"
+                                    TextColor="{Binding TextColor}" />
+                                <DatePicker x:Name="dpBitis" TextColor="{Binding TextColor}" />
+
+                                <BoxView
+                                    Margin="-25,0"
+                                    HeightRequest="2"
+                                    HorizontalOptions="Fill"
+                                    Color="{Binding BorderColor}" />
+                            </StackLayout>
+                            <Entry
+                                x:Name="entryCariArama"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Ara..."
+                                PlaceholderColor="LightGray"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
+                            <StackLayout Orientation="Horizontal">
+                                <Picker
+                                    Title="HEPSİ"
+                                    HorizontalOptions="FillAndExpand"
+                                    TextColor="{Binding TextColor}"
+                                    TitleColor="{Binding TextColor}" />
+                                <Button
+                                    x:Name="btnCariArama"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{Binding BorderColor}"
+                                    BorderWidth="1"
+                                    CornerRadius="15"
+                                    HorizontalOptions="EndAndExpand"
+                                    ImageSource="search24px"
+                                    Text="Ara"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:FaturaListVeriler}">
+                        <local:FaturaListVeriler
+                            aciklama="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahwahwahhhhhhhhhhhhhhhhhawhawhaaaaaaaaaaaaaaaaaaaaaaaasffjhsrjssej"
+                            gtop="26060"
+                            no="15"
+                            odemetip="Açık Hesap"
+                            saat="10:30"
+                            tarih="07.07.2022"
+                            tur="Satış Faturası"
+                            unvan="Mutlu Market"
+                            yetkili="Veli Mutlu" />
+                        <local:FaturaListVeriler
+                            aciklama="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahwahwahhhhhhhhhhhhhhhhhawhawhaaaaaaaaaaaaaaaaaaaaaaaasffjhsrjssej"
+                            gtop="26060"
+                            no="15"
+                            odemetip="Açık Hesap"
+                            saat="10:30"
+                            tarih="07.07.2022"
+                            tur="Satış Faturası"
+                            unvan="Mutlu Market"
+                            yetkili="Veli Mutlu" />
+                        <local:FaturaListVeriler
+                            aciklama="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahwahwahhhhhhhhhhhhhhhhhawhawhaaaaaaaaaaaaaaaaaaaaaaaasffjhsrjssej"
+                            gtop="26060"
+                            no="15"
+                            odemetip="Açık Hesap"
+                            saat="10:30"
+                            tarih="07.07.2022"
+                            tur="Satış Faturası"
+                            unvan="Mutlu Market"
+                            yetkili="Veli Mutlu" />
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                BackgroundColor="{Binding BackgroundColor}"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15">
+                                <xct:Expander>
+                                    <xct:Expander.Header>
+                                        <Grid>
+                                            <Label
+                                                Grid.Column="0"
+                                                FontAttributes="Bold"
+                                                FontSize="Medium"
+                                                Text="{Binding unvan}" />
+                                        </Grid>
+                                    </xct:Expander.Header>
+                                    <xct:Expander.ContentTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontAttributes="Italic"
+                                                    Text="{Binding aciklama}" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    FontAttributes="Italic"
+                                                    Text="{Binding aciklama}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </xct:Expander.ContentTemplate>
+                                </xct:Expander>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </Grid>
+
+    <!--deneme öncesi
+    <Frame CornerRadius="15" BackgroundColor="{Binding BackgroundColor}" BorderColor="{Binding BorderColor}">
+                            <StackLayout>
+                                <Label FontSize="Medium" TextColor="{Binding TextColor}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="-5,-10,-5,1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Ünvan: " FontSize="Caption"/>
+                                            <Span Text="{Binding unvan}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView Color="{Binding BorderColor}" HeightRequest="1" Margin="-20,0"/>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="135" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                                        <Label FontSize="Body" TextColor="{Binding TextColor}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Tutar: " TextColor="LightGray" FontSize="Caption"/>
+                                                    <Span Text="1179.4"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label Grid.Column="1" Grid.Row="0" FontSize="Caption" TextColor="{Binding TextColor}" Text="Tahsilat: "/>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                                        <Label FontSize="Body" TextColor="{Binding TextColor}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Kalan: " TextColor="LightGray" FontSize="Caption"/>
+                                                    <Span Text="0"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label Grid.Column="1" Grid.Row="1" TranslationY="-10" FontSize="Body" HorizontalOptions="Start" TextColor="{Binding Money}" BackgroundColor="{Binding MoneyBackground}" Text="1.179,40₺"/>
+                                    <ImageButton AutomationId="STOKAC1" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center" Source="search24px.png" HorizontalOptions="End" CornerRadius="15" BackgroundColor="{Binding Success}" Padding="5,5,5,5" HeightRequest="35"/>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+    -->
+
+    <!-- eski
+    <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
                     <StackLayout>
                         <xct:UniformGrid HorizontalOptions="Fill">
                             <Button Text="Yeni Satış Faturası"  FontSize="Caption" BackgroundColor="Transparent" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1"/>
@@ -107,7 +387,6 @@
                         </Grid>
                     </StackLayout>
                 </Frame>
-            </StackLayout>
-        </ScrollView>
-    </Grid>
+
+    -->
 </ContentPage>

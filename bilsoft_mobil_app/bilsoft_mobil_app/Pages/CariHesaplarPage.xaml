@@ -1,43 +1,125 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="bilsoft_mobil_app.Pages.CariHesaplarPage" 
-             BackgroundImageSource="background.jpg" Title="CariHesplar">
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.CariHesaplarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="CariHesplar"
+    BackgroundImageSource="background.jpg">
     <Grid>
         <ScrollView>
-            <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-                <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Frame
+                    Margin="15,15,15,5"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button x:Name="btnYeniCari" Text="Yeni Cari" FontSize="Caption" BackgroundColor="Transparent" ImageSource="banka20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Start"/>
-                            <Button x:Name="btnGruplar" Text="Gruplar" FontSize="Caption" BackgroundColor="Transparent" ImageSource="users20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                            <Button Text="Mahsup Fişi" FontSize="Caption" BackgroundColor="Transparent" ImageSource="users20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="End"/>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Button
+                                x:Name="btnYeniCari"
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                HorizontalOptions="Start"
+                                ImageSource="banka20px.png"
+                                Text="Yeni Cari"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
+                            <Button
+                                x:Name="btnGruplar"
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                HorizontalOptions="Center"
+                                ImageSource="users20px.png"
+                                Text="Gruplar"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                FontSize="Caption"
+                                HorizontalOptions="End"
+                                ImageSource="users20px.png"
+                                Text="Mahsup Fişi"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
                         </StackLayout>
-                        <Button Text="Raporlar ▼" FontSize="Caption" BackgroundColor="Transparent" ImageSource="raports20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Button
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            CornerRadius="15"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            ImageSource="raports20px.png"
+                            Text="Raporlar ▼"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,5">
+                <Frame
+                    Margin="15,0,15,5"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15">
                     <StackLayout VerticalOptions="Fill">
-                        <Frame BackgroundColor="{Binding BackgroundColor}" Margin="-20,-20,-20,0" CornerRadius="15">
-                            <StackLayout Orientation="Horizontal" Margin="-10">
-                                <Image Source="users20px.png"/>
-                                <Label Text="Cari Listesi" FontSize="Body" TextColor="{Binding TextColor}"/>
+                        <Frame
+                            Margin="-20,-20,-20,0"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="15">
+                            <StackLayout Margin="-10" Orientation="Horizontal">
+                                <Image Source="users20px.png" />
+                                <Label
+                                    FontSize="Body"
+                                    Text="Cari Listesi"
+                                    TextColor="{Binding TextColor}" />
                             </StackLayout>
                         </Frame>
                         <StackLayout Orientation="Horizontal">
-                            <Entry x:Name="entryCariArama" TextColor="{Binding TextColor}" PlaceholderColor="LightGray" Placeholder="Ara..." WidthRequest="200" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
-                            <Button x:Name="btnCariArama" ImageSource="search24px" Text="Ara" BackgroundColor="Transparent" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" CornerRadius="15" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            <Entry
+                                x:Name="entryCariArama"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Ara..."
+                                PlaceholderColor="LightGray"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="200" />
+                            <Button
+                                x:Name="btnCariArama"
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HorizontalOptions="EndAndExpand"
+                                ImageSource="search24px"
+                                Text="Ara"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
                         </StackLayout>
-                        <Picker x:Name="pickerCariListe" SelectedIndexChanged="pickerCariListe_SelectedIndexChanged" HorizontalOptions="Start" Title="Liste" TitleColor="LightGray" WidthRequest="100" TextColor="{Binding TextColor}"/>
+                        <Picker
+                            x:Name="pickerCariListe"
+                            Title="Liste"
+                            HorizontalOptions="Start"
+                            SelectedIndexChanged="pickerCariListe_SelectedIndexChanged"
+                            TextColor="{Binding TextColor}"
+                            TitleColor="LightGray"
+                            WidthRequest="100" />
                         <StackLayout x:Name="MainListView">
-                            <!-- List items -->
+                            <!--  List items  -->
                         </StackLayout>
-                    </StackLayout>                    
+                    </StackLayout>
                 </Frame>
             </StackLayout>
         </ScrollView>
     </Grid>
-    
+
     <!--#region Liste Tam Xaml
     <Frame CornerRadius="15" BackgroundColor="{Binding BackgroundColor}" BorderColor="{Binding BorderColor}" Margin="-15,0,-15,0">
                                 <StackLayout>

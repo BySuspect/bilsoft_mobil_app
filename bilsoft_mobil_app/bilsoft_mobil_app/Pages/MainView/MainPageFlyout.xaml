@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.MainView"
-             xmlns:pages="clr-namespace:bilsoft_mobil_app.Pages"
-             x:Class="bilsoft_mobil_app.Pages.MainView.MainPageFlyout"
-             Title="Flyout" BackgroundColor="{Binding BackgroundColor}">
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.MainView.MainPageFlyout"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.MainView"
+    xmlns:pages="clr-namespace:bilsoft_mobil_app.Pages"
+    Title="Flyout"
+    BackgroundColor="{Binding BackgroundColor}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="test1"/>
+        <ToolbarItem Text="test1" />
     </ContentPage.ToolbarItems>
     <StackLayout>
         <ListView x:Name="MenulistView" x:FieldModifier="public">
             <ListView.Header>
-                <Image Source="Bilsoft_Logo.png" Margin="0,20,0,20"/>
+                <Image Margin="0,20,0,20" Source="Bilsoft_Logo.png" />
             </ListView.Header>
             <!--Ana Menu Itemleri
                 <ListView.ItemsSource>
@@ -32,21 +34,36 @@
                         <local:MainPageFlyoutMenuItem Title="Ajanda◀"           IconSource="book32px.png"       TargetType="{x:Type pages:MainContentPage}" name="btnAjanda"/>
                     </x:Array>
                 </ListView.ItemsSource>
-                -->
+            -->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Padding="0,0,0,0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="0">
-                            <Grid HorizontalOptions="Center" Margin="{Binding margin}">
+                        <Frame
+                            Padding="0,0,0,0"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="0">
+                            <Grid Margin="{Binding margin}" HorizontalOptions="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="110" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Image Grid.Column="0" Source="{Binding IconSource}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                <Label Grid.Column="1" Text="{Binding Title}" TextColor="{Binding TextColor}" FontSize="{Binding fontSize}" HorizontalTextAlignment="Start" Padding="0,0,-50,0" VerticalTextAlignment="Center"/>
+                                <Image
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding IconSource}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Padding="0,0,-50,0"
+                                    FontSize="{Binding fontSize}"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Title}"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalTextAlignment="Center" />
                             </Grid>
                         </Frame>
                     </ViewCell>

@@ -1,7 +1,11 @@
 ﻿using bilsoft_mobil_app.Helper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,9 +29,10 @@ namespace bilsoft_mobil_app.Pages
         #endregion
         public FaturalarPage()
         {
-            BindingContext = this;
+            //BindingContext = this;
             InitializeComponent();
-            MainListView.Children.Clear();
+            BindingContext = new ListViewModel();
+            //MainListView.Children.Clear();
             for (int i = 0; i < 10; i++)
             {
                 CreateList(i);
@@ -203,7 +208,30 @@ namespace bilsoft_mobil_app.Pages
             ListGrid.Children.Add(btnAc, 1, 0);
             Grid.SetRowSpan(btnAc, 2);
             mainFrame.Content = mainStacklayout;
-            MainListView.Children.Add(mainFrame);
+            //MainListView.Children.Add(mainFrame);
+        }
+        private class ListViewModel : INotifyPropertyChanged
+        {
+            #region renk Bindleri
+            public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
+            public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
+            public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
+            public Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+            public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
+            public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
+            #endregion
+            public ObservableCollection<FaturaListVeriler> MenuItems { get; set; }
+
+            #region INotifyPropertyChanged Implementation
+            public event PropertyChangedEventHandler PropertyChanged;
+            void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                if (PropertyChanged == null)
+                    return;
+
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            #endregion
         }
     }
 }

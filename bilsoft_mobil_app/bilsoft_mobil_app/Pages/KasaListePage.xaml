@@ -1,52 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="bilsoft_mobil_app.Pages.KasaListePage"
-             BackgroundImageSource="background.jpg" Title="Kasa">
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.KasaListePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Kasa"
+    BackgroundImageSource="background.jpg">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="btnToolbarOpenpopup" Clicked="btnToolbarOpenpopup_Clicked" IconImageSource="toolbar_menu24px.png" Priority="2"/>
-        <ToolbarItem x:Name="btnToolbarOpenUserPopup" Clicked="btnToolbarOpenUserPopup_Clicked" IconImageSource="toolbar_user24px.png" Priority="1"/>
-        <ToolbarItem x:Name="btnToolbarRefesh" Clicked="btnToolbarRefesh_Clicked" IconImageSource="toolbar_refesh24px.png" Priority="0"/>
+        <ToolbarItem
+            x:Name="btnToolbarOpenpopup"
+            Clicked="btnToolbarOpenpopup_Clicked"
+            IconImageSource="toolbar_menu24px.png"
+            Priority="2" />
+        <ToolbarItem
+            x:Name="btnToolbarOpenUserPopup"
+            Clicked="btnToolbarOpenUserPopup_Clicked"
+            IconImageSource="toolbar_user24px.png"
+            Priority="1" />
+        <ToolbarItem
+            x:Name="btnToolbarRefesh"
+            Clicked="btnToolbarRefesh_Clicked"
+            IconImageSource="toolbar_refesh24px.png"
+            Priority="0" />
     </ContentPage.ToolbarItems>
     <Grid>
         <!--#region Main Content-->
         <ScrollView>
-            <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-                <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15" BorderColor="{Binding BorderColor}" Margin="15,15,15,5">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Button Text="Ekle" FontSize="Caption" BackgroundColor="Transparent" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Button Text="Raporlar" FontSize="Caption" BackgroundColor="Transparent" ImageSource="raports20px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Frame
+                    Margin="15,15,15,5"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Button
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            CornerRadius="15"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Ekle"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Center" />
+                        <Button
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            CornerRadius="15"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            ImageSource="raports20px.png"
+                            Text="Raporlar"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
-                <Frame BackgroundColor="{Binding CardBackgroundColor}" BorderColor="{Binding BorderColor}" CornerRadius="15" Margin="15,0,15,5">
+                <Frame
+                    Margin="15,0,15,5"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15">
                     <StackLayout VerticalOptions="Fill">
-                        <Frame BackgroundColor="{Binding BackgroundColor}" Margin="-20,-20,-20,0" CornerRadius="15">
-                            <StackLayout Orientation="Horizontal" Margin="-10">
-                                <Image Source="users20px.png"/>
-                                <Label Text="Kasa Listesi" FontSize="Body" TextColor="{Binding TextColor}"/>
+                        <Frame
+                            Margin="-20,-20,-20,0"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="15">
+                            <StackLayout Margin="-10" Orientation="Horizontal">
+                                <Image Source="users20px.png" />
+                                <Label
+                                    FontSize="Body"
+                                    Text="Kasa Listesi"
+                                    TextColor="{Binding TextColor}" />
                             </StackLayout>
                         </Frame>
                         <Grid>
-                            <StackLayout x:Name="MainListView" Grid.Row="0" Grid.ColumnSpan="3">
-                                <Frame CornerRadius="15" BackgroundColor="{Binding BackgroundColor}" BorderColor="{Binding BorderColor}" Margin="-15,0,-15,0">
+                            <StackLayout
+                                x:Name="MainListView"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="3">
+                                <Frame
+                                    Margin="-15,0,-15,0"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15">
                                     <StackLayout>
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label FontSize="Medium" TextColor="{Binding TextColor}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="-5,-10,-5,1">
+                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                            <Label
+                                                Margin="-5,-10,-5,1"
+                                                FontSize="Medium"
+                                                HorizontalOptions="StartAndExpand"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="1." FontSize="Medium"/>
+                                                        <Span FontSize="Medium" Text="1." />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label FontSize="Medium" TextColor="{Binding TextColor}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="-50,-10,0,1">
+                                            <Label
+                                                Margin="-50,-10,0,1"
+                                                FontSize="Medium"
+                                                HorizontalOptions="EndAndExpand"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="Varsayılan Kasa"/>
+                                                        <Span Text="Varsayılan Kasa" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
-                                        <BoxView Color="{Binding BorderColor}" HeightRequest="1" Margin="-20,0"/>
+                                        <BoxView
+                                            Margin="-20,0"
+                                            HeightRequest="1"
+                                            Color="{Binding BorderColor}" />
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="35" />
@@ -55,29 +122,63 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="135" />
                                             </Grid.ColumnDefinitions>
-                                            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                                            <StackLayout
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Orientation="Horizontal">
                                                 <Label FontSize="Body" TextColor="{Binding TextColor}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="Açıklama: " TextColor="LightGray" FontSize="Caption"/>
-                                                            <Span Text="Kasa"/>
+                                                            <Span
+                                                                FontSize="Caption"
+                                                                Text="Açıklama: "
+                                                                TextColor="LightGray" />
+                                                            <Span Text="Kasa" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
                                             </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Orientation="Horizontal">
                                                 <Label FontSize="Body" TextColor="{Binding TextColor}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="Bakiye: " TextColor="LightGray" FontSize="Caption"/>
-                                                            <Span Text="0,0₺"/>
+                                                            <Span
+                                                                FontSize="Caption"
+                                                                Text="Bakiye: "
+                                                                TextColor="LightGray" />
+                                                            <Span Text="0,0₺" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
                                             </StackLayout>
-                                            <ImageButton AutomationId="STOKAC1" Grid.Row="0" Grid.Column="1" Clicked="ListAcButton_Clicked" VerticalOptions="Center" Source="edit32px.png" HorizontalOptions="End" CornerRadius="15" BackgroundColor="{Binding Success}" Padding="5,5,5,5" HeightRequest="35"/>
-                                            <ImageButton AutomationId="STOKAC1" Grid.Row="1" Grid.Column="1" Clicked="ListAcButton_Clicked" VerticalOptions="Center" Source="edit32px.png" HorizontalOptions="End" CornerRadius="15" BackgroundColor="Red" Padding="5,5,5,5" HeightRequest="35"/>
-                                            
+                                            <ImageButton
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Padding="5,5,5,5"
+                                                AutomationId="STOKAC1"
+                                                BackgroundColor="{Binding Success}"
+                                                Clicked="ListAcButton_Clicked"
+                                                CornerRadius="15"
+                                                HeightRequest="35"
+                                                HorizontalOptions="End"
+                                                Source="edit32px.png"
+                                                VerticalOptions="Center" />
+                                            <ImageButton
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Padding="5,5,5,5"
+                                                AutomationId="STOKAC1"
+                                                BackgroundColor="Red"
+                                                Clicked="ListAcButton_Clicked"
+                                                CornerRadius="15"
+                                                HeightRequest="35"
+                                                HorizontalOptions="End"
+                                                Source="edit32px.png"
+                                                VerticalOptions="Center" />
+
                                         </Grid>
                                     </StackLayout>
                                 </Frame>
@@ -90,46 +191,223 @@
         <!--#endregion-->
 
         <!--#region popUplar-->
-        <Frame x:Name="btnpopupMenuReturnBackground" IsVisible="false" BackgroundColor="#AA000000"></Frame>
-        <Button x:Name="btnpopupMenuReturnBack" IsVisible="false" Clicked="btnpopupMenuReturnBack_Clicked" BackgroundColor="#00000000" VerticalOptions="Fill"/>
+        <Frame
+            x:Name="btnpopupMenuReturnBackground"
+            BackgroundColor="#AA000000"
+            IsVisible="false" />
+        <Button
+            x:Name="btnpopupMenuReturnBack"
+            BackgroundColor="#00000000"
+            Clicked="btnpopupMenuReturnBack_Clicked"
+            IsVisible="false"
+            VerticalOptions="Fill" />
 
         <!--#region Kullanici Menüsü-->
-        <Grid x:Name="userSettingsView" HorizontalOptions="End" VerticalOptions="Start" TranslationY="-370" TranslationX="-40">
-            <BoxView x:Name="toolbarUserSettingsView" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="Fill" HeightRequest="270" CornerRadius="15"/>
-            <StackLayout TranslationY="50" TranslationX="0" Padding="5,0,5,0">
-                <Button x:Name="toolbarPopupbtnMailAyarlari" Text="Mail Ayarları" ImageSource="mailsettings24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
-                <Button x:Name="toolbarPopupbtnYetkiAyarlari" Text="Yetki Ayarları" ImageSource="usersettings24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
-                <Button x:Name="toolbarPopupbtnFirmaInfo" Text="Firma Bilgileri" ImageSource="info24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
-                <Button x:Name="toolbarPopupbtnLogout" Text="Çıkış Yap" Clicked="toolbarPopupbtnLogout_Clicked" ImageSource="logout24px.png" CornerRadius="15" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BorderWidth="1" BackgroundColor="Transparent"/>
+        <Grid
+            x:Name="userSettingsView"
+            HorizontalOptions="End"
+            TranslationX="-40"
+            TranslationY="-370"
+            VerticalOptions="Start">
+            <BoxView
+                x:Name="toolbarUserSettingsView"
+                CornerRadius="15"
+                HeightRequest="270"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
+                Color="{Binding ToolBarColor}" />
+            <StackLayout
+                Padding="5,0,5,0"
+                TranslationX="0"
+                TranslationY="50">
+                <Button
+                    x:Name="toolbarPopupbtnMailAyarlari"
+                    BackgroundColor="Transparent"
+                    BorderColor="{Binding BorderColor}"
+                    BorderWidth="1"
+                    CornerRadius="15"
+                    ImageSource="mailsettings24px.png"
+                    Text="Mail Ayarları"
+                    TextColor="{Binding TextColor}" />
+                <Button
+                    x:Name="toolbarPopupbtnYetkiAyarlari"
+                    BackgroundColor="Transparent"
+                    BorderColor="{Binding BorderColor}"
+                    BorderWidth="1"
+                    CornerRadius="15"
+                    ImageSource="usersettings24px.png"
+                    Text="Yetki Ayarları"
+                    TextColor="{Binding TextColor}" />
+                <Button
+                    x:Name="toolbarPopupbtnFirmaInfo"
+                    BackgroundColor="Transparent"
+                    BorderColor="{Binding BorderColor}"
+                    BorderWidth="1"
+                    CornerRadius="15"
+                    ImageSource="info24px.png"
+                    Text="Firma Bilgileri"
+                    TextColor="{Binding TextColor}" />
+                <Button
+                    x:Name="toolbarPopupbtnLogout"
+                    BackgroundColor="Transparent"
+                    BorderColor="{Binding BorderColor}"
+                    BorderWidth="1"
+                    Clicked="toolbarPopupbtnLogout_Clicked"
+                    CornerRadius="15"
+                    ImageSource="logout24px.png"
+                    Text="Çıkış Yap"
+                    TextColor="{Binding TextColor}" />
             </StackLayout>
         </Grid>
         <!--#endregion-->
 
         <!--#region Sağ Menü-->
-        <AbsoluteLayout x:Name="popupMenuBack" IsVisible="true" HorizontalOptions="End" VerticalOptions="Start" Margin="0,0,-5,0">
-            <BoxView x:Name="popupMenuBackBox" Color="{Binding ToolBarColor}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" WidthRequest="55" HeightRequest="350" TranslationY="-370" CornerRadius="0,0,25,25"/>
-            <Grid HorizontalOptions="Center" WidthRequest="60" VerticalOptions="Start" TranslationY="-45">
+        <AbsoluteLayout
+            x:Name="popupMenuBack"
+            Margin="0,0,-5,0"
+            HorizontalOptions="End"
+            IsVisible="true"
+            VerticalOptions="Start">
+            <BoxView
+                x:Name="popupMenuBackBox"
+                CornerRadius="0,0,25,25"
+                HeightRequest="350"
+                HorizontalOptions="EndAndExpand"
+                TranslationY="-370"
+                VerticalOptions="Start"
+                WidthRequest="55"
+                Color="{Binding ToolBarColor}" />
+            <Grid
+                HorizontalOptions="Center"
+                TranslationY="-45"
+                VerticalOptions="Start"
+                WidthRequest="60">
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemPanel" IsVisible="false" ImageSource="home24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemPanel" Text="Panel" TranslationY="56" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemPanel"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="home24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemPanel"
+                    Padding="-20,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Panel"
+                    TextColor="white"
+                    TranslationY="56" />
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemAra" IsVisible="false" ImageSource="search24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" />
-                <Label x:Name="lblPopUpMenuItemAra" Text="Hızlı Arama" TranslationY="93" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemAra"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="search24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemAra"
+                    Padding="-40,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Hızlı Arama"
+                    TextColor="white"
+                    TranslationY="93" />
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemCariIslem" IsVisible="false" ImageSource="file_dolar24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemCariIslem" Text="Cari İşlemler" TranslationY="134" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemCariIslem"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="file_dolar24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemCariIslem"
+                    Padding="-40,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Cari İşlemler"
+                    TextColor="white"
+                    TranslationY="134" />
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemStokKartlari" IsVisible="false" ImageSource="dropbox24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemStokKartlari" Text="Stok Kartları" TranslationY="173" IsVisible="false" FontSize="15" TextColor="white" Padding="-40,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemStokKartlari"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="dropbox24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemStokKartlari"
+                    Padding="-40,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Stok Kartları"
+                    TextColor="white"
+                    TranslationY="173" />
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemSatisYap" IsVisible="false" ImageSource="sales24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemSatisYap" Text="Satış Yap" TranslationY="213" IsVisible="false" FontSize="15" TextColor="white" Padding="-30,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemSatisYap"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="sales24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemSatisYap"
+                    Padding="-30,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Satış Yap"
+                    TextColor="white"
+                    TranslationY="213" />
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemFaturalar" IsVisible="false" ImageSource="fatura24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemFaturalar" Text="Faturalar" TranslationY="255" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemFaturalar"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="fatura24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemFaturalar"
+                    Padding="-20,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Faturalar"
+                    TextColor="white"
+                    TranslationY="255" />
 
-                <Button TranslationX="-2" x:Name="btnPopUpMenuItemFiyatGor" IsVisible="false" ImageSource="lookprice24px.png" CornerRadius="255" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent"/>
-                <Label x:Name="lblPopUpMenuItemFiyatGor" Text="Fiyat Gör" TranslationY="297" IsVisible="false" FontSize="15" TextColor="white" Padding="-20,0"/>
+                <Button
+                    x:Name="btnPopUpMenuItemFiyatGor"
+                    BackgroundColor="Transparent"
+                    CornerRadius="255"
+                    HeightRequest="40"
+                    ImageSource="lookprice24px.png"
+                    IsVisible="false"
+                    TranslationX="-2"
+                    WidthRequest="40" />
+                <Label
+                    x:Name="lblPopUpMenuItemFiyatGor"
+                    Padding="-20,0"
+                    FontSize="15"
+                    IsVisible="false"
+                    Text="Fiyat Gör"
+                    TextColor="white"
+                    TranslationY="297" />
 
             </Grid>
         </AbsoluteLayout>
