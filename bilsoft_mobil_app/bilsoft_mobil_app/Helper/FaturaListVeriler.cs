@@ -26,6 +26,7 @@ namespace bilsoft_mobil_app.Helper
         public string tur { get; set; }
         public string odemetip { get; set; }
         public string aciklama { get; set; }
-        public int no { get; set; }
+        public string no { get; set; }
+        public string btnId { get; set; }
     }
 }

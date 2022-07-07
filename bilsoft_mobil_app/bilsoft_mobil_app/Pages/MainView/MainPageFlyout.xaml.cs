@@ -17,9 +17,10 @@ namespace bilsoft_mobil_app.Pages.MainView
     public partial class MainPageFlyout : ContentPage
     {
         ObservableCollection<MainPageFlyoutMenuItem> _listItemsSource = new ObservableCollection<MainPageFlyoutMenuItem>();
+        
+        /* Kullanım Dışı
         public ListView _listViewAnaMenuler = new ListView();
-        public ListView _listViewAltMenuler = new ListView();
-        public ListView _listViewTest = new ListView();
+        public ListView _listViewAltMenuler = new ListView();/**/
 
         string ajandaName = "Ajanda◀",//"Ajanda▼"
                cariName = "Cari◀",//"Cari▼"
@@ -789,7 +790,6 @@ namespace bilsoft_mobil_app.Pages.MainView
 
                 }
             };
-            _listViewTest.ItemsSource = _listViewAnaMenuler.ItemsSource;
             MenulistView.ItemsSource = _listViewAnaMenuler.ItemsSource;
         }
          */

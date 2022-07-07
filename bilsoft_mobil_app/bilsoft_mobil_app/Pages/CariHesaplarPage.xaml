@@ -20,6 +20,7 @@
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 BorderWidth="1"
+                                Clicked="btnYeniCari_Clicked"
                                 CornerRadius="15"
                                 FontSize="Caption"
                                 HorizontalOptions="Start"

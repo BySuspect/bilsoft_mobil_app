@@ -1,10 +1,12 @@
 ﻿using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Pages.popUplar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -236,7 +238,7 @@ namespace bilsoft_mobil_app.Pages
                                     Text="0543 232 41 26"
                                 }
                             }
-                        }                        
+                        }
                     }
                 }
             };
@@ -278,6 +280,12 @@ namespace bilsoft_mobil_app.Pages
         private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnYeniCari_Clicked(object sender, EventArgs e)
+        {
+            Popup popup = new CariEklePopup();
+            App.Current.MainPage.Navigation.ShowPopup(popup);
         }
     }
 }

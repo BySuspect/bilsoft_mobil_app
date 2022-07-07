@@ -41,7 +41,11 @@ namespace bilsoft_mobil_app.Pages
 
         private void AcButton_Clicked(object sender, EventArgs e)
         {
+            var btn = sender as Button;
+            if (btn.AutomationId == "btn1")
+            {
 
+            }
         }
         void CreateList(int count)
         {

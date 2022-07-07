@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="bilsoft_mobil_app.Pages.popUplar.CariEklePopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Behaviors"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xct:Color="Transparent"
+    xct:HeightRequest="200">
+    <StackLayout Padding="0,100,0,100">
+        <Frame
+            BackgroundColor="{Binding CardBackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15">
+            <StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <Image Source="users32px.png" />
+                    <Label
+                        FontSize="Medium"
+                        Text="Yeni Cari Ekleme"
+                        TextColor="{Binding TextColor}" />
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout>
+                            <Label
+                                FontSize="Medium"
+                                Text="Cari Bilgileri"
+                                TextColor="{Binding TextColor}" />
+                            <Entry
+                                Placeholder="Hesap/Firma Adı:"
+                                PlaceholderColor="{Binding TextColor}"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Start" />
+                            <Picker
+                                Title="Grup"
+                                TextColor="{Binding TextColor}"
+                                TitleColor="{Binding TextColor}" />
+                            <Entry
+                                Placeholder="Yetkili:"
+                                PlaceholderColor="{Binding TextColor}"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Start" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label
+                                FontSize="Medium"
+                                Text="Risk Limiti Tanımlama"
+                                TextColor="{Binding TextColor}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry
+                                    x:Name="entryRiskLimit"
+                                    HorizontalOptions="Start"
+                                    Keyboard="Numeric"
+                                    Text="0"
+                                    TextColor="{Binding TextColor}"
+                                    Unfocused="entryRiskLimit_Unfocused"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50">
+                                    <Entry.Behaviors>
+                                        <local:NumericValidationBehavior />
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Stepper
+                                    x:Name="stpRiskLimit"
+                                    HorizontalOptions="EndAndExpand"
+                                    Increment="1"
+                                    Maximum="1000"
+                                    Minimum="0"
+                                    ValueChanged="stpRiskLimit_ValueChanged"
+                                    VerticalOptions="Center"
+                                    Value="0" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</xct:Popup>

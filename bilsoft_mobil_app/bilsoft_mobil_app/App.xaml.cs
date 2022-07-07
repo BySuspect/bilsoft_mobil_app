@@ -27,10 +27,12 @@ namespace bilsoft_mobil_app
                 BarBackgroundColor = Color.FromHex("#ffa600")
             };/**/
 
-            //Test Page
+            //Ana Sayfa 3. tip
             //MainPage = new MainPage();
+
+            //Test Page
             //MainPage = new MainMenuPage();
-            MainPage = new NavigationPage(new FaturalarPage())
+            MainPage = new NavigationPage(new CariHesaplarPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent
