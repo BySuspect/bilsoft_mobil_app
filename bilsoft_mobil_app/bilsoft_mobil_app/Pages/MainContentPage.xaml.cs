@@ -11,6 +11,7 @@ using bilsoft_mobil_app.Helper;
 using Xamarin.Essentials;
 using Android.Content.Res;
 using bilsoft_mobil_app.Pages.MainView;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -24,7 +25,6 @@ namespace bilsoft_mobil_app.Pages
     public partial class MainContentPage : ContentPage
     {
         string mod = null, donemYili = null;
-
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
         public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
@@ -883,7 +883,7 @@ namespace bilsoft_mobil_app.Pages
         #endregion        
 
         #region btnAnaSayfa
-        private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
+        private async void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
         {
             Navigation.InsertPageBefore(new FaturalarPage(), this);
             await Navigation.PopAsync();

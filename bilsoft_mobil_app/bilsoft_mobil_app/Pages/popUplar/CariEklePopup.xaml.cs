@@ -58,10 +58,15 @@ namespace bilsoft_mobil_app.Pages.popUplar
 
         private void btnAddSevkAdrs_Clicked(object sender, EventArgs e)
         {
-            sevkAdresEkleGrid.IsVisible = true;
+            sevkAdresEkleView.IsVisible = true;
         }
 
         private void btnKaydet_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdressKaydet_Clicked(object sender, EventArgs e)
         {
 
         }

@@ -23,8 +23,11 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public string ilce { get; set; }
         public string yetkili { get; set; }
         public string postakodu { get; set; }
+        public string fax { get; set; }
         public string tel { get; set; }
         public string ceptel { get; set; }
         public string sevkadres { get; set; }
+        public string mail { get; set; }
+        public string btnId { get; set; }
     }
 }
