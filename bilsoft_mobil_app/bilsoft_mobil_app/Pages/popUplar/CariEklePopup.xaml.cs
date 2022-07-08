@@ -41,5 +41,29 @@ namespace bilsoft_mobil_app.Pages.popUplar
         {
             stpRiskLimit.Value = Convert.ToInt16(entryRiskLimit.Text);
         }
+
+        private void entryVadeTarih_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (Convert.ToInt16(entryVadeTarih.Text) > 31) entryVadeTarih.Text = "31";
+            stpVadeTarih.Value = Convert.ToInt16(entryVadeTarih.Text);
+        }
+
+        private void stpVadeTarih_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            if (Convert.ToInt16(entryVadeTarih.Text) > e.NewValue)
+                stpVadeTarih.Value = 1 + Convert.ToInt16(entryVadeTarih.Text);
+            else
+                entryVadeTarih.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void btnAddSevkAdrs_Clicked(object sender, EventArgs e)
+        {
+            sevkAdresEkleGrid.IsVisible = true;
+        }
+
+        private void btnKaydet_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -3,13 +3,14 @@
     x:Class="bilsoft_mobil_app.Pages.popUplar.CariEklePopup"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:bilsoft_mobil_app.Behaviors"
+    xmlns:behaviors="clr-namespace:bilsoft_mobil_app.Behaviors"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.popUplar"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     xct:Color="Transparent"
     xct:HeightRequest="200">
-    <StackLayout Padding="0,100,0,100">
+    <Grid Padding="0,80,0,80">
         <Frame
-            BackgroundColor="{Binding CardBackgroundColor}"
+            BackgroundColor="{Binding BackgroundColor}"
             BorderColor="{Binding BorderColor}"
             CornerRadius="15">
             <StackLayout>
@@ -58,7 +59,7 @@
                                     VerticalOptions="Center"
                                     WidthRequest="50">
                                     <Entry.Behaviors>
-                                        <local:NumericValidationBehavior />
+                                        <behaviors:NumericValidationBehavior />
                                     </Entry.Behaviors>
                                 </Entry>
                                 <Stepper
@@ -71,10 +72,313 @@
                                     VerticalOptions="Center"
                                     Value="0" />
                             </StackLayout>
+                            <Label
+                                FontSize="Medium"
+                                Text="Vade Tarihi"
+                                TextColor="{Binding TextColor}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry
+                                    x:Name="entryVadeTarih"
+                                    HorizontalOptions="Start"
+                                    Keyboard="Numeric"
+                                    Text="0"
+                                    TextColor="{Binding TextColor}"
+                                    Unfocused="entryVadeTarih_Unfocused"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50">
+                                    <Entry.Behaviors>
+                                        <behaviors:NumericValidationBehavior />
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Stepper
+                                    x:Name="stpVadeTarih"
+                                    HorizontalOptions="EndAndExpand"
+                                    Increment="1"
+                                    Maximum="31"
+                                    Minimum="1"
+                                    ValueChanged="stpVadeTarih_ValueChanged"
+                                    VerticalOptions="Center"
+                                    Value="0" />
+                            </StackLayout>
+                            <Label
+                                FontSize="Medium"
+                                Text="Risk Limiti Aşıldığında:"
+                                TextColor="{Binding TextColor}" />
+                            <RadioButton TextColor="{Binding TextColor}">
+                                <RadioButton.Content>
+                                    İşlem Yaptırma
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton IsChecked="True" TextColor="{Binding TextColor}">
+                                <RadioButton.Content>
+                                    İşlem Yaptır
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton TextColor="{Binding TextColor}">
+                                <RadioButton.Content>
+                                    İşlem Esnasında Onay Al
+                                </RadioButton.Content>
+                            </RadioButton>
+
+                            <Label
+                                FontSize="Medium"
+                                Text="İletişim Bilgileri:"
+                                TextColor="{Binding TextColor}" />
                         </StackLayout>
+
+                        <Entry
+                            x:Name="entryTel"
+                            Placeholder="Telefon:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryFax"
+                            Placeholder="Fax:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryCepTel"
+                            Placeholder="Cep Telefonu:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryMail"
+                            Placeholder="E-Mail:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryWeb"
+                            Placeholder="Web Adresi:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryPostaKod"
+                            Placeholder="Posta Kodu:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryVergiDairesi"
+                            Placeholder="Vergi Dairesi:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryVergiNo"
+                            Placeholder="Vergi No:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entrySicil"
+                            Placeholder="Sicil No:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryUlke"
+                            Placeholder="Ülke:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryİl"
+                            Placeholder="İl:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryİlçe"
+                            Placeholder="İlçe:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Entry
+                            x:Name="entryAdres"
+                            Placeholder="Adres:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Picker
+                            x:Name="pickerSevkAdres"
+                            Title="Sevk Adresi:"
+                            TextColor="{Binding TextColor}"
+                            TitleColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <Button
+                            x:Name="btnAddSevkAdrs"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnAddSevkAdrs_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Start"
+                            Text="Sevk Adresi Ekle"
+                            TextColor="{Binding TextColor}" />
+
+                        <Entry
+                            x:Name="entryCariKod"
+                            Placeholder="Cari Kod:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+
+                        <Button
+                            x:Name="btnKaydet"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnKaydet_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="End"
+                            Text="Kaydet"
+                            TextColor="{Binding TextColor}" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
         </Frame>
-    </StackLayout>
+        <Grid x:Name="sevkAdresEkleGrid" IsVisible="false">
+            <Frame BackgroundColor="{Binding CardBackgroundColor}" CornerRadius="15">
+                <ListView
+                    x:Name="AdreslistView"
+                    x:FieldModifier="public"
+                    HasUnevenRows="True"
+                    SelectionMode="None">
+                    <ListView.Header>
+                        <StackLayout />
+
+                    </ListView.Header>
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:SevkAdresiVeriler}">
+                            <local:SevkAdresiVeriler />
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15">
+                                    <xct:Expander>
+                                        <xct:Expander.Header>
+                                            <Grid>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontSize="Medium"
+                                                    Text="{Binding unvan}"
+                                                    TextColor="{Binding TextColor}" />
+                                            </Grid>
+                                        </xct:Expander.Header>
+                                        <xct:Expander.ContentTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        FontSize="Caption"
+                                                        TextColor="{Binding TextColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Yetkili: " />
+                                                                <Span FontSize="Body" Text="{Binding yetkili}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        FontSize="Caption"
+                                                        TextColor="{Binding TextColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="No: " />
+                                                                <Span FontSize="Body" Text="{Binding no}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        FontSize="Body"
+                                                        TextColor="{Binding TextColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding tarih}" />
+                                                                <Span Text=" | " />
+                                                                <Span Text="{Binding saat}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="3"
+                                                        FontSize="Caption"
+                                                        TextColor="{Binding TextColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="G,Toplam: " />
+                                                                <Span FontSize="Body" Text="{Binding gtop}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="4"
+                                                        FontSize="Caption"
+                                                        TextColor="{Binding TextColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Ödeme Şekl: " />
+                                                                <Span FontSize="Body" Text="{Binding odemetip}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="5"
+                                                        FontSize="Caption"
+                                                        TextColor="{Binding TextColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Açıklama: " />
+                                                                <Span FontSize="Body" Text="{Binding aciklama}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Button
+                                                        x:Name="btnIncele"
+                                                        Grid.Row="6"
+                                                        AutomationId="{Binding btnId}"
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{Binding BorderColor}"
+                                                        BorderWidth="1"
+                                                        CornerRadius="15"
+                                                        HorizontalOptions="Fill"
+                                                        Text="İncele"
+                                                        TextColor="{Binding TextColor}"
+                                                        VerticalOptions="Start" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </xct:Expander.ContentTemplate>
+                                    </xct:Expander>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+        </Grid>
+    </Grid>
 </xct:Popup>

@@ -885,21 +885,6 @@ namespace bilsoft_mobil_app.Pages
         #region btnAnaSayfa
         private void btnAnaSayfaFaturalar_Clicked(object sender, EventArgs e)
         {
-            var bt = (ImageButton)sender;
-            //DisplayAlert("", bt.Source.ToString(), "ok");
-            var test1 = Navigation.ModalStack;
-            var test2 = Navigation.NavigationStack;
-            try
-            {
-                //ResetNavigationStack();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-        public async void ResetNavigationStack()
-        {
             Navigation.InsertPageBefore(new FaturalarPage(), this);
             await Navigation.PopAsync();
         }
