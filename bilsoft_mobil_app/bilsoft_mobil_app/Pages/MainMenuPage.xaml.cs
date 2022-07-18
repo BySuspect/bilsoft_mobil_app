@@ -445,9 +445,9 @@ namespace bilsoft_mobil_app.Pages
         private void MainScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
             lblScrollTest.Text = "ScrollY: " + MainScrollView.ScrollY;
-        #if DEBUG
+#if DEBUG
             lblScrollTest.IsVisible = true;
-        #endif
+#endif
         }
 
         [Obsolete]

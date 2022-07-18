@@ -4,7 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:bilsoft_mobil_app.Behaviors"
-    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.popUplar"
+    xmlns:cb="clr-namespace:Xamarin.Forms.ComboBox"
+    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     xct:Color="Transparent"
     xct:HeightRequest="200">
@@ -21,23 +23,45 @@
                         Text="Yeni Cari Ekleme"
                         TextColor="{Binding TextColor}" />
                 </StackLayout>
-                <ScrollView>
+                <ScrollView Scrolled="ScrollView_Scrolled">
                     <StackLayout>
                         <StackLayout>
                             <Label
                                 FontSize="Medium"
                                 Text="Cari Bilgileri"
                                 TextColor="{Binding TextColor}" />
-                            <Entry
+                            <customitems:CustomEntry
+                                x:Name="entryAd"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15"
+                                HorizontalTextAlignment="Start"
                                 Placeholder="Hesap/Firma Adı:"
                                 PlaceholderColor="{Binding TextColor}"
                                 TextColor="{Binding TextColor}"
                                 VerticalOptions="Start" />
-                            <Picker
-                                Title="Grup"
-                                TextColor="{Binding TextColor}"
-                                TitleColor="{Binding TextColor}" />
-                            <Entry
+                            <cb:ComboBox
+                                x:Name="cbGrup"
+                                BackgroundColor="Transparent"
+                                ItemsSource="{Binding ItemsSource}"
+                                Placeholder="Grup:"
+                                SelectedItemChanged="ComboBox_SelectedItemChanged"
+                                Visual="Default">
+                                <cb:ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label
+                                                Padding="5,5,0,0"
+                                                Text="{Binding .}"
+                                                TextColor="White" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </cb:ComboBox.ItemTemplate>
+                            </cb:ComboBox>
+                            <customitems:CustomEntry
+                                x:Name="entryYetkili"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15"
+                                HorizontalTextAlignment="Start"
                                 Placeholder="Yetkili:"
                                 PlaceholderColor="{Binding TextColor}"
                                 TextColor="{Binding TextColor}"
@@ -49,9 +73,13 @@
                                 Text="Risk Limiti Tanımlama"
                                 TextColor="{Binding TextColor}" />
                             <StackLayout Orientation="Horizontal">
-                                <Entry
+                                <customitems:NumericUpDown />
+                                <customitems:CustomEntry
                                     x:Name="entryRiskLimit"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15"
                                     HorizontalOptions="Start"
+                                    HorizontalTextAlignment="Start"
                                     Keyboard="Numeric"
                                     Text="0"
                                     TextColor="{Binding TextColor}"
@@ -61,7 +89,7 @@
                                     <Entry.Behaviors>
                                         <behaviors:NumericValidationBehavior />
                                     </Entry.Behaviors>
-                                </Entry>
+                                </customitems:CustomEntry>
                                 <Stepper
                                     x:Name="stpRiskLimit"
                                     HorizontalOptions="EndAndExpand"
@@ -77,9 +105,12 @@
                                 Text="Vade Tarihi"
                                 TextColor="{Binding TextColor}" />
                             <StackLayout Orientation="Horizontal">
-                                <Entry
+                                <customitems:CustomEntry
                                     x:Name="entryVadeTarih"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15"
                                     HorizontalOptions="Start"
+                                    HorizontalTextAlignment="Start"
                                     Keyboard="Numeric"
                                     Text="0"
                                     TextColor="{Binding TextColor}"
@@ -89,7 +120,7 @@
                                     <Entry.Behaviors>
                                         <behaviors:NumericValidationBehavior />
                                     </Entry.Behaviors>
-                                </Entry>
+                                </customitems:CustomEntry>
                                 <Stepper
                                     x:Name="stpVadeTarih"
                                     HorizontalOptions="EndAndExpand"
@@ -126,80 +157,122 @@
                                 TextColor="{Binding TextColor}" />
                         </StackLayout>
 
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryTel"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Telefon:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
-                            x:Name="entryFax"
-                            Placeholder="Fax:"
-                            PlaceholderColor="{Binding TextColor}"
-                            TextColor="{Binding TextColor}"
-                            VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryCepTel"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Cep Telefonu:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
+                            x:Name="entryFax"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
+                            Placeholder="Fax:"
+                            PlaceholderColor="{Binding TextColor}"
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Start" />
+                        <customitems:CustomEntry
                             x:Name="entryMail"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
+                            Keyboard="Email"
                             Placeholder="E-Mail:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryWeb"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
+                            Keyboard="Url"
                             Placeholder="Web Adresi:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryPostaKod"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
+                            Keyboard="Numeric"
                             Placeholder="Posta Kodu:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryVergiDairesi"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Vergi Dairesi:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryVergiNo"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Vergi No:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entrySicil"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Sicil No:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryUlke"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Ülke:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
-                            x:Name="entryİl"
+                        <customitems:CustomEntry
+                            x:Name="entryIl"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="İl:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
-                            x:Name="entryİlçe"
+                        <customitems:CustomEntry
+                            x:Name="entryIlce"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="İlçe:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
                             VerticalOptions="Start" />
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryAdres"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Adres:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
@@ -221,8 +294,11 @@
                             Text="Sevk Adresi Ekle"
                             TextColor="{Binding TextColor}" />
 
-                        <Entry
+                        <customitems:CustomEntry
                             x:Name="entryCariKod"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalTextAlignment="Start"
                             Placeholder="Cari Kod:"
                             PlaceholderColor="{Binding TextColor}"
                             TextColor="{Binding TextColor}"
@@ -308,8 +384,8 @@
                                 <StackLayout />
                             </ListView.Header>
                             <ListView.ItemsSource>
-                                <x:Array Type="{x:Type local:SevkAdresiVeriler}">
-                                    <local:SevkAdresiVeriler
+                                <x:Array Type="{x:Type popup:SevkAdresiVeriler}">
+                                    <popup:SevkAdresiVeriler
                                         btnId="btn1"
                                         ceptel="055555555531"
                                         fax="31515315125"

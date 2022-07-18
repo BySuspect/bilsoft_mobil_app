@@ -26,7 +26,7 @@ namespace bilsoft_mobil_app
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)

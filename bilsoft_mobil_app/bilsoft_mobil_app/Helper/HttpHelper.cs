@@ -31,10 +31,10 @@ namespace bilsoft_mobil_app.Helper
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    content = await httpResponse.Content.ReadAsStringAsync();                   
+                    content = await httpResponse.Content.ReadAsStringAsync();
                     APIHelper.loginData = content;
                     res.data = content;
-                    
+
                 }
                 else
                 {

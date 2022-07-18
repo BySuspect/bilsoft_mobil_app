@@ -23,5 +23,5 @@ namespace bilsoft_mobil_app.Helper
         public static List<String> logindonemYil { get; set; } = new List<string>();
         public static string secilenlogindonemYil { get; set; }
         public static string SonAcilanSayfa { get; set; }
-}
+    }
 }

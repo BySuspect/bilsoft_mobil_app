@@ -107,7 +107,7 @@ namespace bilsoft_mobil_app.Pages
 
                     btnDonemPopupIptal.Clicked += (s, e) =>
                     {
-                        GirisDonemLayout.IsVisible = false; 
+                        GirisDonemLayout.IsVisible = false;
                         Loodinglayout.IsVisible = false;
                         LoodingActivity.IsVisible = false;
                         LoodingActivity.IsRunning = false;
@@ -142,7 +142,7 @@ namespace bilsoft_mobil_app.Pages
                             }
                             else
                                 await DisplayAlert("Hata", tokenData.message.ToString(), "Tamam");
-                            
+
                             Loodinglayout.IsVisible = false;
                             LoodingActivity.IsVisible = false;
                             LoodingActivity.IsRunning = false;
@@ -174,7 +174,7 @@ namespace bilsoft_mobil_app.Pages
                          APIHelper.veritabaniAd = null;
                          APIHelper.logindonemYil.Clear();
                      }/**/
-                }             
+                }
 
                 Loodinglayout.IsVisible = false;
                 LoodingActivity.IsVisible = false;
@@ -215,8 +215,8 @@ namespace bilsoft_mobil_app.Pages
         {
             Loodinglayout.IsVisible = true;
             LoodingActivity.IsVisible = true;
-            LoodingActivity.IsRunning = true; 
-            
+            LoodingActivity.IsRunning = true;
+
             if (Preferences.Get("BeniHatirlaChecked", false))
             {
                 entry_loginvergino.Text = Preferences.Get("BeniHatirlaVergiNo", "");
@@ -271,7 +271,7 @@ namespace bilsoft_mobil_app.Pages
                         if (tokenData.message == null)
                         {
                             APIHelper.secilenlogindonemYil = Preferences.Get("OturumuAcikTutDonem", "Yok");
-                            await Navigation.PushModalAsync(new MainPage(),false);/**/
+                            await Navigation.PushModalAsync(new MainPage(), false);/**/
                         }
                         else
                             await DisplayAlert("Hata", tokenData.message.ToString(), "Tamam");
@@ -282,7 +282,7 @@ namespace bilsoft_mobil_app.Pages
                 {
                     await DisplayAlert("Hata", "Giriş Yapılırken Hata Oluştu Tekrar Deneyiniz", "Tamam");
                 }
-            }            
+            }
 
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsVisible = false;
@@ -295,7 +295,7 @@ namespace bilsoft_mobil_app.Pages
             _logindata = "{ \"vergiNumarasi\": \"" + entry_loginvergino.Text + "\",\"kullaniciAdi\": \"" + entry_loginkullaniciadi.Text + "\",\"kullaniciSifre\": \"" + entry_loginsifre.Text + "\"}";
 
         }
-        void GirisYapConvert(string yil,string subeAd)
+        void GirisYapConvert(string yil, string subeAd)
         {
             _logindata = "{\"vergiNumarasi\":\"" + APIHelper.vergiNo + "\",\"kullaniciAd\":\"" + APIHelper.kullaniciAdi + "\",\"kullaniciSifre\":\"" + APIHelper.kullaniciSifre + "\",\"veritabaniAd\":\"" + APIHelper.veritabaniAd + "\",\"donemYil\":\"" + yil + "\",\"subeAd\":\"" + subeAd + "\",\"apiKullaniciAdi\":\"" + APIHelper.apiKullaniciAdi + "\",\"apiKullaniciSifre\":\"" + APIHelper.apiKullaniciSifre + "\"}";
         }

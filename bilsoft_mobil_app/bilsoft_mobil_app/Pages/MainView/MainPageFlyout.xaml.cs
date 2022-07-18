@@ -17,7 +17,7 @@ namespace bilsoft_mobil_app.Pages.MainView
     public partial class MainPageFlyout : ContentPage
     {
         ObservableCollection<MainPageFlyoutMenuItem> _listItemsSource = new ObservableCollection<MainPageFlyoutMenuItem>();
-        
+
         /* Kullanım Dışı
         public ListView _listViewAnaMenuler = new ListView();
         public ListView _listViewAltMenuler = new ListView();/**/

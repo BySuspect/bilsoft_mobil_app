@@ -4,7 +4,7 @@ using System.Text;
 
 namespace bilsoft_mobil_app.Helper
 {
-    
+
     public class Datatoken
     {
         public string token { get; set; }

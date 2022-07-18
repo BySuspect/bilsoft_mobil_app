@@ -20,9 +20,9 @@ namespace bilsoft_mobil_app.Helper
         public const string _7GunlukKasaCikisColor = "#003b99";
 
         public const string _borderColor = "#90EC1E0F"; //#7AEC5E0F
-        public const string _backgroundColor = "#FF6701";//#ffa600
-        public const string _cardBackgroundColor = "#7AFF6701";//#7AFF6701
-        public const string _toolbarcolor = "#FFA600";//#7AFF6701
+        public const string _backgroundColor = "#FF6701"; //#ffa600
+        public const string _cardBackgroundColor = "#7AFF6701"; //#7AFF6701
+        public const string _toolbarcolor = "#FFA600"; //#7AFF6701
 
         public const string _textColor = "#FFFFFF";
         public const string _textColorKoyu = "#101010";
