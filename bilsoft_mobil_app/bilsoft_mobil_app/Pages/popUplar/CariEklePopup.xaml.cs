@@ -1,4 +1,5 @@
-﻿using bilsoft_mobil_app.Helper;
+﻿using bilsoft_mobil_app.CustomItems;
+using bilsoft_mobil_app.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,27 +57,6 @@ namespace bilsoft_mobil_app.Pages.popUplar
             cbGrup.Text = cbGrup.SelectedItem.ToString();
         }
 
-        private void stpRiskLimit_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            entryRiskLimit.Text = String.Format("{0}", e.NewValue);
-        }
-
-        private void entryRiskLimit_Unfocused(object sender, FocusEventArgs e)
-        {
-            stpRiskLimit.Value = Convert.ToInt16(entryRiskLimit.Text);
-        }
-
-        private void entryVadeTarih_Unfocused(object sender, FocusEventArgs e)
-        {
-            if (Convert.ToInt16(entryVadeTarih.Text) > 31) entryVadeTarih.Text = "31";
-            stpVadeTarih.Value = Convert.ToInt16(entryVadeTarih.Text);
-        }
-
-        private void stpVadeTarih_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            entryVadeTarih.Text = String.Format("{0}", e.NewValue);
-        }
-
         private void btnAddSevkAdrs_Clicked(object sender, EventArgs e)
         {
             sevkAdresEkleView.IsVisible = true;
@@ -97,8 +77,8 @@ namespace bilsoft_mobil_app.Pages.popUplar
             entryAd.Unfocus();
             cbGrup.Unfocus();
             entryYetkili.Unfocus();
-            entryRiskLimit.Unfocus();
-            entryVadeTarih.Unfocus();
+            numRiskLimit.Unfocus();
+            numVadeTarih.Unfocus();
             entryTel.Unfocus();
             entryCepTel.Unfocus();
             entryFax.Unfocus();

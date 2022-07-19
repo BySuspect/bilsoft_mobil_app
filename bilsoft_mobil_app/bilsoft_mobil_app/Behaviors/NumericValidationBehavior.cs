@@ -28,7 +28,5 @@ namespace bilsoft_mobil_app.Behaviors
                 ((Entry)sender).Text = isValid ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
             }
         }
-
-
     }
 }

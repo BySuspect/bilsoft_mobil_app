@@ -72,65 +72,34 @@
                                 FontSize="Medium"
                                 Text="Risk Limiti Tanımlama"
                                 TextColor="{Binding TextColor}" />
-                            <StackLayout Orientation="Horizontal">
-                                <customitems:NumericUpDown />
-                                <customitems:CustomEntry
-                                    x:Name="entryRiskLimit"
-                                    BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalOptions="Start"
-                                    HorizontalTextAlignment="Start"
-                                    Keyboard="Numeric"
-                                    Text="0"
-                                    TextColor="{Binding TextColor}"
-                                    Unfocused="entryRiskLimit_Unfocused"
-                                    VerticalOptions="Center"
-                                    WidthRequest="50">
-                                    <Entry.Behaviors>
-                                        <behaviors:NumericValidationBehavior />
-                                    </Entry.Behaviors>
-                                </customitems:CustomEntry>
-                                <Stepper
-                                    x:Name="stpRiskLimit"
-                                    HorizontalOptions="EndAndExpand"
-                                    Increment="1"
-                                    Maximum="1000"
-                                    Minimum="0"
-                                    ValueChanged="stpRiskLimit_ValueChanged"
-                                    VerticalOptions="Center"
-                                    Value="0" />
-                            </StackLayout>
+
+                            <customitems:NumericUpDown
+                                x:Name="numRiskLimit"
+                                BackgroundColor="Transparent"
+                                ButtonCornerRadius="15"
+                                CornerRadius="15"
+                                DownButtonBackgroundColor="#9EFF0000"
+                                Increment="1"
+                                UpButtonBackgroundColor="#B2008000"
+                                maxValue="1000"
+                                minValue="0"
+                                Value="0" />
                             <Label
                                 FontSize="Medium"
                                 Text="Vade Tarihi"
                                 TextColor="{Binding TextColor}" />
-                            <StackLayout Orientation="Horizontal">
-                                <customitems:CustomEntry
-                                    x:Name="entryVadeTarih"
-                                    BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalOptions="Start"
-                                    HorizontalTextAlignment="Start"
-                                    Keyboard="Numeric"
-                                    Text="0"
-                                    TextColor="{Binding TextColor}"
-                                    Unfocused="entryVadeTarih_Unfocused"
-                                    VerticalOptions="Center"
-                                    WidthRequest="50">
-                                    <Entry.Behaviors>
-                                        <behaviors:NumericValidationBehavior />
-                                    </Entry.Behaviors>
-                                </customitems:CustomEntry>
-                                <Stepper
-                                    x:Name="stpVadeTarih"
-                                    HorizontalOptions="EndAndExpand"
-                                    Increment="1"
-                                    Maximum="31"
-                                    Minimum="1"
-                                    ValueChanged="stpVadeTarih_ValueChanged"
-                                    VerticalOptions="Center"
-                                    Value="0" />
-                            </StackLayout>
+
+                            <customitems:NumericUpDown
+                                x:Name="numVadeTarih"
+                                BackgroundColor="Transparent"
+                                ButtonCornerRadius="15"
+                                CornerRadius="15"
+                                DownButtonBackgroundColor="#9EFF0000"
+                                Increment="1"
+                                UpButtonBackgroundColor="#B2008000"
+                                maxValue="31"
+                                minValue="1"
+                                Value="1" />
                             <Label
                                 FontSize="Medium"
                                 Text="Risk Limiti Aşıldığında:"

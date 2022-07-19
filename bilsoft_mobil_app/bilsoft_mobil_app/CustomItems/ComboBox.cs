@@ -9,6 +9,7 @@ namespace Xamarin.Forms.ComboBox
     /// <summary>
     /// Combo box with search option
     /// </summary>
+    [System.Obsolete]
     public class ComboBox : StackLayout
     {
         private CustomEntry _entry;

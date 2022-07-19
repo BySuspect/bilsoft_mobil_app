@@ -3,77 +3,10 @@
     x:Class="bilsoft_mobil_app.TestPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:custom1="clr-namespace:bilsoft_mobil_app.CustomItems"
-    BackgroundImageSource="background.jpg">
+    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
+    BackgroundImageSource="backgroun.jpg">
 
-    <Grid>
-        <!--#region test Content down-->
-        <ScrollView>
-            <StackLayout Padding="0,10,0,25">
-                <ScrollView
-                    HorizontalScrollBarVisibility="Always"
-                    Orientation="Horizontal"
-                    VerticalScrollBarVisibility="Always">
-                    <StackLayout Orientation="Horizontal">
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                    </StackLayout>
-                </ScrollView>
-                <Frame
-                    Margin="35,20"
-                    Padding="25,10"
-                    BackgroundColor="Transparent"
-                    CornerRadius="15">
-                    <StackLayout HeightRequest="5000" VerticalOptions="FillAndExpand">
-                        <Button HorizontalOptions="Center" VerticalOptions="Start" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Start" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                        <Button HorizontalOptions="Center" VerticalOptions="End" />
-                    </StackLayout>
-
-                </Frame>
-
-            </StackLayout>
-        </ScrollView>
-        <!--#endregion-->
-    </Grid>
+    <StackLayout VerticalOptions="Center">
+        <Button Clicked="Button_Clicked" />
+    </StackLayout>
 </ContentPage>

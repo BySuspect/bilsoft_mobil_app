@@ -1,4 +1,5 @@
-﻿using bilsoft_mobil_app.Helper;
+﻿using bilsoft_mobil_app.CustomItems;
+using bilsoft_mobil_app.Helper;
 using Microcharts;
 using SkiaSharp;
 using System;
@@ -25,11 +26,6 @@ namespace bilsoft_mobil_app
         }
 
         private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
         {
 
         }
