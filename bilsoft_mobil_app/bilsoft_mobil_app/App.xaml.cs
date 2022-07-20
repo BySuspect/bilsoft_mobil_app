@@ -28,10 +28,10 @@ namespace bilsoft_mobil_app
             };/**/
 
             //Ana Sayfa 3. tip
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
 
             //Test Page
-            //MainPage = new TestPage();
+            MainPage = new TestPage();
             /*MainPage = new NavigationPage(new CariHesaplarPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),

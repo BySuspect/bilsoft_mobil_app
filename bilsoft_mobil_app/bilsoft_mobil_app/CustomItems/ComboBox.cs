@@ -10,9 +10,10 @@ namespace Xamarin.Forms.ComboBox
     /// Combo box with search option
     /// </summary>
     [System.Obsolete]
-    public class ComboBox : StackLayout
+    public class ComboBox : Frame
     {
-        private CustomEntry _entry;
+        private StackLayout _stackLayout;
+        private CustomNumericUpDownEntry _entry;
         private ListView _listView;
         private bool _supressFiltering;
         private bool _supressSelectedItemFiltering;
@@ -115,11 +116,10 @@ namespace Xamarin.Forms.ComboBox
             handler?.Invoke(this, e);
         }
 
-
         public ComboBox()
         {
             //Entry used for filtering list view
-            _entry = new CustomEntry();
+            _entry = new CustomNumericUpDownEntry();
             _entry.Margin = new Thickness(0);
             _entry.Keyboard = Keyboard.Create(KeyboardFlags.None);
             _entry.Focused += (sender, args) => _listView.IsVisible = true;
@@ -178,18 +178,22 @@ namespace Xamarin.Forms.ComboBox
             boxView.SetBinding(BoxView.IsVisibleProperty, new Binding(nameof(ListView.IsVisible), source: _listView));
 
             //Custom preferences
+            _stackLayout = new StackLayout();
             _entry.BackgroundColor = Color.Transparent;
             _entry.HorizontalTextAlignment = TextAlignment.Start;
-            _entry.BorderColor = Color.FromHex(AppThemeColors._borderColor);
-            _entry.CornerRadius = 15;
             _listView.BackgroundColor = Color.Transparent;
             _entry.TextColor = Color.White;
             _entry.PlaceholderColor = Color.White;
+            this.BorderColor = Color.FromHex(AppThemeColors._borderColor);
+            this.CornerRadius = 15;
+            _stackLayout.Margin = new Thickness(-15);
 
             //Add main view
-            Children.Add(_entry);
-            Children.Add(_listView);
-            Children.Add(boxView);
+            _stackLayout.Children.Add(_entry);
+            _stackLayout.Children.Add(_listView);
+            _stackLayout.Children.Add(boxView);
+
+            this.Content = _stackLayout;
         }
 
         public new bool Focus()

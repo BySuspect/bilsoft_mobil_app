@@ -50,6 +50,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
         {
             InitializeComponent();
             BindingContext = this;
+            MainScrollView.ScrollToAsync(0, 0, false);
             cbGrup.BindingContext = new cbGrupViewModel();
         }
         private void ComboBox_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
@@ -60,6 +61,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
         private void btnAddSevkAdrs_Clicked(object sender, EventArgs e)
         {
             sevkAdresEkleView.IsVisible = true;
+            MainScrollView.ScrollToAsync(0, 0, false);
         }
 
         private void btnKaydet_Clicked(object sender, EventArgs e)
@@ -93,6 +95,20 @@ namespace bilsoft_mobil_app.Pages.popUplar
             entryIlce.Unfocus();
             entryAdres.Unfocus();
             entryCariKod.Unfocus();
+        }
+        int counter = 0;
+        private void cbGrup_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (counter == 0)
+            {
+                cbGrup.Text = e.OldTextValue;
+                counter++;
+            }
+            else
+            {
+                counter = 0;
+                return;
+            }
         }
     }
     public class cbGrupViewModel

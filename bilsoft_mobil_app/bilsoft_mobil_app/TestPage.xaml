@@ -3,10 +3,17 @@
     x:Class="bilsoft_mobil_app.TestPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
-    BackgroundImageSource="backgroun.jpg">
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    BackgroundImageSource="background.jpg">
 
-    <StackLayout VerticalOptions="Center">
-        <Button Clicked="Button_Clicked" />
+    <StackLayout>
+        <lottie:AnimationView
+            x:Name="animationView"
+            Animation="splash.json"
+            AnimationSource="AssetOrBundle"
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            RepeatMode="Infinite"
+            VerticalOptions="FillAndExpand" />
     </StackLayout>
 </ContentPage>

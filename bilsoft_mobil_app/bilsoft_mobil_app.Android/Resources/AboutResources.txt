@@ -32,7 +32,7 @@ for the above Resources layout, this is what the Resource class would expose:
 
 public class Resource {
     public class drawable {
-        public const int icon = 0x123;
+        public const int icon = 0x123;  
     }
 
     public class layout {
