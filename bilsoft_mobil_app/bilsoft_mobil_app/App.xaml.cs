@@ -37,7 +37,7 @@ namespace bilsoft_mobil_app
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent
                 BarBackgroundColor = Color.FromHex("#ffa600")
-            };/**/
+            };/***/
         }
 
         public void SetMainPage(Page rootPage)
