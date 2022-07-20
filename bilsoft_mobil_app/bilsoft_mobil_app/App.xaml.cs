@@ -31,8 +31,8 @@ namespace bilsoft_mobil_app
             //MainPage = new MainPage();
 
             //Test Page
-            MainPage = new TestPage();
-            /*MainPage = new NavigationPage(new CariHesaplarPage())
+            //MainPage = new TestPage();
+            MainPage = new NavigationPage(new CariHesaplarPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent

@@ -13,7 +13,7 @@
             AnimationSource="AssetOrBundle"
             BackgroundColor="Transparent"
             HorizontalOptions="FillAndExpand"
-            RepeatMode="Infinite"
+            RepeatMode="Restart"
             VerticalOptions="FillAndExpand" />
     </StackLayout>
 </ContentPage>
