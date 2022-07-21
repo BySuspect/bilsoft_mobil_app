@@ -10,7 +10,7 @@ namespace bilsoft_mobil_app.CustomItems
     public class NumericUpDown : Frame
     {
         Grid _grid;
-        CustomNumericUpDownEntry _entry;
+        BorderlessEntry _entry;
         StackLayout _stackLayout;
         Button _btnup, _btndown;
 
@@ -26,16 +26,16 @@ namespace bilsoft_mobil_app.CustomItems
 
         Color _btnUpBackColor = Color.White,
             _btnDownBackColor = Color.White,
-            _btnUpBorderColor = Color.FromHex(AppThemeColors._borderColor),
-            _btnDownBorderColor = Color.FromHex(AppThemeColors._borderColor),
-            _entryTextColor = Color.FromHex(AppThemeColors._textColor),
-            _btnUpTextColor = Color.FromHex(AppThemeColors._textColor),
-            _btnDownTextColor = Color.FromHex(AppThemeColors._textColor);
+            _btnUpBorderColor = Color.White,
+            _btnDownBorderColor = Color.White,
+            _entryTextColor = Color.Black,
+            _btnUpTextColor = Color.Black,
+            _btnDownTextColor = Color.Black;
         public NumericUpDown() : base()
         {
             BindingContext = this;
             _grid = new Grid();
-            _entry = new CustomNumericUpDownEntry();
+            _entry = new BorderlessEntry();
             _stackLayout = new StackLayout();
             _btnup = new Button();
             _btndown = new Button();
@@ -347,9 +347,5 @@ namespace bilsoft_mobil_app.CustomItems
         {
             _entry.Unfocus();
         }
-    }
-    public class CustomNumericUpDownEntry : Entry
-    {
-
     }
 }

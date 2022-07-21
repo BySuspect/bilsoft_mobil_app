@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="bilsoft_mobil_app.Pages.popUplar.CariGruplarPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xct:Color="Transparent">
+
+    <Grid>
+        <Frame
+            Margin="0,40"
+            BackgroundColor="{Binding BackgroundColor}"
+            CornerRadius="15">
+            <Grid>
+                <StackLayout>
+                    <Label Text="Cari Guruplar" />
+                    <Button HorizontalOptions="Start" Text="Yeni Gurup" />
+                    <custom:CustomSearchBar
+                        Margin="0,0"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15" />
+
+                    <Frame
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15">
+                        <ScrollView>
+                            <StackLayout>
+                                <ListView>
+                                    <ListView.Header>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="#" />
+                                            <Label Text="Gurup Adı" />
+                                        </StackLayout>
+                                    </ListView.Header>
+
+                                    <ListView.ItemsSource>
+                                        <!--    -->
+
+                                        <x:Array Type="{x:Type popup:CariGuruplarListVeriler}">
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="1" />
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="2" />
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="3" />
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="4" />
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="5" />
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="6" />
+                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="7" />
+                                        </x:Array>
+                                    </ListView.ItemsSource>
+
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Sira}" />
+                                                    <Label Text="{Binding GrupAd}" />
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ScrollView>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </Grid>
+</xct:Popup>

@@ -13,7 +13,7 @@ namespace Xamarin.Forms.ComboBox
     public class ComboBox : Frame
     {
         private StackLayout _stackLayout;
-        private CustomNumericUpDownEntry _entry;
+        private BorderlessEntry _entry;
         private ListView _listView;
         private bool _supressFiltering;
         private bool _supressSelectedItemFiltering;
@@ -119,7 +119,7 @@ namespace Xamarin.Forms.ComboBox
         public ComboBox()
         {
             //Entry used for filtering list view
-            _entry = new CustomNumericUpDownEntry();
+            _entry = new BorderlessEntry();
             _entry.Margin = new Thickness(0);
             _entry.Keyboard = Keyboard.Create(KeyboardFlags.None);
             _entry.Focused += (sender, args) => _listView.IsVisible = true;

@@ -3,17 +3,14 @@
     x:Class="bilsoft_mobil_app.TestPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
     BackgroundImageSource="background.jpg">
 
-    <StackLayout>
-        <lottie:AnimationView
-            x:Name="animationView"
-            Animation="splash.json"
-            AnimationSource="AssetOrBundle"
-            BackgroundColor="Transparent"
-            HorizontalOptions="FillAndExpand"
-            RepeatMode="Restart"
-            VerticalOptions="FillAndExpand" />
+    <StackLayout VerticalOptions="Center">
+        <customitems:CustomSearchBar
+            Margin="15,0"
+            BackgroundColor="White"
+            BorderColor="Red"
+            CornerRadius="15" />
     </StackLayout>
 </ContentPage>

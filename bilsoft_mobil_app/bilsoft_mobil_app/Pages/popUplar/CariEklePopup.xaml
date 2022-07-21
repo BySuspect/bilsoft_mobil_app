@@ -281,7 +281,6 @@
                                     BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
                                     BorderWidth="1"
-                                    Clicked="btnKaydet_Clicked"
                                     CornerRadius="15"
                                     HorizontalOptions="End"
                                     Text="Kaydet"
@@ -290,273 +289,280 @@
                         </ScrollView>
                     </StackLayout>
                 </Frame>
-                <Frame
-                    x:Name="sevkAdresEkleView"
-                    BackgroundColor="{Binding BackgroundColor}"
-                    BorderColor="{Binding BorderColor}"
-                    CornerRadius="15"
-                    IsVisible="false">
-                    <StackLayout>
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="{Binding BorderColor}"
-                            CornerRadius="15">
-                            <xct:Expander>
-                                <xct:Expander.Header>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label
-                                            Grid.Column="0"
-                                            FontSize="Medium"
-                                            HorizontalOptions="Start"
-                                            Text="Yeni Ekle"
-                                            TextColor="{Binding TextColor}"
-                                            VerticalOptions="Center" />
-                                        <Button
-                                            BackgroundColor="Transparent"
-                                            BorderColor="{Binding BorderColor}"
-                                            BorderWidth="1"
-                                            CornerRadius="15"
-                                            HorizontalOptions="EndAndExpand"
-                                            Text="Kaydet"
-                                            TextColor="{Binding TextColor}"
-                                            VerticalOptions="Center" />
-                                    </StackLayout>
-                                </xct:Expander.Header>
-                                <xct:Expander.ContentTemplate>
-                                    <DataTemplate>
-                                        <StackLayout>
-                                            <Entry
-                                                x:Name="ekleEntryUlke"
-                                                Placeholder="Ülke:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryIl"
-                                                Placeholder="İl:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryIlce"
-                                                Placeholder="İlçe:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryYetkili"
-                                                Placeholder="Yetkili:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryPostaKod"
-                                                Placeholder="Posta Kodu:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryTel"
-                                                Placeholder="Telefon:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryCepTel"
-                                                Placeholder="Cep Telefonu:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntryMail"
-                                                Placeholder="Ülke"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Entry
-                                                x:Name="ekleEntrySevkAdres"
-                                                Placeholder="Sevk Adresi:"
-                                                PlaceholderColor="{Binding TextColor}"
-                                                TextColor="{Binding TextColor}" />
-                                            <Button Text="sil" />
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </xct:Expander.ContentTemplate>
-                            </xct:Expander>
-                        </Frame>
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="{Binding BorderColor}"
-                            CornerRadius="0">
-
-                            <StackLayout>
-                                <Label
-                                    FontSize="Medium"
-                                    Text="Sevk Adresleri Liste"
-                                    TextColor="{Binding TextColor}" />
-                                <ListView
-                                    x:Name="AdreslistView"
-                                    x:FieldModifier="public"
-                                    HasUnevenRows="True"
-                                    SelectionMode="Single">
-                                    <ListView.Header>
-                                        <StackLayout />
-                                    </ListView.Header>
-                                    <!--<ListView.ItemsSource>
-                                        <x:Array Type="{x:Type popup:SevkAdresiVeriler}">
-                                            <popup:SevkAdresiVeriler
-                                                btnId="btn1"
-                                                ceptel="055555555531"
-                                                fax="31515315125"
-                                                il="dzc"
-                                                ilce="merkez"
-                                                mail="aaaaaaaa@aaaaa"
-                                                postakodu="811111"
-                                                sevkadres="ev"
-                                                tel="05555555555555"
-                                                ulke="tr"
-                                                yetkili="me" />
-                                        </x:Array>
-                                    </ListView.ItemsSource>-->
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <Frame
-                                                    BackgroundColor="{Binding BackgroundColor}"
-                                                    BorderColor="{Binding BorderColor}"
-                                                    CornerRadius="15">
-                                                    <xct:Expander>
-                                                        <xct:Expander.Header>
-                                                            <Grid>
-                                                                <Label
-                                                                    Grid.Column="0"
-                                                                    FontSize="Medium"
-                                                                    Text="{Binding sevkadres}"
-                                                                    TextColor="{Binding TextColor}" />
-                                                            </Grid>
-                                                        </xct:Expander.Header>
-                                                        <xct:Expander.ContentTemplate>
-                                                            <DataTemplate>
-                                                                <Grid Padding="10">
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="Auto" />
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                        <RowDefinition Height="Auto" />
-                                                                    </Grid.RowDefinitions>
-                                                                    <Label
-                                                                        Grid.Row="0"
-                                                                        FontSize="Caption"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="İl: " />
-                                                                                <Span FontSize="Body" Text="{Binding il}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Label
-                                                                        Grid.Row="1"
-                                                                        FontSize="Caption"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="ilçe: " />
-                                                                                <Span FontSize="Body" Text="{Binding ilce}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Label
-                                                                        Grid.Row="2"
-                                                                        FontSize="Body"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="Posta Kodu:" />
-                                                                                <Span Text="{Binding postakodu}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Label
-                                                                        Grid.Row="3"
-                                                                        FontSize="Caption"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="Ülke: " />
-                                                                                <Span FontSize="Body" Text="{Binding ulke}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Label
-                                                                        Grid.Row="4"
-                                                                        FontSize="Caption"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="Cep Telefonu: " />
-                                                                                <Span FontSize="Body" Text="{Binding ceptel}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Label
-                                                                        Grid.Row="5"
-                                                                        FontSize="Caption"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="Telefon: " />
-                                                                                <Span FontSize="Body" Text="{Binding tel}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Label
-                                                                        Grid.Row="6"
-                                                                        FontSize="Caption"
-                                                                        TextColor="{Binding TextColor}">
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="Fax: " />
-                                                                                <Span FontSize="Body" Text="{Binding fax}" />
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                                    <Button
-                                                                        x:Name="btnIncele"
-                                                                        Grid.Row="7"
-                                                                        AutomationId="{Binding btnId}"
-                                                                        BackgroundColor="Transparent"
-                                                                        BorderColor="{Binding BorderColor}"
-                                                                        BorderWidth="1"
-                                                                        CornerRadius="15"
-                                                                        HorizontalOptions="CenterAndExpand"
-                                                                        Text="Sil"
-                                                                        TextColor="{Binding TextColor}"
-                                                                        VerticalOptions="Start" />
-                                                                </Grid>
-                                                            </DataTemplate>
-                                                        </xct:Expander.ContentTemplate>
-                                                    </xct:Expander>
-                                                </Frame>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                                <Button
-                                    x:Name="btnAdressKaydet"
-                                    BackgroundColor="Transparent"
-                                    BorderColor="{Binding BorderColor}"
-                                    BorderWidth="1"
-                                    Clicked="btnAdressKaydet_Clicked"
-                                    CornerRadius="15"
-                                    HorizontalOptions="End"
-                                    Text="Kaydet"
-                                    TextColor="{Binding TextColor}" />
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                </Frame>
             </Grid>
+        </ScrollView>
+        <ScrollView x:Name="sevkAdresEkleScrollView" IsVisible="false">
+            <Frame
+                BackgroundColor="{Binding BackgroundColor}"
+                BorderColor="{Binding BorderColor}"
+                CornerRadius="15">
+                <StackLayout>
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15">
+                        <xct:Expander>
+                            <xct:Expander.Header>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        Text="Yeni Ekle"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Center" />
+                                    <Button
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        BorderWidth="1"
+                                        CornerRadius="15"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="Kaydet"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </xct:Expander.Header>
+                            <xct:Expander.ContentTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Entry
+                                            x:Name="ekleEntryUlke"
+                                            Placeholder="Ülke:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryIl"
+                                            Placeholder="İl:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryIlce"
+                                            Placeholder="İlçe:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryYetkili"
+                                            Placeholder="Yetkili:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryPostaKod"
+                                            Placeholder="Posta Kodu:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryTel"
+                                            Placeholder="Telefon:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryCepTel"
+                                            Placeholder="Cep Telefonu:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntryMail"
+                                            Placeholder="Ülke"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Entry
+                                            x:Name="ekleEntrySevkAdres"
+                                            Placeholder="Sevk Adresi:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Button Text="sil" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </xct:Expander.ContentTemplate>
+                        </xct:Expander>
+                    </Frame>
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="0">
+
+                        <StackLayout>
+                            <Label
+                                FontSize="Medium"
+                                Text="Sevk Adresleri Liste"
+                                TextColor="{Binding TextColor}" />
+                            <ListView
+                                x:Name="AdreslistView"
+                                x:FieldModifier="public"
+                                HasUnevenRows="True"
+                                SelectionMode="Single">
+                                <ListView.Header>
+                                    <StackLayout />
+                                </ListView.Header>
+                                <ListView.ItemsSource>
+                                    <x:Array Type="{x:Type popup:SevkAdresiVeriler}">
+                                        <popup:SevkAdresiVeriler
+                                            DeleteId="btn1"
+                                            btnId="btn1"
+                                            ceptel="055555555531"
+                                            fax="31515315125"
+                                            il="dzc"
+                                            ilce="merkez"
+                                            mail="aaaaaaaa@aaaaa"
+                                            postakodu="811111"
+                                            sevkadres="ev"
+                                            tel="05555555555555"
+                                            ulke="tr"
+                                            yetkili="me" />
+                                    </x:Array>
+                                </ListView.ItemsSource>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame
+                                                BackgroundColor="{Binding BackgroundColor}"
+                                                BorderColor="{Binding BorderColor}"
+                                                CornerRadius="15">
+                                                <xct:Expander>
+                                                    <xct:Expander.Header>
+                                                        <Grid>
+                                                            <Label
+                                                                Grid.Column="0"
+                                                                FontSize="Medium"
+                                                                HorizontalOptions="Start"
+                                                                Text="{Binding sevkadres}"
+                                                                TextColor="{Binding TextColor}"
+                                                                VerticalOptions="Center" />
+                                                            <ImageButton
+                                                                AutomationId="{Binding DeleteId}"
+                                                                BackgroundColor="Transparent"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Source="trashcan32px.png"
+                                                                VerticalOptions="Center" />
+                                                        </Grid>
+                                                    </xct:Expander.Header>
+                                                    <xct:Expander.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Margin="0,0,0,10" Padding="10,10,10,0">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <Label
+                                                                    Grid.Row="0"
+                                                                    FontSize="Caption"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="İl: " />
+                                                                            <Span FontSize="Body" Text="{Binding il}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Label
+                                                                    Grid.Row="1"
+                                                                    FontSize="Caption"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="ilçe: " />
+                                                                            <Span FontSize="Body" Text="{Binding ilce}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Label
+                                                                    Grid.Row="2"
+                                                                    FontSize="Body"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="Posta Kodu:" />
+                                                                            <Span Text="{Binding postakodu}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Label
+                                                                    Grid.Row="3"
+                                                                    FontSize="Caption"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="Ülke: " />
+                                                                            <Span FontSize="Body" Text="{Binding ulke}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Label
+                                                                    Grid.Row="4"
+                                                                    FontSize="Caption"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="Cep Telefonu:                        " />
+                                                                            <Span FontSize="Body" Text="{Binding ceptel}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Label
+                                                                    Grid.Row="5"
+                                                                    FontSize="Caption"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="Telefon:                              " />
+                                                                            <Span FontSize="Body" Text="{Binding tel}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Label
+                                                                    Grid.Row="6"
+                                                                    FontSize="Caption"
+                                                                    TextColor="{Binding TextColor}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="Fax:                                   " />
+                                                                            <Span FontSize="Body" Text="{Binding fax}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <Button
+                                                                    x:Name="btnAdressSec"
+                                                                    Grid.Row="7"
+                                                                    AutomationId="{Binding btnId}"
+                                                                    BackgroundColor="Transparent"
+                                                                    BorderColor="{Binding BorderColor}"
+                                                                    BorderWidth="1"
+                                                                    Clicked="btnAdressSec_Clicked"
+                                                                    CornerRadius="15"
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    Text="Seç"
+                                                                    TextColor="{Binding TextColor}"
+                                                                    VerticalOptions="Start" />
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </xct:Expander.ContentTemplate>
+                                                </xct:Expander>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                    <Button
+                        x:Name="btnAdressIptal"
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        BorderWidth="1"
+                        Clicked="btnAdressIptal_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="End"
+                        Text="İptal"
+                        TextColor="{Binding TextColor}" />
+                </StackLayout>
+            </Frame>
         </ScrollView>
     </Grid>
 </xct:Popup>

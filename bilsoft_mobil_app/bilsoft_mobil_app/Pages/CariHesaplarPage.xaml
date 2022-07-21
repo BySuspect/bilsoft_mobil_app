@@ -34,6 +34,7 @@
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 BorderWidth="1"
+                                Clicked="btnGruplar_Clicked"
                                 CornerRadius="15"
                                 FontSize="Caption"
                                 HorizontalOptions="Center"

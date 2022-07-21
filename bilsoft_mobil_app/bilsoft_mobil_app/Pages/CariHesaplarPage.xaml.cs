@@ -287,5 +287,11 @@ namespace bilsoft_mobil_app.Pages
             Popup popup = new CariEklePopup();
             App.Current.MainPage.Navigation.ShowPopup(popup);
         }
+
+        private void btnGruplar_Clicked(object sender, EventArgs e)
+        {
+            Popup popup = new CariGruplarPopup();
+            App.Current.MainPage.Navigation.ShowPopup(popup);
+        }
     }
 }

@@ -77,7 +77,7 @@
   <ItemGroup>
     <Compile Include="BordlessPickerRenderer.cs" />
     <Compile Include="CustomEntryRenderer.cs" />
-    <Compile Include="CustomNumericEntryRenderer.cs" />
+    <Compile Include="BorderlessEntryRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -335,6 +335,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SplashLayout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trashcan64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trashcan24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trashcan32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

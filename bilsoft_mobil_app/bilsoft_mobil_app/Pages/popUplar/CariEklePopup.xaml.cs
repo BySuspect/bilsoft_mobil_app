@@ -2,6 +2,7 @@
 using bilsoft_mobil_app.Helper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
          * entryAdres
          * entryCariKod
          */
+        ObservableCollection<SevkAdresiVeriler> _listItemsSource = new ObservableCollection<SevkAdresiVeriler>();
         public CariEklePopup()
         {
             InitializeComponent();
@@ -60,18 +62,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
 
         private void btnAddSevkAdrs_Clicked(object sender, EventArgs e)
         {
-            sevkAdresEkleView.IsVisible = true;
-            MainScrollView.ScrollToAsync(0, 0, false);
-        }
-
-        private void btnKaydet_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAdressKaydet_Clicked(object sender, EventArgs e)
-        {
-
+            sevkAdresEkleScrollView.IsVisible = true;
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
@@ -96,19 +87,22 @@ namespace bilsoft_mobil_app.Pages.popUplar
             entryAdres.Unfocus();
             entryCariKod.Unfocus();
         }
-        int counter = 0;
+        cbGrupViewModel cbGrupViewModel = new cbGrupViewModel();
         private void cbGrup_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (counter == 0)
-            {
-                cbGrup.Text = e.OldTextValue;
-                counter++;
-            }
+            if (!String.IsNullOrEmpty(e.NewTextValue))
+                cbGrup.ItemsSource = cbGrupViewModel.ItemsSource.Where(x => x.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
             else
-            {
-                counter = 0;
-                return;
-            }
+                cbGrup.ItemsSource = cbGrupViewModel.ItemsSource;
+        }
+        private void btnAdressIptal_Clicked(object sender, EventArgs e)
+        {
+            sevkAdresEkleScrollView.IsVisible = false;
+        }
+
+        private void btnAdressSec_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
     public class cbGrupViewModel

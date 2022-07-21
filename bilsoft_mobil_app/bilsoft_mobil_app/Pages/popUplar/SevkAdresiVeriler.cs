@@ -29,5 +29,6 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public string sevkadres { get; set; }
         public string mail { get; set; }
         public string btnId { get; set; }
+        public string DeleteId { get; set; }
     }
 }
