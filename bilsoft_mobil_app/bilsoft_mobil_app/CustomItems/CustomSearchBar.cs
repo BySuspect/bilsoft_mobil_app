@@ -41,8 +41,8 @@ namespace bilsoft_mobil_app.CustomItems
             _btn.CornerRadius = _btnCornerRadius;
             _btn.BackgroundColor = _btnBackColor;
             _btn.Margin = new Thickness(0, 0, -10, 0);
-            _btn.HeightRequest = _grid.Height;
-            _btn.WidthRequest = _grid.Height;
+            //_btn.HeightRequest = _grid.Height;
+            // _btn.WidthRequest = _grid.Height;
             if (_btnText == null) _btn.ImageSource = _btnImageSource;
             else _btn.Text = _btnText;
 

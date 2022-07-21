@@ -28,5 +28,21 @@ namespace bilsoft_mobil_app.Pages.popUplar
             BindingContext = this;
             InitializeComponent();
         }
+
+        private void YeniGrupKaydet_Clicked(object sender, EventArgs e)
+        {
+            YeniGrupView.IsVisible = false;
+        }
+
+        private void YeniGrupIptal_Clicked(object sender, EventArgs e)
+        {
+            YeniGrupView.IsVisible = false;
+            
+        }
+
+        private void btnYeniGrup_Clicked(object sender, EventArgs e)
+        {
+            YeniGrupView.IsVisible = true;
+        }
     }
 }

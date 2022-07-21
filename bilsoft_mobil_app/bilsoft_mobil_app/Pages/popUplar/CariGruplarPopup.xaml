@@ -15,57 +15,161 @@
             CornerRadius="15">
             <Grid>
                 <StackLayout>
-                    <Label Text="Cari Guruplar" />
-                    <Button HorizontalOptions="Start" Text="Yeni Gurup" />
-                    <custom:CustomSearchBar
-                        Margin="0,0"
-                        BorderColor="{Binding BorderColor}"
-                        CornerRadius="15" />
+                    <Label
+                        FontSize="Title"
+                        Text="Cari Gruplar"
+                        TextColor="{Binding TextColor}" />
+                    <Button
+                        x:Name="btnYeniGrup"
+                        BackgroundColor="Transparent"
+                        Clicked="btnYeniGrup_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="Start"
+                        Text="Yeni Grup"
+                        TextColor="{Binding TextColor}" />
+                    <StackLayout HeightRequest="100">
+                        <custom:CustomSearchBar
+                            Margin="0,0"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15" />
+                    </StackLayout>
 
                     <Frame
                         BackgroundColor="Transparent"
                         BorderColor="{Binding BorderColor}"
                         CornerRadius="15">
-                        <ScrollView>
-                            <StackLayout>
-                                <ListView>
-                                    <ListView.Header>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="#" />
-                                            <Label Text="Gurup Adı" />
+                        <StackLayout>
+                            <ListView Margin="-20,-20,-20,0">
+                                <ListView.Header>
+                                    <Frame
+                                        Padding="1"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="0"
+                                        HasShadow="False">
+                                        <StackLayout Margin="10,0" Orientation="Horizontal">
+                                            <Label
+                                                FontSize="Medium"
+                                                HorizontalOptions="Start"
+                                                Text="#"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                FontSize="Medium"
+                                                HorizontalOptions="Center"
+                                                Text="Grup Adı"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center" />
                                         </StackLayout>
-                                    </ListView.Header>
+                                    </Frame>
+                                </ListView.Header>
 
-                                    <ListView.ItemsSource>
-                                        <!--    -->
+                                <ListView.ItemsSource>
+                                    <x:Array Type="{x:Type popup:CariGuruplarListVeriler}">
+                                        <popup:CariGuruplarListVeriler GrupAd="awghawh" Sira="1" />
+                                        <popup:CariGuruplarListVeriler GrupAd="wahawhjdjs" Sira="2" />
+                                        <popup:CariGuruplarListVeriler GrupAd="ertjrstjsrtj" Sira="3" />
+                                        <popup:CariGuruplarListVeriler GrupAd="arejej" Sira="4" />
+                                        <popup:CariGuruplarListVeriler GrupAd="tweashest" Sira="5" />
+                                        <popup:CariGuruplarListVeriler GrupAd="etjstjsr" Sira="6" />
+                                        <popup:CariGuruplarListVeriler GrupAd="srhsjhrejsjsekrsjhes" Sira="7" />
+                                    </x:Array>
+                                </ListView.ItemsSource>
 
-                                        <x:Array Type="{x:Type popup:CariGuruplarListVeriler}">
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="1" />
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="2" />
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="3" />
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="4" />
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="5" />
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="6" />
-                                            <popup:CariGuruplarListVeriler GrupAd="test" Sira="7" />
-                                        </x:Array>
-                                    </ListView.ItemsSource>
-
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Sira}" />
-                                                    <Label Text="{Binding GrupAd}" />
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame
+                                                Padding="1"
+                                                BackgroundColor="Transparent"
+                                                BorderColor="{Binding BorderColor}"
+                                                CornerRadius="0"
+                                                HasShadow="False">
+                                                <StackLayout Margin="10,0" Orientation="Vertical">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label
+                                                            FontSize="Default"
+                                                            HorizontalOptions="Start"
+                                                            Text="{Binding Sira}"
+                                                            TextColor="{Binding TextColor}"
+                                                            VerticalOptions="Center" />
+                                                        <Label
+                                                            FontSize="Body"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding GrupAd}"
+                                                            TextColor="{Binding TextColor}"
+                                                            VerticalOptions="Center" />
+                                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                            <Button
+                                                                Margin="0,0,-10,0"
+                                                                BackgroundColor="Transparent"
+                                                                CornerRadius="15"
+                                                                FontSize="Caption"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="Sil"
+                                                                TextColor="{Binding TextColor}"
+                                                                VerticalOptions="Center"
+                                                                WidthRequest="50" />
+                                                            <Button
+                                                                Margin="-10,0,0,0"
+                                                                BackgroundColor="Transparent"
+                                                                CornerRadius="15"
+                                                                FontSize="Caption"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="Düzenle"
+                                                                TextColor="{Binding TextColor}"
+                                                                VerticalOptions="Center"
+                                                                WidthRequest="100" />
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <BoxView
+                                                        Margin="-10,0"
+                                                        HeightRequest="1"
+                                                        Color="LightGray" />
                                                 </StackLayout>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </StackLayout>
-                        </ScrollView>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
                     </Frame>
                 </StackLayout>
             </Grid>
+        </Frame>
+        <Frame
+            x:Name="YeniGrupView"
+            Margin="0,40"
+            BackgroundColor="#A3494949"
+            CornerRadius="15"
+            IsVisible="false">
+            <Frame
+                Padding="100"
+                BackgroundColor="{Binding BackgroundColor}"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <custom:CustomEntry
+                            HorizontalOptions="Start"
+                            Placeholder="Grup Adı"
+                            TextColor="{Binding TextColor}" />
+                        <Button
+                            x:Name="YeniGrupKaydet"
+                            Clicked="YeniGrupKaydet_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="End"
+                            Text="Kaydet" />
+                    </StackLayout>
+                    <Button
+                        x:Name="YeniGrupIptal"
+                        Clicked="YeniGrupIptal_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="Center"
+                        Text="İptal" />
+                </StackLayout>
+            </Frame>
         </Frame>
     </Grid>
 </xct:Popup>
