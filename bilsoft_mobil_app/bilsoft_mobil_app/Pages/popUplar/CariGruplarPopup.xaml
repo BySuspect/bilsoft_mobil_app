@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:helpers="clr-namespace:Org.Xml.Sax.Helpers;assembly=Mono.Android"
     xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     xct:Color="Transparent">
@@ -29,9 +30,13 @@
                         TextColor="{Binding TextColor}" />
                     <StackLayout HeightRequest="100">
                         <custom:CustomSearchBar
+                            x:Name="csbArama"
                             Margin="0,0"
                             BorderColor="{Binding BorderColor}"
-                            CornerRadius="15" />
+                            Clicked="csbArama_Clicked"
+                            CornerRadius="15"
+                            Placeholder="Ara..."
+                            TextChanged="csbArama_TextChanged" />
                     </StackLayout>
 
                     <Frame
@@ -39,7 +44,7 @@
                         BorderColor="{Binding BorderColor}"
                         CornerRadius="15">
                         <StackLayout>
-                            <ListView Margin="-20,-20,-20,0">
+                            <ListView x:Name="GrupListView" Margin="-20,-20,-20,0">
                                 <ListView.Header>
                                     <Frame
                                         Padding="1"
@@ -102,7 +107,9 @@
                                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                                             <Button
                                                                 Margin="0,0,-10,0"
+                                                                AutomationId="{Binding ID}"
                                                                 BackgroundColor="Transparent"
+                                                                Clicked="btnListDelete_Clicked"
                                                                 CornerRadius="15"
                                                                 FontSize="Caption"
                                                                 HorizontalOptions="EndAndExpand"
@@ -112,7 +119,9 @@
                                                                 WidthRequest="50" />
                                                             <Button
                                                                 Margin="-10,0,0,0"
+                                                                AutomationId="{Binding ID}"
                                                                 BackgroundColor="Transparent"
+                                                                Clicked="btnListEdit_Clicked"
                                                                 CornerRadius="15"
                                                                 FontSize="Caption"
                                                                 HorizontalOptions="EndAndExpand"
@@ -140,36 +149,58 @@
         <Frame
             x:Name="YeniGrupView"
             Margin="0,40"
-            BackgroundColor="#A3494949"
+            BackgroundColor="{Binding CardBackgroundColor}"
             CornerRadius="15"
             IsVisible="false">
             <Frame
-                Padding="100"
                 BackgroundColor="{Binding BackgroundColor}"
+                BorderColor="{Binding BorderColor}"
                 CornerRadius="15"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand">
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                HasShadow="False"
+                VerticalOptions="Center">
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <custom:CustomEntry
+                        x:Name="entryYeniGrup"
+                        Margin="-15,0"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15"
+                        Placeholder="Grup Adı"
+                        PlaceholderColor="{Binding TextColor}"
+                        TextColor="{Binding TextColor}" />
                     <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                        <custom:CustomEntry
-                            HorizontalOptions="Start"
-                            Placeholder="Grup Adı"
+                        <Button
+                            x:Name="YeniGrupIptal"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="YeniGrupIptal_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Center"
+                            Text="İptal"
                             TextColor="{Binding TextColor}" />
                         <Button
                             x:Name="YeniGrupKaydet"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
                             Clicked="YeniGrupKaydet_Clicked"
                             CornerRadius="15"
-                            HorizontalOptions="End"
-                            Text="Kaydet" />
+                            HorizontalOptions="Center"
+                            Text="Kaydet"
+                            TextColor="{Binding TextColor}" />
                     </StackLayout>
-                    <Button
-                        x:Name="YeniGrupIptal"
-                        Clicked="YeniGrupIptal_Clicked"
-                        CornerRadius="15"
-                        HorizontalOptions="Center"
-                        Text="İptal" />
                 </StackLayout>
             </Frame>
         </Frame>
+        <Button
+            x:Name="btnDismissPopUp"
+            BackgroundColor="Transparent"
+            BorderColor="Red"
+            BorderWidth="1"
+            Clicked="btnDismissPopUp_Clicked"
+            HorizontalOptions="EndAndExpand"
+            Text="X"
+            TextColor="Red"
+            VerticalOptions="StartAndExpand" />
     </Grid>
 </xct:Popup>

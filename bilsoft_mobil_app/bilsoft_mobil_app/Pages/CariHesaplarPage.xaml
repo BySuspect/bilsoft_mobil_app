@@ -3,6 +3,8 @@
     x:Class="bilsoft_mobil_app.Pages.CariHesaplarPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cb="clr-namespace:Xamarin.Forms.ComboBox"
+    xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     Title="CariHesplar"
     BackgroundImageSource="background.jpg">
@@ -85,6 +87,23 @@
                                     TextColor="{Binding TextColor}" />
                             </StackLayout>
                         </Frame>
+                        <cb:ComboBox
+                            x:Name="pickerCariListe"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Start"
+                            SelectedItemChanged="pickerCariListe_SelectedItemChanged"
+                            TextChanged="pickerCariListe_TextChanged"
+                            WidthRequest="100" />
+                        <!--Old Picker
+                        <custom:BorderlessPicker
+                            x:Name="pickerCariListe"
+                            Title="Liste"
+                            HorizontalOptions="Start"
+                            SelectedIndexChanged="pickerCariListe_SelectedIndexChanged"
+                            TextColor="{Binding TextColor}"
+                            TitleColor="LightGray"
+                            WidthRequest="100" />
+                        -->
                         <StackLayout Orientation="Horizontal">
                             <Entry
                                 x:Name="entryCariArama"
@@ -106,14 +125,6 @@
                                 TextColor="{Binding TextColor}"
                                 VerticalOptions="Center" />
                         </StackLayout>
-                        <Picker
-                            x:Name="pickerCariListe"
-                            Title="Liste"
-                            HorizontalOptions="Start"
-                            SelectedIndexChanged="pickerCariListe_SelectedIndexChanged"
-                            TextColor="{Binding TextColor}"
-                            TitleColor="LightGray"
-                            WidthRequest="100" />
                         <StackLayout x:Name="MainListView">
                             <!--  List items  -->
                         </StackLayout>

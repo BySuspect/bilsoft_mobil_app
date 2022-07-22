@@ -1,8 +1,5 @@
 ﻿using bilsoft_mobil_app.Helper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 
 namespace bilsoft_mobil_app.CustomItems

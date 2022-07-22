@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using bilsoft_mobil_app.Helper;
+using System;
 using Xamarin.Forms;
-using static Xamarin.Forms.VisualMarker;
 
 namespace bilsoft_mobil_app.CustomItems
 {
@@ -13,12 +11,13 @@ namespace bilsoft_mobil_app.CustomItems
         Button _btn;
 
         string _placeHolder = "Search...",
-            _btnText = null;
+            _btnText = "",
+            _entryText = "";
 
         int _btnCornerRadius = 15;
 
-        Color _entryPlaceHolderColor = Color.Gray,
-            _entryTextColor = Color.Black,
+        Color _entryPlaceHolderColor = Color.White,
+            _entryTextColor = Color.White,
             _btnBackColor = Color.Blue;
 
         ImageSource _btnImageSource = "search24px.png";
@@ -34,6 +33,12 @@ namespace bilsoft_mobil_app.CustomItems
             _entry.VerticalTextAlignment = TextAlignment.Center;
             _entry.VerticalOptions = LayoutOptions.Center;
             _entry.TextColor = _entryTextColor;
+            _entry.TextChanged += (sender, args) =>
+            {
+                _entryText = _entry.Text;
+                OnTextChanged(args);
+            };
+            _entry.Unfocused += entry_unfocused;
 
 
             //Button
@@ -43,8 +48,12 @@ namespace bilsoft_mobil_app.CustomItems
             _btn.Margin = new Thickness(0, 0, -10, 0);
             //_btn.HeightRequest = _grid.Height;
             // _btn.WidthRequest = _grid.Height;
-            if (_btnText == null) _btn.ImageSource = _btnImageSource;
+            if (_btnText == "") _btn.ImageSource = _btnImageSource;
             else _btn.Text = _btnText;
+            _btn.Clicked += (e, args) =>
+            {
+                onClicked(args);
+            };
 
             //Grid
             _grid.Margin = new Thickness(0, -15);
@@ -55,6 +64,70 @@ namespace bilsoft_mobil_app.CustomItems
             //Frame
             this.BackgroundColor = Color.Transparent;
             this.Content = _grid;
+        }
+        public event EventHandler<TextChangedEventArgs> TextChanged;
+        protected virtual void OnTextChanged(TextChangedEventArgs e)
+        {
+            EventHandler<TextChangedEventArgs> handler = TextChanged;
+            handler?.Invoke(this, e);
+        }
+        private void entry_unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+        public event EventHandler<EventArgs> Clicked;
+        protected virtual void onClicked(EventArgs e)
+        {
+            EventHandler<EventArgs> handler = Clicked;
+            handler?.Invoke(this, e);
+        }
+        public string Placeholder
+        {
+            get
+            {
+                return _placeHolder;
+            }
+            set
+            {
+                _entry.Placeholder = value;
+                _placeHolder = value;
+            }
+        }
+        public string Text
+        {
+            get
+            {
+                return _entryText;
+            }
+            set
+            {
+                _entry.Text = value;
+                _entryText = value;
+            }
+        }
+        public Color TextColor
+        {
+            get
+            {
+                return _entryTextColor;
+            }
+            set
+            {
+                _entry.TextColor = value;
+                _entryTextColor = value;
+            }
+        }
+        public Color PlaceHolderColor
+        {
+            get
+            {
+                return _entryPlaceHolderColor;
+            }
+            set
+            {
+                _entry.PlaceholderColor = value;
+                _entryPlaceHolderColor = value;
+            }
         }
     }
 }

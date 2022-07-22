@@ -2,6 +2,7 @@
 using bilsoft_mobil_app.Pages.popUplar;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +27,16 @@ namespace bilsoft_mobil_app.Pages
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
 
+        ObservableCollection<CariGuruplarListVeriler> pickerSearchItemsSource;
+        List<string> pickerDefaultList = new List<string> { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" };
         public CariHesaplarPage()
         {
             BindingContext = this;
             InitializeComponent();
 
-            pickerCariListe.ItemsSource = new List<string> { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" };
+            pickerCariListe.ItemsSource = pickerDefaultList;
+            pickerCariListe.SelectedItem = "Hepsi";
+            //pickerCariListe.SelectedIndex = 0;
 
             MainListView.Children.Clear();
             for (int i = 0; i < 10; i++)
@@ -39,7 +44,17 @@ namespace bilsoft_mobil_app.Pages
                 CreateList(i);
             }
         }
-
+        void pickerListeRefesh()
+        {
+            pickerDefaultList.Clear();
+            pickerDefaultList.Add("Hepsi");
+            foreach (var item in pickerSearchItemsSource)
+            {
+                pickerDefaultList.Add(item.GrupAd);
+            }
+            pickerCariListe.ItemsSource = pickerDefaultList;
+            //pickerCariListe.SelectedIndex = 0;
+        }
         private void CariEditButton_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -277,21 +292,28 @@ namespace bilsoft_mobil_app.Pages
             MainListView.Children.Add(mainFrame);
         }
 
-        private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnYeniCari_Clicked(object sender, EventArgs e)
         {
             Popup popup = new CariEklePopup();
             App.Current.MainPage.Navigation.ShowPopup(popup);
         }
 
-        private void btnGruplar_Clicked(object sender, EventArgs e)
+        private async void btnGruplar_Clicked(object sender, EventArgs e)
         {
             Popup popup = new CariGruplarPopup();
-            App.Current.MainPage.Navigation.ShowPopup(popup);
+            object res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            pickerSearchItemsSource = res as ObservableCollection<CariGuruplarListVeriler>;
+            pickerListeRefesh();
+        }
+
+        private void pickerCariListe_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+
+        }
+
+        private void pickerCariListe_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
