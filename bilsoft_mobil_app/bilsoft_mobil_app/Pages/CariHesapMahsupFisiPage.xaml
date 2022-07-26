@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.CariHesapMahsupFisiPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
+    BackgroundImageSource="background.jpg">
+    <Grid>
+        <Frame
+            Margin="15"
+            BackgroundColor="{Binding CardBackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15 ">
+            <StackLayout>
+                <Label
+                    FontSize="25"
+                    Text="Mahsup Fişi"
+                    TextColor="{Binding TextColor}" />
+                <StackLayout Margin="20,15,20,0">
+                    <Label
+                        FontSize="Body"
+                        Text="Borçlandırılacak Cari:"
+                        TextColor="{Binding TextColor}" />
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnCariBorclandirilacak_Clicked" />
+                        </StackLayout.GestureRecognizers>
+                        <Button
+                            x:Name="btnCariBorclandirilacak"
+                            BackgroundColor="#33b5e5"
+                            Clicked="btnCariBorclandirilacak_Clicked"
+                            CornerRadius="5"
+                            FontAttributes="Bold"
+                            FontSize="Title"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            Text="+"
+                            TextTransform="Uppercase"
+                            VerticalOptions="Start"
+                            WidthRequest="50" />
+                        <customitems:CustomEntry
+                            x:Name="entryCariBorclandirilacak"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="5"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="False"
+                            PlaceholderColor="DarkGray"
+                            Text="Cari Seçiniz" />
+                    </StackLayout>
+
+                    <Label
+                        FontSize="Body"
+                        Text="Alacaklandırılacak Cari:"
+                        TextColor="{Binding TextColor}" />
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnCariAlacaklandirilacak_Clicked" />
+                        </StackLayout.GestureRecognizers>
+                        <Button
+                            x:Name="btnCariAlacaklandirilacak"
+                            BackgroundColor="#33b5e5"
+                            Clicked="btnCariAlacaklandirilacak_Clicked"
+                            CornerRadius="5"
+                            FontAttributes="Bold"
+                            FontSize="Title"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            Text="+"
+                            TextTransform="Uppercase"
+                            VerticalOptions="Start"
+                            WidthRequest="50" />
+                        <customitems:CustomEntry
+                            x:Name="entryCariAlacaklandirilacak"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="5"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="False"
+                            PlaceholderColor="DarkGray"
+                            Text="Cari Seçiniz" />
+                    </StackLayout>
+
+                    <Label
+                        FontSize="Body"
+                        Text="Açıklama:"
+                        TextColor="{Binding TextColor}" />
+                    <customitems:CustomEntry
+                        x:Name="entryAciklama"
+                        BorderColor="{Binding BorderColor}"
+                        PlaceholderColor="DarkGray"
+                        TextColor="{Binding TextColor}" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="Tutar:"
+                        TextColor="{Binding TextColor}" />
+                    <customitems:CustomEntry
+                        x:Name="entryTutar"
+                        BorderColor="{Binding BorderColor}"
+                        Keyboard="Numeric"
+                        Placeholder="Tutar Giriniz."
+                        PlaceholderColor="DarkGray"
+                        TextColor="{Binding TextColor}" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="Tarih:"
+                        TextColor="{Binding TextColor}" />
+
+                    <customitems:CustomDatePicker
+                        x:Name="pickerDate"
+                        BorderColor="{Binding BorderColor}"
+                        BorderRadius="15"
+                        BorderWidth="1"
+                        TextColor="DarkGray" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="Evrak Numarası:"
+                        TextColor="{Binding TextColor}" />
+                    <customitems:CustomEntry
+                        x:Name="entryEvrakNum"
+                        BorderColor="{Binding BorderColor}"
+                        Keyboard="Numeric"
+                        Placeholder="Evrak Numarası Giriniz."
+                        PlaceholderColor="DarkGray"
+                        TextColor="{Binding TextColor}" />
+
+                    <Button
+                        BackgroundColor="#33b5e5"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Text="Kaydet"
+                        TextColor="{Binding TextColor}" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

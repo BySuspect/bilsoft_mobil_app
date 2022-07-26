@@ -334,13 +334,12 @@ namespace bilsoft_mobil_app.Pages
 
         private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _aramaType = pickerCariListe.SelectedItem.ToString();
+            //_aramaType = pickerCariListe.SelectedItem.ToString();
         }
 
         private async void btnMahsupFisi_Clicked(object sender, EventArgs e)
         {
-            Popup popup = new CariMahsupFisiPopup();
-            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            await Navigation.PushAsync(new CariHesapMahsupFisiPage(), true);
         }
 
         private async void btnRaporlar_Clicked(object sender, EventArgs e)

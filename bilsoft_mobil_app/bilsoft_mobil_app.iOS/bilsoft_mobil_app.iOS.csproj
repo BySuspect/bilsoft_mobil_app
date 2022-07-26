@@ -64,6 +64,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BorderlessPickerRenderer.cs" />
+    <Compile Include="CustomDatePickerHelper.cs" />
+    <Compile Include="CustomDatePickerRenderer.cs" />
     <Compile Include="CustomEntryRenderer.cs" />
     <Compile Include="BorderlessEntryRenderer.cs" />
     <Compile Include="CustomNumericEntryRendererBase.cs" />

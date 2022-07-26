@@ -3,6 +3,56 @@
     x:Class="bilsoft_mobil_app.Pages.popUplar.CariHesaplar.CariMahsupFisiPopup"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
-    <StackLayout />
+    xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.popUplar.CariHesaplar"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xct:Color="Transparent">
+    <Grid>
+        <Frame
+            Margin="0,40"
+            BackgroundColor="{Binding BackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15">
+            <StackLayout>
+                <ListView>
+                    <ListView.Header>
+                        <StackLayout>
+                            <custom:CustomEntry
+                                x:Name="entryCariArama"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Ara..."
+                                PlaceholderColor="LightGray"
+                                TextChanged="entryCariArama_TextChanged"
+                                TextColor="{Binding TextColor}" />
+                        </StackLayout>
+                    </ListView.Header>
+
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:CariMahsupFisiPopupVeriler}">
+                            <local:CariMahsupFisiPopupVeriler />
+                            <local:CariMahsupFisiPopupVeriler />
+                            <local:CariMahsupFisiPopupVeriler />
+                        </x:Array>
+                    </ListView.ItemsSource>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15">
+                                    <StackLayout>
+                                        <Label Text="test" />
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Frame>
+    </Grid>
 </xct:Popup>

@@ -1,18 +1,19 @@
 ﻿using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace bilsoft_mobil_app.Pages.popUplar.CariHesaplar
+namespace bilsoft_mobil_app.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CariMahsupFisiPopup : Popup
+    public partial class CariHesapMahsupFisiPage : ContentPage
     {
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
@@ -24,22 +25,24 @@ namespace bilsoft_mobil_app.Pages.popUplar.CariHesaplar
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
-
-        public CariMahsupFisiPopup()
+        string borcSecilenCari = "", alacakSecilenCari = "";
+        public CariHesapMahsupFisiPage()
         {
             InitializeComponent();
             BindingContext = this;
-
+            pickerDate.PlaceHolder = "  " + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
         }
 
-        private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
+        private async void btnCariAlacaklandirilacak_Clicked(object sender, EventArgs e)
         {
-
+            Popup popup = new CariMahsupFisiPopup();
+            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
         }
 
-        private void entryCariArama_TextChanged(object sender, TextChangedEventArgs e)
+        private async void btnCariBorclandirilacak_Clicked(object sender, EventArgs e)
         {
-
+            Popup popup = new CariMahsupFisiPopup();
+            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
         }
     }
 }
