@@ -70,10 +70,13 @@
     <EmbeddedResource Update="Pages\MainView\MainPageFlyout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\popUplar\CariEklePopup.xaml">
+    <EmbeddedResource Update="Pages\popUplar\CariHesaplar\CariEklePopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\popUplar\CariGruplarPopup.xaml">
+    <EmbeddedResource Update="Pages\popUplar\CariHesaplar\CariGruplarPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\popUplar\CariHesaplar\CariMahsupFisiPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\SatisYapPage.xaml">

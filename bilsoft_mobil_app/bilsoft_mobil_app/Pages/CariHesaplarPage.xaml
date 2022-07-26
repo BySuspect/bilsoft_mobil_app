@@ -45,9 +45,11 @@
                                 TextColor="{Binding TextColor}"
                                 VerticalOptions="Center" />
                             <Button
+                                x:Name="btnMahsupFisi"
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 BorderWidth="1"
+                                Clicked="btnMahsupFisi_Clicked"
                                 CornerRadius="15"
                                 FontSize="Caption"
                                 HorizontalOptions="End"
@@ -57,9 +59,11 @@
                                 VerticalOptions="Center" />
                         </StackLayout>
                         <Button
+                            x:Name="btnRaporlar"
                             BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
                             BorderWidth="1"
+                            Clicked="btnRaporlar_Clicked"
                             CornerRadius="15"
                             FontSize="Caption"
                             HorizontalOptions="Center"
@@ -87,23 +91,32 @@
                                     TextColor="{Binding TextColor}" />
                             </StackLayout>
                         </Frame>
-                        <cb:ComboBox
-                            x:Name="pickerCariListe"
+                        <!--#region combobox-->
+                        <!--<cb:ComboBox
+                            </cb:ComboBox>x:Name="pickerCariListe"
                             BackgroundColor="Transparent"
                             HorizontalOptions="Start"
                             SelectedItemChanged="pickerCariListe_SelectedItemChanged"
                             TextChanged="pickerCariListe_TextChanged"
-                            WidthRequest="100" />
-                        <!--Old Picker
-                        <custom:BorderlessPicker
-                            x:Name="pickerCariListe"
-                            Title="Liste"
-                            HorizontalOptions="Start"
-                            SelectedIndexChanged="pickerCariListe_SelectedIndexChanged"
-                            TextColor="{Binding TextColor}"
-                            TitleColor="LightGray"
-                            WidthRequest="100" />
-                        -->
+                            Visual="Material"
+                            WidthRequest="100" />-->
+                        <!--#endregion-->
+                        <Frame
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HorizontalOptions="Start">
+                            <custom:BorderlessPicker
+                                x:Name="pickerCariListe"
+                                Title="Listeleme"
+                                Margin="-15"
+                                HorizontalOptions="Start"
+                                ItemsSource="{Binding pickerItemsSource}"
+                                SelectedIndexChanged="pickerCariListe_SelectedIndexChanged"
+                                TextColor="{Binding TextColor}"
+                                TitleColor="LightGray"
+                                WidthRequest="100" />
+                        </Frame>
                         <StackLayout Orientation="Horizontal">
                             <Entry
                                 x:Name="entryCariArama"

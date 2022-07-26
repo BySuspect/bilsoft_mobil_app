@@ -1,5 +1,6 @@
 ﻿using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

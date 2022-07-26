@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace bilsoft_mobil_app.Pages.popUplar
+namespace bilsoft_mobil_app.Pages.popUplar.CariHesaplar
 {
-    public class SevkAdresiVeriler
+    public class CariGuruplarListVeriler
     {
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
@@ -18,17 +18,8 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
-        public string ulke { get; set; }
-        public string il { get; set; }
-        public string ilce { get; set; }
-        public string yetkili { get; set; }
-        public string postakodu { get; set; }
-        public string fax { get; set; }
-        public string tel { get; set; }
-        public string ceptel { get; set; }
-        public string sevkadres { get; set; }
-        public string mail { get; set; }
-        public string btnId { get; set; }
-        public string DeleteId { get; set; }
+        public string GrupAd { get; set; }
+        public int Sira { get; set; }
+        public string ID { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using bilsoft_mobil_app.Helper;
 using bilsoft_mobil_app.Pages.popUplar;
+using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -27,16 +29,18 @@ namespace bilsoft_mobil_app.Pages
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
 
-        ObservableCollection<CariGuruplarListVeriler> pickerSearchItemsSource;
-        List<string> pickerDefaultList = new List<string> { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" };
+        List<string> pickerList = new List<string> { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" };
+
+        string _aramaType = "Hepsi";
+
         public CariHesaplarPage()
         {
             BindingContext = this;
             InitializeComponent();
 
-            pickerCariListe.ItemsSource = pickerDefaultList;
-            pickerCariListe.SelectedItem = "Hepsi";
-            //pickerCariListe.SelectedIndex = 0;
+            pickerCariListe.ItemsSource = pickerList;
+            //pickerCariListe.SelectedItem = "Hepsi";
+            pickerCariListe.SelectedIndex = 0;
 
             MainListView.Children.Clear();
             for (int i = 0; i < 10; i++)
@@ -44,17 +48,31 @@ namespace bilsoft_mobil_app.Pages
                 CreateList(i);
             }
         }
-        void pickerListeRefesh()
+        public IEnumerable pickerItemsSource
         {
-            pickerDefaultList.Clear();
-            pickerDefaultList.Add("Hepsi");
-            foreach (var item in pickerSearchItemsSource)
+            get
             {
-                pickerDefaultList.Add(item.GrupAd);
+                return pickerList;
             }
-            pickerCariListe.ItemsSource = pickerDefaultList;
-            //pickerCariListe.SelectedIndex = 0;
+            set
+            {
+                pickerList = value as List<string>;
+                pickerCariListe.ItemsSource = pickerList;
+            }
         }
+
+        //Kullanım dışı
+        //void pickerListeRefesh()
+        //{
+        //    pickerList.Clear();
+        //    pickerList.Add("Hepsi");
+        //    foreach (var item in popupResultHelper.cariGrupPopupListHelper)
+        //    {
+        //        pickerList.Add(item);
+        //    }
+        //    pickerCariListe.ItemsSource = pickerList;
+        //    pickerCariListe.SelectedIndex = 0;
+        //}
         private void CariEditButton_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -292,28 +310,62 @@ namespace bilsoft_mobil_app.Pages
             MainListView.Children.Add(mainFrame);
         }
 
-        private void btnYeniCari_Clicked(object sender, EventArgs e)
+        private async void btnYeniCari_Clicked(object sender, EventArgs e)
         {
             Popup popup = new CariEklePopup();
-            App.Current.MainPage.Navigation.ShowPopup(popup);
+            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
         }
 
         private async void btnGruplar_Clicked(object sender, EventArgs e)
         {
-            Popup popup = new CariGruplarPopup();
-            object res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
-            pickerSearchItemsSource = res as ObservableCollection<CariGuruplarListVeriler>;
-            pickerListeRefesh();
+            try
+            {
+                Popup popup = new CariGruplarPopup(pickerList);
+                await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+                pickerItemsSource = popupResultHelper.cariGrupPopupListHelper;
+                pickerCariListe.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        private void pickerCariListe_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
-        {
 
+        private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _aramaType = pickerCariListe.SelectedItem.ToString();
         }
 
-        private void pickerCariListe_TextChanged(object sender, TextChangedEventArgs e)
+        private async void btnMahsupFisi_Clicked(object sender, EventArgs e)
         {
+            Popup popup = new CariMahsupFisiPopup();
+            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+        }
 
+        private async void btnRaporlar_Clicked(object sender, EventArgs e)
+        {
+            var res = await DisplayActionSheet("Raporlar", "iptal", "iptal", new string[] { "Cari Ekstre", "Cari İşlem Raporu", "Cari Rapor", "BA-BS Raporu", "Cari Mutabakat Raporu" });
+            switch (res)
+            {
+                case "Cari Ekstre":
+                    break;
+
+                case "Cari İşlem Raporu":
+                    break;
+
+                case "Cari Rapor":
+                    break;
+
+                case "BA-BS Raporu":
+                    break;
+
+                case "Cari Mutabakat Raporu":
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

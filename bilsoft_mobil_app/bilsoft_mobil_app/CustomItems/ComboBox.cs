@@ -190,7 +190,7 @@ namespace Xamarin.Forms.ComboBox
             //Add main view
             _stackLayout.Children.Add(_entry);
             _stackLayout.Children.Add(_listView);
-            _stackLayout.Children.Add(boxView);
+            //_stackLayout.Children.Add(boxView);
 
             this.Content = _stackLayout;
         }

@@ -1,4 +1,5 @@
 ﻿using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,13 +26,24 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
-        ObservableCollection<CariGuruplarListVeriler> _listItemsSource = new ObservableCollection<CariGuruplarListVeriler>();
+        public ObservableCollection<CariGuruplarListVeriler> _listItemsSource = new ObservableCollection<CariGuruplarListVeriler>();
 
+        public List<string> ResultList = new List<string>();
         List<string> GrupListNames = new List<string> { "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATIŞ" };
-        public CariGruplarPopup()
+        public CariGruplarPopup(object _item)
         {
             BindingContext = this;
             InitializeComponent();
+            Dismissed += (s, args) =>
+            {
+                ResultList.Add("Hepsi");
+                foreach (var item in GrupListNames)
+                {
+                    ResultList.Add(item);
+                }
+                popupResultHelper.cariGrupPopupListHelper = ResultList;
+            };
+
             for (int i = 0; i < GrupListNames.Count(); i++)
             {
                 RefeshList(i, GrupListNames[i]);
@@ -108,19 +121,20 @@ namespace bilsoft_mobil_app.Pages.popUplar
 
         private void csbArama_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(e.NewTextValue))
-                GrupListView.ItemsSource = _listItemsSource.Where(x => x.GrupAd.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
-            else
-                GrupListView.ItemsSource = _listItemsSource;
-            Console.WriteLine(csbArama.Text);
-            csbArama.Unfocus();
-        }
+            try
+            {
+                if (!String.IsNullOrEmpty(e.NewTextValue))
+                    GrupListView.ItemsSource = _listItemsSource.Where(x => x.GrupAd.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
+                else
+                    GrupListView.ItemsSource = _listItemsSource;
+                Console.WriteLine(csbArama.Text);
+                //csbArama.Unfocus();
+            }
+            catch (Exception)
+            {
 
-        private void csbArama_Clicked(object sender, EventArgs e)
-        {
-            Console.WriteLine(csbArama.Text);
-            csbArama.Unfocus();
-            entryYeniGrup.Unfocus();
+                throw;
+            }
         }
 
         private void btnListEdit_Clicked(object sender, EventArgs e)
@@ -134,9 +148,10 @@ namespace bilsoft_mobil_app.Pages.popUplar
             await DeleteOnList(btn.AutomationId);
         }
 
+
         private void btnDismissPopUp_Clicked(object sender, EventArgs e)
         {
-            Dismiss(_listItemsSource);
+            Dismiss(null);
         }
     }
 }

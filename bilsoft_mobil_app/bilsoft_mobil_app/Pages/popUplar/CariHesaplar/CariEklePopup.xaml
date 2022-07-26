@@ -6,7 +6,7 @@
     xmlns:behaviors="clr-namespace:bilsoft_mobil_app.Behaviors"
     xmlns:cb="clr-namespace:Xamarin.Forms.ComboBox"
     xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
-    xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar"
+    xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar.CariHesaplar"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     xct:Color="Transparent"
     xct:HeightRequest="200">
