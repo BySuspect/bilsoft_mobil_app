@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace bilsoft_mobil_app.Helper.API
@@ -9,7 +10,13 @@ namespace bilsoft_mobil_app.Helper.API
         public const string url = "https://apiv3.bilsoft.com/";
         public const string loginDonemGetirAPI = url + "api/Auth/GirisYapDonemGetir";
         public const string tokeApi = url + "api/Auth/GirisYap";
-        public const string CariAdressApi = url + "api/CariAdresler/getall";
+
+        //Normal veriler
+        public const string CariAdresApi = "api/CariAdresler";
+        public const string CariBankaApi = "api/CariBanka";
+        public const string CariGrupApi = "api/CariGrup";
+        public const string CariIslApi = "api/CariIsl";
+        public const string CariKartApi = "api/CariKart";
         public static string loginData { get; set; }
         public static string loginMod { get; set; } = "demo";
         public static string loginToken { get; set; }
@@ -24,5 +31,17 @@ namespace bilsoft_mobil_app.Helper.API
         public static List<string> logindonemYil { get; set; } = new List<string>();
         public static string secilenlogindonemYil { get; set; }
         public static string SonAcilanSayfa { get; set; }
+    }
+    public static class apiTypes
+    {
+        public static string getall = "/getall";
+        public static string getbyid = "/getbyid";
+        public static string add = "/add";
+        public static string addrange = "/addrange";
+        public static string update = "/update";
+        public static string updaterange = "/updaterange";
+        public static string delete = "/delete";
+        public static string deletebyid = "/deletebyid";
+        public static string deleterange = "/deleterange";
     }
 }

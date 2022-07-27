@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\CariHesapMahsupFisiPage.xaml.cs">
+    <Compile Update="Pages\CariHesaplar\CariHesapMahsupFisiPage.xaml.cs">
       <DependentUpon>CariHesapMahsupFisiPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="TestPage.xaml.cs">
@@ -47,10 +47,10 @@
     <EmbeddedResource Update="Pages\BankaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\CariHesapMahsupFisiPage.xaml">
+    <EmbeddedResource Update="Pages\CariHesaplar\CariHesapMahsupFisiPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\CariHesaplarPage.xaml">
+    <EmbeddedResource Update="Pages\CariHesaplar\CariHesaplarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\CekSenetListesiPage.xaml">

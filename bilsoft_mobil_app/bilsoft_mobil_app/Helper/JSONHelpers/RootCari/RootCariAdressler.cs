@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace bilsoft_mobil_app.Helper.JSONHelpers
+namespace bilsoft_mobil_app.Helper.JSONHelpers.RootCari
 {
     // RootCariAdressler res = JsonConvert.DeserializeObject<RootCariAdressler>(res);
-    public class Datum
+    public class RootCariAdresslerDatum
     {
         public int id { get; set; }
         public int cariId { get; set; }
@@ -23,7 +23,7 @@ namespace bilsoft_mobil_app.Helper.JSONHelpers
 
     public class RootCariAdressler
     {
-        public List<Datum> data { get; set; }
+        public List<RootCariAdresslerDatum> data { get; set; }
         public int totalCount { get; set; }
         public bool success { get; set; }
         public object message { get; set; }
