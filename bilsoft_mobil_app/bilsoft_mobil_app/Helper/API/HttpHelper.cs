@@ -9,7 +9,6 @@ namespace bilsoft_mobil_app.Helper.API
 {
     public class HttpHelper
     {
-
         public async Task<APIResponse> callAPI(string url, string json)
         {
             APIResponse res = new APIResponse();

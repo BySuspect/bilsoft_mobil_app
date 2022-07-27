@@ -6,9 +6,10 @@ namespace bilsoft_mobil_app.Helper.API
 {
     public class APIHelper
     {
-        public static string url = "https://apiv3.bilsoft.com/";
-        public static string loginDonemGetirAPI = url + "api/Auth/GirisYapDonemGetir";
-        public static string tokeApi = url + "api/Auth/GirisYap";
+        public const string url = "https://apiv3.bilsoft.com/";
+        public const string loginDonemGetirAPI = url + "api/Auth/GirisYapDonemGetir";
+        public const string tokeApi = url + "api/Auth/GirisYap";
+        public const string CariAdressApi = url + "api/CariAdresler/getall";
         public static string loginData { get; set; }
         public static string loginMod { get; set; } = "demo";
         public static string loginToken { get; set; }

@@ -10,5 +10,6 @@ namespace bilsoft_mobil_app.Helper.API
         public string message { get; set; }
         public string code { get; set; }
         public bool success { get; set; }
+        public int totalCount { get; set; }
     }
 }

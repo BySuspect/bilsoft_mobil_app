@@ -1,8 +1,11 @@
 ﻿using bilsoft_mobil_app.Helper;
 using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Helper.JSONHelpers;
+using bilsoft_mobil_app.Helper.Veriler;
 using bilsoft_mobil_app.Pages.popUplar;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +37,8 @@ namespace bilsoft_mobil_app.Pages
         #endregion
 
         List<string> pickerList = new List<string> { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" };
+
+        List<CariAdresVeriler> CariListe = new List<CariAdresVeriler>();
 
         string _aramaType = "Hepsi";
 
@@ -389,13 +394,24 @@ namespace bilsoft_mobil_app.Pages
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            userLogin();
+            GetData();
         }
-        private async Task userLogin()
+        private async Task GetData()
         {
             try
             {
-                string webURL = APIHelper.loginDonemGetirAPI;
+                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5MSIsInVuaXF1ZV9uYW1lIjoiYjJiOWU1YzQtNGVmNy00MDVmLThmNDMtNzlkNGI0ZmQ3ZWNiIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTg5MTIwNzMsImV4cCI6MTY1ODk1NTI3MiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.cZvNF5glFw5YeejfB7Ugh2B8VKrNJ_vITyTKpOqOz_I";
+                var client = new RestClient(APIHelper.CariAdressApi);
+                var request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                var res = await client.ExecuteAsync(request, Method.Post);
+
+                var data = JsonConvert.DeserializeObject<RootCariAdressler>(res.Content);
+
+
+
+                /*string webURL = APIHelper.loginDonemGetirAPI;
                 HttpHelper httpHelper = new HttpHelper();
                 APIResponse res;
 
@@ -403,13 +419,29 @@ namespace bilsoft_mobil_app.Pages
                 await Task.Delay(100);
                 res = await httpHelper.callAPI(webURL, "{}");
                 // var Data = JsonConvert.DeserializeObject<RootGirisYapDonemGetir>(res.data.ToString());
-                #endregion
+                #endregion*/
 
             }
             catch
             {
             }
 
+        }
+        async Task<object> RequestData(string url, Method method, string token, string json)
+        {
+            try
+            {
+                var client = new RestClient(url);
+                var request = new RestRequest();
+                request.AddHeader("Authorization", token);
+                request.AddHeader("Content-Type", "application/json");
+                return await client.ExecuteAsync(request, method);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
