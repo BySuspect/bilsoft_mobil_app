@@ -3,7 +3,7 @@
     x:Class="bilsoft_mobil_app.Pages.FaturalarPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:bilsoft_mobil_app.Helper"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Helper.Veriler"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Title="Faturalar"
     BackgroundImageSource="background.jpg">

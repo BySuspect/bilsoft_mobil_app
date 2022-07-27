@@ -1,9 +1,10 @@
-﻿using System;
+﻿using bilsoft_mobil_app.Helper.App;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace bilsoft_mobil_app.Helper
+namespace bilsoft_mobil_app.Helper.Veriler
 {
     public class FaturaListVeriler
     {

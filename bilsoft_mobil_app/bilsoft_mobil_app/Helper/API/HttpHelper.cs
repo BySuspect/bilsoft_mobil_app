@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bilsoft_mobil_app.Helper
+namespace bilsoft_mobil_app.Helper.API
 {
     public class HttpHelper
     {
@@ -18,7 +18,7 @@ namespace bilsoft_mobil_app.Helper
                 string content = string.Empty;
                 var httpClient = new HttpClient();
                 HttpResponseMessage httpResponse = null;
-                if (String.IsNullOrWhiteSpace(json))
+                if (string.IsNullOrWhiteSpace(json))
                 {
                     httpResponse = await httpClient.GetAsync(url);
                 }

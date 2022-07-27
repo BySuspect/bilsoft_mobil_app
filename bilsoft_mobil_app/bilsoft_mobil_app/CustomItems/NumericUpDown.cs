@@ -1,4 +1,4 @@
-﻿using bilsoft_mobil_app.Helper;
+﻿using bilsoft_mobil_app.Helper.App;
 using System;
 using Xamarin.Forms;
 

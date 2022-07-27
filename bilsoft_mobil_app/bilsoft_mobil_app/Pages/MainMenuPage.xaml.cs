@@ -1,4 +1,6 @@
 ﻿using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Helper.API;
+using bilsoft_mobil_app.Helper.App;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using APIHelper = bilsoft_mobil_app.Helper.API.APIHelper;
 
 namespace bilsoft_mobil_app.Pages
 {

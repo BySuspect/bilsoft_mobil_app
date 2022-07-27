@@ -4,13 +4,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.popUplar.CariHesaplar"
     BackgroundImageSource="background.jpg">
     <Grid>
         <Frame
             Margin="15"
             BackgroundColor="{Binding CardBackgroundColor}"
             BorderColor="{Binding BorderColor}"
-            CornerRadius="15 ">
+            CornerRadius="15 "
+            IsVisible="false">
             <StackLayout>
                 <Label
                     FontSize="25"
@@ -132,6 +134,138 @@
                         Text="Kaydet"
                         TextColor="{Binding TextColor}" />
                 </StackLayout>
+            </StackLayout>
+        </Frame>
+        <Frame
+            Margin="0,40"
+            BackgroundColor="{Binding BackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15">
+            <StackLayout>
+                <customitems:CustomEntry
+                    x:Name="entryCariArama"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Ara..."
+                    PlaceholderColor="LightGray"
+                    TextColor="{Binding TextColor}" />
+                <!--  TextChanged="entryCariArama_TextChanged" />  -->
+                <Frame
+                    Margin="0,0,0,40"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15">
+                    <StackLayout Margin="-10,0,-10,-10">
+                        <ListView
+                            x:Name="ListCari"
+                            HasUnevenRows="True"
+                            ItemSelected="ListCari_ItemSelected"
+                            SeparatorColor="Transparent">
+                            <ListView.Header>
+                                <StackLayout>
+                                    <Grid Margin="10,0,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="60" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Body"
+                                            Text="Grup"
+                                            TextColor="{Binding TextColor}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Body"
+                                            Text="Yetkili"
+                                            TextColor="{Binding TextColor}" />
+                                        <Label
+                                            Grid.Column="2"
+                                            FontSize="Body"
+                                            Text="Unvan"
+                                            TextColor="{Binding TextColor}" />
+                                        <Label
+                                            Grid.Column="3"
+                                            FontSize="Body"
+                                            Text="Mail"
+                                            TextColor="{Binding TextColor}" />
+                                    </Grid>
+                                </StackLayout>
+                            </ListView.Header>
+
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type local:CariMahsupFisiPopupVeriler}">
+                                    <local:CariMahsupFisiPopupVeriler
+                                        GrupAd="MÜŞTERİ"
+                                        ID="0"
+                                        Mail="aaaaaaaq@aaaawagwagawhawha"
+                                        Unvan="Mutlu Market"
+                                        Yetkili="Veli Mutlu" />
+                                    <local:CariMahsupFisiPopupVeriler
+                                        GrupAd="ALICI"
+                                        ID="1"
+                                        Mail="aaaaaaaq@awhawhaaaa"
+                                        Unvan="Sancak İletişim"
+                                        Yetkili="Ali Sancak" />
+                                    <local:CariMahsupFisiPopupVeriler
+                                        GrupAd="TOPTANCI"
+                                        ID="2"
+                                        Mail="aaaaaaaq@aawhawhawaaa"
+                                        Unvan="Zeynep Akın"
+                                        Yetkili="Akın Zahire" />
+                                </x:Array>
+                            </ListView.ItemsSource>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame
+                                            BackgroundColor="Transparent"
+                                            BorderColor="{Binding BorderColor}"
+                                            CornerRadius="15">
+                                            <StackLayout Margin="-5,-10,-10,-10" VerticalOptions="Center">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="60" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
+                                                        Grid.Column="0"
+                                                        FontSize="Caption"
+                                                        Text="{Binding GrupAd}"
+                                                        TextColor="{Binding TextColor}"
+                                                        VerticalOptions="Center" />
+                                                    <Label
+                                                        Grid.Column="1"
+                                                        FontSize="Caption"
+                                                        Text="{Binding Yetkili}"
+                                                        TextColor="{Binding TextColor}"
+                                                        VerticalOptions="Center" />
+                                                    <Label
+                                                        Grid.Column="2"
+                                                        FontSize="Caption"
+                                                        Text="{Binding Unvan}"
+                                                        TextColor="{Binding TextColor}"
+                                                        VerticalOptions="Center" />
+                                                    <Label
+                                                        Grid.Column="3"
+                                                        FontSize="Caption"
+                                                        Text="{Binding Mail}"
+                                                        TextColor="{Binding TextColor}"
+                                                        VerticalOptions="Center" />
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </Frame>
     </Grid>

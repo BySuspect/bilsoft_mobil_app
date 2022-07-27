@@ -1,4 +1,4 @@
-﻿using bilsoft_mobil_app.Helper;
+﻿using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
 using System;
 using System.Collections.Generic;
@@ -37,6 +37,11 @@ namespace bilsoft_mobil_app.Pages
         {
             Popup popup = new CariMahsupFisiPopup();
             await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+        }
+
+        private void ListCari_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var _item = (sender as ListView).SelectedItem as CariMahsupFisiPopupVeriler;
         }
 
         private async void btnCariBorclandirilacak_Clicked(object sender, EventArgs e)

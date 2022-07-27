@@ -1,4 +1,5 @@
-﻿using bilsoft_mobil_app.Helper;
+﻿using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Helper.Veriler;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

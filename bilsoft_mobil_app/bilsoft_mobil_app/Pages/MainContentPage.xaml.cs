@@ -12,6 +12,8 @@ using Xamarin.Essentials;
 using Android.Content.Res;
 using bilsoft_mobil_app.Pages.MainView;
 using Xamarin.CommunityToolkit.Extensions;
+using bilsoft_mobil_app.Helper.Veriler;
+using bilsoft_mobil_app.Helper.App;
 
 namespace bilsoft_mobil_app.Pages
 {

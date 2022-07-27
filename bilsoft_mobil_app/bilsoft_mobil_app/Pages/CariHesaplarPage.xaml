@@ -145,6 +145,11 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
+        <Button
+            Clicked="Button_Clicked"
+            HorizontalOptions="Center"
+            Text="testbtn"
+            VerticalOptions="End" />
     </Grid>
 
     <!--#region Liste Tam Xaml

@@ -1,6 +1,8 @@
 ﻿using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Helper.API;
+using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Pages.popUplar;
-using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +14,8 @@ using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using APIHelper = bilsoft_mobil_app.Helper.API.APIHelper;
+using APIResponse = bilsoft_mobil_app.Helper.API.APIResponse;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -365,6 +369,47 @@ namespace bilsoft_mobil_app.Pages
                 default:
                     break;
             }
+        }
+
+
+
+
+        //Test Area
+
+
+
+
+
+
+
+
+
+
+
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            userLogin();
+        }
+        private async Task userLogin()
+        {
+            try
+            {
+                string webURL = APIHelper.loginDonemGetirAPI;
+                HttpHelper httpHelper = new HttpHelper();
+                APIResponse res;
+
+                #region sunucu veri Gönderme
+                await Task.Delay(100);
+                res = await httpHelper.callAPI(webURL, "{}");
+                // var Data = JsonConvert.DeserializeObject<RootGirisYapDonemGetir>(res.data.ToString());
+                #endregion
+
+            }
+            catch
+            {
+            }
+
         }
     }
 }

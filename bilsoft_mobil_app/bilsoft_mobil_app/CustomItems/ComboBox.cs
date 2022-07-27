@@ -1,5 +1,5 @@
 ﻿using bilsoft_mobil_app.CustomItems;
-using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Helper.App;
 using System;
 using System.Collections;
 using static Xamarin.Forms.VisualMarker;

@@ -1,5 +1,9 @@
 ﻿using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.Helper;
+using bilsoft_mobil_app.Helper.API;
+using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Helper.JSONHelpers;
+using bilsoft_mobil_app.Helper.Veriler;
 using bilsoft_mobil_app.Pages.MainView;
 using Newtonsoft.Json;
 using System;
@@ -10,6 +14,8 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using APIHelper = bilsoft_mobil_app.Helper.API.APIHelper;
+using APIResponse = bilsoft_mobil_app.Helper.API.APIResponse;
 
 namespace bilsoft_mobil_app.Pages
 {

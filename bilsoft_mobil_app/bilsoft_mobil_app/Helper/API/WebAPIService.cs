@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace bilsoft_mobil_app.Helper
+namespace bilsoft_mobil_app.Helper.API
 {
     public class WebAPIService
     {
