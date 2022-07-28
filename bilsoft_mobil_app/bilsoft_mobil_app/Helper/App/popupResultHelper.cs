@@ -6,6 +6,6 @@ namespace bilsoft_mobil_app.Helper.App
 {
     public static class popupResultHelper
     {
-        public static List<string> cariGrupPopupListHelper { get; set; }
+        public static List<string> cariGrupPopupListHelper { get; set; } = new List<string>();
     }
 }

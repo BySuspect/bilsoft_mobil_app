@@ -114,7 +114,7 @@
                                     BorderColor="{Binding BorderColor}"
                                     CornerRadius="15"
                                     HorizontalOptions="Start">
-                                    <custom:BorderlessPicker
+                                    <Picker
                                         x:Name="pickerCariListe"
                                         Title="Listeleme"
                                         Margin="-15"
@@ -247,7 +247,7 @@
                                                                 <FormattedString>
                                                                     <Span
                                                                         FontSize="Caption"
-                                                                        Text="SabitTel: "
+                                                                        Text="Sabit Tel: "
                                                                         TextColor="LightGray" />
                                                                     <Span x:Name="lblSabitTel" Text="{Binding tel}" />
                                                                 </FormattedString>
@@ -278,7 +278,7 @@
                                                                 <FormattedString>
                                                                     <Span
                                                                         FontSize="Caption"
-                                                                        Text="SabitTel: "
+                                                                        Text="Cep Tel: "
                                                                         TextColor="LightGray" />
                                                                     <Span x:Name="lblCepTel" Text="{Binding cep}" />
                                                                 </FormattedString>

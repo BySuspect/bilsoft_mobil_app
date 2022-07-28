@@ -29,11 +29,12 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public ObservableCollection<CariGuruplarListVeriler> _listItemsSource = new ObservableCollection<CariGuruplarListVeriler>();
 
         public List<string> ResultList = new List<string>();
-        List<string> GrupListNames = new List<string> { "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATIŞ" };
+        List<string> GrupListNames;
         public CariGruplarPopup(object _item)
         {
             BindingContext = this;
             InitializeComponent();
+            GrupListNames = popupResultHelper.cariGrupPopupListHelper;
             Dismissed += (s, args) =>
             {
                 ResultList.Add("Hepsi");
@@ -127,13 +128,10 @@ namespace bilsoft_mobil_app.Pages.popUplar
                     GrupListView.ItemsSource = _listItemsSource.Where(x => x.GrupAd.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
                 else
                     GrupListView.ItemsSource = _listItemsSource;
-                Console.WriteLine(csbArama.Text);
-                //csbArama.Unfocus();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception(ex.Message);
             }
         }
 
