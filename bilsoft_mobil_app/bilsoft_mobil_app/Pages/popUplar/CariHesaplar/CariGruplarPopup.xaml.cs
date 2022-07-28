@@ -29,12 +29,18 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public ObservableCollection<CariGuruplarListVeriler> _listItemsSource = new ObservableCollection<CariGuruplarListVeriler>();
 
         public List<string> ResultList = new List<string>();
-        List<string> GrupListNames;
-        public CariGruplarPopup(object _item)
+        List<string> GrupListNames = new List<string>();
+        public CariGruplarPopup()
         {
             BindingContext = this;
             InitializeComponent();
-            GrupListNames = popupResultHelper.cariGrupPopupListHelper;
+            foreach (var item in popupResultHelper.cariGrupPopupListHelper)
+            {
+                if (item != "Hepsi")
+                {
+                    GrupListNames.Add(item);
+                }
+            }
             Dismissed += (s, args) =>
             {
                 ResultList.Add("Hepsi");
@@ -125,7 +131,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
             try
             {
                 if (!String.IsNullOrEmpty(e.NewTextValue))
-                    GrupListView.ItemsSource = _listItemsSource.Where(x => x.GrupAd.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
+                    GrupListView.ItemsSource = new ObservableCollection<CariGuruplarListVeriler>((IEnumerable<CariGuruplarListVeriler>)_listItemsSource.Where(x => x.GrupAd.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList());
                 else
                     GrupListView.ItemsSource = _listItemsSource;
             }

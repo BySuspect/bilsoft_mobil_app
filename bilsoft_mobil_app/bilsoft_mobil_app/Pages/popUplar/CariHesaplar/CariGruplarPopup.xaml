@@ -23,6 +23,8 @@
                     <Button
                         x:Name="btnYeniGrup"
                         BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        BorderWidth="1"
                         Clicked="btnYeniGrup_Clicked"
                         CornerRadius="15"
                         HorizontalOptions="Start"
@@ -44,7 +46,7 @@
                         BorderColor="{Binding BorderColor}"
                         CornerRadius="15">
                         <StackLayout>
-                            <ListView x:Name="GrupListView" Margin="-20,-20,-20,0">
+                            <ListView x:Name="GrupListView" Margin="-20,0,-20,0">
                                 <ListView.Header>
                                     <Frame
                                         Padding="1"

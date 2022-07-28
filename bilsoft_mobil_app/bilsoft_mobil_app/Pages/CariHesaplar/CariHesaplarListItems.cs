@@ -14,7 +14,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
         public Color Success { get; set; } = Color.FromHex(AppThemeColors._success);
         public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
-        public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+        public Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
@@ -22,20 +22,31 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
 
         /**/
         public int id { get; set; }
-        public int cariId { get; set; }
+        public int SIRA { get; set; }
+        public string btnId { get; set; }
+        public string cariad { get; set; }
+        public string bakiye { get; set; }
+        public string grup { get; set; }
         public string yetkili { get; set; }
         public string tel { get; set; }
         public string cep { get; set; }
-        public string sevkAdres { get; set; }
+        public string adres { get; set; }
         public string mail { get; set; }
-        public string postaKodu { get; set; }
-        public string il { get; set; }
-        public string ilce { get; set; }
-        public object ulke { get; set; }
-        public object cariKart { get; set; }
-        public int SIRA { get; set; }
-        public string Bakiye { get; set; }
-        public string CariAd { get; set; }
-        public string btnID { get; set; }
+        public string fax { get; set; }
+        public string faturaIl { get; set; }
+        public string faturaIlce { get; set; }
+        public string faturaAdres { get; set; }
+        public string vergiDairesi { get; set; }
+        public string vergiNo { get; set; }
+        public string faturaUnvan { get; set; }
+        public string webAdresi { get; set; }
+        public string postakodu { get; set; }
+        public string riskLimiti { get; set; }
+        public string riskIslemi { get; set; }
+        public string sevkAdresi { get; set; }
+        public string kullaniciAdi { get; set; }
+        public string subeAdi { get; set; }
+        public string ticaretsicilno { get; set; }
+        public string cariKod { get; set; }
     }
 }

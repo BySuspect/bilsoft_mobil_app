@@ -94,7 +94,7 @@ namespace bilsoft_mobil_app.Pages
         }
         private async void btnYeniCari_Clicked(object sender, EventArgs e)
         {
-            Popup popup = new CariEklePopup();
+            Popup popup = new CariEklePopup("Yeni", null);
             await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
         }
 
@@ -102,7 +102,7 @@ namespace bilsoft_mobil_app.Pages
         {
             try
             {
-                Popup popup = new CariGruplarPopup(popupResultHelper.cariGrupPopupListHelper);
+                Popup popup = new CariGruplarPopup();
                 await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
                 pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
                 pickerCariListe.SelectedIndex = 0;
@@ -113,12 +113,18 @@ namespace bilsoft_mobil_app.Pages
             }
         }
 
-
         private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (pickerCariListe.SelectedItem != null)
+            switch (pickerCariListe.SelectedItem)
             {
-                _aramaType = pickerCariListe.SelectedItem.ToString();
+                case "Hepsi":
+                    CariListView.ItemsSource = _listItemsSource;
+                    break;
+
+                default:
+                    if (pickerCariListe.SelectedItem != null)
+                        CariListView.ItemsSource = new ObservableCollection<CariHesaplarListItems>(_listItemsSource.Where(x => x.grup.ToLower().StartsWith(pickerCariListe.SelectedItem.ToString().ToLower())).ToList());
+                    break;
             }
         }
 
@@ -150,6 +156,180 @@ namespace bilsoft_mobil_app.Pages
                 default:
                     break;
             }
+        }
+        private async Task GetAllData()
+        {
+            try
+            {
+                Loodinglayout.IsVisible = true;
+                LoodingActivity.IsRunning = true;
+                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4NSIsInVuaXF1ZV9uYW1lIjoiMzRiYzJkNTAtMjRmYi00M2Q2LWJmNzAtN2VjNDViNThhMDdhIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTg5ODgzOTcsImV4cCI6MTY1OTAzMTU5NiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.3e5m2nCurWf_VQ9RRAi1jfeD7r94w2fsqo2fwfwtOsc";
+                RestClient client;
+                RestRequest request;
+
+
+                _pickerlistItemsSource.Clear();
+                popupResultHelper.cariGrupPopupListHelper.Clear();
+                popupResultHelper.cariGrupPopupListHelper.Add("Hepsi");
+
+                CariListView.ItemsSource = null;
+                _listItemsSource.Clear();
+
+                #region CariAdresler
+                client = new RestClient(APIHelper.url + APIHelper.CariAdresApi + apiTypes.getall);
+                request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                var resCariAdresler = await client.ExecuteAsync(request, Method.Post);
+                var dataCariAdresler = JsonConvert.DeserializeObject<RootCariAdressler>(resCariAdresler.Content);
+
+                //Yanlis listeleme
+                //for (int i = 0; i < dataCariAdresler.data.Count; i++)
+                //{
+                //    _listItemsSource.Add(new CariHesaplarListItems
+                //    {
+                //        btnID = "btn" + i,
+                //        yetkili = dataCariAdresler.data[i].yetkili,
+                //        cariId = dataCariAdresler.data[i].cariId,
+                //        id = dataCariAdresler.data[i].id,
+                //        cep = dataCariAdresler.data[i].cep,
+                //        tel = dataCariAdresler.data[i].tel,
+                //        ulke = dataCariAdresler.data[i].ulke,
+                //        il = dataCariAdresler.data[i].il,
+                //        ilce = dataCariAdresler.data[i].ilce,
+                //        sevkAdres = dataCariAdresler.data[i].sevkAdres,
+                //        cariKart = dataCariAdresler.data[i].cariKart,
+                //        mail = dataCariAdresler.data[i].mail,
+                //        postaKodu = dataCariAdresler.data[i].postaKodu,
+                //        Bakiye = "---------₺",
+                //        CariAd = "---------",
+                //        SIRA = i + 1
+                //    });
+                //}
+
+                #endregion
+
+                #region CariBanka
+                client = new RestClient(APIHelper.url + APIHelper.CariBankaApi + apiTypes.getall);
+                request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                var resCariBanka = await client.ExecuteAsync(request, Method.Post);
+                var dataCariBanka = JsonConvert.DeserializeObject<RootCariBanka>(resCariBanka.Content);
+                #endregion
+
+                #region CariGrup
+                client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
+                request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                var resCariGrup = await client.ExecuteAsync(request, Method.Post);
+                var dataCariGrup = JsonConvert.DeserializeObject<RootCariGrup>(resCariGrup.Content);
+
+                for (int i = 0; i < dataCariGrup.data.Count(); i++)
+                {
+                    _pickerlistItemsSource.Add(new CariHesaplarPickerItems
+                    {
+                        grupAd = dataCariGrup.data[i].grup,
+                        ID = dataCariGrup.data[i].id,
+                        kullaniciAd = dataCariGrup.data[i].kullaniciAdi,
+                        subeAd = dataCariGrup.data[i].subeAdi
+                    });
+                }
+
+                _pickerlistItemsSource = new ObservableCollection<CariHesaplarPickerItems>(_pickerlistItemsSource.OrderBy(i => i.ID));
+
+                foreach (var item in _pickerlistItemsSource)
+                {
+                    popupResultHelper.cariGrupPopupListHelper.Add(item.grupAd);
+                }
+
+                #endregion
+
+                #region CariIsl //Apide kapalı
+                //client = new RestClient(APIHelper.url + APIHelper.CariIslApi + apiTypes.getall);
+                //request = new RestRequest();
+                //request.AddHeader("Authorization", APIHelper.loginToken);
+                //request.AddHeader("Content-Type", "application/json");
+                //var resCariIsl = await client.ExecuteAsync(request, Method.Post);
+                //var dataCariIsl = JsonConvert.DeserializeObject<RootCariIsl>(resCariIsl.Content);
+                #endregion
+
+                #region CariKartlar
+                client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.getall);
+                request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                var resCariKartlar = await client.ExecuteAsync(request, Method.Post);
+                var dataCariKartlar = JsonConvert.DeserializeObject<RootCariKartlar>(resCariKartlar.Content);
+
+                string test = "";
+
+                for (int i = 0; i < dataCariKartlar.data.Count; i++)
+                {
+                    if (dataCariKartlar.data[i].grup == null) dataCariKartlar.data[i].grup = dataCariKartlar.data[i].yetkili + "=Null";
+                    test += dataCariKartlar.data[i].grup + "\n";
+                    _listItemsSource.Add(new CariHesaplarListItems
+                    {
+                        id = dataCariKartlar.data[i].id,
+                        bakiye = "#₺",
+                        cariad = "#",
+                        btnId = "btn&" + i,
+                        SIRA = i + 1,
+                        adres = dataCariKartlar.data[i].adres,
+                        cariKod = dataCariKartlar.data[i].cariKod,
+                        cep = dataCariKartlar.data[i].cep,
+                        faturaAdres = dataCariKartlar.data[i].faturaAdres,
+                        faturaIl = dataCariKartlar.data[i].faturaIl,
+                        faturaIlce = dataCariKartlar.data[i].faturaIlce,
+                        faturaUnvan = dataCariKartlar.data[i].faturaUnvan,
+                        fax = dataCariKartlar.data[i].fax,
+                        grup = dataCariKartlar.data[i].grup,
+                        mail = dataCariKartlar.data[i].mail,
+                        kullaniciAdi = dataCariKartlar.data[i].kullaniciAdi,
+                        postakodu = dataCariKartlar.data[i].postakodu,
+                        riskIslemi = dataCariKartlar.data[i].riskIslemi,
+                        riskLimiti = dataCariKartlar.data[i].riskLimiti,
+                        sevkAdresi = dataCariKartlar.data[i].sevkAdresi,
+                        subeAdi = dataCariKartlar.data[i].subeAdi,
+                        tel = dataCariKartlar.data[i].tel,
+                        ticaretsicilno = dataCariKartlar.data[i].ticaretsicilno,
+                        vergiDairesi = dataCariKartlar.data[i].vergiDairesi,
+                        vergiNo = dataCariKartlar.data[i].vergiNo,
+                        webAdresi = dataCariKartlar.data[i].webAdresi,
+                        yetkili = dataCariKartlar.data[i].yetkili,
+                    });
+                }
+                await DisplayAlert("", test, "Ok");
+                #endregion
+
+
+                //List<object> test = new List<object>();
+                //test.Add(dataCariKartlar);
+                //test.Add(dataCariAdresler);
+                //test.Add(dataCariBanka);
+                //test.Add(dataCariGrup);
+
+                /**/
+
+                pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
+                pickerCariListe.SelectedIndex = 0;
+                CariListView.ItemsSource = _listItemsSource;
+
+                Loodinglayout.IsVisible = false;
+                LoodingActivity.IsRunning = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine(ex.Message + "\n" + ex.Source + "\n" + ex.StackTrace + "\n" + ex.InnerException + "\n" + ex.Data);
+                Console.WriteLine("");
+                Console.WriteLine("");
+
+                throw new Exception(ex.Message);
+            }
+
         }
 
 
@@ -386,140 +566,11 @@ namespace bilsoft_mobil_app.Pages
         #region Test Area
         private async void Button_Clicked(object sender, EventArgs e)
         {
-
-            pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
+            //var test = popupResultHelper.cariGrupPopupListHelper.Contains("hepsi");
+            //pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
 
 
             //await GetAllData();
-        }
-        private async Task GetAllData()
-        {
-            try
-            {
-                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4NSIsInVuaXF1ZV9uYW1lIjoiMzRiYzJkNTAtMjRmYi00M2Q2LWJmNzAtN2VjNDViNThhMDdhIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTg5ODgzOTcsImV4cCI6MTY1OTAzMTU5NiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.3e5m2nCurWf_VQ9RRAi1jfeD7r94w2fsqo2fwfwtOsc";
-                RestClient client;
-                RestRequest request;
-
-
-                _pickerlistItemsSource.Clear();
-                popupResultHelper.cariGrupPopupListHelper.Clear();
-                popupResultHelper.cariGrupPopupListHelper.Add("Hepsi");
-
-                CariListView.ItemsSource = null;
-                _listItemsSource.Clear();
-
-                #region CariAdresler
-                client = new RestClient(APIHelper.url + APIHelper.CariAdresApi + apiTypes.getall);
-                request = new RestRequest();
-                request.AddHeader("Authorization", APIHelper.loginToken);
-                request.AddHeader("Content-Type", "application/json");
-                var resCariAdresler = await client.ExecuteAsync(request, Method.Post);
-                var dataCariAdresler = JsonConvert.DeserializeObject<RootCariAdressler>(resCariAdresler.Content);
-
-                for (int i = 0; i < dataCariAdresler.data.Count; i++)
-                {
-                    _listItemsSource.Add(new CariHesaplarListItems
-                    {
-                        btnID = "btn" + i,
-                        yetkili = dataCariAdresler.data[i].yetkili,
-                        cariId = dataCariAdresler.data[i].cariId,
-                        id = dataCariAdresler.data[i].id,
-                        cep = dataCariAdresler.data[i].cep,
-                        tel = dataCariAdresler.data[i].tel,
-                        ulke = dataCariAdresler.data[i].ulke,
-                        il = dataCariAdresler.data[i].il,
-                        ilce = dataCariAdresler.data[i].ilce,
-                        sevkAdres = dataCariAdresler.data[i].sevkAdres,
-                        cariKart = dataCariAdresler.data[i].cariKart,
-                        mail = dataCariAdresler.data[i].mail,
-                        postaKodu = dataCariAdresler.data[i].postaKodu,
-                        Bakiye = "---------₺",
-                        CariAd = "---------",
-                        SIRA = i + 1
-                    });
-                }
-
-                #endregion
-
-                #region CariBanka
-                client = new RestClient(APIHelper.url + APIHelper.CariBankaApi + apiTypes.getall);
-                request = new RestRequest();
-                request.AddHeader("Authorization", APIHelper.loginToken);
-                request.AddHeader("Content-Type", "application/json");
-                var resCariBanka = await client.ExecuteAsync(request, Method.Post);
-                var dataCariBanka = JsonConvert.DeserializeObject<RootCariBanka>(resCariBanka.Content);
-                #endregion
-
-                #region CariGrup
-                client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
-                request = new RestRequest();
-                request.AddHeader("Authorization", APIHelper.loginToken);
-                request.AddHeader("Content-Type", "application/json");
-                var resCariGrup = await client.ExecuteAsync(request, Method.Post);
-                var dataCariGrup = JsonConvert.DeserializeObject<RootCariGrup>(resCariGrup.Content);
-
-                for (int i = 0; i < dataCariGrup.data.Count(); i++)
-                {
-                    _pickerlistItemsSource.Add(new CariHesaplarPickerItems
-                    {
-                        grupAd = dataCariGrup.data[i].grup,
-                        ID = dataCariGrup.data[i].id,
-                        kullaniciAd = dataCariGrup.data[i].kullaniciAdi,
-                        subeAd = dataCariGrup.data[i].subeAdi
-                    });
-                }
-
-                _pickerlistItemsSource = new ObservableCollection<CariHesaplarPickerItems>(_pickerlistItemsSource.OrderBy(i => i.ID));
-
-                foreach (var item in _pickerlistItemsSource)
-                {
-                    popupResultHelper.cariGrupPopupListHelper.Add(item.grupAd);
-                }
-
-                #endregion
-
-                #region CariIsl //Apide kapalı
-                //client = new RestClient(APIHelper.url + APIHelper.CariIslApi + apiTypes.getall);
-                //request = new RestRequest();
-                //request.AddHeader("Authorization", APIHelper.loginToken);
-                //request.AddHeader("Content-Type", "application/json");
-                //var resCariIsl = await client.ExecuteAsync(request, Method.Post);
-                //var dataCariIsl = JsonConvert.DeserializeObject<RootCariIsl>(resCariIsl.Content);
-                #endregion
-
-                #region CariKartlar
-                client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.getall);
-                request = new RestRequest();
-                request.AddHeader("Authorization", APIHelper.loginToken);
-                request.AddHeader("Content-Type", "application/json");
-                var resCariKartlar = await client.ExecuteAsync(request, Method.Post);
-                var dataCariKartlar = JsonConvert.DeserializeObject<RootCariKartlar>(resCariKartlar.Content);
-                #endregion
-
-
-                //List<object> test = new List<object>();
-                //test.Add(dataCariKartlar);
-                //test.Add(dataCariAdresler);
-                //test.Add(dataCariBanka);
-                //test.Add(dataCariGrup);
-
-                /**/
-
-                pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
-                pickerCariListe.SelectedIndex = 0;
-                CariListView.ItemsSource = _listItemsSource;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine(ex.Message + "\n" + ex.Source + "\n" + ex.StackTrace + "\n" + ex.InnerException + "\n" + ex.Data);
-                Console.WriteLine("");
-                Console.WriteLine("");
-
-                throw new Exception(ex.Message);
-            }
-
         }
         //async Task<object> RequestData(string url, Method method, string token, string json)
         //{
@@ -538,5 +589,6 @@ namespace bilsoft_mobil_app.Pages
         //    }
         //}
         #endregion
+
     }
 }

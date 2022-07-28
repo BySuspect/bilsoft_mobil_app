@@ -154,19 +154,19 @@
                         <ListView.ItemsSource>
                             <x:Array Type="{x:Type local:CariHesaplarListItems}">
                                 <local:CariHesaplarListItems
-                                    Bakiye="0"
-                                    CariAd="Mutlu Market"
                                     SIRA="1"
-                                    btnID="btn1"
+                                    bakiye="0"
+                                    btnId="btn1"
+                                    cariad="***"
                                     cep="0545 535 32 35"
                                     id="1"
                                     tel="0212 222 4323"
                                     yetkili="Vawhawja" />
                                 <local:CariHesaplarListItems
-                                    Bakiye="0"
-                                    CariAd="Mutlu Market"
                                     SIRA="2"
-                                    btnID="btn2"
+                                    bakiye="0"
+                                    btnId="btn2"
+                                    cariad="Mutlu Market"
                                     cep="0545 535 32 35"
                                     id="2"
                                     tel="0212 222 4323"
@@ -182,6 +182,14 @@
                                         BorderColor="{Binding BorderColor}"
                                         CornerRadius="15">
                                         <StackLayout>
+                                            <Label FontSize="Body" TextColor="{Binding TextColor}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding SIRA}" />
+                                                        <Span Text="." />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
@@ -203,7 +211,7 @@
                                                                         FontSize="Caption"
                                                                         Text="Cari Adı: "
                                                                         TextColor="LightGray" />
-                                                                    <Span x:Name="lblCariAd" Text="{Binding CariAd}" />
+                                                                    <Span x:Name="lblCariAd" Text="{Binding cariad}" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
@@ -219,8 +227,8 @@
                                                         Grid.Column="1"
                                                         BackgroundColor="{Binding MoneyBackground}"
                                                         FontSize="Body"
-                                                        Text="{Binding Bakiye}"
-                                                        TextColor="{Binding Money}"
+                                                        Text="{Binding bakiye}"
+                                                        TextColor="{Binding TextColor}"
                                                         TranslationY="-10" />
                                                     <StackLayout
                                                         Grid.Row="1"
@@ -258,7 +266,7 @@
                                                         Grid.Row="2"
                                                         Grid.Column="1"
                                                         Padding="5,0,10,0"
-                                                        AutomationId="{Binding btnID}"
+                                                        AutomationId="{Binding btnId}"
                                                         BackgroundColor="Transparent"
                                                         BorderColor="{Binding BorderColor}"
                                                         BorderWidth="1"
@@ -289,7 +297,7 @@
                                                         Grid.Row="3"
                                                         Grid.Column="1"
                                                         Padding="5,0,5,0"
-                                                        AutomationId="{Binding btnID}"
+                                                        AutomationId="{Binding btnId}"
                                                         BackgroundColor="{Binding Success}"
                                                         Clicked="CariAcButton_Clicked"
                                                         CornerRadius="15"
@@ -314,6 +322,33 @@
             HorizontalOptions="Center"
             Text="testbtn"
             VerticalOptions="End" />
+        <Grid
+            x:Name="Loodinglayout"
+            BackgroundColor="#77767676"
+            IsVisible="false">
+            <Frame
+                BackgroundColor="#77767676"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Padding="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ActivityIndicator
+                        x:Name="LoodingActivity"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        Color="White" />
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="20"
+                        Text="Yükleniyor..."
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+        </Grid>
     </Grid>
 
     <!--#region Liste Tam Xaml

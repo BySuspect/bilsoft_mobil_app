@@ -49,7 +49,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
          * entryCariKod
          */
         ObservableCollection<SevkAdresiVeriler> _listItemsSource = new ObservableCollection<SevkAdresiVeriler>();
-        public CariEklePopup()
+        public CariEklePopup(string mod, object list)
         {
             InitializeComponent();
             BindingContext = this;
