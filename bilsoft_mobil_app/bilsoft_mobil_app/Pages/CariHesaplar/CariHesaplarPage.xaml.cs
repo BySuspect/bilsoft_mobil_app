@@ -104,7 +104,7 @@ namespace bilsoft_mobil_app.Pages
             {
                 Popup popup = new CariGruplarPopup(popupResultHelper.cariGrupPopupListHelper);
                 await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
-                pickerItemsSource = popupResultHelper.cariGrupPopupListHelper;
+                pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
                 pickerCariListe.SelectedIndex = 0;
             }
             catch (Exception ex)
@@ -116,7 +116,10 @@ namespace bilsoft_mobil_app.Pages
 
         private void pickerCariListe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //_aramaType = pickerCariListe.SelectedItem.ToString();
+            if (pickerCariListe.SelectedItem != null)
+            {
+                _aramaType = pickerCariListe.SelectedItem.ToString();
+            }
         }
 
         private async void btnMahsupFisi_Clicked(object sender, EventArgs e)
@@ -383,7 +386,10 @@ namespace bilsoft_mobil_app.Pages
         #region Test Area
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            pickerItemsSource = popupResultHelper.cariGrupPopupListHelper;
+
+            pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
+
+
             //await GetAllData();
         }
         private async Task GetAllData()
@@ -393,6 +399,12 @@ namespace bilsoft_mobil_app.Pages
                 APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4NSIsInVuaXF1ZV9uYW1lIjoiMzRiYzJkNTAtMjRmYi00M2Q2LWJmNzAtN2VjNDViNThhMDdhIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTg5ODgzOTcsImV4cCI6MTY1OTAzMTU5NiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.3e5m2nCurWf_VQ9RRAi1jfeD7r94w2fsqo2fwfwtOsc";
                 RestClient client;
                 RestRequest request;
+
+
+                _pickerlistItemsSource.Clear();
+                popupResultHelper.cariGrupPopupListHelper.Clear();
+                popupResultHelper.cariGrupPopupListHelper.Add("Hepsi");
+
                 CariListView.ItemsSource = null;
                 _listItemsSource.Clear();
 
@@ -446,10 +458,6 @@ namespace bilsoft_mobil_app.Pages
                 var resCariGrup = await client.ExecuteAsync(request, Method.Post);
                 var dataCariGrup = JsonConvert.DeserializeObject<RootCariGrup>(resCariGrup.Content);
 
-                _pickerlistItemsSource.Clear();
-                popupResultHelper.cariGrupPopupListHelper.Clear();
-                popupResultHelper.cariGrupPopupListHelper.Add("Hepsi");
-
                 for (int i = 0; i < dataCariGrup.data.Count(); i++)
                 {
                     _pickerlistItemsSource.Add(new CariHesaplarPickerItems
@@ -489,27 +497,17 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
 
-                List<object> test = new List<object>();
-                test.Add(dataCariKartlar);
-                test.Add(dataCariAdresler);
-                test.Add(dataCariBanka);
-                test.Add(dataCariGrup);
+                //List<object> test = new List<object>();
+                //test.Add(dataCariKartlar);
+                //test.Add(dataCariAdresler);
+                //test.Add(dataCariBanka);
+                //test.Add(dataCariGrup);
 
                 /**/
 
-                pickerItemsSource = popupResultHelper.cariGrupPopupListHelper;
+                pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
                 pickerCariListe.SelectedIndex = 0;
                 CariListView.ItemsSource = _listItemsSource;
-                /*string webURL = APIHelper.loginDonemGetirAPI;
-                HttpHelper httpHelper = new HttpHelper();
-                APIResponse res;
-
-                #region sunucu veri Gönderme
-                await Task.Delay(100);
-                res = await httpHelper.callAPI(webURL, "{}");
-                // var Data = JsonConvert.DeserializeObject<RootGirisYapDonemGetir>(res.data.ToString());
-                #endregion*/
-
             }
             catch (Exception ex)
             {
