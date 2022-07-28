@@ -25,7 +25,7 @@ namespace bilsoft_mobil_app.Helper.API
         public static string kullaniciSifre { get; set; }
         public DateTime TokenBitisTime { get; set; } = new DateTime();
         public static string veritabaniAd { get; set; }
-        public static string subeAd = "bilsoft";
+        public static string subeAd { get; set; }
         public static string apiKullaniciAdi = "bilsoft";
         public static string apiKullaniciSifre = "1234";
         public static List<string> logindonemYil { get; set; } = new List<string>();

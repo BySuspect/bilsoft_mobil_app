@@ -104,8 +104,7 @@ namespace bilsoft_mobil_app.Pages
             {
                 Popup popup = new CariGruplarPopup();
                 await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
-                pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
-                pickerCariListe.SelectedIndex = 0;
+                GetAllData();
             }
             catch (Exception ex)
             {
@@ -163,7 +162,12 @@ namespace bilsoft_mobil_app.Pages
             {
                 Loodinglayout.IsVisible = true;
                 LoodingActivity.IsRunning = true;
-                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4NSIsInVuaXF1ZV9uYW1lIjoiMzRiYzJkNTAtMjRmYi00M2Q2LWJmNzAtN2VjNDViNThhMDdhIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTg5ODgzOTcsImV4cCI6MTY1OTAzMTU5NiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.3e5m2nCurWf_VQ9RRAi1jfeD7r94w2fsqo2fwfwtOsc";
+
+                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiYmMyYjhiNjQtNDQzNS00ZmI1LTk3YWYtODBmMWEyZDJkYTllIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTkwMTA1NTgsImV4cCI6MTY1OTA1Mzc1NywiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.AdmsFbHQtHWYPLzvHyEbbT0nSI7DjrF0aNtr0aRNRxk";
+                APIHelper.kullaniciAdi = "demo";
+                APIHelper.subeAd = "Merkez";
+
+
                 RestClient client;
                 RestRequest request;
 
@@ -273,10 +277,10 @@ namespace bilsoft_mobil_app.Pages
                     {
                         id = dataCariKartlar.data[i].id,
                         bakiye = "#₺",
-                        cariad = "#",
                         btnId = "btn&" + i,
                         SIRA = i + 1,
                         adres = dataCariKartlar.data[i].adres,
+                        cariad = dataCariKartlar.data[i].faturaUnvan,
                         cariKod = dataCariKartlar.data[i].cariKod,
                         cep = dataCariKartlar.data[i].cep,
                         faturaAdres = dataCariKartlar.data[i].faturaAdres,
@@ -566,6 +570,8 @@ namespace bilsoft_mobil_app.Pages
         #region Test Area
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            GetAllData();
+
             //var test = popupResultHelper.cariGrupPopupListHelper.Contains("hepsi");
             //pickerItemsSource = new List<string>(popupResultHelper.cariGrupPopupListHelper);
 

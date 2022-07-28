@@ -25,9 +25,9 @@ namespace bilsoft_mobil_app.Helper.App
         public const string _toolbarcolor = "#FFA600"; //#7AFF6701
 
         public const string _textColor = "#FFFFFF";
-        public const string _textColorKoyu = "#101010";
-        public const string _textColorWhite = "#FFFFFF";
-        public const string _textColorBlack = "#FFFFFF";
+        public const string _textColorKoyu = "#2B2B2B";
+        public const string _textColorWhite = "white";
+        public const string _textColorBlack = "black";
         public const string _success = "#00C851";
         public const string _money = "#118C4F";
         public const string _moneyBackground = "#00C851";

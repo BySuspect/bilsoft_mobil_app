@@ -18,8 +18,11 @@ namespace bilsoft_mobil_app.Pages.popUplar.CariHesaplar
         public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
-        public string GrupAd { get; set; }
-        public int Sira { get; set; }
-        public string ID { get; set; }
+        public int id { get; set; }
+        public int sira { get; set; }
+        public string grup { get; set; }
+        public string kullaniciAdi { get; set; }
+        public string subeAdi { get; set; }
+        public string btnId { get; set; }
     }
 }
