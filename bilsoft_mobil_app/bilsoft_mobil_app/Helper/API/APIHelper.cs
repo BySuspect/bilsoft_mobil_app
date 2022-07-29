@@ -17,17 +17,22 @@ namespace bilsoft_mobil_app.Helper.API
         public const string CariGrupApi = "api/CariGrup";
         public const string CariIslApi = "api/CariIsl";
         public const string CariKartApi = "api/CariKart";
+
+        //Login Verileri
+        public static bool loginStatus { get; set; }
         public static string loginData { get; set; }
         public static string loginMod { get; set; } = "demo";
         public static string loginToken { get; set; }
         public static string vergiNo { get; set; }
         public static string kullaniciAdi { get; set; }
         public static string kullaniciSifre { get; set; }
-        public DateTime TokenBitisTime { get; set; } = new DateTime();
+        public static DateTime TokenBitisTime { get; set; } = new DateTime();
         public static string veritabaniAd { get; set; }
         public static string subeAd { get; set; }
+        //Api bilgisi
         public static string apiKullaniciAdi = "bilsoft";
         public static string apiKullaniciSifre = "1234";
+
         public static List<string> logindonemYil { get; set; } = new List<string>();
         public static string secilenlogindonemYil { get; set; }
         public static string SonAcilanSayfa { get; set; }
