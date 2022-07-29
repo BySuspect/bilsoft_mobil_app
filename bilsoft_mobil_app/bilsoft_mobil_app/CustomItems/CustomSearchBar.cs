@@ -1,5 +1,4 @@
-﻿using bilsoft_mobil_app.Helper;
-using System;
+﻿using System;
 using Xamarin.Forms;
 
 namespace bilsoft_mobil_app.CustomItems

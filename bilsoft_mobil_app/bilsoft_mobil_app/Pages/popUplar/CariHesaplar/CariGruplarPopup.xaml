@@ -151,15 +151,22 @@
         <Frame
             x:Name="YeniGrupView"
             Margin="0,40"
-            BackgroundColor="{Binding CardBackgroundColor}"
+            BackgroundColor="#77767676"
             CornerRadius="15"
             IsVisible="false">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="YeniGrupIptal_Clicked" />
+            </Frame.GestureRecognizers>
             <Frame
+                AutomationId="GrupEkleMain"
                 BackgroundColor="{Binding BackgroundColor}"
                 BorderColor="{Binding BorderColor}"
                 CornerRadius="15"
                 HasShadow="False"
                 VerticalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Frame.GestureRecognizers>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <custom:CustomEntry
                         x:Name="entryYeniGrup"
@@ -233,5 +240,6 @@
                 </StackLayout>
             </Frame>
         </Grid>
+        <custom:SimplePopupAlert x:Name="AlertView" />
     </Grid>
 </xct:Popup>

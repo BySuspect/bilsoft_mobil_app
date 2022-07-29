@@ -4,7 +4,7 @@ using System.Text;
 
 namespace bilsoft_mobil_app.Helper.JSONHelpers.RootCari
 {
-    // RootCariGrup myDeserializedClass = JsonConvert.DeserializeObject<RootCariGrup>(myJsonResponse);
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class DatumRootCariGrup
     {
         public int id { get; set; }

@@ -135,27 +135,76 @@ namespace bilsoft_mobil_app.Pages.popUplar
                 throw new Exception(ex.Message);
             }
         }
-        async Task AddOnList(string Name)
+        async Task AddOnList()
         {
-            //GrupListNames.Add(Name);
-            //_listItemsSource.Clear();
-            //for (int i = 0; i < GrupListNames.Count(); i++)
-            //{
-            //    RefeshList(i, GrupListNames[i]);
-            //}
-            //if (_listItemsSource.Count > 0) GrupListView.ItemsSource = _listItemsSource;
-            //else GrupListView.ItemsSource = null;
+            try
+            {
+                int denemeCount = 0;
+            repeat:
+                if (denemeCount > 5)
+                {
+                    AlertView.show("Hata", "Çok Fazla yeniden denendi!", "Tamam");
+                }
+                Loodinglayout.IsVisible = true;
+                LoodingActivity.IsRunning = true;
+
+                string deleteData = "{\"id\":" + 0 + ",\"grup\":\"" + entryYeniGrup.Text.Trim() + "\",}";
+
+                RestClient client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.add);
+                RestRequest request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddJsonBody(deleteData);
+                var resCariGrup = await client.ExecuteAsync(request, Method.Post);
+                var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
+                if (dataCariGrup.success)
+                {
+                    denemeCount = 0;
+                    AlertView.show("", "Başarıyla Eklendi!", "Tamam");
+                    await RefreshList();
+                    YeniGrupView.IsVisible = false;
+                }
+                else
+                {
+                    bool alertRes = await AlertView.showAsync("Hata", dataCariGrup.message, "Yeniden Dene", "İptal");
+                    if (alertRes)
+                    {
+                        denemeCount++;
+                        goto repeat;
+                    }
+                }
+
+                Loodinglayout.IsVisible = false;
+                LoodingActivity.IsRunning = false;
+                YeniGrupView.IsVisible = false;
+                //_listItemsSource.Clear();
+                //for (int i = 0; i < GrupListNames.Count(); i++)
+                //{
+                //    RefeshList(i, GrupListNames[i]);
+                //}
+                //if (_listItemsSource.Count > 0) GrupListView.ItemsSource = _listItemsSource;
+                //else GrupListView.ItemsSource = null;
+            }
+            catch (Exception ex)
+            {
+                Loodinglayout.IsVisible = false;
+                LoodingActivity.IsRunning = false;
+                throw new Exception(ex.Message);
+            }
         }
         private async void YeniGrupKaydet_Clicked(object sender, EventArgs e)
         {
-            //if (entryYeniGrup.Text != "")
-            //{
-            //    entryYeniGrup.Unfocus();
-            //    await AddOnList(entryYeniGrup.Text);
-            //    YeniGrupView.IsVisible = false;
-            //    entryYeniGrup.Text = "";
-            //}
             entryYeniGrup.Unfocus();
+            if (entryYeniGrup.Text != null && entryYeniGrup.Text.Trim() != "" && !string.IsNullOrEmpty(entryYeniGrup.Text.Trim()))
+            {
+                YeniGrupView.IsVisible = false;
+                await AddOnList();
+            }
+            else
+            {
+                AlertView.show("Hata", "Boş veri girmeyiniz!", "Tamam");
+                entryYeniGrup.Unfocus();
+            }
         }
 
         private void YeniGrupIptal_Clicked(object sender, EventArgs e)
@@ -192,8 +241,12 @@ namespace bilsoft_mobil_app.Pages.popUplar
 
         private async void btnListDelete_Clicked(object sender, EventArgs e)
         {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
             var btn = sender as Button;
             await DeleteOnList(btn.AutomationId);
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
 
 

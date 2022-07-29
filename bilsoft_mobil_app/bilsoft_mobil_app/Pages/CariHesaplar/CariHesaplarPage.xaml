@@ -317,18 +317,11 @@
                 </StackLayout>
             </Frame>
         </StackLayout>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="End">
-            <Button
-                Clicked="Button_Clicked"
-                HorizontalOptions="Center"
-                Text="MainTest"
-                VerticalOptions="End" />
-            <Button
-                Clicked="Button_Clicked_1"
-                HorizontalOptions="Center"
-                Text="test2"
-                VerticalOptions="End" />
-        </StackLayout>
+        <Button
+            Clicked="Button_Clicked"
+            HorizontalOptions="Center"
+            Text="testbtn"
+            VerticalOptions="End" />
         <Grid
             x:Name="Loodinglayout"
             BackgroundColor="#77767676"
