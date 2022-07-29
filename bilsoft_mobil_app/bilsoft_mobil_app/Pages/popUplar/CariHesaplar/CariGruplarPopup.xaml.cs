@@ -177,6 +177,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
                 Loodinglayout.IsVisible = false;
                 LoodingActivity.IsRunning = false;
                 YeniGrupView.IsVisible = false;
+                entryYeniGrup.Text = String.Empty;
                 //_listItemsSource.Clear();
                 //for (int i = 0; i < GrupListNames.Count(); i++)
                 //{

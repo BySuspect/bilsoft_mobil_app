@@ -128,12 +128,13 @@ namespace bilsoft_mobil_app.Pages
                             LoodingActivity.IsVisible = true;
                             LoodingActivity.IsRunning = true;
                             APIHelper.loginMod = "Login";
-                            GirisYapConvert(pickerDonem.SelectedItem.ToString(), entrySubeAd.Text);
+                            GirisYapConvert(pickerDonem.SelectedItem.ToString());
                             await Task.Delay(100);
                             webURL = APIHelper.tokeApi;
                             res = await httpHelper.callAPI(webURL, _logindata);
                             tokenData = JsonConvert.DeserializeObject<RootGirisYapTokenAl>(res.data.ToString());
                             APIHelper.secilenlogindonemYil = Picker.SelectedItem.ToString();
+                            APIHelper.subeAd = tokenData.data.subeAd;
                             if (tokenData.message == null)
                             {
                                 if (cb_benihatirla.IsChecked)
@@ -144,6 +145,7 @@ namespace bilsoft_mobil_app.Pages
                                 {
                                     oturumuAciktut();
                                 }
+                                APIHelper.loginToken = tokenData.data.token;
                                 await Navigation.PushModalAsync(new MainPage(), false);/**/
                             }
                             else
@@ -268,14 +270,15 @@ namespace bilsoft_mobil_app.Pages
                             APIHelper.logindonemYil.Add(GirisData.data.firmaVeritabaniDTO[0].firmaVeritabaniDonemDTO[i].donemYil);
                         }
                         APIHelper.loginMod = "Login";
-                        GirisYapConvert(Preferences.Get("OturumuAcikTutDonem", "Yok"), entrySubeAd.Text);
+                        GirisYapConvert(Preferences.Get("OturumuAcikTutDonem", "Yok"));
                         await Task.Delay(100);
                         webURL = APIHelper.tokeApi;
                         res = await httpHelper.callAPI(webURL, _logindata);
                         tokenData = JsonConvert.DeserializeObject<RootGirisYapTokenAl>(res.data.ToString());
-
+                        APIHelper.subeAd = tokenData.data.subeAd;
                         if (tokenData.message == null)
                         {
+                            APIHelper.loginToken = tokenData.data.token;
                             APIHelper.secilenlogindonemYil = Preferences.Get("OturumuAcikTutDonem", "Yok");
                             await Navigation.PushModalAsync(new MainPage(), false);/**/
                         }
@@ -301,9 +304,9 @@ namespace bilsoft_mobil_app.Pages
             _logindata = "{ \"vergiNumarasi\": \"" + entry_loginvergino.Text + "\",\"kullaniciAdi\": \"" + entry_loginkullaniciadi.Text + "\",\"kullaniciSifre\": \"" + entry_loginsifre.Text + "\"}";
 
         }
-        void GirisYapConvert(string yil, string subeAd)
+        void GirisYapConvert(string yil)
         {
-            _logindata = "{\"vergiNumarasi\":\"" + APIHelper.vergiNo + "\",\"kullaniciAd\":\"" + APIHelper.kullaniciAdi + "\",\"kullaniciSifre\":\"" + APIHelper.kullaniciSifre + "\",\"veritabaniAd\":\"" + APIHelper.veritabaniAd + "\",\"donemYil\":\"" + yil + "\",\"subeAd\":\"" + subeAd + "\",\"apiKullaniciAdi\":\"" + APIHelper.apiKullaniciAdi + "\",\"apiKullaniciSifre\":\"" + APIHelper.apiKullaniciSifre + "\"}";
+            _logindata = "{\"vergiNumarasi\":\"" + APIHelper.vergiNo + "\",\"kullaniciAd\":\"" + APIHelper.kullaniciAdi + "\",\"kullaniciSifre\":\"" + APIHelper.kullaniciSifre + "\",\"veritabaniAd\":\"" + APIHelper.veritabaniAd + "\",\"donemYil\":\"" + yil + "\",\"subeAd\":\"" + APIHelper.subeAd + "\",\"apiKullaniciAdi\":\"" + APIHelper.apiKullaniciAdi + "\",\"apiKullaniciSifre\":\"" + APIHelper.apiKullaniciSifre + "\"}";
         }
 
         private void btn_ucretsizdene_Clicked(object sender, EventArgs e)

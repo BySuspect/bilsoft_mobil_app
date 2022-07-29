@@ -163,10 +163,11 @@ namespace bilsoft_mobil_app.Pages
                 Loodinglayout.IsVisible = true;
                 LoodingActivity.IsRunning = true;
 
+                //Test Verileri
                 APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiNTAzY2IyZmEtMDczYS00OWI3LWIzNzEtNjYyY2U1ZTM0YWVkIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTkwNzM2MzEsImV4cCI6MTY1OTExNjgyNiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.4w0C4fDwd21X__ngoiPF9w0E5WHBW_6LobgdICw9sLQ";
                 APIHelper.kullaniciAdi = "demo";
                 APIHelper.subeAd = "Merkez";
-
+                //Test Verileri End
 
                 RestClient client;
                 RestRequest request;
