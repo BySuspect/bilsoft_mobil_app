@@ -1,4 +1,5 @@
-﻿using bilsoft_mobil_app.Helper.API;
+﻿using Android.App;
+using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Helper.JSONHelpers.RootCari;
 using bilsoft_mobil_app.Helper.Veriler;
@@ -82,10 +83,25 @@ namespace bilsoft_mobil_app.Pages
         //    pickerCariListe.ItemsSource = popupResultHelper.cariGrupPopupListHelper;
         //    pickerCariListe.SelectedIndex = 0;
         //}
-        private void CariEditButton_Clicked(object sender, EventArgs e)
+        private async void CariEditButton_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             var test = btn.AutomationId;
+
+            var _list = new List<CariHesaplarListItems>();
+            foreach (var item in _listItemsSource)
+            {
+                if (item.btnId == btn.AutomationId)
+                {
+                    _list.Add(item);
+                    break;
+                }
+            }
+
+            var json = JsonConvert.SerializeObject(_list);
+            Popup popup = new CariEklePopup("Edit", _list);
+            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+
         }
         private void CariAcButton_Clicked(object sender, EventArgs e)
         {
@@ -96,6 +112,7 @@ namespace bilsoft_mobil_app.Pages
         {
             Popup popup = new CariEklePopup("Yeni", null);
             await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            GetAllData();
         }
 
         private async void btnGruplar_Clicked(object sender, EventArgs e)
@@ -164,7 +181,7 @@ namespace bilsoft_mobil_app.Pages
                 LoodingActivity.IsRunning = true;
 
                 //Test Verileri
-                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiNTAzY2IyZmEtMDczYS00OWI3LWIzNzEtNjYyY2U1ZTM0YWVkIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTkwNzM2MzEsImV4cCI6MTY1OTExNjgyNiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.4w0C4fDwd21X__ngoiPF9w0E5WHBW_6LobgdICw9sLQ";
+                APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiN2RhZTgxMzItMjg3Ni00YjIwLTg0MmItYjQzMTIwMTg2ZjcxIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTkzMzU2NDQsImV4cCI6MTY1OTM3ODgzOCwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.O6M1JvX9cY6KafleBxs2vJUhRLXPGIxhE0XziCSEO64";
                 APIHelper.kullaniciAdi = "demo";
                 APIHelper.subeAd = "Merkez";
                 //Test Verileri End

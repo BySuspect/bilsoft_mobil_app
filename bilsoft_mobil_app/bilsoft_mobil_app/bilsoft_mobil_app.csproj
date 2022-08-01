@@ -12,6 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\**" />
+    <EmbeddedResource Remove="Database\**" />
+    <None Remove="Database\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
@@ -22,10 +28,6 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Xamarin.Forms.ComboBox" Version="1.0.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Database\" />
   </ItemGroup>
 
   <ItemGroup>

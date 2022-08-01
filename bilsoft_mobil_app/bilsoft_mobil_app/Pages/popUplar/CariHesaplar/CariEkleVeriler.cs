@@ -1,28 +1,15 @@
 ﻿using bilsoft_mobil_app.Helper.App;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using Xamarin.Forms;
 
-namespace bilsoft_mobil_app.Pages.CariHesaplar
+namespace bilsoft_mobil_app.Pages.popUplar.CariHesaplar
 {
-    public class CariHesaplarListItems
+    public class CariEkleVeriler
     {
-
-        #region renk Bindleri
-        public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
-        public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
-        public Color Success { get; set; } = Color.FromHex(AppThemeColors._success);
-        public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
-        public Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
-        public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
-        public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
-        public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
-        #endregion
-
         /**/
         public int id { get; set; }
-        public int SIRA { get; set; }
-        public string btnId { get; set; }
-        public string cariad { get; set; }
-        public string bakiye { get; set; }
         public string grup { get; set; }
         public string yetkili { get; set; }
         public string tel { get; set; }
@@ -45,5 +32,14 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         public string subeAdi { get; set; }
         public string ticaretsicilno { get; set; }
         public string cariKod { get; set; }
+        public object cariN11Id { get; set; }
+        public object resimYolu { get; set; }
+        public int personelMi { get; set; }
+        public string seciliPketiketi { get; set; }
+        public string cariaciklama { get; set; }
+        public string varsayilanKasa { get; set; }
+        public int varsayilanVadeGunu { get; set; }
+        public string aciklama { get; set; }
+        public string faturaUlke { get; set; }
     }
 }

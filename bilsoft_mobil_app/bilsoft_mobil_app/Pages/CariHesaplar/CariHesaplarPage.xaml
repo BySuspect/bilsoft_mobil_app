@@ -270,6 +270,7 @@
                                                         BackgroundColor="Transparent"
                                                         BorderColor="{Binding BorderColor}"
                                                         BorderWidth="1"
+                                                        Clicked="CariEditButton_Clicked"
                                                         CornerRadius="15"
                                                         HeightRequest="25"
                                                         HorizontalOptions="Center"

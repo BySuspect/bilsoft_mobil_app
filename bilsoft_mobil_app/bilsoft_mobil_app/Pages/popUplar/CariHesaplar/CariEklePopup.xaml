@@ -395,21 +395,7 @@
                                     <StackLayout />
                                 </ListView.Header>
                                 <ListView.ItemsSource>
-                                    <x:Array Type="{x:Type popup:SevkAdresiVeriler}">
-                                        <popup:SevkAdresiVeriler
-                                            DeleteId="btn1"
-                                            btnId="btn1"
-                                            ceptel="055555555531"
-                                            fax="31515315125"
-                                            il="dzc"
-                                            ilce="merkez"
-                                            mail="aaaaaaaa@aaaaa"
-                                            postakodu="811111"
-                                            sevkadres="ev"
-                                            tel="05555555555555"
-                                            ulke="tr"
-                                            yetkili="me" />
-                                    </x:Array>
+                                    <!--  source  -->
                                 </ListView.ItemsSource>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>

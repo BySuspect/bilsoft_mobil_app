@@ -1,11 +1,14 @@
-﻿using bilsoft_mobil_app.CustomItems;
+﻿using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Helper.JSONHelpers.RootCari;
+using bilsoft_mobil_app.Pages.CariHesaplar;
 using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
@@ -48,13 +51,87 @@ namespace bilsoft_mobil_app.Pages.popUplar
          * entryAdres
          * entryCariKod
          */
-        ObservableCollection<SevkAdresiVeriler> _listItemsSource = new ObservableCollection<SevkAdresiVeriler>();
-        public CariEklePopup(string mod, object list)
+        ObservableCollection<CariEkleVeriler> _listItemsSource = new ObservableCollection<CariEkleVeriler>();
+        List<string> cbItems = new List<string>();
+        public CariEklePopup(string mod, object _list)
         {
             InitializeComponent();
             BindingContext = this;
             MainScrollView.ScrollToAsync(0, 0, false);
-            cbGrup.BindingContext = new cbGrupViewModel();
+            getGruplar();
+            if (mod == "Edit")
+            {
+                btnAddSevkAdrs.IsVisible = false;
+                foreach (var item in _list as List<CariHesaplarListItems>)
+                {
+                    _listItemsSource.Add(new CariEkleVeriler
+                    {
+                        id = item.id,
+                        faturaUnvan = item.cariad,
+                        adres = item.adres,
+                        cariKod = item.cariKod,
+                        cep = item.cep,
+                        faturaAdres = item.faturaAdres,
+                        faturaIl = item.faturaIl,
+                        faturaIlce = item.faturaIlce,
+                        fax = item.fax,
+                        grup = item.grup,
+                        kullaniciAdi = item.kullaniciAdi,
+                        mail = item.mail,
+                        postakodu = item.postakodu,
+                        riskIslemi = item.riskIslemi,
+                        riskLimiti = item.riskLimiti,
+                        sevkAdresi = item.sevkAdresi,
+                        subeAdi = item.subeAdi,
+                        tel = item.tel,
+                        ticaretsicilno = item.ticaretsicilno,
+                        vergiDairesi = item.vergiDairesi,
+                        vergiNo = item.vergiNo,
+                        webAdresi = item.webAdresi,
+                        yetkili = item.yetkili,
+                        aciklama = "",
+                        cariaciklama = "",
+                        cariN11Id = null,
+                        faturaUlke = null,
+                        personelMi = 0,
+                        resimYolu = null,
+                        seciliPketiketi = null,
+                        varsayilanKasa = "",
+                        varsayilanVadeGunu = 5,
+                    });
+                }
+                //EditMode();
+            }
+        }
+        async void getGruplar()
+        {
+            var client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
+            var request = new RestRequest();
+            request.AddHeader("Authorization", APIHelper.loginToken);
+            request.AddHeader("Content-Type", "application/json");
+            var resCariGrup = await client.ExecuteAsync(request, Method.Post);
+            var dataCariGrup = JsonConvert.DeserializeObject<RootCariGrup>(resCariGrup.Content);
+            cbItems.Clear();
+            foreach (var item in dataCariGrup.data)
+            {
+                cbItems.Add(item.grup);
+            }
+            cbGrup.ItemsSource = cbItems;
+        }
+        async Task EditMode()
+        {
+            _listItemsSource[0].yetkili = "aaaaaaaaaaaaaaaa";
+            _listItemsSource[0].faturaUnvan = "TESTEST";
+            _listItemsSource[0].id = 0;
+            var json = JsonConvert.SerializeObject(_listItemsSource[0]).ToString().Trim(new char[] { '[', ']' });
+
+            RestClient client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.add);
+            RestRequest request = new RestRequest();
+            request.AddHeader("Authorization", APIHelper.loginToken);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddJsonBody(json);
+            var resCariGrup = await client.ExecuteAsync(request, Method.Post);
+            var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
         }
         private void ComboBox_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
@@ -88,13 +165,12 @@ namespace bilsoft_mobil_app.Pages.popUplar
             entryAdres.Unfocus();
             entryCariKod.Unfocus();
         }
-        cbGrupViewModel cbGrupViewModel = new cbGrupViewModel();
         private void cbGrup_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!String.IsNullOrEmpty(e.NewTextValue))
-                cbGrup.ItemsSource = cbGrupViewModel.ItemsSource.Where(x => x.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
+                cbGrup.ItemsSource = cbItems.Where(x => x.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
             else
-                cbGrup.ItemsSource = cbGrupViewModel.ItemsSource;
+                cbGrup.ItemsSource = cbItems;
         }
         private void btnAdressIptal_Clicked(object sender, EventArgs e)
         {
@@ -104,32 +180,6 @@ namespace bilsoft_mobil_app.Pages.popUplar
         private void btnAdressSec_Clicked(object sender, EventArgs e)
         {
 
-        }
-    }
-    public class cbGrupViewModel
-    {
-        #region renk Bindleri
-        public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
-        public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
-        public Color Success { get; set; } = Color.FromHex(AppThemeColors._success);
-        public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
-        public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
-        public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
-        public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
-        public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
-        #endregion
-        public List<string> ItemsSource { get; set; }
-        public cbGrupViewModel()
-        {
-            ItemsSource = new List<string>()
-            {
-                "Personel",
-                "Müşteri",
-                "Toptancı",
-                "Alıcı",
-                "Satıcı",
-                "Satış"
-            };
         }
     }
 }
