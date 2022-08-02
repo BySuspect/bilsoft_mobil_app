@@ -21,7 +21,7 @@ namespace bilsoft_mobil_app.Helper.App
 
         public const string _borderColor = "#90EC1E0F"; //#7AEC5E0F
         public const string _backgroundColor = "#FF6701"; //#FF6701
-        public const string _cardBackgroundColor = "#B9FF6600"; //#7AFF6701
+        public const string _cardBackgroundColor = "#90FF6600"; //#7AFF6701
         public const string _toolbarcolor = "#FFA600"; //#7AFF6701
 
         public const string _textColor = "#FFFFFF";

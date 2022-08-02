@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<xct:Popup
-    x:Class="bilsoft_mobil_app.Pages.popUplar.CariEklePopup"
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.CariHesaplar.CariEklePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:bilsoft_mobil_app.Behaviors"
@@ -8,13 +8,14 @@
     xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
     xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar.CariHesaplar"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
-    xct:Color="Transparent"
-    xct:HeightRequest="200">
-    <Grid Padding="0,80,0,80">
+    Title="Yeni Cari"
+    BackgroundImageSource="background.jpg">
+    <Grid>
         <ScrollView x:Name="MainScrollView">
             <Grid>
                 <Frame
-                    BackgroundColor="{Binding BackgroundColor}"
+                    Margin="15"
+                    BackgroundColor="{Binding CardBackgroundColor}"
                     BorderColor="{Binding BorderColor}"
                     CornerRadius="15">
                     <StackLayout>
@@ -41,25 +42,20 @@
                                         PlaceholderColor="{Binding TextColor}"
                                         TextColor="{Binding TextColor}"
                                         VerticalOptions="Start" />
-                                    <cb:ComboBox
-                                        x:Name="pickerGrup"
+                                    <Frame
                                         BackgroundColor="Transparent"
-                                        ItemsSource="{Binding ItemsSource}"
-                                        Placeholder="Grup:"
-                                        SelectedItemChanged="ComboBox_SelectedItemChanged"
-                                        TextChanged="pickerGrup_TextChanged"
-                                        Visual="Default">
-                                        <cb:ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <Label
-                                                        Padding="5,5,0,0"
-                                                        Text="{Binding .}"
-                                                        TextColor="White" />
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </cb:ComboBox.ItemTemplate>
-                                    </cb:ComboBox>
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="15">
+                                        <customitems:BorderlessPicker
+                                            x:Name="pickerGrup"
+                                            Title="Grup:"
+                                            Margin="-15"
+                                            BackgroundColor="Transparent"
+                                            ItemsSource="{Binding ItemsSource}"
+                                            TextColor="{Binding TextColor}"
+                                            TitleColor="{Binding TextColor}"
+                                            Visual="Default" />
+                                    </Frame>
                                     <customitems:CustomEntry
                                         x:Name="entryYetkili"
                                         BorderColor="{Binding BorderColor}"
@@ -82,8 +78,10 @@
                                         ButtonCornerRadius="15"
                                         CornerRadius="15"
                                         DownButtonBackgroundColor="#9EFF0000"
+                                        DownButtonBorderColor="Transparent"
                                         Increment="1"
                                         UpButtonBackgroundColor="#B2008000"
+                                        UpButtonBorderColor="Transparent"
                                         maxValue="1000"
                                         minValue="0"
                                         Value="0" />
@@ -98,8 +96,10 @@
                                         ButtonCornerRadius="15"
                                         CornerRadius="15"
                                         DownButtonBackgroundColor="#9EFF0000"
+                                        DownButtonBorderColor="Transparent"
                                         Increment="1"
                                         UpButtonBackgroundColor="#B2008000"
+                                        UpButtonBorderColor="Transparent"
                                         maxValue="31"
                                         minValue="1"
                                         Value="1" />
@@ -107,21 +107,31 @@
                                         FontSize="Medium"
                                         Text="Risk Limiti Aşıldığında:"
                                         TextColor="{Binding TextColor}" />
-                                    <RadioButton TextColor="{Binding TextColor}">
-                                        <RadioButton.Content>
-                                            İşlem Yaptırma
-                                        </RadioButton.Content>
-                                    </RadioButton>
-                                    <RadioButton IsChecked="True" TextColor="{Binding TextColor}">
-                                        <RadioButton.Content>
-                                            İşlem Yaptır
-                                        </RadioButton.Content>
-                                    </RadioButton>
-                                    <RadioButton TextColor="{Binding TextColor}">
-                                        <RadioButton.Content>
-                                            İşlem Esnasında Onay Al
-                                        </RadioButton.Content>
-                                    </RadioButton>
+                                    <Frame
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="15">
+                                        <StackLayout RadioButtonGroup.GroupName="RiskIslem" RadioButtonGroup.SelectedValue="{Binding RiskIslemValue}">
+                                            <RadioButton TextColor="{Binding TextColor}" Value="yaptırma">
+                                                <RadioButton.Content>
+                                                    İşlem Yaptırma
+                                                </RadioButton.Content>
+                                            </RadioButton>
+                                            <RadioButton
+                                                IsChecked="True"
+                                                TextColor="{Binding TextColor}"
+                                                Value="yaptır">
+                                                <RadioButton.Content>
+                                                    İşlem Yaptır
+                                                </RadioButton.Content>
+                                            </RadioButton>
+                                            <RadioButton TextColor="{Binding TextColor}" Value="onayal">
+                                                <RadioButton.Content>
+                                                    İşlem Esnasında Onay Al
+                                                </RadioButton.Content>
+                                            </RadioButton>
+                                        </StackLayout>
+                                    </Frame>
 
                                     <Label
                                         FontSize="Medium"
@@ -249,13 +259,15 @@
                                     PlaceholderColor="{Binding TextColor}"
                                     TextColor="{Binding TextColor}"
                                     VerticalOptions="Start" />
-                                <Picker
-                                    x:Name="pickerSevkAdres"
-                                    Title="Sevk Adresi:"
+                                <customitems:CustomEntry
+                                    x:Name="entrySevkAdres"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15"
+                                    HorizontalTextAlignment="Start"
+                                    Placeholder="Sevk Adresi:"
+                                    PlaceholderColor="{Binding TextColor}"
                                     TextColor="{Binding TextColor}"
-                                    TitleColor="{Binding TextColor}"
                                     VerticalOptions="Start" />
-
                                 <Button
                                     x:Name="btnAddSevkAdrs"
                                     BackgroundColor="Transparent"
@@ -264,7 +276,7 @@
                                     Clicked="btnAddSevkAdrs_Clicked"
                                     CornerRadius="15"
                                     HorizontalOptions="Start"
-                                    IsVisible="false    "
+                                    IsVisible="false   "
                                     Text="Sevk Adresi Ekle"
                                     TextColor="{Binding TextColor}" />
 
@@ -278,15 +290,28 @@
                                     TextColor="{Binding TextColor}"
                                     VerticalOptions="Start" />
 
-                                <Button
-                                    x:Name="btnKaydet"
-                                    BackgroundColor="Transparent"
-                                    BorderColor="{Binding BorderColor}"
-                                    BorderWidth="1"
-                                    CornerRadius="15"
-                                    HorizontalOptions="End"
-                                    Text="Kaydet"
-                                    TextColor="{Binding TextColor}" />
+                                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                    <Button
+                                        x:Name="btnSil"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        BorderWidth="1"
+                                        Clicked="btnSil_Clicked"
+                                        CornerRadius="15"
+                                        HorizontalOptions="End"
+                                        Text="Sil"
+                                        TextColor="{Binding TextColor}" />
+                                    <Button
+                                        x:Name="btnKaydet"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        BorderWidth="1"
+                                        Clicked="btnKaydet_Clicked"
+                                        CornerRadius="15"
+                                        HorizontalOptions="End"
+                                        Text="Kaydet"
+                                        TextColor="{Binding TextColor}" />
+                                </StackLayout>
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
@@ -550,5 +575,11 @@
                 </StackLayout>
             </Frame>
         </Grid>
+        <Button
+            x:Name="btnTest"
+            Clicked="btnTest_Clicked"
+            HorizontalOptions="Center"
+            Text="Test"
+            VerticalOptions="End" />
     </Grid>
-</xct:Popup>
+</ContentPage>

@@ -14,10 +14,10 @@ using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace bilsoft_mobil_app.Pages.popUplar
+namespace bilsoft_mobil_app.Pages.CariHesaplar
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CariEklePopup : Popup
+    public partial class CariEklePage : ContentPage
     {
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
@@ -30,12 +30,13 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
 
-        /* tüm Entry adları
+        /* tüm Entry adları */
+        /* 
          * entryAd
          * pickerGrup
          * entryYetkili
-         * entryRiskLimit
-         * entryVadeTarih
+         * numRiskLimit
+         * numVadeTarih
          * entryTel
          * entryCepTel
          * entryFax
@@ -49,16 +50,25 @@ namespace bilsoft_mobil_app.Pages.popUplar
          * entryIl
          * entryIlce
          * entryAdres
+         * entrySevkAdres
          * entryCariKod
+         * 
          */
         ObservableCollection<CariEkleVeriler> _listItemsSource = new ObservableCollection<CariEkleVeriler>();
         List<string> cbItems = new List<string>();
-        public CariEklePopup(string mod, object _list)
+        public CariEklePage(string mod, object _list)
         {
+            //Test Verileri
+            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiMDczOTYwODgtNGU2Mi00OGMzLWEwYzAtYzg0Y2Y3NWQwZTI0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTk0MjI1MzYsImV4cCI6MTY1OTQ2NTczNSwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.SdkQWZWQQ5LAQuLmCWMqVv8r4B4DwP_RV2jpUawnSME";
+            APIHelper.kullaniciAdi = "demo";
+            APIHelper.subeAd = "merkez";
+            //Test Verileri End
+
             InitializeComponent();
             BindingContext = this;
             MainScrollView.ScrollToAsync(0, 0, false);
             getGruplar();
+            _listItemsSource.Clear();
             if (mod == "Edit")
             {
                 btnAddSevkAdrs.IsVisible = false;
@@ -135,7 +145,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
         }
         private void ComboBox_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
-            pickerGrup.Text = pickerGrup.SelectedItem.ToString();
+            //pickerGrup.Text = pickerGrup.SelectedItem.ToString();
         }
 
         private void btnAddSevkAdrs_Clicked(object sender, EventArgs e)
@@ -167,6 +177,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
         }
         private void pickerGrup_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //Şuanda Devre Dışı 
             if (!String.IsNullOrEmpty(e.NewTextValue))
                 pickerGrup.ItemsSource = cbItems.Where(x => x.ToLower().StartsWith(e.NewTextValue.ToLower())).OrderBy(x => x).ToList();
             else
@@ -174,10 +185,80 @@ namespace bilsoft_mobil_app.Pages.popUplar
         }
         private void btnAdressIptal_Clicked(object sender, EventArgs e)
         {
+            //Şuanda Devre Dışı 
             sevkAdresEkleView.IsVisible = false;
         }
 
         private void btnAdressSec_Clicked(object sender, EventArgs e)
+        {
+            //Şuanda Devre Dışı 
+        }
+
+        private void btnKaydet_Clicked(object sender, EventArgs e)
+        {
+
+
+            resetPage();
+        }
+
+        public string RiskIslemValue
+        {
+            get;
+            set;
+        }
+        private void btnSil_Clicked(object sender, EventArgs e)
+        {
+            resetPage();
+        }
+        void resetPage()
+        {
+            //entryAd.Text = "";
+            //pickerGrup.SelectedIndex = -1;
+            //entryYetkili.Text = "";
+            //numRiskLimit.Value = 0;
+            //numVadeTarih.Value = 1;
+            //entryTel.Text = "";
+            //entryCepTel.Text = "";
+            //entryFax.Text = "";
+            //entryMail.Text = "";
+            //entryWeb.Text = "";
+            //entryPostaKod.Text = "";
+            //entryVergiDairesi.Text = "";
+            //entryVergiNo.Text = "";
+            //entrySicil.Text = "";
+            //entryUlke.Text = "";
+            //entryIl.Text = "";
+            //entryIlce.Text = "";
+            //entryAdres.Text = "";
+            //entrySevkAdres.Text = "";
+            //entryCariKod.Text = "";
+
+            /* Test */
+
+            RiskIslemValue = "yaptırma";
+            entryAd.Text = "Test";
+            pickerGrup.SelectedIndex = 2;
+            entryYetkili.Text = "Test";
+            numRiskLimit.Value = 24;
+            numVadeTarih.Value = 24;
+            entryTel.Text = "Test";
+            entryCepTel.Text = "Test";
+            entryFax.Text = "Test";
+            entryMail.Text = "Test";
+            entryWeb.Text = "Test";
+            entryPostaKod.Text = "Test";
+            entryVergiDairesi.Text = "Test";
+            entryVergiNo.Text = "Test";
+            entrySicil.Text = "Test";
+            entryUlke.Text = "Test";
+            entryIl.Text = "Test";
+            entryIlce.Text = "Test";
+            entryAdres.Text = "Test";
+            entrySevkAdres.Text = "Test";
+            entryCariKod.Text = "Test";
+        }
+
+        private void btnTest_Clicked(object sender, EventArgs e)
         {
 
         }
