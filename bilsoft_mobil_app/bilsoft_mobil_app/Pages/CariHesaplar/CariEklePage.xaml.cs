@@ -30,7 +30,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
 
-        /* tüm Entry adları */
+        /* tüm Entry adları
         /* 
          * entryAd
          * pickerGrup
@@ -56,6 +56,8 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
          */
         ObservableCollection<CariEkleVeriler> _listItemsSource = new ObservableCollection<CariEkleVeriler>();
         List<string> cbItems = new List<string>();
+        int _id = 0;
+        string _mod;
         public CariEklePage(string mod, object _list)
         {
             //Test Verileri
@@ -64,56 +66,26 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             APIHelper.subeAd = "merkez";
             //Test Verileri End
 
+
             InitializeComponent();
             BindingContext = this;
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
             MainScrollView.ScrollToAsync(0, 0, false);
             getGruplar();
+            _mod = mod;
+
             _listItemsSource.Clear();
             if (mod == "Edit")
             {
-                btnAddSevkAdrs.IsVisible = false;
-                foreach (var item in _list as List<CariHesaplarListItems>)
-                {
-                    _listItemsSource.Add(new CariEkleVeriler
-                    {
-                        id = item.id,
-                        faturaUnvan = item.cariad,
-                        adres = item.adres,
-                        cariKod = item.cariKod,
-                        cep = item.cep,
-                        faturaAdres = item.faturaAdres,
-                        faturaIl = item.faturaIl,
-                        faturaIlce = item.faturaIlce,
-                        fax = item.fax,
-                        grup = item.grup,
-                        kullaniciAdi = item.kullaniciAdi,
-                        mail = item.mail,
-                        postakodu = item.postakodu,
-                        riskIslemi = item.riskIslemi,
-                        riskLimiti = item.riskLimiti,
-                        sevkAdresi = item.sevkAdresi,
-                        subeAdi = item.subeAdi,
-                        tel = item.tel,
-                        ticaretsicilno = item.ticaretsicilno,
-                        vergiDairesi = item.vergiDairesi,
-                        vergiNo = item.vergiNo,
-                        webAdresi = item.webAdresi,
-                        yetkili = item.yetkili,
-                        aciklama = "",
-                        cariaciklama = "",
-                        cariN11Id = null,
-                        faturaUlke = null,
-                        personelMi = 0,
-                        resimYolu = null,
-                        seciliPketiketi = null,
-                        varsayilanKasa = "",
-                        varsayilanVadeGunu = 5,
-                    });
-                }
-                //EditMode();
+                EditMode(_list);
             }
+            else
+                resetPage();
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
-        async void getGruplar()
+        async Task getGruplar()
         {
             var client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
             var request = new RestRequest();
@@ -128,20 +100,84 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             }
             pickerGrup.ItemsSource = cbItems;
         }
-        async Task EditMode()
+        async Task EditMode(object _list)
         {
-            _listItemsSource[0].yetkili = "aaaaaaaaaaaaaaaa";
-            _listItemsSource[0].faturaUnvan = "TESTEST";
-            _listItemsSource[0].id = 0;
-            var json = JsonConvert.SerializeObject(_listItemsSource[0]).ToString().Trim(new char[] { '[', ']' });
-
-            RestClient client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.add);
-            RestRequest request = new RestRequest();
-            request.AddHeader("Authorization", APIHelper.loginToken);
-            request.AddHeader("Content-Type", "application/json");
-            request.AddJsonBody(json);
-            var resCariGrup = await client.ExecuteAsync(request, Method.Post);
-            var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
+            this.Title = "Düzenleme";
+            lblTitle.Text = "Düzenle";
+            //btnAddSevkAdrs.IsVisible = false;
+            await getGruplar();
+            foreach (var item in _list as List<CariHesaplarListItems>)
+            {
+                _id = item.id;
+                _listItemsSource.Add(new CariEkleVeriler
+                {
+                    id = item.id,
+                    faturaUnvan = item.cariad,
+                    adres = item.adres,
+                    cariKod = item.cariKod,
+                    cep = item.cep,
+                    faturaAdres = item.faturaAdres,
+                    faturaIl = item.faturaIl,
+                    faturaIlce = item.faturaIlce,
+                    fax = item.fax,
+                    grup = item.grup,
+                    kullaniciAdi = item.kullaniciAdi,
+                    mail = item.mail,
+                    postakodu = item.postakodu,
+                    riskIslemi = item.riskIslemi,
+                    riskLimiti = item.riskLimiti,
+                    sevkAdresi = item.sevkAdresi,
+                    subeAdi = item.subeAdi,
+                    tel = item.tel,
+                    ticaretsicilno = item.ticaretsicilno,
+                    vergiDairesi = item.vergiDairesi,
+                    vergiNo = item.vergiNo,
+                    webAdresi = item.webAdresi,
+                    yetkili = item.yetkili,
+                    aciklama = "",
+                    cariaciklama = "",
+                    cariN11Id = null,
+                    faturaUlke = item.faturaUlke,
+                    personelMi = 0,
+                    resimYolu = null,
+                    seciliPketiketi = null,
+                    varsayilanKasa = "",
+                    varsayilanVadeGunu = item.varsayilanVadeGunu,
+                });
+                entryAd.Text = item.faturaUnvan;
+                pickerGrup.SelectedIndex = cbItems.IndexOf(item.grup);
+                entryYetkili.Text = item.yetkili;
+                numRiskLimit.Value = Convert.ToInt16(item.riskLimiti);
+                numVadeTarih.Value = item.varsayilanVadeGunu;
+                entryTel.Text = item.tel;
+                entryCepTel.Text = item.cep;
+                entryFax.Text = item.fax;
+                entryMail.Text = item.mail;
+                entryWeb.Text = item.webAdresi;
+                entryPostaKod.Text = item.postakodu;
+                entryVergiDairesi.Text = item.vergiDairesi;
+                entryVergiNo.Text = item.vergiNo;
+                entrySicil.Text = item.ticaretsicilno;
+                entryUlke.Text = item.faturaUlke;
+                entryIl.Text = item.faturaIl;
+                entryIlce.Text = item.faturaIlce;
+                entryAdres.Text = item.adres;
+                entrySevkAdres.Text = item.faturaAdres;
+                entryCariKod.Text = item.cariKod;
+                switch (item.riskIslemi)
+                {
+                    case "yaptır":
+                        _rbYaptir.IsChecked = true;
+                        break;
+                    case "yaptırma":
+                        _rbYaptirma.IsChecked = true;
+                        break;
+                    case "onayal":
+                        _rbOnayAl.IsChecked = true;
+                        break;
+                }
+                RiskIslemValue = item.riskIslemi;
+            }
         }
         private void ComboBox_SelectedItemChanged(object sender, SelectedItemChangedEventArgs e)
         {
@@ -194,11 +230,74 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             //Şuanda Devre Dışı 
         }
 
-        private void btnKaydet_Clicked(object sender, EventArgs e)
+        private async void btnKaydet_Clicked(object sender, EventArgs e)
         {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+            if (pickerGrup.SelectedItem == null) pickerGrup.SelectedIndex = 0;
 
+            _listItemsSource.Clear();
+            _listItemsSource.Add(new CariEkleVeriler
+            {
+                id = _id,
+                faturaUnvan = entryAd.Text,
+                adres = entryAdres.Text,
+                cariKod = entryCariKod.Text,
+                cep = entryCepTel.Text,
+                faturaAdres = entryAdres.Text,
+                faturaIl = entryIl.Text,
+                faturaIlce = entryIlce.Text,
+                fax = entryFax.Text,
+                grup = pickerGrup.SelectedItem.ToString(),
+                kullaniciAdi = APIHelper.kullaniciAdi,
+                mail = entryMail.Text,
+                postakodu = entryPostaKod.Text,
+                riskIslemi = RiskIslemValue,
+                riskLimiti = numRiskLimit.Value.ToString(),
+                varsayilanVadeGunu = Convert.ToInt16(numVadeTarih.Value),
+                sevkAdresi = entrySevkAdres.Text,
+                subeAdi = APIHelper.subeAd,
+                tel = entryTel.Text,
+                ticaretsicilno = entrySicil.Text,
+                vergiDairesi = entryVergiDairesi.Text,
+                vergiNo = entryVergiNo.Text,
+                webAdresi = entryWeb.Text,
+                yetkili = entryYetkili.Text,
+                faturaUlke = entryUlke.Text,
+                aciklama = "",
+                cariaciklama = "",
+                cariN11Id = null,
+                personelMi = 0,
+                resimYolu = null,
+                seciliPketiketi = null,
+                varsayilanKasa = "",
+            });
 
-            resetPage();
+            var json = JsonConvert.SerializeObject(_listItemsSource[0]).ToString().Trim(new char[] { '[', ']' });
+
+            RestClient client;
+            if (_mod == "Edit") client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.update);
+            else client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.add);
+            RestRequest request = new RestRequest();
+            request.AddHeader("Authorization", APIHelper.loginToken);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddJsonBody(json);
+
+            RestResponse resCariGrup;
+            if (_mod == "Edit") resCariGrup = await client.ExecuteAsync(request, Method.Put);
+            else resCariGrup = await client.ExecuteAsync(request, Method.Post);
+            var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
+
+            if (dataCariGrup.success)
+            {
+                if (_mod == "Edit") DisplayAlert("", "Başarıyla Güncellendi.", "Kapat");
+                else DisplayAlert("", "Başarıyla eklendi.", "Kapat");
+                resetPage();
+                await Navigation.PopAsync();
+            }
+            else await DisplayAlert("Hata!", "Bir Hata Oluştu!\nHata Mesajı:\n" + dataCariGrup.message, "Tamam");
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
 
         public string RiskIslemValue
@@ -206,36 +305,68 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             get;
             set;
         }
-        private void btnSil_Clicked(object sender, EventArgs e)
+        private async void btnSil_Clicked(object sender, EventArgs e)
         {
-            resetPage();
+            if (_mod == "Edit")
+            {
+                Loodinglayout.IsVisible = true;
+                LoodingActivity.IsRunning = true;
+
+                var json = JsonConvert.SerializeObject(_listItemsSource[0]).ToString().Trim(new char[] { '[', ']' });
+
+                RestClient client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.delete);
+                RestRequest request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddJsonBody(json);
+
+                RestResponse resCariGrup = await client.ExecuteAsync(request, Method.Post);
+                var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
+
+                if (dataCariGrup.success)
+                {
+                    DisplayAlert("", "Başarıyla Silindi.", "Kapat");
+                    resetPage();
+                    await Navigation.PopAsync();
+                }
+                else await DisplayAlert("Hata!", "Bir Hata Oluştu!\nHata Mesajı:\n" + dataCariGrup.message, "Tamam");
+                Loodinglayout.IsVisible = false;
+                LoodingActivity.IsRunning = false;
+            }
+            else
+                resetPage();
         }
         void resetPage()
         {
-            //entryAd.Text = "";
-            //pickerGrup.SelectedIndex = -1;
-            //entryYetkili.Text = "";
-            //numRiskLimit.Value = 0;
-            //numVadeTarih.Value = 1;
-            //entryTel.Text = "";
-            //entryCepTel.Text = "";
-            //entryFax.Text = "";
-            //entryMail.Text = "";
-            //entryWeb.Text = "";
-            //entryPostaKod.Text = "";
-            //entryVergiDairesi.Text = "";
-            //entryVergiNo.Text = "";
-            //entrySicil.Text = "";
-            //entryUlke.Text = "";
-            //entryIl.Text = "";
-            //entryIlce.Text = "";
-            //entryAdres.Text = "";
-            //entrySevkAdres.Text = "";
-            //entryCariKod.Text = "";
+            entryAd.Text = "";
+            pickerGrup.SelectedIndex = -1;
+            entryYetkili.Text = "";
+            numRiskLimit.Value = 0;
+            numVadeTarih.Value = 1;
+            _rbYaptir.IsChecked = true;
+            RiskIslemValue = "yaptır";
+            entryTel.Text = "";
+            entryCepTel.Text = "";
+            entryFax.Text = "";
+            entryMail.Text = "";
+            entryWeb.Text = "";
+            entryPostaKod.Text = "";
+            entryVergiDairesi.Text = "";
+            entryVergiNo.Text = "";
+            entrySicil.Text = "";
+            entryUlke.Text = "";
+            entryIl.Text = "";
+            entryIlce.Text = "";
+            entryAdres.Text = "";
+            entrySevkAdres.Text = "";
+            entryCariKod.Text = "";
+        }
 
+        private void btnTest_Clicked(object sender, EventArgs e)
+        {
             /* Test */
-
             RiskIslemValue = "yaptırma";
+            _rbYaptirma.IsChecked = true;
             entryAd.Text = "Test";
             pickerGrup.SelectedIndex = 2;
             entryYetkili.Text = "Test";
@@ -248,7 +379,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             entryWeb.Text = "Test";
             entryPostaKod.Text = "Test";
             entryVergiDairesi.Text = "Test";
-            entryVergiNo.Text = "Test";
+            entryVergiNo.Text = "215215";
             entrySicil.Text = "Test";
             entryUlke.Text = "Test";
             entryIl.Text = "Test";
@@ -256,11 +387,6 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             entryAdres.Text = "Test";
             entrySevkAdres.Text = "Test";
             entryCariKod.Text = "Test";
-        }
-
-        private void btnTest_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -32,6 +32,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         public string fax { get; set; }
         public string faturaIl { get; set; }
         public string faturaIlce { get; set; }
+        public string faturaUlke { get; set; }
         public string faturaAdres { get; set; }
         public string vergiDairesi { get; set; }
         public string vergiNo { get; set; }
@@ -39,6 +40,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         public string webAdresi { get; set; }
         public string postakodu { get; set; }
         public string riskLimiti { get; set; }
+        public int varsayilanVadeGunu { get; set; }
         public string riskIslemi { get; set; }
         public string sevkAdresi { get; set; }
         public string kullaniciAdi { get; set; }

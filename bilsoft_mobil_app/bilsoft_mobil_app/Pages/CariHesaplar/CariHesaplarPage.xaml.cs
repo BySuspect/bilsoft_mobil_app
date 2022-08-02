@@ -104,10 +104,14 @@ namespace bilsoft_mobil_app.Pages
                 }
             }
 
-            var json = JsonConvert.SerializeObject(_list);
-            Popup popup = new CariEklePopup("Edit", _list);
-            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
-
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+            await Navigation.PushAsync(new CariEklePage("Edit", _list), true);
+            //Popup popup = new CariEklePopup("Yeni", null);
+            //await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            GetAllData();
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
         private void CariAcButton_Clicked(object sender, EventArgs e)
         {
@@ -116,9 +120,14 @@ namespace bilsoft_mobil_app.Pages
         }
         private async void btnYeniCari_Clicked(object sender, EventArgs e)
         {
-            Popup popup = new CariEklePopup("Yeni", null);
-            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+            await Navigation.PushAsync(new CariEklePage("Yeni", null), true);
+            //Popup popup = new CariEklePopup("Yeni", null);
+            //await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
             GetAllData();
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
 
         private async void btnGruplar_Clicked(object sender, EventArgs e)
@@ -320,6 +329,8 @@ namespace bilsoft_mobil_app.Pages
                         vergiNo = dataCariKartlar.data[i].vergiNo,
                         webAdresi = dataCariKartlar.data[i].webAdresi,
                         yetkili = dataCariKartlar.data[i].yetkili,
+                        varsayilanVadeGunu = dataCariKartlar.data[i].varsayilanVadeGunu,
+                        faturaUlke = dataCariKartlar.data[i].faturaUlke,
                     });
                 }
 

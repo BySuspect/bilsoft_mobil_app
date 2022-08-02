@@ -22,9 +22,11 @@
                         <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
                             <Image Source="users32px.png" />
                             <Label
+                                x:Name="lblTitle"
                                 FontSize="Medium"
                                 Text="Yeni Cari Ekleme"
-                                TextColor="{Binding TextColor}" />
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
                         </StackLayout>
                         <ScrollView Scrolled="ScrollView_Scrolled">
                             <StackLayout>
@@ -112,12 +114,16 @@
                                         BorderColor="{Binding BorderColor}"
                                         CornerRadius="15">
                                         <StackLayout RadioButtonGroup.GroupName="RiskIslem" RadioButtonGroup.SelectedValue="{Binding RiskIslemValue}">
-                                            <RadioButton TextColor="{Binding TextColor}" Value="yaptırma">
+                                            <RadioButton
+                                                x:Name="_rbYaptirma"
+                                                TextColor="{Binding TextColor}"
+                                                Value="yaptırma">
                                                 <RadioButton.Content>
                                                     İşlem Yaptırma
                                                 </RadioButton.Content>
                                             </RadioButton>
                                             <RadioButton
+                                                x:Name="_rbYaptir"
                                                 IsChecked="True"
                                                 TextColor="{Binding TextColor}"
                                                 Value="yaptır">
@@ -125,7 +131,10 @@
                                                     İşlem Yaptır
                                                 </RadioButton.Content>
                                             </RadioButton>
-                                            <RadioButton TextColor="{Binding TextColor}" Value="onayal">
+                                            <RadioButton
+                                                x:Name="_rbOnayAl"
+                                                TextColor="{Binding TextColor}"
+                                                Value="onayal">
                                                 <RadioButton.Content>
                                                     İşlem Esnasında Onay Al
                                                 </RadioButton.Content>
@@ -572,6 +581,33 @@
                         HorizontalOptions="End"
                         Text="İptal"
                         TextColor="{Binding TextColor}" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+        <Grid
+            x:Name="Loodinglayout"
+            BackgroundColor="#77767676"
+            IsVisible="false">
+            <Frame
+                BackgroundColor="#77767676"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Padding="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ActivityIndicator
+                        x:Name="LoodingActivity"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        Color="White" />
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="20"
+                        Text="Yükleniyor..."
+                        TextColor="White" />
                 </StackLayout>
             </Frame>
         </Grid>
