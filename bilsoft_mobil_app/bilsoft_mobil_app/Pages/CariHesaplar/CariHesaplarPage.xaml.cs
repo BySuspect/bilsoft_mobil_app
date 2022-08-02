@@ -46,11 +46,11 @@ namespace bilsoft_mobil_app.Pages
         #region main
         public CariHesaplarPage()
         {
-            //Test Verileri
-            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiMDczOTYwODgtNGU2Mi00OGMzLWEwYzAtYzg0Y2Y3NWQwZTI0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTk0MjI1MzYsImV4cCI6MTY1OTQ2NTczNSwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.SdkQWZWQQ5LAQuLmCWMqVv8r4B4DwP_RV2jpUawnSME";
-            APIHelper.kullaniciAdi = "demo";
-            APIHelper.subeAd = "merkez";
-            //Test Verileri End
+            ////Test Verileri
+            //APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiMDczOTYwODgtNGU2Mi00OGMzLWEwYzAtYzg0Y2Y3NWQwZTI0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTk0MjI1MzYsImV4cCI6MTY1OTQ2NTczNSwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.SdkQWZWQQ5LAQuLmCWMqVv8r4B4DwP_RV2jpUawnSME";
+            //APIHelper.kullaniciAdi = "demo";
+            //APIHelper.subeAd = "merkez";
+            ////Test Verileri End
 
             popupResultHelper.cariGrupPopupListHelper.AddRange(new string[] { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" });
             BindingContext = this;
