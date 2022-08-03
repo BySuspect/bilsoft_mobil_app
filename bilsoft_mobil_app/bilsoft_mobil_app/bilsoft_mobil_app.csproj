@@ -40,12 +40,15 @@
     <Compile Update="Pages\CariHesaplar\CariHesapMahsupFisiPage.xaml.cs">
       <DependentUpon>CariHesapMahsupFisiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="TestPage.xaml.cs">
+    <Compile Update="TestArea\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Pages\Ajanda\AjandaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\BankaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

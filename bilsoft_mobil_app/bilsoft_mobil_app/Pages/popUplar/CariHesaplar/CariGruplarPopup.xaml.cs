@@ -34,7 +34,8 @@ namespace bilsoft_mobil_app.Pages.popUplar
         public ObservableCollection<CariGuruplarListVeriler> _listItemsSource = new ObservableCollection<CariGuruplarListVeriler>();
 
         public List<string> ResultList = new List<string>();
-
+        bool editmod = false;
+        int editID = 0;
         public int sonId { get; set; }
         public CariGruplarPopup()
         {
@@ -47,7 +48,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
             Loodinglayout.IsVisible = true;
             LoodingActivity.IsRunning = true;
 
-            var client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
+            var client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariGrupApi + APIHelper.apiTypes.getall);
             var request = new RestRequest();
             request.AddHeader("Authorization", APIHelper.loginToken);
             request.AddHeader("Content-Type", "application/json");
@@ -99,7 +100,7 @@ namespace bilsoft_mobil_app.Pages.popUplar
                     {
                         string deleteData = "{\"id\":" + item.id + ",\"grup\":\"" + item.grup + "\",\"kullaniciAdi\":\"" + APIHelper.kullaniciAdi + "\",\"subeAdi\":\"" + APIHelper.subeAd + "\"}";
 
-                        RestClient client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.delete);
+                        RestClient client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariGrupApi + APIHelper.apiTypes.delete);
                         RestRequest request = new RestRequest();
                         request.AddHeader("Authorization", APIHelper.loginToken);
                         request.AddHeader("Content-Type", "application/json");
@@ -148,13 +149,13 @@ namespace bilsoft_mobil_app.Pages.popUplar
                 Loodinglayout.IsVisible = true;
                 LoodingActivity.IsRunning = true;
 
-                string deleteData = "{\"id\":" + 0 + ",\"grup\":\"" + entryYeniGrup.Text.Trim() + "\",}";
+                string addData = "{\"id\":" + 0 + ",\"grup\":\"" + entryYeniGrup.Text.Trim() + "\",\"kullaniciAdi\":\"" + APIHelper.apiKullaniciAdi + "\",\"subeAdi\":\"" + APIHelper.subeAd + "\"}";
 
-                RestClient client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.add);
+                RestClient client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariGrupApi + APIHelper.apiTypes.add);
                 RestRequest request = new RestRequest();
                 request.AddHeader("Authorization", APIHelper.loginToken);
                 request.AddHeader("Content-Type", "application/json");
-                request.AddJsonBody(deleteData);
+                request.AddJsonBody(addData);
                 var resCariGrup = await client.ExecuteAsync(request, Method.Post);
                 var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
                 if (dataCariGrup.success)
@@ -195,17 +196,40 @@ namespace bilsoft_mobil_app.Pages.popUplar
         }
         private async void YeniGrupKaydet_Clicked(object sender, EventArgs e)
         {
-            entryYeniGrup.Unfocus();
-            if (entryYeniGrup.Text != null && entryYeniGrup.Text.Trim() != "" && !string.IsNullOrEmpty(entryYeniGrup.Text.Trim()))
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+            if (editmod)
             {
-                YeniGrupView.IsVisible = false;
-                await AddOnList();
+                entryYeniGrup.Unfocus();
+                if (entryYeniGrup.Text != null && entryYeniGrup.Text.Trim() != "" && !string.IsNullOrEmpty(entryYeniGrup.Text.Trim()))
+                {
+                    await EditGrup(editID.ToString());
+                    YeniGrupView.IsVisible = false;
+                    editmod = false;
+                }
+                else
+                {
+                    AlertView.show("Hata", "Boş veri girmeyiniz!", "Tamam");
+                    entryYeniGrup.Unfocus();
+                }
             }
             else
             {
-                AlertView.show("Hata", "Boş veri girmeyiniz!", "Tamam");
                 entryYeniGrup.Unfocus();
+                if (entryYeniGrup.Text != null && entryYeniGrup.Text.Trim() != "" && !string.IsNullOrEmpty(entryYeniGrup.Text.Trim()))
+                {
+                    YeniGrupView.IsVisible = false;
+                    await AddOnList();
+                }
+                else
+                {
+                    AlertView.show("Hata", "Boş veri girmeyiniz!", "Tamam");
+                    entryYeniGrup.Unfocus();
+                }
             }
+
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
 
         private void YeniGrupIptal_Clicked(object sender, EventArgs e)
@@ -213,11 +237,13 @@ namespace bilsoft_mobil_app.Pages.popUplar
             entryYeniGrup.Unfocus();
             YeniGrupView.IsVisible = false;
             entryYeniGrup.Text = "";
+            editmod = false;
         }
 
         private void btnYeniGrup_Clicked(object sender, EventArgs e)
         {
             YeniGrupView.IsVisible = true;
+            editmod = false;
         }
 
         private void csbArama_TextChanged(object sender, TextChangedEventArgs e)
@@ -235,11 +261,64 @@ namespace bilsoft_mobil_app.Pages.popUplar
             }
         }
 
-        private void btnListEdit_Clicked(object sender, EventArgs e)
+        private async void btnListEdit_Clicked(object sender, EventArgs e)
         {
+            var btn = sender as Button;
 
+            foreach (var item in _listItemsSource)
+            {
+                if (item.btnId == btn.AutomationId)
+                {
+                    editID = item.id;
+                    entryYeniGrup.Text = item.grup;
+                }
+            }
+            editmod = true;
+            YeniGrupView.IsVisible = true;
         }
+        async Task EditGrup(string id)
+        {
+            try
+            {
+                string EditData = "{\"id\":" + id + ",\"grup\":\"" + entryYeniGrup.Text.Trim() + "\",\"kullaniciAdi\":\"" + APIHelper.apiKullaniciAdi + "\",\"subeAdi\":\"" + APIHelper.subeAd + "\"}";
 
+                RestClient client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariGrupApi + APIHelper.apiTypes.update);
+                RestRequest request = new RestRequest();
+                request.AddHeader("Authorization", APIHelper.loginToken);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddJsonBody(EditData);
+                var resCariGrup = await client.ExecuteAsync(request, Method.Put);
+                var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
+                if (dataCariGrup.success)
+                {
+                    AlertView.show("", "Başarıyla Güncellendi!", "Tamam");
+                    await RefreshList();
+                    YeniGrupView.IsVisible = false;
+                }
+                else
+                {
+                    bool alertRes = await AlertView.showAsync("Hata", dataCariGrup.message, "Yeniden Dene", "İptal");
+                }
+
+                Loodinglayout.IsVisible = false;
+                LoodingActivity.IsRunning = false;
+                YeniGrupView.IsVisible = false;
+                entryYeniGrup.Text = String.Empty;
+                //_listItemsSource.Clear();
+                //for (int i = 0; i < GrupListNames.Count(); i++)
+                //{
+                //    RefeshList(i, GrupListNames[i]);
+                //}
+                //if (_listItemsSource.Count > 0) GrupListView.ItemsSource = _listItemsSource;
+                //else GrupListView.ItemsSource = null;
+            }
+            catch (Exception ex)
+            {
+                Loodinglayout.IsVisible = false;
+                LoodingActivity.IsRunning = false;
+                throw new Exception(ex.Message);
+            }
+        }
         private async void btnListDelete_Clicked(object sender, EventArgs e)
         {
             Loodinglayout.IsVisible = true;

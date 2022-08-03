@@ -250,7 +250,7 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
                 #region CariGrup
-                client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
+                client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariGrupApi + APIHelper.apiTypes.getall);
                 request = new RestRequest();
                 request.AddHeader("Authorization", APIHelper.loginToken);
                 request.AddHeader("Content-Type", "application/json");
@@ -287,7 +287,7 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
                 #region CariKartlar
-                client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.getall);
+                client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariKartApi + APIHelper.apiTypes.getall);
                 request = new RestRequest();
                 request.AddHeader("Authorization", APIHelper.loginToken);
                 request.AddHeader("Content-Type", "application/json");

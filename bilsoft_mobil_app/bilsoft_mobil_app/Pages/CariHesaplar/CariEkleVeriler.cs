@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace bilsoft_mobil_app.Pages.popUplar.CariHesaplar
+namespace bilsoft_mobil_app.Pages.CariHesaplar
 {
     public class CariEkleVeriler
     {

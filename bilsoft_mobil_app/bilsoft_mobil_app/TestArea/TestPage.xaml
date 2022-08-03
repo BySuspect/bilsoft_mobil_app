@@ -7,10 +7,10 @@
     BackgroundImageSource="background.jpg">
 
     <StackLayout VerticalOptions="Center">
-        <customitems:CustomSearchBar
-            Margin="15,0"
-            BackgroundColor="White"
-            BorderColor="Red"
-            CornerRadius="15" />
+        <Button
+            Clicked="Button_Clicked"
+            HorizontalOptions="Center"
+            Text="test"
+            VerticalOptions="Center" />
     </StackLayout>
 </ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.Ajanda.AjandaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Grid>
+        <Frame>
+            <Button
+                x:Name="btnYeniBildirim"
+                HorizontalOptions="Center"
+                Text="Yeni Bildirim"
+                VerticalOptions="Center" />
+        </Frame>
+        <Button
+            Clicked="TestButton_Clicked"
+            HorizontalOptions="Center"
+            Text="test"
+            VerticalOptions="End" />
+    </Grid>
+</ContentPage>

@@ -1,8 +1,6 @@
 ﻿using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Helper.JSONHelpers.RootCari;
-using bilsoft_mobil_app.Pages.CariHesaplar;
-using bilsoft_mobil_app.Pages.popUplar.CariHesaplar;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -87,7 +85,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         }
         async Task getGruplar()
         {
-            var client = new RestClient(APIHelper.url + APIHelper.CariGrupApi + apiTypes.getall);
+            var client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariGrupApi + APIHelper.apiTypes.getall);
             var request = new RestRequest();
             request.AddHeader("Authorization", APIHelper.loginToken);
             request.AddHeader("Content-Type", "application/json");
@@ -276,8 +274,8 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
             var json = JsonConvert.SerializeObject(_listItemsSource[0]).ToString().Trim(new char[] { '[', ']' });
 
             RestClient client;
-            if (_mod == "Edit") client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.update);
-            else client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.add);
+            if (_mod == "Edit") client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariKartApi + APIHelper.apiTypes.update);
+            else client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariKartApi + APIHelper.apiTypes.add);
             RestRequest request = new RestRequest();
             request.AddHeader("Authorization", APIHelper.loginToken);
             request.AddHeader("Content-Type", "application/json");
@@ -314,7 +312,7 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
 
                 var json = JsonConvert.SerializeObject(_listItemsSource[0]).ToString().Trim(new char[] { '[', ']' });
 
-                RestClient client = new RestClient(APIHelper.url + APIHelper.CariKartApi + apiTypes.delete);
+                RestClient client = new RestClient(APIHelper.url + APIHelper.CariApiler.CariKartApi + APIHelper.apiTypes.delete);
                 RestRequest request = new RestRequest();
                 request.AddHeader("Authorization", APIHelper.loginToken);
                 request.AddHeader("Content-Type", "application/json");

@@ -1,4 +1,5 @@
 ﻿using bilsoft_mobil_app.Pages;
+using bilsoft_mobil_app.Pages.Ajanda;
 using bilsoft_mobil_app.Pages.CariHesaplar;
 using bilsoft_mobil_app.Pages.MainView;
 using System;
@@ -33,7 +34,7 @@ namespace bilsoft_mobil_app
 
             //Test Page
             //MainPage = new TestPage();
-            MainPage = new NavigationPage(new CariHesaplarPage())
+            MainPage = new NavigationPage(new AjandaPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent
