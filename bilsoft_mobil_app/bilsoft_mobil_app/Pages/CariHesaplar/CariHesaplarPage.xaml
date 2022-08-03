@@ -6,6 +6,7 @@
     xmlns:cb="clr-namespace:Xamarin.Forms.ComboBox"
     xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
     xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.CariHesaplar"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     Title="CariHesplar"
     BackgroundImageSource="background.jpg">

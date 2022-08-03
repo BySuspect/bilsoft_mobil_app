@@ -19,7 +19,6 @@ namespace bilsoft_mobil_app.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(255, 166, 0));
 
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

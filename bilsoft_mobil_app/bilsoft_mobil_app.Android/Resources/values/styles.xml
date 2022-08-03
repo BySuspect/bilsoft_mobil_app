@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
 	<style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+		<!-- açışışta title olmaması için-->
 		<item name="android:windowNoTitle">true</item>
-		<item name="android:windowFullscreen">true</item>
+		<!-- uygulama tam ekrandamı açılsın -->
+		<item name="android:windowFullscreen">false</item>
+		<!-- tam çözemedim -->
 		<item name="android:windowContentOverlay">@null</item>
+		<!-- üst status bar -->
 		<item name="android:windowActionBar">true</item>
+
+		<!-- Detaylı Resim -->
+		<!-- https://docs.microsoft.com/tr-tr/xamarin/android/user-interface/material-theme-images/screen-attributes-sml.png -->
+		<!-- android üst çubuğun açık tema rengi -->
+		<item name="colorPrimary">#FFA600</item>
+		<!-- android üst çubuğun koyu tema rengi -->
+		<item name="colorPrimaryDark">#FFA600</item>
+		<!-- Onay Kutusu yada bazı görünümlerin alt renkleri -->
+		<item name="colorAccent">#000</item>
+		<!-- uygulamanın genel arkaplan rengi -->
+		<item name="android:windowBackground">#fff</item>
+		<!-- android alt navigasyon tuş arkaplan rengi -->
+		<item name="android:navigationBarColor">#000</item>
 	</style>
-	<!--old
+	<!--eskisi custom splash öncesi
   <style name="MyScreen" parent="Theme.AppCompat.Light.NoActionBar">
 	  
     As of Xamarin.Forms 4.6 the theme has moved into the Forms binary
