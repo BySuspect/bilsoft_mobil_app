@@ -8,9 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,6 +33,7 @@ namespace bilsoft_mobil_app.Pages.Ajanda
 
         ObservableCollection<AjandaVeriler> _listItems = new ObservableCollection<AjandaVeriler>();
         List<UserVeriler> _userList = new List<UserVeriler>();
+        List<string> _userNameList = new List<string>();
         //List<RootProgramAyarListe> _programAyarList = new List<RootProgramAyarListe>();
         public AjandaPage()
         {
@@ -44,10 +46,18 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             InitializeComponent();
             BindingContext = this;
 
+            pickerBildirimler.ItemsSource = new List<string>() { "Tüm Bildirimler", "Tamamlanan Bildirimler", "Tamamlanmayan Bildirimler" };
+            pickerBildirimler.SelectedIndex = 0;
+
             dpickerBaslangic.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
             dpickerBitis.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-        }
 
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await getAllData();
+        }
         async Task getAllData()
         {
             #region Ajanda
@@ -58,10 +68,13 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             var resAjanda = await clientAjanda.ExecuteAsync(requestAjanda, Method.Post);
             var dataAjanda = JsonConvert.DeserializeObject<RootAjanda>(resAjanda.Content);
 
+            _listItems.Clear();
+
             foreach (var item in dataAjanda.data)
             {
                 _listItems.Add(new AjandaVeriler
                 {
+                    btnid = "btn" + item.id,
                     aciklama = item.aciklama,
                     adSoyad = item.adSoyad,
                     ajandaDosya = item.ajandaDosya,
@@ -69,12 +82,14 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                     firma = item.firma,
                     id = item.id,
                     okundu = item.okundu,
-                    tarih = item.tarih,
+                    tarih = new DateTime(item.tarih.Year, item.tarih.Month, item.tarih.Day),
                     tel = item.tel,
                     user = item.user,
                     userId = item.userId
                 });
             }
+
+            listBildirm.ItemsSource = _listItems;
             #endregion
 
             #region User
@@ -87,8 +102,11 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             var userdata = JsonConvert.DeserializeObject<RootUser>(resUser.Content);
 
             _userList.Clear();
+            _userNameList.Clear();
+            _userNameList.Add("Hepsi");
             foreach (var item in userdata.data)
             {
+                _userNameList.Add(item.kullanici);
                 _userList.Add(new UserVeriler
                 {
                     id = item.id,
@@ -96,6 +114,9 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                     sifre = item.sifre
                 });
             }
+
+            pickerKullanici.ItemsSource = _userNameList;
+            pickerKullanici.SelectedIndex = 0;
 
             //UserAyarlar Liste Dönüştürme
             //
@@ -111,6 +132,16 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         private async void TestButton_Clicked(object sender, EventArgs e)
         {
             await getAllData();
+        }
+
+        private void InceleButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBildirm_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            listBildirm.SelectedItem = null;
         }
     }
 }

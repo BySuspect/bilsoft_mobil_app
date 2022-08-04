@@ -30,7 +30,6 @@ namespace bilsoft_mobil_app.Pages
         {
             InitializeComponent();
             BindingContext = this;
-            pickerDate.PlaceHolder = "  " + DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
         }
 
         private async void btnCariAlacaklandirilacak_Clicked(object sender, EventArgs e)

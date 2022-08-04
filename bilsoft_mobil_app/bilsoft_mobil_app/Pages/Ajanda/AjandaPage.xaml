@@ -4,71 +4,281 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.Ajanda"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Title="Ajanda"
     BackgroundImageSource="background.jpg">
+    <ContentPage.Resources>
+        <Style x:Key="FrameStyle" TargetType="Frame">
+            <Setter Property="BorderColor" Value="{Binding BorderColor}" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+    </ContentPage.Resources>
     <Grid>
+        <BoxView
+            HeightRequest="1"
+            HorizontalOptions="Fill"
+            VerticalOptions="Start"
+            Color="{Binding BorderColor}" />
         <Frame
             Margin="20"
             BackgroundColor="{Binding CardBackgroundColor}"
             BorderColor="{Binding BorderColor}"
             CornerRadius="15">
-            <!--    -->
-            <StackLayout>
-                <StackLayout
-                    HorizontalOptions="Start"
-                    Orientation="Horizontal"
-                    VerticalOptions="Start">
-                    <Image Source="raports20px.png" />
-                    <Label
-                        FontSize="20"
-                        Text="Bildirim Listesi"
-                        TextColor="{Binding TextColor}" />
-                </StackLayout>
-                <Grid HorizontalOptions="Fill">
-                    <StackLayout Grid.Column="0">
-                        <Label
-                            FontSize="20"
-                            Text="Başlangıç"
-                            TextColor="{Binding TextColor}" />
-                        <Frame
-                            BackgroundColor="Transparent"
-                            BorderColor="{Binding BorderColor}"
-                            CornerRadius="15">
-                            <custom:BorderlessDatePicker
-                                x:Name="dpickerBaslangic"
-                                Margin="0,-10,0,-10"
+            <!--  ListView  -->
+            <ListView
+                x:Name="listBildirm"
+                Margin="-20,-20,-20,0"
+                HasUnevenRows="True"
+                ItemSelected="listBildirm_ItemSelected"
+                SelectionMode="Single"
+                SeparatorColor="Transparent">
+                <ListView.Header>
+                    <Frame
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15">
+                        <StackLayout>
+                            <!--  Header  -->
+                            <StackLayout
                                 HorizontalOptions="Start"
-                                TextColor="{Binding TextColor}"
-                                VerticalOptions="Center" />
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1">
-                        <Label
-                            FontSize="20"
-                            Text="Bitiş"
-                            TextColor="{Binding TextColor}" />
-                        <Frame
-                            BackgroundColor="Transparent"
-                            BorderColor="{Binding BorderColor}"
-                            CornerRadius="15">
-                            <custom:BorderlessDatePicker
-                                x:Name="dpickerBitis"
-                                Margin="0,-10,0,-10"
-                                HorizontalOptions="Start"
-                                TextColor="{Binding TextColor}"
-                                VerticalOptions="Center" />
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1" Grid.Column="0">
-                        <Label
-                            FontSize="20"
-                            Text="Kullanıcı"
-                            TextColor="{Binding TextColor}" />
-                        <Picker />
-                    </StackLayout>
-                </Grid>
-                <custom:CustomSearchBar BorderColor="{Binding BorderColor}" Placeholder="Ara..." />
-            </StackLayout>
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
+                                <Image Source="raports20px.png" />
+                                <Label
+                                    FontSize="20"
+                                    Text="Bildirim Listesi"
+                                    TextColor="{Binding TextColor}" />
+                            </StackLayout>
+                            <Grid HorizontalOptions="Fill">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="AUTO" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="AUTO" />
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label
+                                        FontSize="20"
+                                        Text="Başlangıç"
+                                        TextColor="{Binding TextColor}" />
+                                    <Frame
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="15">
+                                        <custom:BorderlessDatePicker
+                                            x:Name="dpickerBaslangic"
+                                            Margin="0,-10,0,-10"
+                                            HorizontalOptions="Start"
+                                            TextColor="{Binding TextColor}"
+                                            VerticalOptions="Center" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label
+                                        FontSize="20"
+                                        Text="Bitiş"
+                                        TextColor="{Binding TextColor}" />
+                                    <Frame
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="15">
+                                        <custom:BorderlessDatePicker
+                                            x:Name="dpickerBitis"
+                                            Margin="0,-10,0,-10"
+                                            HorizontalOptions="Start"
+                                            TextColor="{Binding TextColor}"
+                                            VerticalOptions="Center" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Grid.Column="0">
+                                    <Label
+                                        FontSize="20"
+                                        Text="Kullanıcı"
+                                        TextColor="{Binding TextColor}" />
+                                    <Frame
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="15">
+                                        <custom:BorderlessPicker
+                                            x:Name="pickerKullanici"
+                                            Title="Kullanıcı"
+                                            Margin="-15"
+                                            TextColor="{Binding TextColor}"
+                                            Visual="Material" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Grid.Column="1">
+                                    <Label
+                                        FontSize="20"
+                                        Text="Bildirimler"
+                                        TextColor="{Binding TextColor}" />
+                                    <Frame
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        CornerRadius="15">
+                                        <custom:BorderlessPicker
+                                            x:Name="pickerBildirimler"
+                                            Title="Bildirimler"
+                                            Margin="-15"
+                                            TextColor="{Binding TextColor}" />
+                                    </Frame>
+                                </StackLayout>
+                                <Button
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#1BB800"
+                                    CornerRadius="15"
+                                    ImageSource="Search24px.png"
+                                    Text="Ara"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <Frame
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15">
+                                <custom:BorderlessEntry
+                                    Margin="-15"
+                                    HorizontalTextAlignment="Center"
+                                    Placeholder="Ara..."
+                                    PlaceholderColor="LightGray"
+                                    TextColor="{Binding TextColor}" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </ListView.Header>
+
+                <ListView.ItemsSource>
+                    <!--    -->
+                    <x:Array Type="{x:Type local:AjandaVeriler}">
+                        <local:AjandaVeriler adSoyad="aaaaaaaaa" />
+                    </x:Array>
+                </ListView.ItemsSource>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="0,1"
+                                CornerRadius="15"
+                                Style="{StaticResource FrameStyle}">
+                                <xct:Expander>
+                                    <xct:Expander.Header>
+                                        <Grid Margin="-5,0,-5,0" VerticalOptions="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="50" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontSize="Caption"
+                                                            Text="Ad Soyad: "
+                                                            TextColor="LightGray" />
+                                                        <Span FontSize="Body" Text="{Binding adSoyad}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label
+                                                Grid.Column="1"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontSize="Caption" Text="Firma: " />
+                                                        <Span FontSize="Body" Text="{Binding firma}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button
+                                                Grid.Column="2"
+                                                AutomationId="{Binding btnid}"
+                                                BackgroundColor="Transparent"
+                                                BorderColor="{Binding BorderColor}"
+                                                BorderWidth="1"
+                                                Clicked="InceleButton_Clicked"
+                                                CornerRadius="15"
+                                                ImageSource="Search24px.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="50" />
+                                        </Grid>
+                                    </xct:Expander.Header>
+                                    <xct:Expander.ContentTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <!--  Template  -->
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    TextColor="{Binding TextColor}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                FontSize="Caption"
+                                                                Text="Tel: "
+                                                                TextColor="LightGray" />
+                                                            <Span FontSize="Body" Text="{Binding tel}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    TextColor="{Binding TextColor}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                FontSize="Caption"
+                                                                Text="Cep: "
+                                                                TextColor="LightGray" />
+                                                            <Span FontSize="Body" Text="{Binding cep}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    FontSize="Body"
+                                                    Text="{Binding aciklama}"
+                                                    TextColor="{Binding TextColor}" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    FontSize="Body"
+                                                    Text="{Binding tarih}"
+                                                    TextColor="{Binding TextColor}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </xct:Expander.ContentTemplate>
+                                </xct:Expander>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Frame>
         <Button
             Clicked="TestButton_Clicked"

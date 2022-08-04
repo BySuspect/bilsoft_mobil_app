@@ -108,12 +108,15 @@
                         Text="Tarih:"
                         TextColor="{Binding TextColor}" />
 
-                    <customitems:CustomDatePicker
-                        x:Name="pickerDate"
+                    <Frame
+                        BackgroundColor="Transparent"
                         BorderColor="{Binding BorderColor}"
-                        BorderRadius="15"
-                        BorderWidth="1"
-                        TextColor="DarkGray" />
+                        CornerRadius="15">
+                        <customitems:BorderlessPicker
+                            x:Name="pickerDate"
+                            Title="Bildirimler"
+                            Margin="-15" />
+                    </Frame>
 
                     <Label
                         FontSize="Body"

@@ -44,7 +44,10 @@ namespace bilsoft_mobil_app.CustomItems
             _btn.HorizontalOptions = LayoutOptions.EndAndExpand;
             _btn.CornerRadius = _btnCornerRadius;
             _btn.BackgroundColor = _btnBackColor;
-            _btn.Margin = new Thickness(0, 0, -10, 0);
+            _btn.Margin = new Thickness(0, 0, -15, 0);
+            _btn.BackgroundColor = Color.FromHex("#03a647");
+            _btn.BorderColor = this.BorderColor;
+            _btn.BorderWidth = 1;
             //_btn.HeightRequest = _grid.Height;
             // _btn.WidthRequest = _grid.Height;
             if (_btnText == "") _btn.ImageSource = _btnImageSource;
