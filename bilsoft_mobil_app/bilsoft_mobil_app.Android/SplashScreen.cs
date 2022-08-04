@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Android.Animation;
 using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.OS;
-using Android.Animation;
 using Android.Content;
+using Android.OS;
 
 namespace bilsoft_mobil_app.Droid
 {

@@ -5,6 +5,19 @@ using System.Text;
 
 namespace bilsoft_mobil_app.Helper.API
 {
+    /* Demo Auth Data
+     {
+        "vergiNumarasi": "12345",
+        "kullaniciAd": "demo",
+        "kullaniciSifre": "demo",
+        "veritabaniAd": "12345",
+        "donemYil": "2022",
+        "subeAd": "merkez",
+        "apiKullaniciAdi": "bilsoft",
+        "apiKullaniciSifre": "1234"
+     }
+     */
+
     public class APIHelper
     {
         public const string url = "https://apiv3.bilsoft.com/";

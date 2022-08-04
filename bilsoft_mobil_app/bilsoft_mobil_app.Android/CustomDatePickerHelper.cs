@@ -1,15 +1,6 @@
-﻿using Android.App;
-using Android.Content;
-using Android.Graphics.Drawables;
-using Android.OS;
-using Android.Runtime;
+﻿using Android.Graphics.Drawables;
 using Android.Views;
-using Android.Widget;
 using bilsoft_mobil_app.CustomItems;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Xamarin.Forms.Platform.Android;
 
 namespace bilsoft_mobil_app.Droid

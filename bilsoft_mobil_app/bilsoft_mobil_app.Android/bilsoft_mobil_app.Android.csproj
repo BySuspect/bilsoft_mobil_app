@@ -75,6 +75,8 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorderlessDatePickerRenderer.cs" />
+    <Compile Include="BorderlessTimePickerRenderer.cs" />
     <Compile Include="BordlessPickerRenderer.cs" />
     <Compile Include="CustomDatePickerHelper.cs" />
     <Compile Include="CustomEntryRenderer.cs" />
@@ -347,6 +349,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\trashcan32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

@@ -2,14 +2,73 @@
 <ContentPage
     x:Class="bilsoft_mobil_app.Pages.Ajanda.AjandaPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
+    Title="Ajanda"
+    BackgroundImageSource="background.jpg">
     <Grid>
-        <Frame>
-            <Button
-                x:Name="btnYeniBildirim"
-                HorizontalOptions="Center"
-                Text="Yeni Bildirim"
-                VerticalOptions="Center" />
+        <Frame
+            Margin="20"
+            BackgroundColor="{Binding CardBackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15">
+            <!--    -->
+            <StackLayout>
+                <StackLayout
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Image Source="raports20px.png" />
+                    <Label
+                        FontSize="20"
+                        Text="Bildirim Listesi"
+                        TextColor="{Binding TextColor}" />
+                </StackLayout>
+                <Grid HorizontalOptions="Fill">
+                    <StackLayout Grid.Column="0">
+                        <Label
+                            FontSize="20"
+                            Text="Başlangıç"
+                            TextColor="{Binding TextColor}" />
+                        <Frame
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15">
+                            <custom:BorderlessDatePicker
+                                x:Name="dpickerBaslangic"
+                                Margin="0,-10,0,-10"
+                                HorizontalOptions="Start"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Label
+                            FontSize="20"
+                            Text="Bitiş"
+                            TextColor="{Binding TextColor}" />
+                        <Frame
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15">
+                            <custom:BorderlessDatePicker
+                                x:Name="dpickerBitis"
+                                Margin="0,-10,0,-10"
+                                HorizontalOptions="Start"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="0">
+                        <Label
+                            FontSize="20"
+                            Text="Kullanıcı"
+                            TextColor="{Binding TextColor}" />
+                        <Picker />
+                    </StackLayout>
+                </Grid>
+                <custom:CustomSearchBar BorderColor="{Binding BorderColor}" Placeholder="Ara..." />
+            </StackLayout>
         </Frame>
         <Button
             Clicked="TestButton_Clicked"

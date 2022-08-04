@@ -1,7 +1,6 @@
 ﻿using Android.Content;
 using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.Droid;
-using bilsoft_mobil_app;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

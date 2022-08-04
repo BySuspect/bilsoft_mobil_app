@@ -1,7 +1,5 @@
-﻿using System;
-using bilsoft_mobil_app.CustomItems;
+﻿using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.iOS;
-using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 

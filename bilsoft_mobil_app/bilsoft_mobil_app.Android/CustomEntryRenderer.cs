@@ -1,11 +1,11 @@
-﻿using bilsoft_mobil_app.CustomItems;
+﻿using Android.Content;
+using Android.Graphics.Drawables;
+using Android.Util;
+using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.Droid;
-using Android.Content;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Android.Graphics.Drawables;
-using Android.Util;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace bilsoft_mobil_app.Droid

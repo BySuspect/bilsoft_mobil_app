@@ -1,7 +1,6 @@
-﻿using System;
-using Android.Graphics.Drawables;
-using bilsoft_mobil_app.CustomItems;
+﻿using bilsoft_mobil_app.CustomItems;
 using bilsoft_mobil_app.Droid;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
