@@ -63,14 +63,14 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BorderlessDatePickerRenderer.cs" />
-    <Compile Include="BorderlessPickerRenderer.cs" />
-    <Compile Include="BorderlessTimePickerRenderer.cs" />
-    <Compile Include="CustomDatePickerHelper.cs" />
-    <Compile Include="CustomDatePickerRenderer.cs" />
-    <Compile Include="CustomEntryRenderer.cs" />
-    <Compile Include="BorderlessEntryRenderer.cs" />
-    <Compile Include="CustomNumericEntryRendererBase.cs" />
+    <Compile Include="Renderers\BorderlessDatePickerRenderer.cs" />
+    <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
+    <Compile Include="Renderers\BorderlessTimePickerRenderer.cs" />
+    <Compile Include="Renderers\CustomDatePickerHelper.cs" />
+    <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
+    <Compile Include="Renderers\CustomNumericEntryRendererBase.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />

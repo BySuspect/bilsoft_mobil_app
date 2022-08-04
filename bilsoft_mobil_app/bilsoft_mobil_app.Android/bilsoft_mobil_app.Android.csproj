@@ -75,13 +75,13 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BorderlessDatePickerRenderer.cs" />
-    <Compile Include="BorderlessTimePickerRenderer.cs" />
-    <Compile Include="BordlessPickerRenderer.cs" />
-    <Compile Include="CustomDatePickerHelper.cs" />
-    <Compile Include="CustomEntryRenderer.cs" />
-    <Compile Include="BorderlessEntryRenderer.cs" />
-    <Compile Include="CustomDatePickerRenderer.cs" />
+    <Compile Include="Renderers\BorderlessDatePickerRenderer.cs" />
+    <Compile Include="Renderers\BorderlessTimePickerRenderer.cs" />
+    <Compile Include="Renderers\BordlessPickerRenderer.cs" />
+    <Compile Include="Renderers\CustomDatePickerHelper.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
+    <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -350,9 +350,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\trashcan32px.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Renderers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
