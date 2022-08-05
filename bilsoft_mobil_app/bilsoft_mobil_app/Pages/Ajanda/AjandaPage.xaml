@@ -54,7 +54,6 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="AUTO" />
@@ -128,27 +127,38 @@
                                             TextColor="{Binding TextColor}" />
                                     </Frame>
                                 </StackLayout>
-                                <Button
-                                    Grid.Row="2"
-                                    Grid.ColumnSpan="2"
-                                    BackgroundColor="#1BB800"
-                                    CornerRadius="15"
-                                    ImageSource="Search24px.png"
-                                    Text="Ara"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Center" />
                             </Grid>
+                            <Button
+                                x:Name="btnSearch"
+                                BackgroundColor="#1BB800"
+                                Clicked="btnSearch_Clicked"
+                                CornerRadius="15"
+                                ImageSource="Search24px.png"
+                                Text="Ara"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
                             <Frame
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 CornerRadius="15">
                                 <custom:BorderlessEntry
+                                    x:Name="entrySearch"
                                     Margin="-15"
                                     HorizontalTextAlignment="Center"
                                     Placeholder="Ara..."
                                     PlaceholderColor="LightGray"
+                                    TextChanged="entrySearch_TextChanged"
                                     TextColor="{Binding TextColor}" />
                             </Frame>
+                            <Button
+                                x:Name="btnYeniBildirim"
+                                BackgroundColor="#0FB2E9"
+                                CornerRadius="15"
+                                HorizontalOptions="Start"
+                                ImageSource="raports20px.png"
+                                Text="Yeni Bildirim"
+                                TextColor="{Binding TextColor}"
+                                VerticalOptions="Center" />
                         </StackLayout>
                     </Frame>
                 </ListView.Header>
@@ -156,7 +166,7 @@
                 <ListView.ItemsSource>
                     <!--    -->
                     <x:Array Type="{x:Type local:AjandaVeriler}">
-                        <local:AjandaVeriler adSoyad="aaaaaaaaa" />
+                        <local:AjandaVeriler adSoyad="Test Data" />
                     </x:Array>
                 </ListView.ItemsSource>
 
@@ -280,6 +290,33 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Frame>
+        <Grid
+            x:Name="Loodinglayout"
+            BackgroundColor="#77767676"
+            IsVisible="false">
+            <Frame
+                BackgroundColor="#77767676"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Padding="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ActivityIndicator
+                        x:Name="LoodingActivity"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        Color="White" />
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="20"
+                        Text="Yükleniyor..."
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+        </Grid>
         <Button
             Clicked="TestButton_Clicked"
             HorizontalOptions="Center"

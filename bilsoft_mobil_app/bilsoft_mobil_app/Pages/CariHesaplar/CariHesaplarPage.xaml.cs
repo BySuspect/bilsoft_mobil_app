@@ -45,13 +45,6 @@ namespace bilsoft_mobil_app.Pages
         #region main
         public CariHesaplarPage()
         {
-
-            //Test Verileri
-            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiMGMwNjNmY2QtNWY2Mi00Y2MzLTk4ODAtOWE5ZTg3N2Q5ZjllIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTk1MDY0NzEsImV4cCI6MTY1OTU0OTY2OCwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.WDWTKuPCOBFisIp6qMg9oaGM8UlO52BFRBsMKL0puVw";
-            APIHelper.kullaniciAdi = "demo";
-            APIHelper.subeAd = "merkez";
-            //Test Verileri End
-
             popupResultHelper.cariGrupPopupListHelper.AddRange(new string[] { "Hepsi", "PERSONEL", "MÜŞTERİ", "TOPTANCI", "ALICI", "SATICI", "SATIŞ" });
             BindingContext = this;
             InitializeComponent();

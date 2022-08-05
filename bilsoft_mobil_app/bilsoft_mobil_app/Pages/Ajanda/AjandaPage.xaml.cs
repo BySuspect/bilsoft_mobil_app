@@ -31,25 +31,28 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
 
+        List<AjandaVeriler> _mainItemslist = new List<AjandaVeriler>();
         ObservableCollection<AjandaVeriler> _listItems = new ObservableCollection<AjandaVeriler>();
         List<UserVeriler> _userList = new List<UserVeriler>();
         List<string> _userNameList = new List<string>();
         //List<RootProgramAyarListe> _programAyarList = new List<RootProgramAyarListe>();
         public AjandaPage()
         {
-            //Test Verileri
-            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiMTk3MGZlMzMtOTUwMC00ZDllLThlY2UtYzI5ZWIxMWQwMDQ3IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTk1OTY1MjcsImV4cCI6MTY1OTYzOTcyNSwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.uPmIp58bDdng59BFyaQxbT3EruVtYGfgTxj5a832V2A";
-            APIHelper.kullaniciAdi = "demo";
-            APIHelper.subeAd = "merkez";
-            //Test Verileri End
-
             InitializeComponent();
             BindingContext = this;
 
             pickerBildirimler.ItemsSource = new List<string>() { "Tüm Bildirimler", "Tamamlanan Bildirimler", "Tamamlanmayan Bildirimler" };
             pickerBildirimler.SelectedIndex = 0;
 
-            dpickerBaslangic.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+            //Ocak ayındamı deilmi kontrol
+            try
+            {
+                if (DateTime.Now.Month - 1 != 0)
+                    dpickerBaslangic.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+                else dpickerBaslangic.Date = new DateTime(DateTime.Now.Year - 1, 12, DateTime.Now.Day);
+            }
+            catch { dpickerBaslangic.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day); }
+
             dpickerBitis.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
         }
@@ -60,6 +63,9 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         }
         async Task getAllData()
         {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+
             #region Ajanda
             var clientAjanda = new RestClient(APIHelper.url + APIHelper.AjandaApiler.AjandaApi + APIHelper.apiTypes.getall);
             var requestAjanda = new RestRequest();
@@ -88,8 +94,6 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                     userId = item.userId
                 });
             }
-
-            listBildirm.ItemsSource = _listItems;
             #endregion
 
             #region User
@@ -115,9 +119,6 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                 });
             }
 
-            pickerKullanici.ItemsSource = _userNameList;
-            pickerKullanici.SelectedIndex = 0;
-
             //UserAyarlar Liste Dönüştürme
             //
             ////Eski Method
@@ -127,21 +128,146 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             //var progAyardata = JsonConvert.DeserializeObject<RootProgramAyarListe>("{ \"data\": " + userdata.data[0].programAyarListe + "}");
 
             #endregion
+
+            //User
+            pickerKullanici.ItemsSource = _userNameList;
+            pickerKullanici.SelectedIndex = 0;
+
+            //Ajanda
+            await listePropertiesCheck();
+            listBildirm.ItemsSource = _mainItemslist;
+
+            //End
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
 
         private async void TestButton_Clicked(object sender, EventArgs e)
         {
             await getAllData();
+            DisplayAlert("", (Guid.NewGuid()).ToString(), "ok");
         }
 
         private void InceleButton_Clicked(object sender, EventArgs e)
         {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+
+            //Sayfa yönelndirme
+
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
 
         }
 
         private void listBildirm_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             listBildirm.SelectedItem = null;
+        }
+
+        private async void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.NewTextValue))
+            {
+                var _list = new List<AjandaVeriler>();
+                var _uniqueList = new List<AjandaVeriler>();
+
+                await listePropertiesCheck();
+
+                _list.AddRange(_mainItemslist.Where(x => x.adSoyad.ToLower().Contains(e.NewTextValue.ToLower())).ToList());
+                _list.AddRange(_mainItemslist.Where(x => x.firma.ToLower().Contains(e.NewTextValue.ToLower())).ToList());
+                _list.AddRange(_mainItemslist.Where(x => x.tel.ToLower().Contains(e.NewTextValue.ToLower())).ToList());
+                _list.AddRange(_mainItemslist.Where(x => x.cep.ToLower().Contains(e.NewTextValue.ToLower())).ToList());
+                _list.AddRange(_mainItemslist.Where(x => x.aciklama.ToLower().Contains(e.NewTextValue.ToLower())).ToList());
+
+                for (int i = 0; i < _list.Count; i++)
+                {
+                    if (_list[i] == null) continue;
+                    if (duplicateCheck(_list[i], _uniqueList))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        _uniqueList.Add(_list[i]);
+                    }
+                }
+                listBildirm.ItemsSource = new ObservableCollection<AjandaVeriler>(_uniqueList);
+            }
+            else
+                listBildirm.ItemsSource = _mainItemslist;
+        }
+
+        bool duplicateCheck(object _item, List<AjandaVeriler> _list)
+        {
+            foreach (var item in _list)
+            {
+                if (_item == null) return false;
+                if (item == _item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        async Task listePropertiesCheck()
+        {
+            if (pickerKullanici.SelectedItem == "Hepsi")
+            {
+                switch (pickerBildirimler.SelectedItem)
+                {
+                    case "Tüm Bildirimler":
+                        _mainItemslist = _listItems.Where(x => (x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date)).ToList();
+                        break;
+
+                    case "Tamamlanan Bildirimler":
+                        _mainItemslist = _listItems.Where(x => ((x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date) && x.okundu == true)).ToList();
+                        break;
+
+                    case "Tamamlanmayan Bildirimler":
+                        _mainItemslist = _listItems.Where(x => ((x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date) && x.okundu == false)).ToList();
+                        break;
+                }
+            }
+            else
+            {
+                foreach (var item in _userList)
+                {
+                    if (item.kullanici == pickerKullanici.SelectedItem)
+                    {
+                        switch (pickerBildirimler.SelectedItem)
+                        {
+                            case "Tüm Bildirimler":
+                                _mainItemslist = _listItems.Where(x => ((x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date) && x.userId == item.id)).ToList();
+                                break;
+
+                            case "Tamamlanan Bildirimler":
+                                _mainItemslist = _listItems.Where(x => ((x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date) && x.okundu == true && x.userId == item.id)).ToList();
+                                break;
+
+                            case "Tamamlanmayan Bildirimler":
+                                _mainItemslist = _listItems.Where(x => ((x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date) && x.okundu == false && x.userId == item.id)).ToList();
+                                break;
+                        }
+                    }
+                }
+            }
+            //Demo sadece tarihe göre listeliyor
+            //_mainItemslist = _listItems.Where(x => (x.tarih >= dpickerBaslangic.Date && x.tarih <= dpickerBitis.Date)).ToList();
+
+        }
+
+        private async void btnSearch_Clicked(object sender, EventArgs e)
+        {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+
+            entrySearch.Text = "";
+            await listePropertiesCheck();
+            listBildirm.ItemsSource = _mainItemslist;
+
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
     }
 }

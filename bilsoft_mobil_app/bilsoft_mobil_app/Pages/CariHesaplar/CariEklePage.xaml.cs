@@ -58,13 +58,6 @@ namespace bilsoft_mobil_app.Pages.CariHesaplar
         string _mod;
         public CariEklePage(string mod, object _list)
         {
-            ////Test Verileri
-            //APIHelper.loginToken = "--";
-            //APIHelper.kullaniciAdi = "demo";
-            //APIHelper.subeAd = "merkez";
-            ////Test Verileri End
-
-
             InitializeComponent();
             BindingContext = this;
             Loodinglayout.IsVisible = true;
