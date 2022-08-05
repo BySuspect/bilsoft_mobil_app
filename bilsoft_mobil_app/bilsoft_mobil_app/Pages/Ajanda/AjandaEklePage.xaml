@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.Ajanda.AjandaEklePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
+    Title="Yeni Bildirim Ekleme"
+    BackgroundImageSource="background.jpg">
+    <Grid>
+        <ScrollView>
+            <Frame
+                Margin="20,0,20,5"
+                BackgroundColor="{Binding CardBackgroundColor}"
+                BorderColor="{Binding BorderColor}"
+                CornerRadius="15">
+                <StackLayout>
+                    <Label
+                        FontSize="Body"
+                        Text="Firma"
+                        TextColor="{Binding TextColor}" />
+                    <custom:CustomEntry
+                        x:Name="entryFirma"
+                        BorderColor="{Binding BorderColor}"
+                        BorderWidth="2"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="Ad Soyad"
+                        TextColor="{Binding TextColor}" />
+                    <custom:CustomEntry
+                        x:Name="entryAdSoyad"
+                        BorderColor="{Binding BorderColor}"
+                        BorderWidth="1"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="Telefon"
+                        TextColor="{Binding TextColor}" />
+                    <custom:CustomEntry
+                        x:Name="entryTel"
+                        BorderColor="{Binding BorderColor}"
+                        Keyboard="Numeric"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="GSM"
+                        TextColor="{Binding TextColor}" />
+                    <custom:CustomEntry
+                        x:Name="entrGSM"
+                        BorderColor="{Binding BorderColor}"
+                        Keyboard="Numeric"
+                        TextColor="White" />
+
+                    <Label
+                        FontSize="Body"
+                        Text="Açıklama"
+                        TextColor="{Binding TextColor}" />
+                    <Frame
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15"
+                        HeightRequest="50">
+                        <Grid>
+                            <Label
+                                x:Name="lblAciklamaLength"
+                                HorizontalOptions="End"
+                                Text="50/0"
+                                VerticalOptions="End" />
+                            <custom:BorderlessEditor
+                                x:Name="edtAciklama"
+                                Margin="-15"
+                                TextChanged="AciklamaEditor_TextChanged"
+                                TextColor="White" />
+                        </Grid>
+                    </Frame>
+                    <Grid>
+                        <StackLayout Grid.Column="0" HorizontalOptions="Fill">
+                            <Label
+                                FontSize="Body"
+                                Text="Tarih"
+                                TextColor="{Binding TextColor}" />
+                            <Frame
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15">
+                                <custom:BorderlessDatePicker x:Name="pickerDate" TextColor="{Binding TextColor}" />
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" HorizontalOptions="Fill">
+                            <Label
+                                FontSize="Body"
+                                Text="Saat"
+                                TextColor="{Binding TextColor}" />
+                            <Frame
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15">
+                                <custom:BorderlessTimePicker x:Name="pickerTime" TextColor="{Binding TextColor}" />
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout>
+                        <Label
+                            FontSize="Body"
+                            Text="Kullanıcı"
+                            TextColor="{Binding TextColor}" />
+                        <Frame
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15">
+                            <custom:BorderlessPicker
+                                x:Name="pickerKullanici"
+                                Title="Kullanıcı"
+                                Margin="-10,-15,-15,-15"
+                                TextColor="{Binding TextColor}" />
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Button
+                            x:Name="btnKaydet"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnKaydet_Clicked"
+                            CornerRadius="15"
+                            FontSize="Body"
+                            HorizontalOptions="Center"
+                            Text="Kaydet"
+                            TextColor="{Binding TextColor}" />
+                        <Button
+                            x:Name="btnSil_Iptal"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnSil_Iptal_Clicked"
+                            CornerRadius="15"
+                            FontSize="Body"
+                            HorizontalOptions="Center"
+                            Text="İptal"
+                            TextColor="{Binding TextColor}" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+        <Grid
+            x:Name="Loodinglayout"
+            BackgroundColor="#77767676"
+            IsVisible="false">
+            <Frame
+                BackgroundColor="#77767676"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Padding="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ActivityIndicator
+                        x:Name="LoodingActivity"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        Color="White" />
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="20"
+                        Text="Yükleniyor..."
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+        <Button
+            Clicked="TestButton_Clicked"
+            HorizontalOptions="Center"
+            Text="test"
+            VerticalOptions="End" />
+    </Grid>
+</ContentPage>

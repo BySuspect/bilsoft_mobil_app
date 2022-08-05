@@ -274,5 +274,15 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         {
 
         }
+
+        private async void btnYeniBildirim_Clicked(object sender, EventArgs e)
+        {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+            await Navigation.PushAsync(new AjandaEklePage(), true);
+            await getAllData();
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
+        }
     }
 }
