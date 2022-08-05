@@ -28,7 +28,7 @@
             <!--  ListView  -->
             <ListView
                 x:Name="listBildirm"
-                Margin="-20,-20,-20,0"
+                Margin="-10,-20,-10,-20"
                 HasUnevenRows="True"
                 ItemSelected="listBildirm_ItemSelected"
                 SelectionMode="Single"
@@ -39,130 +39,158 @@
                         BorderColor="{Binding BorderColor}"
                         CornerRadius="15">
                         <StackLayout>
-                            <!--  Header  -->
-                            <StackLayout
-                                HorizontalOptions="Start"
-                                Orientation="Horizontal"
-                                VerticalOptions="Start">
-                                <Image Source="raports20px.png" />
-                                <Label
-                                    FontSize="20"
-                                    Text="Bildirim Listesi"
-                                    TextColor="{Binding TextColor}" />
-                            </StackLayout>
-                            <Grid HorizontalOptions="Fill">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="AUTO" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="AUTO" />
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Column="0">
-                                    <Label
-                                        FontSize="20"
-                                        Text="Başlangıç"
-                                        TextColor="{Binding TextColor}" />
-                                    <Frame
-                                        BackgroundColor="Transparent"
-                                        BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15">
-                                        <custom:BorderlessDatePicker
-                                            x:Name="dpickerBaslangic"
-                                            Margin="0,-10,0,-10"
-                                            HorizontalOptions="Start"
-                                            TextColor="{Binding TextColor}"
-                                            VerticalOptions="Center" />
-                                    </Frame>
-                                </StackLayout>
-                                <StackLayout Grid.Column="1">
-                                    <Label
-                                        FontSize="20"
-                                        Text="Bitiş"
-                                        TextColor="{Binding TextColor}" />
-                                    <Frame
-                                        BackgroundColor="Transparent"
-                                        BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15">
-                                        <custom:BorderlessDatePicker
-                                            x:Name="dpickerBitis"
-                                            Margin="0,-10,0,-10"
-                                            HorizontalOptions="Start"
-                                            TextColor="{Binding TextColor}"
-                                            VerticalOptions="Center" />
-                                    </Frame>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="0">
-                                    <Label
-                                        FontSize="20"
-                                        Text="Kullanıcı"
-                                        TextColor="{Binding TextColor}" />
-                                    <Frame
-                                        BackgroundColor="Transparent"
-                                        BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15">
-                                        <custom:BorderlessPicker
-                                            x:Name="pickerKullanici"
-                                            Title="Kullanıcı"
-                                            Margin="-15"
-                                            TextColor="{Binding TextColor}"
-                                            Visual="Material" />
-                                    </Frame>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label
-                                        FontSize="20"
-                                        Text="Bildirimler"
-                                        TextColor="{Binding TextColor}" />
-                                    <Frame
-                                        BackgroundColor="Transparent"
-                                        BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15">
-                                        <custom:BorderlessPicker
-                                            x:Name="pickerBildirimler"
-                                            Title="Bildirimler"
-                                            Margin="-15"
-                                            TextColor="{Binding TextColor}" />
-                                    </Frame>
-                                </StackLayout>
-                            </Grid>
-                            <Button
-                                x:Name="btnSearch"
-                                BackgroundColor="#1BB800"
-                                Clicked="btnSearch_Clicked"
-                                CornerRadius="15"
-                                ImageSource="Search24px.png"
-                                Text="Ara"
-                                TextColor="{Binding TextColor}"
-                                VerticalOptions="Center" />
+                            <!--  Header Expander Start  -->
                             <Frame
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 CornerRadius="15">
-                                <custom:BorderlessEntry
-                                    x:Name="entrySearch"
-                                    Margin="-15"
-                                    HorizontalTextAlignment="Center"
-                                    Placeholder="Ara..."
-                                    PlaceholderColor="LightGray"
-                                    TextChanged="entrySearch_TextChanged"
-                                    TextColor="{Binding TextColor}" />
+                                <xct:Expander x:Name="expListHeader" PropertyChanged="expListHeader_PropertyChanged">
+                                    <xct:Expander.Header>
+                                        <StackLayout Margin="-5" Orientation="Horizontal">
+                                            <Label
+                                                FontSize="Body"
+                                                HorizontalOptions="Start"
+                                                Text="Daha Fazla Arama Ayarları"
+                                                TextColor="{Binding TextColor}" />
+                                            <Image HorizontalOptions="EndAndExpand" Source="expanddown24px.png" />
+                                        </StackLayout>
+                                    </xct:Expander.Header>
+                                    <xct:Expander.Content>
+                                        <StackLayout Margin="0,10,0,0">
+                                            <StackLayout
+                                                HorizontalOptions="Start"
+                                                Orientation="Horizontal"
+                                                VerticalOptions="Start">
+                                                <Image Source="raports20px.png" />
+                                                <Label
+                                                    FontSize="20"
+                                                    Text="Bildirim Listesi"
+                                                    TextColor="{Binding TextColor}" />
+                                            </StackLayout>
+                                            <Grid HorizontalOptions="Fill">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="AUTO" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="AUTO" />
+                                                </Grid.RowDefinitions>
+                                                <StackLayout Grid.Column="0">
+                                                    <Label
+                                                        FontSize="20"
+                                                        Text="Başlangıç"
+                                                        TextColor="{Binding TextColor}" />
+                                                    <Frame
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{Binding BorderColor}"
+                                                        CornerRadius="15">
+                                                        <custom:BorderlessDatePicker
+                                                            x:Name="dpickerBaslangic"
+                                                            Margin="0,-10,0,-10"
+                                                            HorizontalOptions="Start"
+                                                            TextColor="{Binding TextColor}"
+                                                            VerticalOptions="Center" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout Grid.Column="1">
+                                                    <Label
+                                                        FontSize="20"
+                                                        Text="Bitiş"
+                                                        TextColor="{Binding TextColor}" />
+                                                    <Frame
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{Binding BorderColor}"
+                                                        CornerRadius="15">
+                                                        <custom:BorderlessDatePicker
+                                                            x:Name="dpickerBitis"
+                                                            Margin="0,-10,0,-10"
+                                                            HorizontalOptions="Start"
+                                                            TextColor="{Binding TextColor}"
+                                                            VerticalOptions="Center" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="0">
+                                                    <Label
+                                                        FontSize="20"
+                                                        Text="Kullanıcı"
+                                                        TextColor="{Binding TextColor}" />
+                                                    <Frame
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{Binding BorderColor}"
+                                                        CornerRadius="15">
+                                                        <custom:BorderlessPicker
+                                                            x:Name="pickerKullanici"
+                                                            Title="Kullanıcı"
+                                                            Margin="-15"
+                                                            TextColor="{Binding TextColor}"
+                                                            Visual="Material" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="1">
+                                                    <Label
+                                                        FontSize="20"
+                                                        Text="Bildirimler"
+                                                        TextColor="{Binding TextColor}" />
+                                                    <Frame
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{Binding BorderColor}"
+                                                        CornerRadius="15">
+                                                        <custom:BorderlessPicker
+                                                            x:Name="pickerBildirimler"
+                                                            Title="Bildirimler"
+                                                            Margin="-15"
+                                                            TextColor="{Binding TextColor}" />
+                                                    </Frame>
+                                                </StackLayout>
+                                            </Grid>
+                                            <Button
+                                                x:Name="btnSearch"
+                                                BackgroundColor="#1BB800"
+                                                Clicked="btnSearch_Clicked"
+                                                CornerRadius="15"
+                                                ImageSource="Search24px.png"
+                                                Text="Ara"
+                                                TextColor="{Binding TextColor}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </xct:Expander.Content>
+                                </xct:Expander>
                             </Frame>
-                            <Button
-                                x:Name="btnYeniBildirim"
-                                BackgroundColor="#0FB2E9"
-                                CornerRadius="15"
-                                HorizontalOptions="Start"
-                                ImageSource="raports20px.png"
-                                Text="Yeni Bildirim"
-                                TextColor="{Binding TextColor}"
-                                VerticalOptions="Center" />
+                            <!--  Header Expander End  -->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Button
+                                    x:Name="btnYeniBildirim"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{Binding BorderColor}"
+                                    BorderWidth="1"
+                                    CornerRadius="15"
+                                    HorizontalOptions="Start"
+                                    ImageSource="raports20px.png"
+                                    Text="Yeni Bildirim"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="Center" />
+                                <Frame
+                                    BackgroundColor="Transparent"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="15"
+                                    HorizontalOptions="FillAndExpand">
+                                    <custom:BorderlessEntry
+                                        x:Name="entrySearch"
+                                        Margin="-15,-20,-15,-20"
+                                        HorizontalOptions="Fill"
+                                        HorizontalTextAlignment="Center"
+                                        Placeholder="Ara..."
+                                        PlaceholderColor="LightGray"
+                                        TextChanged="entrySearch_TextChanged"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Center" />
+                                </Frame>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </ListView.Header>
-
                 <ListView.ItemsSource>
                     <!--    -->
                     <x:Array Type="{x:Type local:AjandaVeriler}">
@@ -184,11 +212,10 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="25" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="25" />
                                                 <RowDefinition Height="*" />
-                                                <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
                                             <Label
                                                 Grid.Column="0"
@@ -227,6 +254,11 @@
                                                 ImageSource="Search24px.png"
                                                 VerticalOptions="Center"
                                                 WidthRequest="50" />
+
+                                            <Image
+                                                Grid.Column="3"
+                                                HorizontalOptions="End"
+                                                Source="expanddown24px.png" />
                                         </Grid>
                                     </xct:Expander.Header>
                                     <xct:Expander.ContentTemplate>

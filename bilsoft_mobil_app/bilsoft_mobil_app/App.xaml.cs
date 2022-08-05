@@ -67,3 +67,6 @@ namespace bilsoft_mobil_app
         }
     }
 }
+
+/* This App Made BySoloKing */
+/*  https://my.bio/bysoloking */

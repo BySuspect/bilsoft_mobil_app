@@ -269,5 +269,10 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;
         }
+
+        private void expListHeader_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
