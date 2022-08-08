@@ -18,7 +18,9 @@
                 x:Name="listBildirm"
                 Margin="-20,-20,-20,-10"
                 HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
                 ItemSelected="listBildirm_ItemSelected"
+                Refreshing="listBildirm_Refreshing"
                 SelectionMode="Single"
                 SeparatorColor="Transparent">
                 <ListView.Header>
@@ -140,7 +142,7 @@
                                                 Clicked="btnSearch_Clicked"
                                                 CornerRadius="15"
                                                 ImageSource="Search24px.png"
-                                                Text="Ara"
+                                                Text="Listele"
                                                 TextColor="{Binding TextColor}"
                                                 VerticalOptions="Center" />
                                         </StackLayout>

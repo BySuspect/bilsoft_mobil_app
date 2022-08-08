@@ -78,6 +78,7 @@ namespace bilsoft_mobil_app.Pages.Ajanda
 
             foreach (var item in dataAjanda.data)
             {
+                //await DisplayAlert("", item.tarih + "", "ok");
                 _listItems.Add(new AjandaVeriler
                 {
                     btnid = "btn" + item.id,
@@ -88,7 +89,7 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                     firma = item.firma,
                     id = item.id,
                     okundu = item.okundu,
-                    tarih = new DateTime(item.tarih.Year, item.tarih.Month, item.tarih.Day),
+                    tarih = item.tarih,
                     tel = item.tel,
                     user = item.user,
                     userId = item.userId
@@ -148,16 +149,33 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             DisplayAlert("", (Guid.NewGuid()).ToString(), "ok");
         }
 
-        private void InceleButton_Clicked(object sender, EventArgs e)
+        private async void InceleButton_Clicked(object sender, EventArgs e)
         {
             Loodinglayout.IsVisible = true;
             LoodingActivity.IsRunning = true;
 
-            //Sayfa yönelndirme
+            foreach (var item in _listItems)
+            {
+                if (item.btnid == (sender as Button).AutomationId)
+                {
+                    await Navigation.PushAsync(new AjandaEklePage(true, new AjandaAddOrDeleteVeriler
+                    {
+                        id = item.id,
+                        firma = item.firma,
+                        adSoyad = item.adSoyad,
+                        cep = item.cep,
+                        tel = item.tel,
+                        aciklama = item.aciklama,
+                        okundu = item.okundu,
+                        tarih = item.tarih,
+                        userId = item.userId,
+                    }), true);
+                }
+            }
+            await getAllData();
 
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;
-
         }
 
         private void listBildirm_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -279,10 +297,16 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         {
             Loodinglayout.IsVisible = true;
             LoodingActivity.IsRunning = true;
-            await Navigation.PushAsync(new AjandaEklePage(), true);
+            await Navigation.PushAsync(new AjandaEklePage(false, null), true);
             await getAllData();
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;
+        }
+
+        private async void listBildirm_Refreshing(object sender, EventArgs e)
+        {
+            await getAllData();
+            listBildirm.IsRefreshing = false;
         }
     }
 }

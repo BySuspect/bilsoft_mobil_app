@@ -10,7 +10,7 @@ namespace bilsoft_mobil_app.CustomItems
         string _text = "",
                _placeholder = "";
 
-        TextAlignment _horizontal = TextAlignment.Center,
+        TextAlignment _horizontal = TextAlignment.Start,
                       _vertical = TextAlignment.Center;
 
         int _entryFontSize = 20;
@@ -43,6 +43,8 @@ namespace bilsoft_mobil_app.CustomItems
             };
             #endregion
             this.Content = _entry;
+            this.BackgroundColor = Color.Transparent;
+            this.CornerRadius = 15;
         }
         public string Text
         {

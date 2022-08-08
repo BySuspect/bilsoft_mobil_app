@@ -7,14 +7,15 @@
     Title="Yeni Bildirim Ekleme"
     BackgroundImageSource="background.jpg">
     <Grid>
-        <ScrollView>
-            <Frame
-                Margin="20,0,20,5"
-                BackgroundColor="{Binding CardBackgroundColor}"
-                BorderColor="{Binding BorderColor}"
-                CornerRadius="15">
+        <Frame
+            Margin="20,0,20,10"
+            BackgroundColor="{Binding CardBackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15">
+            <ScrollView>
                 <StackLayout>
                     <Label
+                        Margin="5,0,0,0"
                         FontSize="Body"
                         Text="Firma"
                         TextColor="{Binding TextColor}" />
@@ -28,6 +29,7 @@
                             TextColor="White" />
                     </Frame>
                     <Label
+                        Margin="5,0,0,0"
                         FontSize="Body"
                         Text="Ad Soyad"
                         TextColor="{Binding TextColor}" />
@@ -42,6 +44,7 @@
                             TextColor="White" />
                     </Frame>
                     <Label
+                        Margin="5,0,0,0"
                         FontSize="Body"
                         Text="Telefon"
                         TextColor="{Binding TextColor}" />
@@ -57,6 +60,7 @@
                             TextColor="White" />
                     </Frame>
                     <Label
+                        Margin="5,0,0,0"
                         FontSize="Body"
                         Text="GSM"
                         TextColor="{Binding TextColor}" />
@@ -66,12 +70,13 @@
                         BorderColor="{Binding BorderColor}"
                         CornerRadius="15">
                         <custom:BorderlessEntry
-                            x:Name="entrGSM"
+                            x:Name="entryGSM"
                             Margin="-15"
                             Keyboard="Numeric"
                             TextColor="White" />
                     </Frame>
                     <Label
+                        Margin="5,0,0,0"
                         FontSize="Body"
                         Text="Açıklama"
                         TextColor="{Binding TextColor}" />
@@ -96,6 +101,7 @@
                     <Grid>
                         <StackLayout Grid.Column="0" HorizontalOptions="Fill">
                             <Label
+                                Margin="5,0,0,0"
                                 FontSize="Body"
                                 Text="Tarih"
                                 TextColor="{Binding TextColor}" />
@@ -103,11 +109,15 @@
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 CornerRadius="15">
-                                <custom:BorderlessDatePicker x:Name="pickerDate" TextColor="{Binding TextColor}" />
+                                <custom:BorderlessDatePicker
+                                    x:Name="pickerDate"
+                                    Format="dd/MM/yyyy"
+                                    TextColor="{Binding TextColor}" />
                             </Frame>
                         </StackLayout>
                         <StackLayout Grid.Column="1" HorizontalOptions="Fill">
                             <Label
+                                Margin="5,0,0,0"
                                 FontSize="Body"
                                 Text="Saat"
                                 TextColor="{Binding TextColor}" />
@@ -115,12 +125,16 @@
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 CornerRadius="15">
-                                <custom:BorderlessTimePicker x:Name="pickerTime" TextColor="{Binding TextColor}" />
+                                <custom:BorderlessTimePicker
+                                    x:Name="pickerTime"
+                                    Format="hh:mm"
+                                    TextColor="{Binding TextColor}" />
                             </Frame>
                         </StackLayout>
                     </Grid>
                     <StackLayout>
                         <Label
+                            Margin="5,0,0,0"
                             FontSize="Body"
                             Text="Kullanıcı"
                             TextColor="{Binding TextColor}" />
@@ -128,13 +142,60 @@
                             BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
                             CornerRadius="15">
-                            <custom:BorderlessPicker
-                                x:Name="pickerKullanici"
-                                Title="Kullanıcı"
-                                Margin="-10,-15,-15,-15"
-                                TextColor="{Binding TextColor}" />
+                            <StackLayout Orientation="Horizontal">
+                                <custom:BorderlessPicker
+                                    x:Name="pickerKullanici"
+                                    Title="Kullanıcı"
+                                    Margin="-10,-15,-15,-15"
+                                    HorizontalOptions="FillAndExpand"
+                                    TextColor="{Binding TextColor}" />
+                                <Image
+                                    Margin="-200,0,0,0"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="expanddown24px.png" />
+                            </StackLayout>
                         </Frame>
                     </StackLayout>
+
+                    <StackLayout x:Name="editModIslemDurumu" IsVisible="true">
+                        <Button
+                            x:Name="btnNotlar"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnNotlar_Clicked"
+                            CornerRadius="15"
+                            FontSize="Body"
+                            HorizontalOptions="Fill"
+                            Text="Notlar"
+                            TextColor="{Binding TextColor}" />
+                        <Label
+                            Margin="5,0,0,0"
+                            FontSize="Body"
+                            Text="İşlem Durumu"
+                            TextColor="{Binding TextColor}" />
+                        <Frame
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15">
+                            <StackLayout Orientation="Horizontal">
+                                <custom:BorderlessPicker
+                                    x:Name="pickerIslem"
+                                    Title="İşlem Durumu"
+                                    Margin="-10,-15,-15,-15"
+                                    HorizontalOptions="FillAndExpand"
+                                    TextColor="{Binding TextColor}" />
+                                <Image
+                                    Margin="-200,0,0,0"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="expanddown24px.png" />
+                            </StackLayout>
+                        </Frame>
+
+                    </StackLayout>
+
                     <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                         <Button
                             x:Name="btnKaydet"
@@ -160,8 +221,8 @@
                             TextColor="{Binding TextColor}" />
                     </StackLayout>
                 </StackLayout>
-            </Frame>
-        </ScrollView>
+            </ScrollView>
+        </Frame>
         <Grid
             x:Name="Loodinglayout"
             BackgroundColor="#77767676"

@@ -18,7 +18,9 @@ namespace bilsoft_mobil_app
 
 
             /*
-             *expander hala hatalı düzeltilicek
+             *ajanda notlar kısmı tasarlanıcak
+             *ajanda ana sayfada hatırlatma olarak gösterilicek
+             *cari aç kısmı yapılıcak
              */
 
             //Test Verileri
@@ -72,5 +74,5 @@ namespace bilsoft_mobil_app
     }
 }
 
-/* This App Made BySoloKing */
-/*  https://my.bio/bysoloking */
+/* This App Made BySoloKing  */
+/* https://my.bio/bysoloking */

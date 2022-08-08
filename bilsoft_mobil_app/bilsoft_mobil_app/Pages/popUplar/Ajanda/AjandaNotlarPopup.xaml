@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="bilsoft_mobil_app.Pages.popUplar.Ajanda.AjandaNotlarPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar.CariHesaplar"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xct:Color="Transparent"
+    xct:HeightRequest="200">
+    <!--    -->
+    <Grid>
+        <Frame
+            Margin="0,10"
+            BackgroundColor="{Binding BackgroundColor}"
+            CornerRadius="15">
+            <ListView>
+                <ListView.Header>
+                    <StackLayout>
+                        <!--  Header  -->
+                        <Label
+                            FontSize="25"
+                            HorizontalOptions="Start"
+                            Text="Notlar"
+                            TextColor="{Binding TextColor}"
+                            VerticalTextAlignment="Start" />
+
+                        <Frame
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            CornerRadius="15"
+                            HeightRequest="50">
+                            <Grid>
+                                <Label
+                                    x:Name="lblNotLength"
+                                    HorizontalOptions="End"
+                                    Text="250/0"
+                                    VerticalOptions="End" />
+                                <customitems:BorderlessEditor
+                                    x:Name="edtNot"
+                                    Margin="-15"
+                                    TextChanged="edtNot_TextChanged"
+                                    TextColor="White" />
+                            </Grid>
+                        </Frame>
+                        <Button
+                            x:Name="btnKaydet"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnKaydet_Clicked"
+                            CornerRadius="15"
+                            FontSize="Body"
+                            HorizontalOptions="End"
+                            Text="Kaydet"
+                            TextColor="{Binding TextColor}" />
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15">
+                                <ListView x:Name="lvNot" HasUnevenRows="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Frame
+                                                    BackgroundColor="Transparent"
+                                                    BorderColor="{Binding BorderColor}"
+                                                    CornerRadius="15">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="aaaaaaaaaaaaaa" />
+                                                        <Button HorizontalOptions="EndAndExpand" Text="Sil" />
+                                                    </StackLayout>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+        <Grid
+            x:Name="Loodinglayout"
+            BackgroundColor="#77767676"
+            IsVisible="false">
+            <Frame
+                BackgroundColor="#77767676"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Padding="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ActivityIndicator
+                        x:Name="LoodingActivity"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        Color="White" />
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="20"
+                        Text="Yükleniyor..."
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</xct:Popup>
