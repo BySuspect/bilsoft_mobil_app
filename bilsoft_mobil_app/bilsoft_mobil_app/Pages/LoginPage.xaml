@@ -3,7 +3,7 @@
     x:Class="bilsoft_mobil_app.Pages.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:customItem="clr-namespace:bilsoft_mobil_app.CustomItems"
+    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
     Title="Login"
     BackgroundImageSource="background.jpg">
 
@@ -20,48 +20,54 @@
                         <StackLayout Margin="0,20,0,10">
                             <Image Source="bilsoft_logo" />
                         </StackLayout>
-
-                        <customItem:CustomEntry
-                            x:Name="entry_loginvergino"
+                        <Frame
+                            BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
-                            CornerRadius="15"
-                            FontAttributes="None"
-                            FontSize="17"
-                            HeightRequest="40"
-                            HorizontalTextAlignment="Center"
-                            IsCurvedCornersEnabled="True"
-                            Placeholder="Vergi No"
-                            PlaceholderColor="LightGray"
-                            TextColor="{Binding TextColor}"
-                            WidthRequest="100" />
-
-                        <customItem:CustomEntry
-                            x:Name="entry_loginkullaniciadi"
+                            CornerRadius="15">
+                            <customitems:BorderlessEntry
+                                x:Name="entry_loginvergino"
+                                Margin="-15"
+                                FontAttributes="None"
+                                FontSize="17"
+                                HeightRequest="40"
+                                HorizontalTextAlignment="Center"
+                                Placeholder="Vergi No"
+                                PlaceholderColor="LightGray"
+                                TextColor="{Binding TextColor}"
+                                WidthRequest="100" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
-                            CornerRadius="15"
-                            FontAttributes="None"
-                            FontSize="17"
-                            HeightRequest="40"
-                            HorizontalTextAlignment="Center"
-                            IsCurvedCornersEnabled="True"
-                            Placeholder="Kullanıcı Adı"
-                            PlaceholderColor="LightGray"
-                            TextColor="{Binding TextColor}"
-                            WidthRequest="100" />
-
-                        <customItem:CustomEntry
-                            x:Name="entry_loginsifre"
+                            CornerRadius="15">
+                            <customitems:BorderlessEntry
+                                x:Name="entry_loginkullaniciadi"
+                                Margin="-15"
+                                FontAttributes="None"
+                                FontSize="17"
+                                HeightRequest="40"
+                                HorizontalTextAlignment="Center"
+                                Placeholder="Kullanıcı Adı"
+                                PlaceholderColor="LightGray"
+                                TextColor="{Binding TextColor}"
+                                WidthRequest="100" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
-                            CornerRadius="15"
-                            FontAttributes="None"
-                            FontSize="17"
-                            HeightRequest="40"
-                            HorizontalTextAlignment="Center"
-                            IsCurvedCornersEnabled="True"
-                            Placeholder="Şifre"
-                            PlaceholderColor="LightGray"
-                            TextColor="{Binding TextColor}"
-                            WidthRequest="100" />
+                            CornerRadius="15">
+                            <customitems:BorderlessEntry
+                                x:Name="entry_loginsifre"
+                                Margin="-15"
+                                FontAttributes="None"
+                                FontSize="17"
+                                HeightRequest="40"
+                                HorizontalTextAlignment="Center"
+                                Placeholder="Şifre"
+                                PlaceholderColor="LightGray"
+                                TextColor="{Binding TextColor}"
+                                WidthRequest="100" />
+                        </Frame>
 
                         <Button
                             x:Name="btn_sifreunuttum"
@@ -182,7 +188,7 @@
                                 <RowDefinition Height="50" />
                             </Grid.RowDefinitions>
 
-                            <customItem:BorderlessPicker
+                            <customitems:BorderlessPicker
                                 x:Name="pickerDonem"
                                 Title="Dönem Yılı"
                                 Grid.Row="0"

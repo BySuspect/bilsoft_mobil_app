@@ -17,15 +17,19 @@
                 <ListView>
                     <ListView.Header>
                         <StackLayout>
-                            <custom:CustomEntry
-                                x:Name="entryCariArama"
+                            <Frame
+                                BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
-                                CornerRadius="15"
-                                HorizontalOptions="FillAndExpand"
-                                Placeholder="Ara..."
-                                PlaceholderColor="LightGray"
-                                TextChanged="entryCariArama_TextChanged"
-                                TextColor="{Binding TextColor}" />
+                                CornerRadius="15">
+                                <custom:BorderlessEntry
+                                    x:Name="entryCariArama"
+                                    Margin="-15"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Ara..."
+                                    PlaceholderColor="LightGray"
+                                    TextChanged="entryCariArama_TextChanged"
+                                    TextColor="{Binding TextColor}" />
+                            </Frame>
                         </StackLayout>
                     </ListView.Header>
 

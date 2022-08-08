@@ -127,16 +127,20 @@
                                         WidthRequest="100" />
                                 </Frame>
                                 <StackLayout Orientation="Horizontal">
-                                    <custom:CustomEntry
-                                        x:Name="entryCariArama"
+                                    <Frame
+                                        BackgroundColor="Transparent"
                                         BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15"
-                                        HorizontalOptions="FillAndExpand"
-                                        Placeholder="Ara..."
-                                        PlaceholderColor="LightGray"
-                                        TextColor="{Binding TextColor}"
-                                        VerticalOptions="Center"
-                                        WidthRequest="200" />
+                                        CornerRadius="15">
+                                        <custom:BorderlessEntry
+                                            x:Name="entryCariArama"
+                                            Margin="-15"
+                                            HorizontalOptions="FillAndExpand"
+                                            Placeholder="Ara..."
+                                            PlaceholderColor="LightGray"
+                                            TextColor="{Binding TextColor}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="200" />
+                                    </Frame>
                                     <Button
                                         x:Name="btnCariArama"
                                         BackgroundColor="Transparent"

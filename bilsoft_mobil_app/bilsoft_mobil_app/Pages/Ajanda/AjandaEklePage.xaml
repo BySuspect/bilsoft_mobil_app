@@ -18,42 +18,59 @@
                         FontSize="Body"
                         Text="Firma"
                         TextColor="{Binding TextColor}" />
-                    <custom:CustomEntry
-                        x:Name="entryFirma"
+                    <Frame
+                        BackgroundColor="Transparent"
                         BorderColor="{Binding BorderColor}"
-                        BorderWidth="2"
-                        TextColor="White" />
-
+                        CornerRadius="15">
+                        <custom:BorderlessEntry
+                            x:Name="entryFirma"
+                            Margin="-15"
+                            TextColor="White" />
+                    </Frame>
                     <Label
                         FontSize="Body"
                         Text="Ad Soyad"
                         TextColor="{Binding TextColor}" />
-                    <custom:CustomEntry
-                        x:Name="entryAdSoyad"
-                        BorderColor="{Binding BorderColor}"
-                        BorderWidth="1"
-                        TextColor="White" />
 
+                    <Frame
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessEntry
+                            x:Name="entryAdSoyad"
+                            Margin="-15"
+                            TextColor="White" />
+                    </Frame>
                     <Label
                         FontSize="Body"
                         Text="Telefon"
                         TextColor="{Binding TextColor}" />
-                    <custom:CustomEntry
-                        x:Name="entryTel"
-                        BorderColor="{Binding BorderColor}"
-                        Keyboard="Numeric"
-                        TextColor="White" />
 
+                    <Frame
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessEntry
+                            x:Name="entryTel"
+                            Margin="-15"
+                            Keyboard="Numeric"
+                            TextColor="White" />
+                    </Frame>
                     <Label
                         FontSize="Body"
                         Text="GSM"
                         TextColor="{Binding TextColor}" />
-                    <custom:CustomEntry
-                        x:Name="entrGSM"
-                        BorderColor="{Binding BorderColor}"
-                        Keyboard="Numeric"
-                        TextColor="White" />
 
+                    <Frame
+                        BackgroundColor="Transparent"
+                        BorderColor="{Binding BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessEntry
+                            x:Name="entrGSM"
+                            Margin="-15"
+                            Keyboard="Numeric"
+                            TextColor="White" />
+                    </Frame>
                     <Label
                         FontSize="Body"
                         Text="Açıklama"

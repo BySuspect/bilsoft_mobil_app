@@ -35,15 +35,19 @@
                                         FontSize="Medium"
                                         Text="Cari Bilgileri"
                                         TextColor="{Binding TextColor}" />
-                                    <customitems:CustomEntry
-                                        x:Name="entryAd"
+
+                                    <Frame
+                                        BackgroundColor="Transparent"
                                         BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15"
-                                        HorizontalTextAlignment="Start"
-                                        Placeholder="Hesap/Firma Adı:"
-                                        PlaceholderColor="{Binding TextColor}"
-                                        TextColor="{Binding TextColor}"
-                                        VerticalOptions="Start" />
+                                        CornerRadius="15">
+                                        <customitems:BorderlessEntry
+                                            x:Name="entryAd"
+                                            HorizontalTextAlignment="Start"
+                                            Placeholder="Hesap/Firma Adı:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}"
+                                            VerticalOptions="Start" />
+                                    </Frame>
                                     <Frame
                                         BackgroundColor="Transparent"
                                         BorderColor="{Binding BorderColor}"
@@ -58,15 +62,19 @@
                                             TitleColor="{Binding TextColor}"
                                             Visual="Default" />
                                     </Frame>
-                                    <customitems:CustomEntry
-                                        x:Name="entryYetkili"
+
+                                    <Frame
+                                        BackgroundColor="Transparent"
                                         BorderColor="{Binding BorderColor}"
-                                        CornerRadius="15"
-                                        HorizontalTextAlignment="Start"
-                                        Placeholder="Yetkili:"
-                                        PlaceholderColor="{Binding TextColor}"
-                                        TextColor="{Binding TextColor}"
-                                        VerticalOptions="Start" />
+                                        CornerRadius="15">
+                                        <customitems:BorderlessEntry
+                                            x:Name="entryYetkili"
+                                            HorizontalTextAlignment="Start"
+                                            Placeholder="Yetkili:"
+                                            PlaceholderColor="{Binding TextColor}"
+                                            TextColor="{Binding TextColor}"
+                                            VerticalOptions="Start" />
+                                    </Frame>
                                 </StackLayout>
                                 <StackLayout>
                                     <Label
@@ -148,135 +156,190 @@
                                         TextColor="{Binding TextColor}" />
                                 </StackLayout>
 
-                                <customitems:CustomEntry
-                                    x:Name="entryTel"
+
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Telefon:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryCepTel"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryTel"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Telefon:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Cep Telefonu:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryFax"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryCepTel"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Cep Telefonu:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Fax:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryMail"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryFax"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Fax:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Keyboard="Email"
-                                    Placeholder="E-Mail:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryWeb"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryMail"
+                                        HorizontalTextAlignment="Start"
+                                        Keyboard="Email"
+                                        Placeholder="E-Mail:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Keyboard="Url"
-                                    Placeholder="Web Adresi:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryPostaKod"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryWeb"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Keyboard="Url"
+                                        Placeholder="Web Adresi:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Keyboard="Numeric"
-                                    Placeholder="Posta Kodu:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryVergiDairesi"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryPostaKod"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Keyboard="Numeric"
+                                        Placeholder="Posta Kodu:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Vergi Dairesi:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryVergiNo"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryVergiDairesi"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Vergi Dairesi:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Vergi No:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entrySicil"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryVergiNo"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Vergi No:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Sicil No:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryUlke"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entrySicil"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Sicil No:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Ülke:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryIl"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryUlke"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Ülke:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="İl:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryIlce"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryIl"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="İl:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="İlçe:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entryAdres"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryIlce"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="İlçe:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Adres:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-                                <customitems:CustomEntry
-                                    x:Name="entrySevkAdres"
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryAdres"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Adres:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Sevk Adresi:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entrySevkAdres"
+                                        Margin="-15"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Sevk Adresi:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Frame>
                                 <Button
                                     x:Name="btnAddSevkAdrs"
                                     BackgroundColor="Transparent"
@@ -288,17 +351,19 @@
                                     IsVisible="false   "
                                     Text="Sevk Adresi Ekle"
                                     TextColor="{Binding TextColor}" />
-
-                                <customitems:CustomEntry
-                                    x:Name="entryCariKod"
+                                <Frame
+                                    BackgroundColor="Transparent"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="15"
-                                    HorizontalTextAlignment="Start"
-                                    Placeholder="Cari Kod:"
-                                    PlaceholderColor="{Binding TextColor}"
-                                    TextColor="{Binding TextColor}"
-                                    VerticalOptions="Start" />
-
+                                    CornerRadius="15">
+                                    <customitems:BorderlessEntry
+                                        x:Name="entryCariKod"
+                                        HorizontalTextAlignment="Start"
+                                        Placeholder="Cari Kod:"
+                                        PlaceholderColor="{Binding TextColor}"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start"
+                                        Margin="-15" />
+                                </Frame>
                                 <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                     <Button
                                         x:Name="btnSil"

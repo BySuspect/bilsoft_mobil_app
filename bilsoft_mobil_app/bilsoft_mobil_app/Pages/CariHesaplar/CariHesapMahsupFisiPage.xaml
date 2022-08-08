@@ -40,14 +40,18 @@
                             TextTransform="Uppercase"
                             VerticalOptions="Start"
                             WidthRequest="50" />
-                        <customitems:CustomEntry
-                            x:Name="entryCariBorclandirilacak"
+                        <Frame
+                            BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
-                            CornerRadius="5"
-                            HorizontalOptions="FillAndExpand"
-                            IsEnabled="False"
-                            PlaceholderColor="DarkGray"
-                            Text="Cari Seçiniz" />
+                            CornerRadius="15">
+                            <customitems:BorderlessEntry
+                                x:Name="entryCariBorclandirilacak"
+                                Margin="-15"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="False"
+                                PlaceholderColor="DarkGray"
+                                Text="Cari Seçiniz" />
+                        </Frame>
                     </StackLayout>
 
                     <Label
@@ -71,37 +75,51 @@
                             TextTransform="Uppercase"
                             VerticalOptions="Start"
                             WidthRequest="50" />
-                        <customitems:CustomEntry
-                            x:Name="entryCariAlacaklandirilacak"
+                        <Frame
+                            BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
-                            CornerRadius="5"
-                            HorizontalOptions="FillAndExpand"
-                            IsEnabled="False"
-                            PlaceholderColor="DarkGray"
-                            Text="Cari Seçiniz" />
+                            CornerRadius="15">
+                            <customitems:BorderlessEntry
+                                x:Name="entryCariAlacaklandirilacak"
+                                Margin="-15"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="False"
+                                PlaceholderColor="DarkGray"
+                                Text="Cari Seçiniz" />
+                        </Frame>
                     </StackLayout>
 
                     <Label
                         FontSize="Body"
                         Text="Açıklama:"
                         TextColor="{Binding TextColor}" />
-                    <customitems:CustomEntry
-                        x:Name="entryAciklama"
+                    <Frame
+                        BackgroundColor="Transparent"
                         BorderColor="{Binding BorderColor}"
-                        PlaceholderColor="DarkGray"
-                        TextColor="{Binding TextColor}" />
+                        CornerRadius="15">
+                        <customitems:BorderlessEntry
+                            x:Name="entryAciklama"
+                            Margin="-15"
+                            PlaceholderColor="DarkGray"
+                            TextColor="{Binding TextColor}" />
+                    </Frame>
 
                     <Label
                         FontSize="Body"
                         Text="Tutar:"
                         TextColor="{Binding TextColor}" />
-                    <customitems:CustomEntry
-                        x:Name="entryTutar"
+                    <Frame
+                        BackgroundColor="Transparent"
                         BorderColor="{Binding BorderColor}"
-                        Keyboard="Numeric"
-                        Placeholder="Tutar Giriniz."
-                        PlaceholderColor="DarkGray"
-                        TextColor="{Binding TextColor}" />
+                        CornerRadius="15">
+                        <customitems:BorderlessEntry
+                            x:Name="entryTutar"
+                            Margin="-15"
+                            Keyboard="Numeric"
+                            Placeholder="Tutar Giriniz."
+                            PlaceholderColor="DarkGray"
+                            TextColor="{Binding TextColor}" />
+                    </Frame>
 
                     <Label
                         FontSize="Body"
@@ -122,13 +140,18 @@
                         FontSize="Body"
                         Text="Evrak Numarası:"
                         TextColor="{Binding TextColor}" />
-                    <customitems:CustomEntry
-                        x:Name="entryEvrakNum"
+                    <Frame
+                        BackgroundColor="Transparent"
                         BorderColor="{Binding BorderColor}"
-                        Keyboard="Numeric"
-                        Placeholder="Evrak Numarası Giriniz."
-                        PlaceholderColor="DarkGray"
-                        TextColor="{Binding TextColor}" />
+                        CornerRadius="15">
+                        <customitems:BorderlessEntry
+                            x:Name="entryEvrakNum"
+                            Margin="-15"
+                            Keyboard="Numeric"
+                            Placeholder="Evrak Numarası Giriniz."
+                            PlaceholderColor="DarkGray"
+                            TextColor="{Binding TextColor}" />
+                    </Frame>
 
                     <Button
                         BackgroundColor="#33b5e5"
@@ -145,14 +168,18 @@
             BorderColor="{Binding BorderColor}"
             CornerRadius="15">
             <StackLayout>
-                <customitems:CustomEntry
-                    x:Name="entryCariArama"
+                <Frame
+                    BackgroundColor="Transparent"
                     BorderColor="{Binding BorderColor}"
-                    CornerRadius="15"
-                    HorizontalOptions="FillAndExpand"
-                    Placeholder="Ara..."
-                    PlaceholderColor="LightGray"
-                    TextColor="{Binding TextColor}" />
+                    CornerRadius="15">
+                    <customitems:BorderlessEntry
+                        x:Name="entryCariArama"
+                        Margin="-15"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Ara..."
+                        PlaceholderColor="LightGray"
+                        TextColor="{Binding TextColor}" />
+                </Frame>
                 <!--  TextChanged="entryCariArama_TextChanged" />  -->
                 <Frame
                     Margin="0,0,0,40"
