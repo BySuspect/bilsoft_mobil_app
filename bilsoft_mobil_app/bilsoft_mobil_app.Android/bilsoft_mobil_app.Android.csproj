@@ -79,7 +79,6 @@
     <Compile Include="Renderers\BorderlessEditorRenderer.cs" />
     <Compile Include="Renderers\BorderlessTimePickerRenderer.cs" />
     <Compile Include="Renderers\BordlessPickerRenderer.cs" />
-    <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
