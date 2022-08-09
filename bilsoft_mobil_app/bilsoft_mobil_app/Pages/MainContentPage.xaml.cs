@@ -15,6 +15,10 @@ using Xamarin.CommunityToolkit.Extensions;
 using bilsoft_mobil_app.Helper.Veriler;
 using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Helper.API;
+using RestSharp;
+using Newtonsoft.Json;
+using bilsoft_mobil_app.Helper.JSONHelpers.RootAjanda;
+using bilsoft_mobil_app.Pages.Ajanda;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -27,7 +31,6 @@ namespace bilsoft_mobil_app.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainContentPage : ContentPage
     {
-        string mod = null, donemYili = null;
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
         public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
@@ -116,7 +119,7 @@ namespace bilsoft_mobil_app.Pages
         #endregion
 
         #region Süresi Geçen Hatırlatma Veriler
-        List<SuresiGecenListeProps> SuresiGecenHatirlatmalarListe = new List<SuresiGecenListeProps>();
+
         #endregion
 
         #region popUp Menu Veriler
@@ -128,12 +131,14 @@ namespace bilsoft_mobil_app.Pages
         {
             BindingContext = this;
             InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
             #region start
             try
             {
-                donemYili = APIHelper.secilenlogindonemYil;
-                mod = APIHelper.loginMod;
-
                 #region setDemo
                 setDemo7gunlukSatisG();
                 setDemo7gunlukVadeG();
@@ -184,16 +189,6 @@ namespace bilsoft_mobil_app.Pages
                 _7GunlukKasaHareketleriChart.Chart = new PointChart { Entries = entries7GunlukKasaHareketleri, IsAnimated = true, PointSize = 50f, LabelTextSize = 30, LabelColor = SKColor.Parse(AppThemeColors._textColor), PointAreaAlpha = 255, PointMode = PointMode.Circle, AnimationDuration = TimeSpan.FromSeconds(3), BackgroundColor = SKColors.Transparent };
                 #endregion
 
-                #region Süresi Geçen Hatırlatma Check
-                SuresiGecenHatirlatmaView.IsVisible = true;
-                btnpopupMenuReturnBackground.IsVisible = true;
-                SuresiGecenHatirlatmalarListeAdder();
-                foreach (var item in SuresiGecenHatirlatmalarListe)
-                {
-                    SuresiGecenHatirlatmalarViewAdder(item.AdSoyad, item.Firma, item.Aciklama);
-                }
-                #endregion
-
                 #region Banka Bakiye Liste Check
                 BankaBakiyelerListe.Add(new BankListVeriler { sira = 0, Banka_Hesap = "Name1", HesapNo = "21312412", HesapBakiye = 23543654.22 });
                 BankaBakiyelerListe.Add(new BankListVeriler { sira = 0, Banka_Hesap = "Name2", HesapNo = "23532623", HesapBakiye = 7643654.50 });
@@ -214,6 +209,10 @@ namespace bilsoft_mobil_app.Pages
                 {
                     createKasaListProp(i);
                 }
+                #endregion
+
+                #region Süresi Geçen Hatırlatma Check
+                SuresiGecenHatirlatmalarListeRefresh();
                 #endregion
 
             }
@@ -1376,62 +1375,61 @@ namespace bilsoft_mobil_app.Pages
         }
 
         #region Süresi Geçen Hatırlatmalar View
-        void SuresiGecenHatirlatmalarListeAdder()
+        async void SuresiGecenHatirlatmalarListeRefresh()
         {
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "aaaaaaa", AdSoyad = "Ahmet Ertürk", Firma = "Sancaklar iletişim" });
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "bbbbbbbbb", AdSoyad = "awhaha awhawh", Firma = "fghgdjdfg sehjnrsdnj" });
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "vvvvvvv", AdSoyad = "fdhdh jhfhg", Firma = "dshesh iletişim" });
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "sssssssss", AdSoyad = "awhawh awhawhwahawh", Firma = "dhsdhsdfh iletişim" });
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "aefsgseg", AdSoyad = "awha awhawh", Firma = "gfdjdfj sdgehse" });
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "gawgaw", AdSoyad = "awgawh Ertürk", Firma = "sehsejsrej sjsejsj" });
-            SuresiGecenHatirlatmalarListe.Add(new SuresiGecenListeProps { Aciklama = "shhehseh", AdSoyad = "Ahmet agwagawg", Firma = "gfjgfj fgdjdf" });
-        }
-        void SuresiGecenHatirlatmalarViewAdder(string _adSoyad, string _firma, string _aciklama)
-        {
-            SuresiGecenListeView.Children.Add(new StackLayout
+            LoodingActivity.IsRunning = true;
+            Loodinglayout.IsVisible = true;
+            List<SuresiGecenListeProps> _listItems = new List<SuresiGecenListeProps>();
+            #region Ajanda
+
+            var clientAjanda = new RestClient(APIHelper.url + APIHelper.AjandaApiler.AjandaApi + APIHelper.apiTypes.getall);
+            var requestAjanda = new RestRequest();
+            requestAjanda.AddHeader("Authorization", APIHelper.loginToken);
+            requestAjanda.AddHeader("Content-Type", "application/json");
+            var resAjanda = await clientAjanda.ExecuteAsync(requestAjanda, Method.Post);
+            var dataAjanda = JsonConvert.DeserializeObject<RootAjanda>(resAjanda.Content);
+
+            _listItems.Clear();
+
+            foreach (var item in dataAjanda.data)
             {
-                Children =
+                if (item.tarih.Date <= DateTime.Now.Date && !item.okundu)
                 {
-                    new Label
+                    _listItems.Add(new SuresiGecenListeProps
                     {
-                        Text=_adSoyad,
-                        TextColor=Color.FromHex(AppThemeColors._textColor),
-                        FontSize=12,
-                        FontAttributes=FontAttributes.Bold,
-                        HorizontalOptions=LayoutOptions.StartAndExpand
-                    },
-                    new Label
-                    {
-                        Text=_firma,
-                        TextColor=Color.FromHex(AppThemeColors._textColor),
-                        FontSize=12,
-                        FontAttributes=FontAttributes.Bold,
-                        HorizontalOptions=LayoutOptions.CenterAndExpand
-                    },
-                    new Label
-                    {
-                        Text=_aciklama,
-                        TextColor=Color.FromHex(AppThemeColors._textColor),
-                        FontSize=12,
-                        FontAttributes=FontAttributes.Bold,
-                        HorizontalOptions=LayoutOptions.EndAndExpand,
-                        TranslationX=-20
-                    }
-                },
-                Orientation = StackOrientation.Horizontal
-            });
-            SuresiGecenListeView.Children.Add(new BoxView()
+                        Aciklama = item.aciklama,
+                        AdSoyad = item.adSoyad,
+                        Firma = item.firma,
+                    });
+                }
+            }
+            #endregion
+
+            lvSuresiGecenHatirlatma.ItemsSource = _listItems;
+
+            LoodingActivity.IsRunning = false;
+            Loodinglayout.IsVisible = false;
+
+            if (_listItems.Count > 0)
             {
-                HeightRequest = 1,
-                Color = Color.White,
-                VerticalOptions = LayoutOptions.Start,
-                Margin = new Thickness(-20, 0, -20, 0)
-            });
+                SuresiGecenHatirlatmaView.IsVisible = true;
+                btnpopupMenuReturnBackground.IsVisible = true;
+            }
+            else
+            {
+                SuresiGecenHatirlatmaView.IsVisible = false;
+                btnpopupMenuReturnBackground.IsVisible = false;
+            }
         }
         private void btnSureGecenHatirlatmaKapat_Clicked(object sender, EventArgs e)
         {
             SuresiGecenHatirlatmaView.IsVisible = false;
             btnpopupMenuReturnBackground.IsVisible = false;
+        }
+        private async void btnSureGecenHatirlatmaAjandayaGit_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new AjandaPage(), this);
+            await Navigation.PopAsync();
         }
 
         #endregion

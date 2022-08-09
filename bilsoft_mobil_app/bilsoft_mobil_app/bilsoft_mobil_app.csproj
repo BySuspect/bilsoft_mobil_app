@@ -40,9 +40,6 @@
     <Compile Update="Pages\CariHesaplar\CariHesapMahsupFisiPage.xaml.cs">
       <DependentUpon>CariHesapMahsupFisiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="TestArea\TestPage.xaml.cs">
-      <DependentUpon>TestPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -107,6 +104,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\TaksitListesiPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="TestArea\TestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

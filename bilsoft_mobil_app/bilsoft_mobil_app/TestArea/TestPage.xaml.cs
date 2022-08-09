@@ -1,39 +1,36 @@
-﻿using bilsoft_mobil_app.CustomItems;
-using bilsoft_mobil_app.Helper;
-using bilsoft_mobil_app.Helper.API;
-using bilsoft_mobil_app.Helper.App;
-using bilsoft_mobil_app.TestArea;
-using Microcharts;
-using Newtonsoft.Json;
-using RestSharp;
-using SkiaSharp;
+﻿using bilsoft_mobil_app.Helper.App;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace bilsoft_mobil_app
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace bilsoft_mobil_app.TestArea
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TestPage : ContentPage
     {
         #region renk Bindleri
         public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
         public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
-        public Color Success { get; set; } = Color.FromHex(AppThemeColors._success);
         public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
-        public Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+        public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
-        public Color Money { get; set; } = Color.FromHex(AppThemeColors._money);
-        public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
+        public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
+
+        public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
+        public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
+        public Color AcikHesapColor { get; set; } = Color.FromHex(AppThemeColors._chartAcikHesapColor);
+        public Color CekColor { get; set; } = Color.FromHex(AppThemeColors._chartCekColor);
+        public Color _7GunVadeTahsilatColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeTahsilatGColor);
+        public Color _7GunVadeOdemeColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeOdemeGColor);
+        public Color _BankaHaraketGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketGirisColor);
+        public Color _BankaHaraketCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketCikisColor);
+        public Color _KasaGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaGirisColor);
+        public Color _KasaCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaCikisColor);
         #endregion
         public TestPage()
         {
@@ -41,14 +38,17 @@ namespace bilsoft_mobil_app
             BindingContext = this;
         }
 
-        private void edtNot_TextChanged(object sender, TextChangedEventArgs e)
+        #region mainView Popup
+        private void btnPopupMenu_Clicked(object sender, EventArgs e)
         {
-
+            popupMenu.IsVisible = true;
         }
 
-        private void btnKaydet_Clicked(object sender, EventArgs e)
-        {
+        #endregion
 
+        private void btnPopupMenuClose_Tapped(object sender, EventArgs e)
+        {
+            popupMenu.IsVisible = false;
         }
     }
 }

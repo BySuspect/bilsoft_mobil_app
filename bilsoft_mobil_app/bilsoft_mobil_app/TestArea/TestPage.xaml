@@ -1,142 +1,350 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="bilsoft_mobil_app.TestPage"
+    x:Class="bilsoft_mobil_app.TestArea.TestPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
-    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.Ajanda"
-    BackgroundImageSource="background.jpg">
-
+    Title="Test"
+    BackgroundImageSource="background.jpg"
+    NavigationPage.HasNavigationBar="True">
     <Grid>
-        <Frame
-            Margin="0,10,0,10"
-            BackgroundColor="{Binding BackgroundColor}"
-            BorderColor="{Binding BorderColor}"
-            CornerRadius="15">
-            <ListView HasUnevenRows="True">
-                <ListView.Header>
-                    <StackLayout Margin="0,5,0,10">
-                        <!--  Header  -->
-                        <Label
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            Text="Notlar"
-                            TextColor="{Binding TextColor}"
-                            VerticalTextAlignment="Start" />
 
-                        <Frame
-                            BackgroundColor="Transparent"
-                            BorderColor="{Binding BorderColor}"
-                            CornerRadius="15"
-                            HeightRequest="50">
-                            <Grid>
-                                <Label
-                                    x:Name="lblNotLength"
-                                    HorizontalOptions="End"
-                                    Text="250/0"
-                                    VerticalOptions="End" />
-                                <customitems:BorderlessEditor
-                                    x:Name="edtNot"
-                                    Margin="-15"
-                                    TextChanged="edtNot_TextChanged"
-                                    TextColor="White" />
-                            </Grid>
-                        </Frame>
-                        <Button
-                            x:Name="btnKaydet"
-                            BackgroundColor="Transparent"
-                            BorderColor="{Binding BorderColor}"
-                            BorderWidth="1"
-                            Clicked="btnKaydet_Clicked"
-                            CornerRadius="15"
-                            FontSize="Body"
-                            HorizontalOptions="End"
-                            Text="Kaydet"
-                            TextColor="{Binding TextColor}" />
-                    </StackLayout>
-                </ListView.Header>
-
-                <ListView.ItemsSource>
-                    <x:Array Type="{x:Type local:AjandaNotVeriler}">
-                        <local:AjandaNotVeriler
-                            ajandaId="1"
-                            btnid="btn1"
-                            id="1"
-                            notlar="test" />
-                        <local:AjandaNotVeriler
-                            ajandaId="2"
-                            btnid="btn2"
-                            id="2"
-                            notlar="awwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
-                        <local:AjandaNotVeriler
-                            ajandaId="3"
-                            btnid="btn3"
-                            id="3"
-                            notlar="aedsnjajaejajweajaejawjaj" />
-                    </x:Array>
-                </ListView.ItemsSource>
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Frame
-                                BackgroundColor="Transparent"
-                                BorderColor="{Binding BorderColor}"
-                                CornerRadius="15">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label
-                                        Grid.Column="0"
-                                        FontSize="Body"
-                                        Text="{Binding notlar}"
-                                        TextColor="{Binding TextColor}" />
-                                    <Button
-                                        Grid.Column="1"
-                                        AutomationId="{Binding btnid}"
-                                        BackgroundColor="Transparent"
-                                        BorderColor="{Binding BorderColor}"
-                                        BorderWidth="1"
-                                        CornerRadius="15"
-                                        FontSize="Body"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="Sil"
-                                        TextColor="{Binding TextColor}" />
-                                </Grid>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Frame>
-        <Grid
-            x:Name="Loodinglayout"
-            BackgroundColor="#77767676"
-            IsVisible="false">
+        <Button
+            HorizontalOptions="Center"
+            Text="test"
+            VerticalOptions="Start" />
+        <!--#region AltNavigasyon-->
+        <Grid TranslationY="15" VerticalOptions="EndAndExpand">
+            <Frame BackgroundColor="{Binding BackgroundColor}">
+                <Grid>
+                    <ImageButton
+                        x:Name="btnPopupMenu"
+                        BackgroundColor="Transparent"
+                        Clicked="btnPopupMenu_Clicked"
+                        CornerRadius="255"
+                        HorizontalOptions="StartAndExpand"
+                        Source="menu32px.png"
+                        TranslationX="15"
+                        TranslationY="-5" />
+                    <ImageButton
+                        x:Name="btnAyarlar"
+                        BackgroundColor="Transparent"
+                        CornerRadius="255"
+                        HorizontalOptions="EndAndExpand"
+                        Source="settings32px.png"
+                        TranslationX="-15"
+                        TranslationY="-5" />
+                </Grid>
+            </Frame>
             <Frame
-                BackgroundColor="#77767676"
-                CornerRadius="15"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand">
-                <StackLayout
-                    Padding="50"
+                BackgroundColor="White"
+                CornerRadius="255"
+                HeightRequest="35"
+                HorizontalOptions="Center"
+                TranslationY="-20"
+                VerticalOptions="Center"
+                WidthRequest="35">
+                <Frame
+                    Margin="-16"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    CornerRadius="255"
+                    HeightRequest="60"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center">
-                    <ActivityIndicator
-                        x:Name="LoodingActivity"
+                    VerticalOptions="Center"
+                    WidthRequest="60">
+                    <ImageButton
+                        x:Name="btnAnaSayfa"
+                        Margin="-10"
+                        BackgroundColor="Transparent"
+                        CornerRadius="255"
                         HorizontalOptions="Center"
-                        IsRunning="False"
-                        VerticalOptions="Center"
-                        Color="White" />
-                    <Label
-                        Margin="0,10,0,0"
-                        FontSize="20"
-                        Text="Yükleniyor..."
-                        TextColor="White" />
-                </StackLayout>
+                        Source="home32px.png"
+                        VerticalOptions="Center" />
+                </Frame>
             </Frame>
         </Grid>
+        <!--#endregion-->
+
+        <!--#region Hızlı Menü-->
+        <Grid
+            x:Name="popupMenu"
+            Margin="0,0,-5,0"
+            BackgroundColor="#70000000"
+            IsVisible="false">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="btnPopupMenuClose_Tapped" />
+            </Grid.GestureRecognizers>
+
+            <StackLayout
+                HorizontalOptions="StartAndExpand"
+                TranslationX="20"
+                VerticalOptions="Center">
+
+                <!--#region Panel-->
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HeightRequest="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="30">
+                        <ImageButton
+                            x:Name="btnPopUpMenuItemPanel"
+                            BackgroundColor="Transparent"
+                            Source="home32px.png" />
+                    </Frame>
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Label
+                            x:Name="lblPopUpMenuItemPanel"
+                            Margin="0,-10,0,-10"
+                            FontSize="Body"
+                            Text="Panel"
+                            TextColor="white"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Cari Arama-->
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <ImageButton
+                                x:Name="btnPopUpMenuItemCariArama"
+                                BackgroundColor="Transparent"
+                                Source="search24px.png" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPopUpMenuItemCariArama"
+                                Margin="0,-10,0,-10"
+                                FontSize="Body"
+                                Text="Cari Arama"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Cari İşlemler-->
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <ImageButton
+                                x:Name="btnPopUpMenuItemCariIslemler"
+                                BackgroundColor="Transparent"
+                                Source="users32px.png" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPopUpMenuItemCariIslemler"
+                                Margin="0,-10,0,-10"
+                                FontSize="Body"
+                                Text="Cari İşlemler"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Stok Kartları-->
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <ImageButton
+                                x:Name="btnPopUpMenuItemStokKartlar"
+                                BackgroundColor="Transparent"
+                                Source="dropbox32px.png" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPopUpMenuItemStokKartlar"
+                                Margin="0,-10,0,-10"
+                                FontSize="Body"
+                                Text="Stok Kartları"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Satış Yap-->
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <ImageButton
+                                x:Name="btnPopUpMenuItemSatisYap"
+                                BackgroundColor="Transparent"
+                                Source="sales24px.png" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPopUpMenuItemSatisYap"
+                                Margin="0,-10,0,-10"
+                                FontSize="Body"
+                                Text="Satış Yap"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Faturalar-->
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <ImageButton
+                                x:Name="btnPopUpMenuItemFaturalar"
+                                BackgroundColor="Transparent"
+                                Source="raports32px.png" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPopUpMenuItemFaturalar"
+                                Margin="0,-10,0,-10"
+                                FontSize="Body"
+                                Text="Faturalar"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Fiyat Gör-->
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <Image
+                                BackgroundColor="Transparent"
+                                Source="lookprice64px.png"
+                                TranslationX="4" />
+                        </Frame>
+                        <Frame
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="255"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label
+                                x:Name="lblPopUpMenuItemFiyatGor"
+                                Margin="0,-10,0,-10"
+                                FontSize="Body"
+                                Text="Fiyat Gör"
+                                TextColor="white"
+                                VerticalOptions="Center"
+                                WidthRequest="100" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+            </StackLayout>
+            <Frame
+                BackgroundColor="{Binding BackgroundColor}"
+                CornerRadius="255"
+                HeightRequest="30"
+                HorizontalOptions="Start"
+                TranslationX="25"
+                TranslationY="-5"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="30">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="btnPopupMenuClose" Tapped="btnPopupMenuClose_Tapped" />
+                </Frame.GestureRecognizers>
+                <Image BackgroundColor="{Binding BackgroundColor}" Source="close32px.png" />
+            </Frame>
+        </Grid>
+        <!--#endregion-->
     </Grid>
 </ContentPage>

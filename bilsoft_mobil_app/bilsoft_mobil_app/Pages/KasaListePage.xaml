@@ -9,7 +9,7 @@
         <ToolbarItem
             x:Name="btnToolbarOpenpopup"
             Clicked="btnToolbarOpenpopup_Clicked"
-            IconImageSource="toolbar_menu24px.png"
+            IconImageSource="menu32px.png"
             Priority="2" />
         <ToolbarItem
             x:Name="btnToolbarOpenUserPopup"

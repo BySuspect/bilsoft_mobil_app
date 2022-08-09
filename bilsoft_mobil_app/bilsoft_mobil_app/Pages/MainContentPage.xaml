@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Helper.Veriler"
     Title="Ana Sayfa"
     BackgroundImageSource="background.jpg">
 
@@ -11,7 +12,7 @@
         <ToolbarItem
             x:Name="btnToolbarOpenpopup"
             Clicked="btnToolbarOpenpopup_Clicked"
-            IconImageSource="toolbar_menu24px.png"
+            IconImageSource="menu32px.png"
             Priority="2" />
         <ToolbarItem
             x:Name="btnToolbarOpenUserPopup"
@@ -1009,89 +1010,113 @@
         <!--#endregion-->
 
         <!--#region Suresi Geçen Hatırlatmalar View-->
-        <ScrollView x:Name="SuresiGecenHatirlatmaView" IsVisible="true">
-            <Frame
-                Margin="20"
-                BackgroundColor="#FF6701"
-                BorderColor="White"
-                CornerRadius="15"
-                VerticalOptions="Center">
-                <StackLayout>
-                    <Label
-                        Grid.Row="0"
-                        Grid.ColumnSpan="4"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Süresi Geçen Hatırlatmalarınız!"
-                        TextColor="{Binding TextColor}" />
-                    <BoxView
-                        Grid.Row="1"
-                        Grid.ColumnSpan="4"
-                        Margin="-20,0,-20,0"
-                        HeightRequest="1"
-                        VerticalOptions="Start"
-                        Color="White" />
-                    <ScrollView>
-                        <StackLayout
-                            x:Name="SuresiGecenListeView"
-                            Margin="1"
-                            VerticalOptions="Start">
-                            <StackLayout Orientation="Horizontal">
+        <Frame
+            x:Name="SuresiGecenHatirlatmaView"
+            Margin="20"
+            BackgroundColor="{Binding BackgroundColor}"
+            BorderColor="{Binding BorderColor}"
+            CornerRadius="15"
+            IsVisible="false"
+            VerticalOptions="Center">
+            <StackLayout>
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    FontSize="25"
+                    HorizontalOptions="StartAndExpand"
+                    Text="Süresi Geçen Hatırlatmalarınız."
+                    TextColor="{Binding TextColor}"
+                    VerticalOptions="Center" />
+                <ListView
+                    x:Name="lvSuresiGecenHatirlatma"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None">
+                    <ListView.Header>
+                        <Frame BackgroundColor="Transparent" BorderColor="#86FFFFFF">
+                            <Grid Margin="-5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
                                 <Label
-                                    FontAttributes="Bold"
-                                    FontSize="15"
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="Ad Soyad"
+                                    Grid.Column="0"
+                                    Text="AdSoyad"
                                     TextColor="{Binding TextColor}" />
                                 <Label
-                                    FontAttributes="Bold"
-                                    FontSize="15"
-                                    HorizontalOptions="CenterAndExpand"
+                                    Grid.Column="1"
                                     Text="Firma"
                                     TextColor="{Binding TextColor}" />
                                 <Label
-                                    FontAttributes="Bold"
-                                    FontSize="15"
-                                    HorizontalOptions="EndAndExpand"
+                                    Grid.Column="2"
                                     Text="Açıklama"
-                                    TextColor="{Binding TextColor}"
-                                    TranslationX="-20" />
-                            </StackLayout>
-                            <BoxView
-                                Margin="-20,0,-20,0"
-                                HeightRequest="1"
-                                HorizontalOptions="Fill"
-                                VerticalOptions="Start"
-                                Color="{Binding TextColor}" />
-                        </StackLayout>
-                    </ScrollView>
-                    <StackLayout VerticalOptions="EndAndExpand">
-                        <!-- <BoxView HeightRequest="1" Color="White" Margin ="0, 0, 0, 0" VerticalOptions="End"/> -->
-                        <StackLayout Orientation="Horizontal">
-                            <Button
-                                x:Name="btnSureGecenHatirlatmaAjandayaGit"
-                                BackgroundColor="{Binding BackgroundColor}"
-                                BorderColor="{Binding TextColor}"
-                                BorderWidth="1"
-                                CornerRadius="15"
-                                HorizontalOptions="Start"
-                                Text="Ajandaya Git"
-                                TextColor="{Binding TextColor}" />
-                            <Button
-                                x:Name="btnSureGecenHatirlatmaKapat"
-                                BackgroundColor="Transparent"
-                                BorderColor="{Binding TextColor}"
-                                BorderWidth="1"
-                                Clicked="btnSureGecenHatirlatmaKapat_Clicked"
-                                CornerRadius="15"
-                                HorizontalOptions="EndAndExpand"
-                                Text="Kapat"
-                                TextColor="{Binding TextColor}" />
-                        </StackLayout>
+                                    TextColor="{Binding TextColor}" />
+                            </Grid>
+                        </Frame>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BackgroundColor="Transparent" BorderColor="#86FFFFFF">
+                                    <Grid Margin="-5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="Body"
+                                            Text="{Binding AdSoyad}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Body"
+                                            Text="{Binding Firma}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Label
+                                            Grid.Column="2"
+                                            FontSize="Body"
+                                            Text="{Binding Aciklama}"
+                                            TextColor="{Binding TextColor}" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout Margin="0,10,0,10" VerticalOptions="End">
+                    <!-- <BoxView HeightRequest="1" Color="White" Margin ="0, 0, 0, 0" VerticalOptions="End"/>-->
+                    <StackLayout Orientation="Horizontal">
+                        <Button
+                            x:Name="btnSureGecenHatirlatmaAjandayaGit"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            BorderColor="{Binding TextColor}"
+                            BorderWidth="1"
+                            Clicked="btnSureGecenHatirlatmaAjandayaGit_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Start"
+                            Text="Ajandaya Git"
+                            TextColor="{Binding TextColor}" />
+                        <Button
+                            x:Name="btnSureGecenHatirlatmaKapat"
+                            BackgroundColor="Transparent"
+                            BorderColor="{Binding TextColor}"
+                            BorderWidth="1"
+                            Clicked="btnSureGecenHatirlatmaKapat_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="EndAndExpand"
+                            Text="Kapat"
+                            TextColor="{Binding TextColor}" />
                     </StackLayout>
                 </StackLayout>
-            </Frame>
-        </ScrollView>
+            </StackLayout>
+        </Frame>
         <!--#endregion-->
 
         <!--#region Hızlı Menü-->
@@ -1249,6 +1274,35 @@
         <!-- <Button x:Name="btnTest" Clicked="btnTest_Clicked" Text="test" VerticalOptions="Start" HorizontalOptions="Center"/> -->
         <!-- <Button x:Name="btnPopUpMenu" Clicked="btnPopUpMenu_Clicked" TranslationY="96" TranslationX="-1" Margin="0,0,10,0" ImageSource="menuicon.png" CornerRadius="255" HeightRequest="60" WidthRequest="60" BackgroundColor="#9A36c6d3" HorizontalOptions="End" VerticalOptions="Start"/>-->
         <!--#endregion-->
+        <!--#region Looding Layout-->
+        <Grid
+            x:Name="Loodinglayout"
+            BackgroundColor="#77767676"
+            IsVisible="false">
+            <Frame
+                BackgroundColor="#77767676"
+                CornerRadius="15"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Padding="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <ActivityIndicator
+                        x:Name="LoodingActivity"
+                        HorizontalOptions="Center"
+                        IsRunning="False"
+                        VerticalOptions="Center"
+                        Color="White" />
+                    <Label
+                        Margin="0,10,0,0"
+                        FontSize="20"
+                        Text="Yükleniyor..."
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+        <!--  #Endregion  -->
     </Grid>
 
     <!--#region Main V1-->

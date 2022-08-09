@@ -3,6 +3,7 @@ using bilsoft_mobil_app.Pages;
 using bilsoft_mobil_app.Pages.Ajanda;
 using bilsoft_mobil_app.Pages.CariHesaplar;
 using bilsoft_mobil_app.Pages.MainView;
+using bilsoft_mobil_app.TestArea;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -45,8 +46,8 @@ namespace bilsoft_mobil_app
             //MainPage = new MainPage();
 
             //Test Page
-            //MainPage = new TestPage();
-            MainPage = new NavigationPage(new AjandaPage())
+            MainPage = new NavigationPage(new TestPage());
+            /*MainPage = new NavigationPage(new MainContentPage())
             {
                 BarTextColor = Color.FromHex("#ffffff"),
                 //BarBackgroundColor = Color.Transparent

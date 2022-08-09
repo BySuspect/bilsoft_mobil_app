@@ -11,7 +11,10 @@
         <ToolbarItem Text="test1" />
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView x:Name="MenulistView" x:FieldModifier="public">
+        <ListView
+            x:Name="MenulistView"
+            x:FieldModifier="public"
+            SeparatorColor="Transparent">
             <ListView.Header>
                 <Image Margin="0,20,0,20" Source="Bilsoft_Logo.png" />
             </ListView.Header>

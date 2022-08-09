@@ -1,4 +1,5 @@
 ﻿using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Pages.Ajanda;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,7 @@ namespace bilsoft_mobil_app.Pages.MainView
         public ListView _listViewAnaMenuler = new ListView();
         public ListView _listViewAltMenuler = new ListView();/**/
 
-        string ajandaName = "Ajanda◀",//"Ajanda▼"
+        string RaporlarName = "Raporlar◀",//"Raporlar▼"
                cariName = "Cari◀",//"Cari▼"
                stokName = "Stok◀",//"Stok▼"
                taksitName = "Taksit◀",//"Taksit▼"
@@ -43,7 +44,7 @@ namespace bilsoft_mobil_app.Pages.MainView
              digertree = false,
              gelirgidertree = false;
 
-        string openedTree = null;
+        //string openedTree = null;
 
         bool ListOnMenu = true;
 
@@ -63,22 +64,22 @@ namespace bilsoft_mobil_app.Pages.MainView
                 return;
             }
 
-            #region ajanda
-            if (item.name == "btnAjanda")
+            #region Raporlar
+            if (item.name == "btnRaporlar")
             {
-                if (item.Title == "Ajanda◀")
+                if (item.Title == "Raporlar◀")
                 {
                     resetAltTrees();
-                    ajandaName = "Ajanda▼";
-                    openAjandaTree();
+                    RaporlarName = "Raporlar▼";
+                    openRaporlarTree();
                     MenulistView.ScrollTo(_listItemsSource[_listItemsSource.Count - 1], ScrollToPosition.End, true);
                 }
                 else
                 {
                     MenulistView.ScrollTo(_listItemsSource[0], ScrollToPosition.Start, true);
-                    ajandaName = "Ajanda◀";
+                    RaporlarName = "Raporlar◀";
                     resetAltTrees();
-                    closeAjandaTree();
+                    closeRaporlarTree();
                 }
                 MenulistView.SelectedItem = null;/**/
                 return;
@@ -93,12 +94,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     cariName = "Cari▼";
                     caritree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -111,12 +112,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     stokName = "Stok▼";
                     stoktree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -129,12 +130,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     taksitName = "Taksit▼";
                     taksittree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -147,12 +148,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     satisName = "Satış▼";
                     satistree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -165,12 +166,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     kasaName = "Kasa▼";
                     kasatree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -183,12 +184,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     bankaName = "Banka▼";
                     bankatree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -201,12 +202,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     ceksenetName = "Çek/Senet▼";
                     ceksenettree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -219,12 +220,12 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     digerName = "Diğer▼";
                     digertree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -237,13 +238,13 @@ namespace bilsoft_mobil_app.Pages.MainView
                     resetAltTrees();
                     gelirgiderName = "Gelir Gider▼";
                     gelirgidertree = true;
-                    openAjandaTree();
+                    openRaporlarTree();
                     MenulistView.ScrollTo(_listItemsSource[_listItemsSource.Count - 1], ScrollToPosition.End, true);
                 }
                 else
                 {
                     resetAltTrees();
-                    openAjandaTree();
+                    openRaporlarTree();
                 }
             }
             #endregion
@@ -252,7 +253,7 @@ namespace bilsoft_mobil_app.Pages.MainView
             return;
         }
 
-        void openAjandaTree()
+        void openRaporlarTree()
         {
             ListOnMenu = false;
             CreateNormalMenu();
@@ -544,7 +545,7 @@ namespace bilsoft_mobil_app.Pages.MainView
             MenulistView.ItemsSource = null;
             MenulistView.ItemsSource = _listItemsSource;
         }
-        void closeAjandaTree()
+        void closeRaporlarTree()
         {
             ListOnMenu = true;
             resetAltTrees();
@@ -683,10 +684,18 @@ namespace bilsoft_mobil_app.Pages.MainView
             });
             _listItemsSource.Add(new MainPageFlyoutMenuItem
             {
-                name = "btnAjanda",
+                Title = "Ajanda",
                 fontSize = 18,
-                Title = ajandaName,
                 IconSource = "book32px.png",
+                TargetType = typeof(AjandaPage),
+                margin = new Thickness(0)
+            });
+            _listItemsSource.Add(new MainPageFlyoutMenuItem
+            {
+                name = "btnRaporlar",
+                fontSize = 18,
+                Title = RaporlarName,
+                IconSource = "order32px.png",
                 margin = new Thickness(0)
             });
 
@@ -783,8 +792,8 @@ namespace bilsoft_mobil_app.Pages.MainView
                 },
                 new MainPageFlyoutMenuItem
                 {
-                    name = "btnAjanda",
-                    Title = "Ajanda◀",
+                    name = "btnRaporlar",
+                    Title = "Raporlar◀",
                     IconSource = "book32px.png",
                     TargetType = typeof(MainContentPage)
 
