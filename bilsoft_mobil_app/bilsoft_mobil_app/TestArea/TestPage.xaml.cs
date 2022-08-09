@@ -42,13 +42,88 @@ namespace bilsoft_mobil_app.TestArea
         private void btnPopupMenu_Clicked(object sender, EventArgs e)
         {
             popupMenu.IsVisible = true;
+            PopUpMenuItemPanel.TranslateTo(0, 0, 100);
+            PopUpMenuItemCariArama.TranslateTo(0, 0, 200);
+            PopUpMenuItemCariIslemler.TranslateTo(0, 0, 300);
+            PopUpMenuItemStokKartlar.TranslateTo(0, 0, 400);
+            PopUpMenuItemSatisYap.TranslateTo(0, 0, 500);
+            PopUpMenuItemFaturalar.TranslateTo(0, 0, 600);
+            PopUpMenuItemFiyatGor.TranslateTo(0, 0, 700);
         }
-
-        #endregion
 
         private void btnPopupMenuClose_Tapped(object sender, EventArgs e)
         {
             popupMenu.IsVisible = false;
+            PopUpMenuItemPanel.TranslateTo(-1000, 0, 100);
+            PopUpMenuItemCariArama.TranslateTo(-1000, 0, 200);
+            PopUpMenuItemCariIslemler.TranslateTo(-1000, 0, 300);
+            PopUpMenuItemStokKartlar.TranslateTo(-1000, 0, 400);
+            PopUpMenuItemSatisYap.TranslateTo(-1000, 0, 500);
+            PopUpMenuItemFaturalar.TranslateTo(-1000, 0, 600);
+            PopUpMenuItemFiyatGor.TranslateTo(-1000, 0, 700);
+        }
+
+        private void btnPopUpMenuItemPanel_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemCariArama_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemCariIslemler_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+        #endregion
+        bool test = true;
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            this.CancelAnimations();
+            if (test)
+            {
+                PopUpMenuItemPanel.TranslateTo(0, 0, 100);
+                PopUpMenuItemCariArama.TranslateTo(0, 0, 200);
+                PopUpMenuItemCariIslemler.TranslateTo(0, 0, 300);
+                PopUpMenuItemStokKartlar.TranslateTo(0, 0, 400);
+                PopUpMenuItemSatisYap.TranslateTo(0, 0, 500);
+                PopUpMenuItemFaturalar.TranslateTo(0, 0, 600);
+                PopUpMenuItemFiyatGor.TranslateTo(0, 0, 700);
+                test = false;
+            }
+            else
+            {
+                PopUpMenuItemPanel.TranslateTo(-1000, 0, 100);
+                PopUpMenuItemCariArama.TranslateTo(-1000, 0, 200);
+                PopUpMenuItemCariIslemler.TranslateTo(-1000, 0, 300);
+                PopUpMenuItemStokKartlar.TranslateTo(-1000, 0, 400);
+                PopUpMenuItemSatisYap.TranslateTo(-1000, 0, 500);
+                PopUpMenuItemFaturalar.TranslateTo(-1000, 0, 600);
+                PopUpMenuItemFiyatGor.TranslateTo(-1000, 0, 700);
+                test = true;
+            }
+        }
+
+        private void btnPopUpMenuItemStokKartlar_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPopUpMenuItemSatisYap_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPopUpMenuItemFaturalar_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPopUpMenuItemFiyatGor_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }
