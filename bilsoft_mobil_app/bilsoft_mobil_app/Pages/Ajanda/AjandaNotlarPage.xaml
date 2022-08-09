@@ -1,30 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<xct:Popup
-    x:Class="bilsoft_mobil_app.Pages.popUplar.Ajanda.AjandaNotlarPopup"
+<ContentPage
+    x:Class="bilsoft_mobil_app.Pages.Ajanda.AjandaNotlarPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:customitems="clr-namespace:bilsoft_mobil_app.CustomItems"
-    xmlns:popup="clr-namespace:bilsoft_mobil_app.Pages.popUplar.CariHesaplar"
-    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
-    xct:Color="Transparent"
-    xct:HeightRequest="200">
-    <!--    -->
+    xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.Ajanda"
+    Title="Notlar"
+    BackgroundImageSource="background.jpg">
+
     <Grid>
         <Frame
-            Margin="0,10"
+            Margin="0,10,0,10"
             BackgroundColor="{Binding BackgroundColor}"
+            BorderColor="{Binding BorderColor}"
             CornerRadius="15">
-            <ListView>
+            <ListView
+                x:Name="lvNotlar"
+                HasUnevenRows="True"
+                SeparatorColor="Transparent">
                 <ListView.Header>
-                    <StackLayout>
+                    <StackLayout Margin="0,5,0,10">
                         <!--  Header  -->
-                        <Label
-                            FontSize="25"
-                            HorizontalOptions="Start"
-                            Text="Notlar"
-                            TextColor="{Binding TextColor}"
-                            VerticalTextAlignment="Start" />
-
                         <Frame
                             BackgroundColor="Transparent"
                             BorderColor="{Binding BorderColor}"
@@ -39,6 +35,7 @@
                                 <customitems:BorderlessEditor
                                     x:Name="edtNot"
                                     Margin="-15"
+                                    Placeholder="Not"
                                     TextChanged="edtNot_TextChanged"
                                     TextColor="White" />
                             </Grid>
@@ -53,9 +50,30 @@
                             FontSize="Body"
                             HorizontalOptions="End"
                             Text="Kaydet"
-                            TextColor="{Binding TextColor}" />
+                            TextColor="{Binding TextColor}"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </ListView.Header>
+
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:AjandaNotVeriler}">
+                        <local:AjandaNotVeriler
+                            ajandaId="1"
+                            btnid="btn1"
+                            id="1"
+                            notlar="test" />
+                        <local:AjandaNotVeriler
+                            ajandaId="2"
+                            btnid="btn2"
+                            id="2"
+                            notlar="awwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" />
+                        <local:AjandaNotVeriler
+                            ajandaId="3"
+                            btnid="btn3"
+                            id="3"
+                            notlar="aedsnjajaejajweajaejawjaj" />
+                    </x:Array>
+                </ListView.ItemsSource>
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -64,23 +82,30 @@
                                 BackgroundColor="Transparent"
                                 BorderColor="{Binding BorderColor}"
                                 CornerRadius="15">
-                                <ListView x:Name="lvNot" HasUnevenRows="True">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <Frame
-                                                    BackgroundColor="Transparent"
-                                                    BorderColor="{Binding BorderColor}"
-                                                    CornerRadius="15">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label Text="aaaaaaaaaaaaaa" />
-                                                        <Button HorizontalOptions="EndAndExpand" Text="Sil" />
-                                                    </StackLayout>
-                                                </Frame>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="Body"
+                                        Text="{Binding notlar}"
+                                        TextColor="{Binding TextColor}" />
+                                    <Button
+                                        Grid.Column="1"
+                                        AutomationId="{Binding btnid}"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="{Binding BorderColor}"
+                                        BorderWidth="1"
+                                        Clicked="NotSilButton_Clicked"
+                                        CornerRadius="15"
+                                        FontSize="Body"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="Sil"
+                                        TextColor="{Binding TextColor}"
+                                        VerticalOptions="Start" />
+                                </Grid>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
@@ -114,5 +139,12 @@
                 </StackLayout>
             </Frame>
         </Grid>
+
+        <Button
+            x:Name="btnTest"
+            Clicked="btnTest_Clicked"
+            HorizontalOptions="Center"
+            Text="Test"
+            VerticalOptions="End" />
     </Grid>
-</xct:Popup>
+</ContentPage>

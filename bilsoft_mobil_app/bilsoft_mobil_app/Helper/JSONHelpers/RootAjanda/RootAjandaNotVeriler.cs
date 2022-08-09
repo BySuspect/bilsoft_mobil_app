@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace bilsoft_mobil_app.Pages.popUplar.Ajanda
+namespace bilsoft_mobil_app.Helper.JSONHelpers.RootAjanda
 {
     // var myDeserializedClass = JsonConvert.DeserializeObject<RootAjandaNotVeriler>(myJsonResponse);
     public class AjandaNotVerilerDatum

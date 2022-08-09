@@ -28,6 +28,7 @@ namespace bilsoft_mobil_app.Helper.API
         {
             //Ajanda veriler
             public const string AjandaApi = "api/Ajanda";
+            public const string AjandaNotlarApi = "api/AjandaNotlar";
         }
 
         public static class CariApiler

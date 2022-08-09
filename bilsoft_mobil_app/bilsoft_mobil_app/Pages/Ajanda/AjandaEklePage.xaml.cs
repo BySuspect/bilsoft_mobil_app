@@ -1,7 +1,6 @@
 ﻿using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Helper.JSONHelpers.User;
-using bilsoft_mobil_app.Pages.popUplar.Ajanda;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -279,8 +278,7 @@ namespace bilsoft_mobil_app.Pages.Ajanda
 
         private async void btnNotlar_Clicked(object sender, EventArgs e)
         {
-            Popup popup = new AjandaNotlarPopup();
-            await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+            Navigation.PushAsync(new AjandaNotlarPage(NewOrEditVeriler.id));
         }
     }
 }

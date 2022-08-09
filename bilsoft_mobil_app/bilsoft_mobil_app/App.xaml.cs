@@ -16,7 +16,6 @@ namespace bilsoft_mobil_app
         {
             InitializeComponent();
 
-
             /*
              *ajanda notlar kısmı tasarlanıcak
              *ajanda ana sayfada hatırlatma olarak gösterilicek
@@ -24,7 +23,7 @@ namespace bilsoft_mobil_app
              */
 
             //Test Verileri
-            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiM2RhMDE3ZjItMjMzOS00YjgzLWE1ZjgtZDcxNGE5ZTE1MDU1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NTk5Mzc1NzIsImV4cCI6MTY1OTk4MDc2NywiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.pPIKJM2uTFOZvrnHevJ5Ksv9lTNHezVEagpT62tIWpQ";
+            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiOGVlYTM4NTEtNzIxMS00NzU5LWI1ZDctY2EyMTBmZDA1NDZmIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NjAwMjQxMjYsImV4cCI6MTY2MDA2NzMyNSwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.BoSqOzU0tnuVR3GOCFDLDn4aP24tNfg-VjrSKHh7VNQ";
             APIHelper.kullaniciAdi = "demo";
             APIHelper.subeAd = "merkez";
             //Test Verileri End
