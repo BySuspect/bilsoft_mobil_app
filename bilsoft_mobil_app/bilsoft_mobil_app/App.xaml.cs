@@ -17,7 +17,6 @@ namespace bilsoft_mobil_app
             InitializeComponent();
 
             /*
-             *ajanda notlar kısmı tasarlanıcak
              *ajanda ana sayfada hatırlatma olarak gösterilicek
              *cari aç kısmı yapılıcak
              */

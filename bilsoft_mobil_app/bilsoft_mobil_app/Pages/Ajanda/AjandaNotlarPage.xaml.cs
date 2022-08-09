@@ -29,10 +29,9 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         public Color MoneyBackground { get; set; } = Color.FromHex(AppThemeColors._moneyBackground);
         #endregion
 
-        List<AjandaNotVerilerDatum> _mainItemslist = new List<AjandaNotVerilerDatum>();
         ObservableCollection<AjandaNotVeriler> _listItems = new ObservableCollection<AjandaNotVeriler>();
 
-        AjandaNotVerilerDatum NewNotVeriler;
+        AjandaNotVerilerDatum NotVeriler;
         int ajandaId = 0;
         public AjandaNotlarPage(int id)
         {
@@ -57,7 +56,6 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                 var dataAjanda = JsonConvert.DeserializeObject<RootAjandaNotVeriler>(resAjanda.Content);
 
                 _listItems.Clear();
-                _mainItemslist.Clear();
 
                 foreach (var item in dataAjanda.data)
                 {
@@ -65,12 +63,6 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                     _listItems.Add(new AjandaNotVeriler
                     {
                         btnid = "btn" + item.id,
-                        id = item.id,
-                        ajandaId = item.ajandaId,
-                        notlar = item.notlar,
-                    });
-                    _mainItemslist.Add(new AjandaNotVerilerDatum
-                    {
                         id = item.id,
                         ajandaId = item.ajandaId,
                         notlar = item.notlar,
@@ -111,13 +103,13 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             {
                 if (edtNot.Text != null && edtNot.Text.Trim() != "" && edtNot.Text.Trim() != string.Empty)
                 {
-                    NewNotVeriler = new AjandaNotVerilerDatum()
+                    NotVeriler = new AjandaNotVerilerDatum()
                     {
                         notlar = edtNot.Text,
                         ajandaId = this.ajandaId.ToString(),
                         id = 0,
                     };
-                    var json = JsonConvert.SerializeObject(NewNotVeriler);
+                    var json = JsonConvert.SerializeObject(NotVeriler);
 
                     RestClient client = new RestClient(APIHelper.url + APIHelper.AjandaApiler.AjandaNotlarApi + APIHelper.apiTypes.add);
                     RestRequest request = new RestRequest();
@@ -150,9 +142,54 @@ namespace bilsoft_mobil_app.Pages.Ajanda
             LoodingActivity.IsRunning = false;
         }
 
-        private void NotSilButton_Clicked(object sender, EventArgs e)
+        private async void NotSilButton_Clicked(object sender, EventArgs e)
         {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+            try
+            {
+                var resD = await DisplayAlert("Uyarı!", "Veriyi silmek istiyormusunuz?", "Evet", "Hayır");
+                if (resD)
+                {
+                    foreach (var item in _listItems)
+                    {
+                        if (item.btnid == (sender as Button).AutomationId)
+                        {
+                            NotVeriler = new AjandaNotVerilerDatum()
+                            {
+                                notlar = item.notlar,
+                                ajandaId = item.ajandaId,
+                                id = item.id,
+                            };
+                            var json = JsonConvert.SerializeObject(NotVeriler);
 
+                            RestClient client = new RestClient(APIHelper.url + APIHelper.AjandaApiler.AjandaNotlarApi + APIHelper.apiTypes.delete);
+                            RestRequest request = new RestRequest();
+                            request.AddHeader("Authorization", APIHelper.loginToken);
+                            request.AddHeader("Content-Type", "application/json");
+                            request.AddJsonBody(json);
+
+                            RestResponse res = await client.ExecuteAsync(request, Method.Post);
+
+                            var data = JsonConvert.DeserializeObject<APIResponse>(res.Content);
+
+                            if (data.success)
+                            {
+                                DisplayAlert("", "Başarıyla Silindi.", "Kapat");
+                                edtNot.Text = String.Empty;
+                                GetAll();
+                            }
+                            else await DisplayAlert("Hata!", "Bir Hata Oluştu!\nHata Mesajı:\n" + data.message, "Tamam");
+
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Hata!", "Hata oluştu! \nHata Mesajı: " + ex.Message, "Tamam");
+            }
         }
 
         private void btnTest_Clicked(object sender, EventArgs e)

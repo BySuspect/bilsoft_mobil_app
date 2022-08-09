@@ -136,7 +136,7 @@ namespace bilsoft_mobil_app.Pages.Ajanda
 
             //Ajanda
             await listePropertiesCheck();
-            listBildirm.ItemsSource = _mainItemslist;
+            listBildirm.ItemsSource = _mainItemslist.OrderBy(x => x.id);
 
             //End
             Loodinglayout.IsVisible = false;
@@ -213,7 +213,7 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                 listBildirm.ItemsSource = new ObservableCollection<AjandaVeriler>(_uniqueList);
             }
             else
-                listBildirm.ItemsSource = _mainItemslist;
+                listBildirm.ItemsSource = _mainItemslist.OrderBy(x => x.id);
         }
 
         bool duplicateCheck(object _item, List<AjandaVeriler> _list)

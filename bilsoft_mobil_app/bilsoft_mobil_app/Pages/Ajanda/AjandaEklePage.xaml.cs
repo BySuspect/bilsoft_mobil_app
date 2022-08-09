@@ -1,5 +1,6 @@
 ﻿using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Helper.JSONHelpers.RootAjanda;
 using bilsoft_mobil_app.Helper.JSONHelpers.User;
 using Newtonsoft.Json;
 using RestSharp;
@@ -232,11 +233,13 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         {
             if (isEdit)
             {
-                var res = await DisplayAlert("Uyarı!", "Veriyi silmek istiyormusunuz?", "Evet", "Hayır");
-                if (res)
+                var resd = await DisplayAlert("Uyarı!", "Veriyi silmek istiyormusunuz?", "Evet", "Hayır");
+                if (resd)
                 {
                     Loodinglayout.IsVisible = true;
                     LoodingActivity.IsRunning = true;
+
+                    await deleteNotes(NewOrEditVeriler.id);
 
                     var json = JsonConvert.SerializeObject(NewOrEditVeriler);
 
@@ -246,22 +249,73 @@ namespace bilsoft_mobil_app.Pages.Ajanda
                     request.AddHeader("Content-Type", "application/json");
                     request.AddJsonBody(json);
 
-                    RestResponse resCariGrup = await client.ExecuteAsync(request, Method.Post);
-                    var dataCariGrup = JsonConvert.DeserializeObject<APIResponse>(resCariGrup.Content);
+                    RestResponse res = await client.ExecuteAsync(request, Method.Post);
+                    var data = JsonConvert.DeserializeObject<APIResponse>(res.Content);
 
-                    if (dataCariGrup.success)
+                    if (data.success)
                     {
                         DisplayAlert("", "Başarıyla Silindi.", "Kapat");
                         resetPage();
                         await Navigation.PopAsync();
                     }
-                    else await DisplayAlert("Hata!", "Bir Hata Oluştu!\nHata Mesajı:\n" + dataCariGrup.message, "Tamam");
+                    else await DisplayAlert("Hata!", "Bir Hata Oluştu!\nHata Mesajı:\n" + data.message, "Tamam");
 
                     Loodinglayout.IsVisible = false;
                     LoodingActivity.IsRunning = false;
                 }
             }
             else await Navigation.PopAsync();
+        }
+
+        private async Task deleteNotes(int id)
+        {
+            #region Notlar
+            var clientAjanda = new RestClient(APIHelper.url + APIHelper.AjandaApiler.AjandaNotlarApi + APIHelper.apiTypes.getall);
+            var requestAjanda = new RestRequest();
+            requestAjanda.AddHeader("Authorization", APIHelper.loginToken);
+            requestAjanda.AddHeader("Content-Type", "application/json");
+            var resAjanda = await clientAjanda.ExecuteAsync(requestAjanda, Method.Post);
+            var dataAjanda = JsonConvert.DeserializeObject<RootAjandaNotVeriler>(resAjanda.Content);
+
+            List<AjandaNotVerilerDatum> notlar = new List<AjandaNotVerilerDatum>();
+            foreach (var item in dataAjanda.data)
+            {
+                //await DisplayAlert("", item.tarih + "", "ok");
+                notlar.Add(new AjandaNotVerilerDatum
+                {
+                    id = item.id,
+                    ajandaId = item.ajandaId,
+                    notlar = item.notlar,
+                });
+            }
+            #endregion
+
+            foreach (var item in notlar)
+            {
+                if (item.ajandaId == id.ToString())
+                {
+                    AjandaNotVerilerDatum NotVeriler = new AjandaNotVerilerDatum()
+                    {
+                        notlar = item.notlar,
+                        ajandaId = item.ajandaId,
+                        id = item.id,
+                    };
+                    var json = JsonConvert.SerializeObject(NotVeriler);
+                repeat:
+                    RestClient client = new RestClient(APIHelper.url + APIHelper.AjandaApiler.AjandaNotlarApi + APIHelper.apiTypes.delete);
+                    RestRequest request = new RestRequest();
+                    request.AddHeader("Authorization", APIHelper.loginToken);
+                    request.AddHeader("Content-Type", "application/json");
+                    request.AddJsonBody(json);
+
+                    RestResponse res = await client.ExecuteAsync(request, Method.Post);
+
+                    var data = JsonConvert.DeserializeObject<APIResponse>(res.Content);
+
+                    if (data.success) continue;
+                    else goto repeat;
+                }
+            }
         }
 
         private async void TestButton_Clicked(object sender, EventArgs e)
