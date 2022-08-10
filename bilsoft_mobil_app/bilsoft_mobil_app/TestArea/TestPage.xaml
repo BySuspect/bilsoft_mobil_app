@@ -22,18 +22,28 @@
                         VerticalOptions="EndAndExpand"
                         WidthRequest="25">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="btnPopupMenu_Clicked" />
+                            <TapGestureRecognizer Tapped="btnNavMenu_Tapped" />
                         </Frame.GestureRecognizers>
                         <Image BackgroundColor="Transparent" Source="menu32px.png" />
                     </Frame>
-                    <ImageButton
-                        x:Name="btnAyarlar"
+                    <Frame
                         BackgroundColor="Transparent"
                         CornerRadius="255"
+                        HeightRequest="25"
                         HorizontalOptions="EndAndExpand"
-                        Source="settings32px.png"
                         TranslationX="-15"
-                        TranslationY="-15" />
+                        TranslationY="-15"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="25">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnNavSettings_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Image
+                            x:Name="btnAyarlar"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="EndAndExpand"
+                            Source="settings32px.png" />
+                    </Frame>
                 </Grid>
             </Frame>
             <Frame
@@ -52,11 +62,13 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     WidthRequest="60">
-                    <ImageButton
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="btnNavHome_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Image
                         x:Name="btnAnaSayfa"
                         Margin="-10"
                         BackgroundColor="Transparent"
-                        CornerRadius="255"
                         HorizontalOptions="Center"
                         Source="home32px.png"
                         VerticalOptions="Center" />
@@ -67,23 +79,82 @@
 
         <!--#region Hızlı Menü-->
         <Grid
-            x:Name="popupMenu"
+            x:Name="popupMenuBack"
             Margin="0,0,-5,0"
             BackgroundColor="#70000000"
-            IsVisible="true">
+            IsVisible="false">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Tapped="btnPopupMenuClose_Tapped" />
             </Grid.GestureRecognizers>
+            <Frame
+                x:Name="btnPopupMenuClose"
+                BackgroundColor="{Binding BackgroundColor}"
+                CornerRadius="255"
+                HeightRequest="20"
+                HorizontalOptions="Start"
+                TranslationX="35"
+                TranslationY="-10"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="20">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="btnPopupMenuClose_Tapped" />
+                </Frame.GestureRecognizers>
+                <Image BackgroundColor="{Binding BackgroundColor}" Source="close32px.png" />
+            </Frame>
+        </Grid>
+        <StackLayout
+            x:Name="popupMenu"
+            HorizontalOptions="StartAndExpand"
+            IsVisible="false"
+            TranslationX="20"
+            VerticalOptions="Center">
 
+            <!--#region Panel-->
             <StackLayout
-                HorizontalOptions="StartAndExpand"
-                TranslationX="20"
+                x:Name="PopUpMenuItemPanel"
+                Margin="0,10"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
                 VerticalOptions="Center">
+                <Frame
+                    BackgroundColor="{Binding BackgroundColor}"
+                    CornerRadius="255"
+                    HeightRequest="25"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="25">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="btnPopUpMenuItemPanel_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Image BackgroundColor="Transparent" Source="home32px.png" />
+                </Frame>
+                <Frame
+                    x:Name="lblPopUpMenuItemPanel"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    CornerRadius="255"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="btnPopUpMenuItemPanel_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Label
+                        Margin="0,-10"
+                        FontSize="Default"
+                        Text="Panel"
+                        TextColor="white"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                </Frame>
+            </StackLayout>
+            <!--#endregion-->
 
-                <!--#region Panel-->
+            <!--#region Cari Arama-->
+            <StackLayout
+                x:Name="PopUpMenuItemCariArama"
+                Margin="0,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
                 <StackLayout
-                    x:Name="PopUpMenuItemPanel"
-                    Margin="0,10"
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
                     VerticalOptions="Center">
@@ -95,307 +166,250 @@
                         VerticalOptions="Center"
                         WidthRequest="25">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="btnPopUpMenuItemPanel_Tapped" />
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemCariArama_Tapped" />
                         </Frame.GestureRecognizers>
-                        <Image BackgroundColor="Transparent" Source="home32px.png" />
+                        <Image BackgroundColor="Transparent" Source="search24px.png" />
                     </Frame>
                     <Frame
-                        x:Name="lblPopUpMenuItemPanel"
+                        x:Name="lblPopUpMenuItemCariArama"
                         BackgroundColor="{Binding BackgroundColor}"
                         CornerRadius="255"
                         HorizontalOptions="Center"
                         VerticalOptions="Center">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="btnPopUpMenuItemPanel_Tapped" />
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemCariArama_Tapped" />
                         </Frame.GestureRecognizers>
                         <Label
                             Margin="0,-10"
                             FontSize="Default"
-                            Text="Panel"
+                            Text="Cari Arama"
                             TextColor="white"
                             VerticalOptions="Center"
                             WidthRequest="100" />
                     </Frame>
                 </StackLayout>
-                <!--#endregion-->
-
-                <!--#region Cari Arama-->
-                <StackLayout
-                    x:Name="PopUpMenuItemCariArama"
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        VerticalOptions="Center">
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HeightRequest="25"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            WidthRequest="25">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemCariArama_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Image BackgroundColor="Transparent" Source="search24px.png" />
-                        </Frame>
-                        <Frame
-                            x:Name="lblPopUpMenuItemCariArama"
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemCariArama_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Label
-                                Margin="0,-10"
-                                FontSize="Default"
-                                Text="Cari Arama"
-                                TextColor="white"
-                                VerticalOptions="Center"
-                                WidthRequest="100" />
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <!--#endregion-->
-
-                <!--#region Cari İşlemler-->
-                <StackLayout
-                    x:Name="PopUpMenuItemCariIslemler"
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        VerticalOptions="Center">
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HeightRequest="25"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            WidthRequest="25">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemCariIslemler_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Image BackgroundColor="Transparent" Source="users32px.png" />
-                        </Frame>
-                        <Frame
-                            x:Name="lblPopUpMenuItemCariIslemler"
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemCariIslemler_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Label
-                                Margin="0,-10"
-                                FontSize="Default"
-                                Text="Cari İşlemler"
-                                TextColor="white"
-                                VerticalOptions="Center"
-                                WidthRequest="100" />
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <!--#endregion-->
-
-                <!--#region Stok Kartları-->
-                <StackLayout
-                    x:Name="PopUpMenuItemStokKartlar"
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        VerticalOptions="Center">
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HeightRequest="25"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            WidthRequest="25">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemStokKartlar_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Image BackgroundColor="Transparent" Source="dropbox32px.png" />
-                        </Frame>
-                        <Frame
-                            x:Name="lblPopUpMenuItemStokKartlar"
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemStokKartlar_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Label
-                                Margin="0,-10"
-                                FontSize="Default"
-                                Text="Stok Kartları"
-                                TextColor="white"
-                                VerticalOptions="Center"
-                                WidthRequest="100" />
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <!--#endregion-->
-
-                <!--#region Satış Yap-->
-                <StackLayout
-                    x:Name="PopUpMenuItemSatisYap"
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        VerticalOptions="Center">
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HeightRequest="25"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            WidthRequest="25">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemSatisYap_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Image BackgroundColor="Transparent" Source="sales24px.png" />
-                        </Frame>
-                        <Frame
-                            x:Name="lblPopUpMenuItemSatisYap"
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemSatisYap_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Label
-                                Margin="0,-10"
-                                FontSize="Default"
-                                Text="Satış Yap"
-                                TextColor="white"
-                                VerticalOptions="Center"
-                                WidthRequest="100" />
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <!--#endregion-->
-
-                <!--#region Faturalar-->
-                <StackLayout
-                    x:Name="PopUpMenuItemFaturalar"
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        VerticalOptions="Center">
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HeightRequest="25"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            WidthRequest="25">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemFaturalar_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Image BackgroundColor="Transparent" Source="raports32px.png" />
-                        </Frame>
-                        <Frame
-                            x:Name="lblPopUpMenuItemFaturalar"
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemFaturalar_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Label
-                                Margin="0,-10"
-                                FontSize="Default"
-                                Text="Faturalar"
-                                TextColor="white"
-                                VerticalOptions="Center"
-                                WidthRequest="100" />
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <!--#endregion-->
-
-                <!--#region Fiyat Gör-->
-                <StackLayout
-                    x:Name="PopUpMenuItemFiyatGor"
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="Center">
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        VerticalOptions="Center">
-                        <Frame
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HeightRequest="25"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            WidthRequest="25">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemFiyatGor_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Image
-                                BackgroundColor="Transparent"
-                                Source="lookprice64px.png"
-                                TranslationX="4" />
-                        </Frame>
-                        <Frame
-                            x:Name="lblPopUpMenuItemFiyatGor"
-                            BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="255"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnPopUpMenuItemFiyatGor_Tapped" />
-                            </Frame.GestureRecognizers>
-                            <Label
-                                Margin="0,-10"
-                                FontSize="Default"
-                                Text="Fiyat Gör"
-                                TextColor="white"
-                                VerticalOptions="Center"
-                                WidthRequest="100" />
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-                <!--#endregion-->
-
             </StackLayout>
-            <Frame
-                BackgroundColor="{Binding BackgroundColor}"
-                CornerRadius="255"
-                HeightRequest="20"
-                HorizontalOptions="Start"
-                TranslationX="35"
-                TranslationY="-10"
-                VerticalOptions="EndAndExpand"
-                WidthRequest="20">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="btnPopupMenuClose" Tapped="btnPopupMenuClose_Tapped" />
-                </Frame.GestureRecognizers>
-                <Image BackgroundColor="{Binding BackgroundColor}" Source="close32px.png" />
-            </Frame>
-        </Grid>
+            <!--#endregion-->
+
+            <!--#region Cari İşlemler-->
+            <StackLayout
+                x:Name="PopUpMenuItemCariIslemler"
+                Margin="0,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="25">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemCariIslemler_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Image BackgroundColor="Transparent" Source="users32px.png" />
+                    </Frame>
+                    <Frame
+                        x:Name="lblPopUpMenuItemCariIslemler"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemCariIslemler_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            Margin="0,-10"
+                            FontSize="Default"
+                            Text="Cari İşlemler"
+                            TextColor="white"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Stok Kartları-->
+            <StackLayout
+                x:Name="PopUpMenuItemStokKartlar"
+                Margin="0,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="25">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemStokKartlar_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Image BackgroundColor="Transparent" Source="dropbox32px.png" />
+                    </Frame>
+                    <Frame
+                        x:Name="lblPopUpMenuItemStokKartlar"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemStokKartlar_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            Margin="0,-10"
+                            FontSize="Default"
+                            Text="Stok Kartları"
+                            TextColor="white"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Satış Yap-->
+            <StackLayout
+                x:Name="PopUpMenuItemSatisYap"
+                Margin="0,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="25">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemSatisYap_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Image BackgroundColor="Transparent" Source="sales24px.png" />
+                    </Frame>
+                    <Frame
+                        x:Name="lblPopUpMenuItemSatisYap"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemSatisYap_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            Margin="0,-10"
+                            FontSize="Default"
+                            Text="Satış Yap"
+                            TextColor="white"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Faturalar-->
+            <StackLayout
+                x:Name="PopUpMenuItemFaturalar"
+                Margin="0,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="25">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemFaturalar_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Image BackgroundColor="Transparent" Source="raports32px.png" />
+                    </Frame>
+                    <Frame
+                        x:Name="lblPopUpMenuItemFaturalar"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemFaturalar_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            Margin="0,-10"
+                            FontSize="Default"
+                            Text="Faturalar"
+                            TextColor="white"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Fiyat Gör-->
+            <StackLayout
+                x:Name="PopUpMenuItemFiyatGor"
+                Margin="0,10"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Frame
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="25">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemFiyatGor_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Image
+                            BackgroundColor="Transparent"
+                            Source="lookprice64px.png"
+                            TranslationX="4" />
+                    </Frame>
+                    <Frame
+                        x:Name="lblPopUpMenuItemFiyatGor"
+                        BackgroundColor="{Binding BackgroundColor}"
+                        CornerRadius="255"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btnPopUpMenuItemFiyatGor_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            Margin="0,-10"
+                            FontSize="Default"
+                            Text="Fiyat Gör"
+                            TextColor="white"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <!--#endregion-->
+
+        </StackLayout>
         <!--#endregion-->
         <Button
             Clicked="Button_Clicked"
