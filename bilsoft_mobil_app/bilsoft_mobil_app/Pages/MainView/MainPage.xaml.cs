@@ -13,8 +13,19 @@ namespace bilsoft_mobil_app.Pages.MainView
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : FlyoutPage
     {
+        #region renk Bindleri
+        public Color TextColor { get; set; } = Color.FromHex(AppThemeColors._textColor);
+        public Color TextColorKoyu { get; set; } = Color.FromHex(AppThemeColors._textColorKoyu);
+        public Color BorderColor { get; set; } = Color.FromHex(AppThemeColors._borderColor);
+        public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
+        public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
+        public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
+        public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
+
+        #endregion
         public MainPage()
         {
+            BindingContext = this;
             InitializeComponent();
             FlyoutPage.MenulistView.ItemSelected += (sender, e) =>
             {

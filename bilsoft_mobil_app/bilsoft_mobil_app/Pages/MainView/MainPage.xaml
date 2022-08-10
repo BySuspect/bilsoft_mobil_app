@@ -11,7 +11,7 @@
         <local:MainPageFlyout x:Name="FlyoutPage" />
     </FlyoutPage.Flyout>
     <FlyoutPage.Detail>
-        <NavigationPage BarBackgroundColor="#FFA600">
+        <NavigationPage BarBackgroundColor="{Binding ToolBarColor}">
             <x:Arguments>
                 <pages:MainContentPage />
             </x:Arguments>

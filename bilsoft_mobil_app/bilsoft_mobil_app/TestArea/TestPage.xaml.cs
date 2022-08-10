@@ -20,6 +20,7 @@ namespace bilsoft_mobil_app.TestArea
         public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
         public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
+        public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
 
         public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
         public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
@@ -39,15 +40,47 @@ namespace bilsoft_mobil_app.TestArea
         }
 
         #region mainView Navigation
-
         private void btnNavHome_Tapped(object sender, EventArgs e)
         {
 
         }
+
+        #region Kullanıcı Ayarları Menü
         private void btnNavSettings_Tapped(object sender, EventArgs e)
+        {
+            userSettingsViewBack.IsVisible = true;
+            UserPopupbtnLogout.TranslateTo/*        */(0, 0, 120);
+            UserPopupbtnFirmaInfo.TranslateTo/*     */(0, 0, 140);
+            UserPopupbtnYetkiAyarlari.TranslateTo/* */(0, 0, 160);
+            UserPopupbtnMailAyarlari.TranslateTo/*  */(0, 0, 180);
+        }
+        private void btnNavSettingsClose_Tapped(object sender, EventArgs e)
+        {
+            userSettingsViewBack.IsVisible = false;
+            UserPopupbtnLogout.TranslateTo/*        */(300, 0, 120);
+            UserPopupbtnFirmaInfo.TranslateTo/*     */(300, 0, 140);
+            UserPopupbtnYetkiAyarlari.TranslateTo/* */(300, 0, 160);
+            UserPopupbtnMailAyarlari.TranslateTo/*  */(300, 0, 180);
+        }
+        private void UserPopupbtnMailAyarlari_Tapped(object sender, EventArgs e)
         {
 
         }
+        private void UserPopupbtnYetkiAyarlari_Tapped(object sender, EventArgs e)
+        {
+
+        }
+        private void UserPopupbtnFirmaInfo_Tapped(object sender, EventArgs e)
+        {
+
+        }
+        private void UserPopupbtnLogout_Tapped(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Hızlı Menü
         private void btnNavMenu_Tapped(object sender, EventArgs e)
         {
             this.CancelAnimations();
@@ -110,34 +143,13 @@ namespace bilsoft_mobil_app.TestArea
             DisplayAlert("", sender.ToString(), "ok");
         }
         #endregion
+        #endregion
 
         #endregion
-        bool test = true;
+
         private void Button_Clicked(object sender, EventArgs e)
         {
-            this.CancelAnimations();
-            if (test)
-            {
-                PopUpMenuItemPanel.TranslateTo(0, 0, 100);
-                PopUpMenuItemCariArama.TranslateTo(0, 0, 200);
-                PopUpMenuItemCariIslemler.TranslateTo(0, 0, 300);
-                PopUpMenuItemStokKartlar.TranslateTo(0, 0, 400);
-                PopUpMenuItemSatisYap.TranslateTo(0, 0, 500);
-                PopUpMenuItemFaturalar.TranslateTo(0, 0, 600);
-                PopUpMenuItemFiyatGor.TranslateTo(0, 0, 700);
-                test = false;
-            }
-            else
-            {
-                PopUpMenuItemPanel.TranslateTo(-1000, 0, 100);
-                PopUpMenuItemCariArama.TranslateTo(-1000, 0, 200);
-                PopUpMenuItemCariIslemler.TranslateTo(-1000, 0, 300);
-                PopUpMenuItemStokKartlar.TranslateTo(-1000, 0, 400);
-                PopUpMenuItemSatisYap.TranslateTo(-1000, 0, 500);
-                PopUpMenuItemFaturalar.TranslateTo(-1000, 0, 600);
-                PopUpMenuItemFiyatGor.TranslateTo(-1000, 0, 700);
-                test = true;
-            }
+
         }
     }
 }

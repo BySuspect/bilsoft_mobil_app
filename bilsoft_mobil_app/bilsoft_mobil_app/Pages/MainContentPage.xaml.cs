@@ -38,6 +38,7 @@ namespace bilsoft_mobil_app.Pages
         public new Color BackgroundColor { get; set; } = Color.FromHex(AppThemeColors._backgroundColor);
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
         public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
+        public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
 
         public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
         public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
@@ -118,14 +119,6 @@ namespace bilsoft_mobil_app.Pages
         List<KasaBakiyeListeVeriler> KasaBakiyelerListe = new List<KasaBakiyeListeVeriler>();
         #endregion
 
-        #region Süresi Geçen Hatırlatma Veriler
-
-        #endregion
-
-        #region popUp Menu Veriler
-        UInt16 _popuptimer = 200;
-        string openedPopUp;
-        #endregion
 
         public MainContentPage()
         {
@@ -212,7 +205,7 @@ namespace bilsoft_mobil_app.Pages
                 #endregion
 
                 #region Süresi Geçen Hatırlatma Check
-                SuresiGecenHatirlatmalarListeRefresh();
+                //SuresiGecenHatirlatmalarListeRefresh();
                 #endregion
 
             }
@@ -941,336 +934,6 @@ namespace bilsoft_mobil_app.Pages
         }
         #endregion
 
-
-        private void btnPopUpMenu_Clicked(object sender, EventArgs e)
-        {
-            //Menü arka button heightrequestler sırayla
-            //55-80-120-160-200-240-280-320-370
-            if (!SuresiGecenHatirlatmaView.IsVisible)
-            {
-                switch (openedPopUp)
-                {
-                    case "menu":
-                        #region menu
-                        if (!btnpopupMenuReturnBack.IsVisible)
-                        {
-                            this.CancelAnimations();
-                            popupMenuBack.IsVisible = true;
-                            btnpopupMenuReturnBack.IsVisible = true;
-                            btnpopupMenuReturnBackground.IsVisible = true;
-                            //popupMenuBackBox.HeightRequest = 0;
-                            popupMenuBackBox.TranslateTo(0, -45, _popuptimer);
-
-
-                            //Panel 1
-                            //popupMenuBackBox.HeightRequest = 80;
-                            btnPopUpMenuItemPanel.IsVisible = true;
-                            lblPopUpMenuItemPanel.IsVisible = true;
-                            btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
-                            lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
-
-                            //Hızlı Arama 2
-                            // popupMenuBackBox.HeightRequest = 120;
-                            btnPopUpMenuItemAra.IsVisible = true;
-                            lblPopUpMenuItemAra.IsVisible = true;
-                            btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
-                            lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
-
-                            //Cari İşlem 3
-                            // popupMenuBackBox.HeightRequest = 160;
-                            btnPopUpMenuItemCariIslem.IsVisible = true;
-                            lblPopUpMenuItemCariIslem.IsVisible = true;
-                            btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
-                            lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
-
-                            //Stok Kartları 4
-                            //popupMenuBackBox.HeightRequest = 200;
-                            btnPopUpMenuItemStokKartlari.IsVisible = true;
-                            lblPopUpMenuItemStokKartlari.IsVisible = true;
-                            btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
-                            lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
-
-                            //Satış Yap 5
-                            // popupMenuBackBox.HeightRequest = 240;
-                            btnPopUpMenuItemSatisYap.IsVisible = true;
-                            lblPopUpMenuItemSatisYap.IsVisible = true;
-                            btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
-                            lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
-
-                            //Faturalar 6
-                            // popupMenuBackBox.HeightRequest = 280;
-                            btnPopUpMenuItemFaturalar.IsVisible = true;
-                            lblPopUpMenuItemFaturalar.IsVisible = true;
-                            btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
-                            lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
-
-                            //Fiyat Gör 7
-                            //popupMenuBackBox.HeightRequest = 320;
-                            btnPopUpMenuItemFiyatGor.IsVisible = true;
-                            lblPopUpMenuItemFiyatGor.IsVisible = true;
-                            btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
-                            lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
-
-                            //popupMenuBackBox.HeightRequest = 340;
-                        }
-                        else
-                        {
-                            this.CancelAnimations();
-                            popupMenuBackBox.TranslateTo(0, -370, _popuptimer);
-                            //Fiyat Gör 7                
-                            btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemFiyatGor.TranslateTo(100, 297, _popuptimer);
-
-                            //Faturalar 6
-                            btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemFaturalar.TranslateTo(100, 255, _popuptimer);
-
-                            //Satış Yap 5
-                            btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemSatisYap.TranslateTo(100, 213, _popuptimer);
-
-                            //Stok Kartları 4
-                            btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemStokKartlari.TranslateTo(100, 173, _popuptimer);
-
-                            //Cari İşlem 3
-                            btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemCariIslem.TranslateTo(100, 134, _popuptimer);
-
-                            //Hızlı Arama 2
-                            btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemAra.TranslateTo(100, 93, _popuptimer);
-
-                            //Panel 1
-                            btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
-
-                            Task.Delay(((int)_popuptimer));
-
-                            popupMenuBack.IsVisible = true;
-                            btnpopupMenuReturnBack.IsVisible = false;
-                            btnpopupMenuReturnBackground.IsVisible = false;
-                        }
-                        #endregion
-                        break;
-
-                    case "userpanel":
-                        #region userpanel
-                        btnpopupMenuReturnBackground.IsVisible = false;
-                        btnpopupMenuReturnBack.IsVisible = false;
-                        userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
-                        openedPopUp = "menu";
-                        #endregion
-                        goto default;
-                    default:
-                        #region default
-                        openedPopUp = "menu";
-                        if (!btnpopupMenuReturnBack.IsVisible)
-                        {
-                            this.CancelAnimations();
-                            popupMenuBack.IsVisible = true;
-                            btnpopupMenuReturnBack.IsVisible = true;
-                            btnpopupMenuReturnBackground.IsVisible = true;
-                            //popupMenuBackBox.HeightRequest = 0;
-                            popupMenuBackBox.TranslateTo(0, -45, _popuptimer);
-
-
-                            //Panel 1
-                            //popupMenuBackBox.HeightRequest = 80;
-                            btnPopUpMenuItemPanel.IsVisible = true;
-                            lblPopUpMenuItemPanel.IsVisible = true;
-                            btnPopUpMenuItemPanel.TranslateTo(-2, 45, _popuptimer);
-                            lblPopUpMenuItemPanel.TranslateTo(-45, 56, _popuptimer);
-
-                            //Hızlı Arama 2
-                            // popupMenuBackBox.HeightRequest = 120;
-                            btnPopUpMenuItemAra.IsVisible = true;
-                            lblPopUpMenuItemAra.IsVisible = true;
-                            btnPopUpMenuItemAra.TranslateTo(-2, 85, _popuptimer);
-                            lblPopUpMenuItemAra.TranslateTo(-62, 93, _popuptimer);
-
-                            //Cari İşlem 3
-                            // popupMenuBackBox.HeightRequest = 160;
-                            btnPopUpMenuItemCariIslem.IsVisible = true;
-                            lblPopUpMenuItemCariIslem.IsVisible = true;
-                            btnPopUpMenuItemCariIslem.TranslateTo(-2, 125, _popuptimer);
-                            lblPopUpMenuItemCariIslem.TranslateTo(-68, 134, _popuptimer);
-
-                            //Stok Kartları 4
-                            //popupMenuBackBox.HeightRequest = 200;
-                            btnPopUpMenuItemStokKartlari.IsVisible = true;
-                            lblPopUpMenuItemStokKartlari.IsVisible = true;
-                            btnPopUpMenuItemStokKartlari.TranslateTo(-2, 165, _popuptimer);
-                            lblPopUpMenuItemStokKartlari.TranslateTo(-67, 173, _popuptimer);
-
-                            //Satış Yap 5
-                            // popupMenuBackBox.HeightRequest = 240;
-                            btnPopUpMenuItemSatisYap.IsVisible = true;
-                            lblPopUpMenuItemSatisYap.IsVisible = true;
-                            btnPopUpMenuItemSatisYap.TranslateTo(-2, 204, _popuptimer);
-                            lblPopUpMenuItemSatisYap.TranslateTo(-57, 213, _popuptimer);
-
-                            //Faturalar 6
-                            // popupMenuBackBox.HeightRequest = 280;
-                            btnPopUpMenuItemFaturalar.IsVisible = true;
-                            lblPopUpMenuItemFaturalar.IsVisible = true;
-                            btnPopUpMenuItemFaturalar.TranslateTo(-2, 245, _popuptimer);
-                            lblPopUpMenuItemFaturalar.TranslateTo(-64, 255, _popuptimer);
-
-                            //Fiyat Gör 7
-                            //popupMenuBackBox.HeightRequest = 320;
-                            btnPopUpMenuItemFiyatGor.IsVisible = true;
-                            lblPopUpMenuItemFiyatGor.IsVisible = true;
-                            btnPopUpMenuItemFiyatGor.TranslateTo(-2, 288, _popuptimer);
-                            lblPopUpMenuItemFiyatGor.TranslateTo(-63, 297, _popuptimer);
-
-                            //popupMenuBackBox.HeightRequest = 340;
-                        }
-                        else
-                        {
-                            this.CancelAnimations();
-                            popupMenuBackBox.TranslateTo(0, -370, _popuptimer);
-                            //Fiyat Gör 7                
-                            btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemFiyatGor.TranslateTo(100, 297, _popuptimer);
-
-                            //Faturalar 6
-                            btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemFaturalar.TranslateTo(100, 255, _popuptimer);
-
-                            //Satış Yap 5
-                            btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemSatisYap.TranslateTo(100, 213, _popuptimer);
-
-                            //Stok Kartları 4
-                            btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemStokKartlari.TranslateTo(100, 173, _popuptimer);
-
-                            //Cari İşlem 3
-                            btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemCariIslem.TranslateTo(100, 134, _popuptimer);
-
-                            //Hızlı Arama 2
-                            btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemAra.TranslateTo(100, 93, _popuptimer);
-
-                            //Panel 1
-                            btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                            lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
-
-                            Task.Delay(((int)_popuptimer));
-                            popupMenuBack.IsVisible = true;
-                            btnpopupMenuReturnBack.IsVisible = false;
-                            btnpopupMenuReturnBackground.IsVisible = false;
-                        }
-                        #endregion
-                        break;
-                }
-            }
-        }
-
-        private void btnpopupMenuReturnBack_Clicked(object sender, EventArgs e)
-        {
-            switch (openedPopUp)
-            {
-                case "menu":
-                    #region menu
-                    this.CancelAnimations();
-                    popupMenuBackBox.TranslateTo(0, -370, _popuptimer);
-                    //Fiyat Gör 7                
-                    btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemFiyatGor.TranslateTo(100, 297, _popuptimer);
-
-                    //Faturalar 6
-                    btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemFaturalar.TranslateTo(100, 255, _popuptimer);
-
-                    //Satış Yap 5
-                    btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemSatisYap.TranslateTo(100, 213, _popuptimer);
-
-                    //Stok Kartları 4
-                    btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemStokKartlari.TranslateTo(100, 173, _popuptimer);
-
-                    //Cari İşlem 3
-                    btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemCariIslem.TranslateTo(100, 134, _popuptimer);
-
-                    //Hızlı Arama 2
-                    btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemAra.TranslateTo(100, 93, _popuptimer);
-
-                    //Panel 1
-                    btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
-
-                    Task.Delay(((int)_popuptimer));
-                    popupMenuBack.IsVisible = true;
-                    btnpopupMenuReturnBack.IsVisible = false;
-                    btnpopupMenuReturnBackground.IsVisible = false;
-                    break;
-                #endregion
-                case "userpanel":
-                    #region userpanel
-                    this.CancelAnimations();
-                    btnpopupMenuReturnBackground.IsVisible = false;
-                    btnpopupMenuReturnBack.IsVisible = false;
-                    userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
-                    #endregion
-                    break;
-                default:
-                    #region menu
-                    this.CancelAnimations();
-                    popupMenuBackBox.TranslateTo(0, -370, _popuptimer);
-                    //Fiyat Gör 7                
-                    btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemFiyatGor.TranslateTo(100, 297, _popuptimer);
-
-                    //Faturalar 6
-                    btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemFaturalar.TranslateTo(100, 255, _popuptimer);
-
-                    //Satış Yap 5
-                    btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemSatisYap.TranslateTo(100, 213, _popuptimer);
-
-                    //Stok Kartları 4
-                    btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemStokKartlari.TranslateTo(100, 173, _popuptimer);
-
-                    //Cari İşlem 3
-                    btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemCariIslem.TranslateTo(100, 134, _popuptimer);
-
-                    //Hızlı Arama 2
-                    btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemAra.TranslateTo(100, 93, _popuptimer);
-
-                    //Panel 1
-                    btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                    lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
-
-                    Task.Delay(((int)_popuptimer));
-                    popupMenuBack.IsVisible = true;
-                    btnpopupMenuReturnBack.IsVisible = false;
-                    btnpopupMenuReturnBackground.IsVisible = false;
-                    #endregion
-
-                    #region userpanel
-                    this.CancelAnimations();
-                    btnpopupMenuReturnBackground.IsVisible = false;
-                    btnpopupMenuReturnBack.IsVisible = false;
-                    userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
-                    #endregion
-                    break;
-            }
-        }
-
-        private void btnToolbarOpenpopup_Clicked(object sender, EventArgs e)
-        {
-            btnPopUpMenu_Clicked(null, null);
-        }
         private async void btnToolbarRefesh_Clicked(object sender, EventArgs e)
         {
             if (!SuresiGecenHatirlatmaView.IsVisible)
@@ -1282,96 +945,6 @@ namespace bilsoft_mobil_app.Pages
 
                 }
             }
-        }
-
-        private void btnToolbarOpenUserPopup_Clicked(object sender, EventArgs e)
-        {
-            if (!SuresiGecenHatirlatmaView.IsVisible)
-            {
-                switch (openedPopUp)
-                {
-                    case "menu":
-                        #region menu
-                        this.CancelAnimations();
-                        popupMenuBackBox.TranslateTo(0, -370, _popuptimer);
-                        //Fiyat Gör 7                
-                        btnPopUpMenuItemFiyatGor.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemFiyatGor.TranslateTo(100, 297, _popuptimer);
-
-                        //Faturalar 6
-                        btnPopUpMenuItemFaturalar.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemFaturalar.TranslateTo(100, 255, _popuptimer);
-
-                        //Satış Yap 5
-                        btnPopUpMenuItemSatisYap.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemSatisYap.TranslateTo(100, 213, _popuptimer);
-
-                        //Stok Kartları 4
-                        btnPopUpMenuItemStokKartlari.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemStokKartlari.TranslateTo(100, 173, _popuptimer);
-
-                        //Cari İşlem 3
-                        btnPopUpMenuItemCariIslem.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemCariIslem.TranslateTo(100, 134, _popuptimer);
-
-                        //Hızlı Arama 2
-                        btnPopUpMenuItemAra.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemAra.TranslateTo(100, 93, _popuptimer);
-
-                        //Panel 1
-                        btnPopUpMenuItemPanel.TranslateTo(-2, 0, _popuptimer);
-                        lblPopUpMenuItemPanel.TranslateTo(100, 56, _popuptimer);
-
-                        Task.Delay(((int)_popuptimer));
-                        popupMenuBack.IsVisible = true;
-                        btnpopupMenuReturnBack.IsVisible = false;
-                        btnpopupMenuReturnBackground.IsVisible = false;
-                        #endregion
-                        goto default;
-
-                    case "userpanel":
-                        #region userpanel
-                        this.CancelAnimations();
-                        if (!btnpopupMenuReturnBackground.IsVisible)
-                        {
-                            btnpopupMenuReturnBackground.IsVisible = true;
-                            btnpopupMenuReturnBack.IsVisible = true;
-                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -45, _popuptimer);
-                        }
-                        else
-                        {
-                            btnpopupMenuReturnBackground.IsVisible = false;
-                            btnpopupMenuReturnBack.IsVisible = false;
-                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
-                        }
-                        #endregion
-                        break;
-                    default:
-                        #region default
-                        openedPopUp = "userpanel";
-                        this.CancelAnimations();
-                        if (!btnpopupMenuReturnBackground.IsVisible)
-                        {
-                            btnpopupMenuReturnBackground.IsVisible = true;
-                            btnpopupMenuReturnBack.IsVisible = true;
-                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -45, _popuptimer);
-                        }
-                        else
-                        {
-                            btnpopupMenuReturnBackground.IsVisible = false;
-                            btnpopupMenuReturnBack.IsVisible = false;
-                            userSettingsView.TranslateTo(userSettingsView.TranslationX, -300, _popuptimer);
-                        }
-                        #endregion
-                        break;
-                }
-            }
-        }
-
-        private void toolbarPopupbtnLogout_Clicked(object sender, EventArgs e)
-        {
-            Preferences.Clear();
-            Navigation.PushModalAsync(new LoginPage());
         }
 
         #region Süresi Geçen Hatırlatmalar View
@@ -1409,22 +982,11 @@ namespace bilsoft_mobil_app.Pages
 
             LoodingActivity.IsRunning = false;
             Loodinglayout.IsVisible = false;
-
-            if (_listItems.Count > 0)
-            {
-                SuresiGecenHatirlatmaView.IsVisible = true;
-                btnpopupMenuReturnBackground.IsVisible = true;
-            }
-            else
-            {
-                SuresiGecenHatirlatmaView.IsVisible = false;
-                btnpopupMenuReturnBackground.IsVisible = false;
-            }
         }
         private void btnSureGecenHatirlatmaKapat_Clicked(object sender, EventArgs e)
         {
             SuresiGecenHatirlatmaView.IsVisible = false;
-            btnpopupMenuReturnBackground.IsVisible = false;
+            //btnpopupMenuReturnBackground.IsVisible = false;
         }
         private async void btnSureGecenHatirlatmaAjandayaGit_Clicked(object sender, EventArgs e)
         {
@@ -1438,6 +1000,116 @@ namespace bilsoft_mobil_app.Pages
         {
             return true;
         }
+
+        #region mainView Navigation
+        private void btnNavHome_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new MainContentPage(), this);
+            Navigation.PopAsync(false);
+        }
+
+        #region Kullanıcı Ayarları Menü
+        private void btnNavSettings_Tapped(object sender, EventArgs e)
+        {
+            userSettingsViewBack.IsVisible = true;
+            UserPopupbtnLogout.TranslateTo/*        */(0, 0, 120);
+            UserPopupbtnFirmaInfo.TranslateTo/*     */(0, 0, 140);
+            UserPopupbtnYetkiAyarlari.TranslateTo/* */(0, 0, 160);
+            UserPopupbtnMailAyarlari.TranslateTo/*  */(0, 0, 180);
+        }
+        private void btnNavSettingsClose_Tapped(object sender, EventArgs e)
+        {
+            userSettingsViewBack.IsVisible = false;
+            UserPopupbtnLogout.TranslateTo/*        */(300, 0, 120);
+            UserPopupbtnFirmaInfo.TranslateTo/*     */(300, 0, 140);
+            UserPopupbtnYetkiAyarlari.TranslateTo/* */(300, 0, 160);
+            UserPopupbtnMailAyarlari.TranslateTo/*  */(300, 0, 180);
+        }
+        private void UserPopupbtnMailAyarlari_Tapped(object sender, EventArgs e)
+        {
+
+        }
+        private void UserPopupbtnYetkiAyarlari_Tapped(object sender, EventArgs e)
+        {
+
+        }
+        private void UserPopupbtnFirmaInfo_Tapped(object sender, EventArgs e)
+        {
+
+        }
+        private async void UserPopupbtnLogout_Tapped(object sender, EventArgs e)
+        {
+            Preferences.Clear();
+            await Navigation.PushModalAsync(new LoginPage());
+        }
+        #endregion
+
+        #region Hızlı Menü
+        private void btnNavMenu_Tapped(object sender, EventArgs e)
+        {
+            this.CancelAnimations();
+            popupMenuBack.IsVisible = true;
+            PopUpMenuItemPanel.TranslateTo/*       */(0, 0, 120);
+            PopUpMenuItemCariArama.TranslateTo/*   */(0, 0, 140);
+            PopUpMenuItemCariIslemler.TranslateTo/**/(0, 0, 160);
+            PopUpMenuItemStokKartlar.TranslateTo/* */(0, 0, 180);
+            PopUpMenuItemSatisYap.TranslateTo/*    */(0, 0, 200);
+            PopUpMenuItemFaturalar.TranslateTo/*   */(0, 0, 220);
+            PopUpMenuItemFiyatGor.TranslateTo/*    */(0, 0, 240);
+        }
+
+        private void btnPopupMenuClose_Tapped(object sender, EventArgs e)
+        {
+            this.CancelAnimations();
+            popupMenuBack.IsVisible = false;
+            PopUpMenuItemPanel.TranslateTo/*       */(-300, 0, 120);
+            PopUpMenuItemCariArama.TranslateTo/*   */(-300, 0, 140);
+            PopUpMenuItemCariIslemler.TranslateTo/**/(-300, 0, 160);
+            PopUpMenuItemStokKartlar.TranslateTo/* */(-300, 0, 180);
+            PopUpMenuItemSatisYap.TranslateTo/*    */(-300, 0, 200);
+            PopUpMenuItemFaturalar.TranslateTo/*   */(-300, 0, 220);
+            PopUpMenuItemFiyatGor.TranslateTo/*    */(-300, 0, 240);
+        }
+
+        #region popup menu items
+        private void btnPopUpMenuItemPanel_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemCariArama_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemCariIslemler_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemStokKartlar_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemSatisYap_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemFaturalar_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+
+        private void btnPopUpMenuItemFiyatGor_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("", sender.ToString(), "ok");
+        }
+        #endregion
+        #endregion
+
+        #endregion
 
     }
 }

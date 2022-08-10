@@ -6,7 +6,7 @@ using System;
 
 namespace bilsoft_mobil_app.Droid
 {
-    [Activity(Label = "BilsoftMobile", Icon = "@drawable/bilsoft_logo", Theme = "@style/MyTheme.Splash", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "BilsoftMobile", Icon = "@drawable/bilsoft_logo", Theme = "@style/MyTheme.Splash", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         [Obsolete]
