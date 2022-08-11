@@ -381,10 +381,16 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\info32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\users128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\users96px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionbilsoft_mobil_appAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionbilsoft_mobil_appAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionbilsoft_mobil_appAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
