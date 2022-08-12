@@ -7,17 +7,17 @@ namespace bilsoft_mobil_app.Helper.App
     public static class AppThemeColors
     {
         #region Renkler
-        public const string _chartKrediKartiColor = "#FFA300";
-        public const string _chartNakitColor = "#FF6D6D";
-        public const string _chartAcikHesapColor = "#904000";
-        public const string _chartCekColor = _chartAcikHesapColor;
-        public const string _7GunSatisGColor = "#ffffff";
-        public const string _7GunVadeTahsilatGColor = "#FFA300";
-        public const string _7GunVadeOdemeGColor = "#FF6D6D";
-        public const string _7GunBankaHaraketGirisColor = "#FFA300";
-        public const string _7GunBankaHaraketCikisColor = "#FF6D6D";
-        public const string _7GunlukKasaGirisColor = "#FFA300";
-        public const string _7GunlukKasaCikisColor = "#FF6D6D";
+        //public const string _chartKrediKartiColor = "#FFA300";
+        //public const string _chartNakitColor = "#FF6D6D";
+        //public const string _chartAcikHesapColor = "#904000";
+        //public const string _chartCekColor = _chartAcikHesapColor;
+        //public const string _7GunSatisGColor = "#ffffff";
+        //public const string _7GunVadeTahsilatGColor = "#FFA300";
+        //public const string _7GunVadeOdemeGColor = "#FF6D6D";
+        //public const string _7GunBankaHaraketGirisColor = "#FFA300";
+        //public const string _7GunBankaHaraketCikisColor = "#FF6D6D";
+        //public const string _7GunlukKasaGirisColor = "#FFA300";
+        //public const string _7GunlukKasaCikisColor = "#FF6D6D";
 
         public const string _borderColor = "#90EC1E0F"; //#7AEC5E0F
         public const string _backgroundColor = "#FF6701"; //#FF6701

@@ -26,7 +26,7 @@ namespace bilsoft_mobil_app
              */
 
             //Test Verileri
-            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiZmNkYTJjYTctMjNhNi00ODhlLTg0NWEtZWZkM2NhY2VmNjc1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NjAxOTg5MDksImV4cCI6MTY2MDI0MjEwMiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.EDWZHTJ50UI0Y3wzD6M3a0vLFTIzeFT0QgnFudc4Gzg";
+            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiYzBiODkyZGEtMzZkYy00YTIyLTg0MGEtNGMxOGUyMzYwZjBhIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NjAyODU1NzMsImV4cCI6MTY2MDMyODc3MiwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.Iys1pr6NOM2sg_V5yIWmpnxi4o0a6_MiTVt4bZQd6ws";
             APIHelper.kullaniciAdi = "demo";
             APIHelper.subeAd = "merkez";
             //Test Verileri End

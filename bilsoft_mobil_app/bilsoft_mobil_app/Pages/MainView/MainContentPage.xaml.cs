@@ -20,6 +20,8 @@ using Newtonsoft.Json;
 using bilsoft_mobil_app.Helper.JSONHelpers.RootAjanda;
 using bilsoft_mobil_app.Pages.Ajanda;
 using System.Collections.ObjectModel;
+using Microcharts.Forms;
+using SkiaSharp.Views.Forms;
 
 namespace bilsoft_mobil_app.Pages.MainView
 {
@@ -34,17 +36,6 @@ namespace bilsoft_mobil_app.Pages.MainView
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
         public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
         public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
-
-        public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
-        public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
-        public Color AcikHesapColor { get; set; } = Color.FromHex(AppThemeColors._chartAcikHesapColor);
-        public Color CekColor { get; set; } = Color.FromHex(AppThemeColors._chartCekColor);
-        public Color _7GunVadeTahsilatColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeTahsilatGColor);
-        public Color _7GunVadeOdemeColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeOdemeGColor);
-        public Color _BankaHaraketGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketGirisColor);
-        public Color _BankaHaraketCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketCikisColor);
-        public Color _KasaGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaGirisColor);
-        public Color _KasaCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaCikisColor);
         #endregion
 
         public ObservableCollection<MainContentPageViewItems> _mainContentPageViewItemsSource { get; set; }
@@ -52,6 +43,11 @@ namespace bilsoft_mobil_app.Pages.MainView
         {
             InitializeComponent();
             BindingContext = this;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
             MainViewStart();
         }
@@ -61,16 +57,286 @@ namespace bilsoft_mobil_app.Pages.MainView
             _mainContentPageViewItemsSource = new ObservableCollection<MainContentPageViewItems>();
 
             _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "Menü", View = "Main" });
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "chart1", View = "A" });
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "chart2", View = "A" });
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "chart3", View = "A" });
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "chart4", View = "A" });
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "chart5", View = "A" });
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "chart6", View = "A" });
+            #region Donut Charts
 
+            Color c1 = Color.FromHex("#FF1000"),
+                c2 = Color.FromHex("#36FF00"),
+                c3 = Color.FromHex("#FF00C3"),
+                c4 = Color.FromHex("#003CFF");
+
+            string t1 = "test1",
+                t2 = "test2",
+                t3 = "test3",
+                t4 = "test4";
+
+            int v1 = 1255,
+                v2 = 2000,
+                v3 = 200,
+                v4 = 500;
+
+            #region Günlük Satış Chart
+            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+            {
+                Name = "Günlük Satış",
+                View = "Chart",
+                ChartValue1 = v1,
+                ChartValue2 = v2,
+                ChartValue3 = v3,
+                ChartValue4 = v4,
+                ChartValueColor1 = c1,
+                ChartValueColor2 = c2,
+                ChartValueColor3 = c3,
+                ChartValueColor4 = c4,
+                ChartValueName1 = t1,
+                ChartValueName2 = t2,
+                ChartValueName3 = t3,
+                ChartValueName4 = t4,
+
+                ChartView = new DonutChart
+                {
+                    Entries = new List<ChartEntry>
+                    {
+                        new ChartEntry(v1)
+                        {
+                            Label=t1,
+                            Color=c1.ToSKColor(),
+                            ValueLabel=t1,
+                            TextColor=c1.ToSKColor(),
+                            ValueLabelColor=c1.ToSKColor(),
+                        },
+                        new ChartEntry(v2)
+                        {
+                            Label=t2,
+                            Color=c2.ToSKColor(),
+                            ValueLabel=t2,
+                            TextColor=c2.ToSKColor(),
+                            ValueLabelColor=c2.ToSKColor(),
+                        },
+                        new ChartEntry(v3)
+                        {
+                            Label=t3,
+                            Color=c3.ToSKColor(),
+                            ValueLabel=t3,
+                            TextColor=c3.ToSKColor(),
+                            ValueLabelColor=c3.ToSKColor(),
+                        },
+                        new ChartEntry(v4)
+                        {
+                            Label=t4,
+                            Color=c4.ToSKColor(),
+                            ValueLabel=t4,
+                            TextColor=c4  .ToSKColor()  ,
+                            ValueLabelColor=c4.ToSKColor(),
+                        }
+                    },
+                    IsAnimated = true,
+                    AnimationDuration = TimeSpan.FromSeconds(3),
+                    LabelMode = LabelMode.None,
+                    GraphPosition = GraphPosition.Center,
+                    BackgroundColor = SKColors.Transparent
+                }
+            });
+            #endregion
+            #region Günlük Satış Chart
+            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+            {
+                Name = "Günlük Satış",
+                View = "Chart",
+                ChartValue1 = v1,
+                ChartValue2 = v2,
+                ChartValue3 = v3,
+                ChartValue4 = v4,
+                ChartValueColor1 = c1,
+                ChartValueColor2 = c2,
+                ChartValueColor3 = c3,
+                ChartValueColor4 = c4,
+                ChartValueName1 = t1,
+                ChartValueName2 = t2,
+                ChartValueName3 = t3,
+                ChartValueName4 = t4,
+
+                ChartView = new DonutChart
+                {
+                    Entries = new List<ChartEntry>
+                    {
+                        new ChartEntry(v1)
+                        {
+                            Label=t1,
+                            Color=c1.ToSKColor(),
+                            ValueLabel=t1,
+                            TextColor=c1.ToSKColor(),
+                            ValueLabelColor=c1.ToSKColor(),
+                        },
+                        new ChartEntry(v2)
+                        {
+                            Label=t2,
+                            Color=c2.ToSKColor(),
+                            ValueLabel=t2,
+                            TextColor=c2.ToSKColor(),
+                            ValueLabelColor=c2.ToSKColor(),
+                        },
+                        new ChartEntry(v3)
+                        {
+                            Label=t3,
+                            Color=c3.ToSKColor(),
+                            ValueLabel=t3,
+                            TextColor=c3.ToSKColor(),
+                            ValueLabelColor=c3.ToSKColor(),
+                        },
+                        new ChartEntry(v4)
+                        {
+                            Label=t4,
+                            Color=c4.ToSKColor(),
+                            ValueLabel=t4,
+                            TextColor=c4  .ToSKColor()  ,
+                            ValueLabelColor=c4.ToSKColor(),
+                        }
+                    },
+                    IsAnimated = true,
+                    AnimationDuration = TimeSpan.FromSeconds(3),
+                    LabelMode = LabelMode.None,
+                    GraphPosition = GraphPosition.Center,
+                    BackgroundColor = SKColors.Transparent
+                }
+            });
+            #endregion
+            #region Günlük Satış Chart
+            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+            {
+                Name = "Günlük Satış",
+                View = "Chart",
+                ChartValue1 = v1,
+                ChartValue2 = v2,
+                ChartValue3 = v3,
+                ChartValue4 = v4,
+                ChartValueColor1 = c1,
+                ChartValueColor2 = c2,
+                ChartValueColor3 = c3,
+                ChartValueColor4 = c4,
+                ChartValueName1 = t1,
+                ChartValueName2 = t2,
+                ChartValueName3 = t3,
+                ChartValueName4 = t4,
+
+                ChartView = new DonutChart
+                {
+                    Entries = new List<ChartEntry>
+                    {
+                        new ChartEntry(v1)
+                        {
+                            Label=t1,
+                            Color=c1.ToSKColor(),
+                            ValueLabel=t1,
+                            TextColor=c1.ToSKColor(),
+                            ValueLabelColor=c1.ToSKColor(),
+                        },
+                        new ChartEntry(v2)
+                        {
+                            Label=t2,
+                            Color=c2.ToSKColor(),
+                            ValueLabel=t2,
+                            TextColor=c2.ToSKColor(),
+                            ValueLabelColor=c2.ToSKColor(),
+                        },
+                        new ChartEntry(v3)
+                        {
+                            Label=t3,
+                            Color=c3.ToSKColor(),
+                            ValueLabel=t3,
+                            TextColor=c3.ToSKColor(),
+                            ValueLabelColor=c3.ToSKColor(),
+                        },
+                        new ChartEntry(v4)
+                        {
+                            Label=t4,
+                            Color=c4.ToSKColor(),
+                            ValueLabel=t4,
+                            TextColor=c4  .ToSKColor()  ,
+                            ValueLabelColor=c4.ToSKColor(),
+                        }
+                    },
+                    IsAnimated = true,
+                    AnimationDuration = TimeSpan.FromSeconds(3),
+                    LabelMode = LabelMode.None,
+                    GraphPosition = GraphPosition.Center,
+                    BackgroundColor = SKColors.Transparent
+                }
+            });
+            #endregion
+            #region Günlük Satış Chart
+            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+            {
+                Name = "Günlük Satış",
+                View = "Chart",
+                ChartValue1 = v1,
+                ChartValue2 = v2,
+                ChartValue3 = v3,
+                ChartValue4 = v4,
+                ChartValueColor1 = c1,
+                ChartValueColor2 = c2,
+                ChartValueColor3 = c3,
+                ChartValueColor4 = c4,
+                ChartValueName1 = t1,
+                ChartValueName2 = t2,
+                ChartValueName3 = t3,
+                ChartValueName4 = t4,
+
+                ChartView = new DonutChart
+                {
+                    Entries = new List<ChartEntry>
+                    {
+                        new ChartEntry(v1)
+                        {
+                            Label=t1,
+                            Color=c1.ToSKColor(),
+                            ValueLabel=t1,
+                            TextColor=c1.ToSKColor(),
+                            ValueLabelColor=c1.ToSKColor(),
+                        },
+                        new ChartEntry(v2)
+                        {
+                            Label=t2,
+                            Color=c2.ToSKColor(),
+                            ValueLabel=t2,
+                            TextColor=c2.ToSKColor(),
+                            ValueLabelColor=c2.ToSKColor(),
+                        },
+                        new ChartEntry(v3)
+                        {
+                            Label=t3,
+                            Color=c3.ToSKColor(),
+                            ValueLabel=t3,
+                            TextColor=c3.ToSKColor(),
+                            ValueLabelColor=c3.ToSKColor(),
+                        },
+                        new ChartEntry(v4)
+                        {
+                            Label=t4,
+                            Color=c4.ToSKColor(),
+                            ValueLabel=t4,
+                            TextColor=c4  .ToSKColor()  ,
+                            ValueLabelColor=c4.ToSKColor(),
+                        }
+                    },
+                    IsAnimated = true,
+                    AnimationDuration = TimeSpan.FromSeconds(3),
+                    LabelMode = LabelMode.None,
+                    GraphPosition = GraphPosition.Center,
+                    BackgroundColor = SKColors.Transparent
+                }
+            });
+            #endregion
+
+            #endregion
             MainPageCarouselView.ItemsSource = _mainContentPageViewItemsSource;
+
+            getCharts();
         }
 
+        void getCharts()
+        {
+
+        }
         #endregion
 
         #region mainView Navigation
@@ -83,19 +349,22 @@ namespace bilsoft_mobil_app.Pages.MainView
         #region Kullanıcı Ayarları Menü
         private void btnNavSettings_Tapped(object sender, EventArgs e)
         {
+            UserPopup.IsVisible = true;
             userSettingsViewBack.IsVisible = true;
             UserPopupbtnLogout.TranslateTo/*        */(0, 0, 120);
             UserPopupbtnFirmaInfo.TranslateTo/*     */(0, 0, 140);
             UserPopupbtnYetkiAyarlari.TranslateTo/* */(0, 0, 160);
             UserPopupbtnMailAyarlari.TranslateTo/*  */(0, 0, 180);
         }
-        private void btnNavSettingsClose_Tapped(object sender, EventArgs e)
+        private async void btnNavSettingsClose_Tapped(object sender, EventArgs e)
         {
             userSettingsViewBack.IsVisible = false;
-            UserPopupbtnLogout.TranslateTo/*        */(300, 0, 120);
-            UserPopupbtnFirmaInfo.TranslateTo/*     */(300, 0, 140);
-            UserPopupbtnYetkiAyarlari.TranslateTo/* */(300, 0, 160);
-            UserPopupbtnMailAyarlari.TranslateTo/*  */(300, 0, 180);
+            _ = UserPopupbtnLogout.TranslateTo/*        */(300, 0, 120);
+            _ = UserPopupbtnFirmaInfo.TranslateTo/*     */(300, 0, 140);
+            _ = UserPopupbtnYetkiAyarlari.TranslateTo/* */(300, 0, 160);
+            _ = UserPopupbtnMailAyarlari.TranslateTo/*  */(300, 0, 180);
+            await Task.Delay(100);
+            UserPopup.IsVisible = false;
         }
         private void UserPopupbtnMailAyarlari_Tapped(object sender, EventArgs e)
         {
@@ -119,7 +388,7 @@ namespace bilsoft_mobil_app.Pages.MainView
         #region Hızlı Menü
         private void btnNavMenu_Tapped(object sender, EventArgs e)
         {
-            this.CancelAnimations();
+            MenuPopup.IsVisible = true;
             popupMenuBack.IsVisible = true;
             PopUpMenuItemPanel.TranslateTo/*       */(0, 0, 120);
             PopUpMenuItemCariArama.TranslateTo/*   */(0, 0, 140);
@@ -130,17 +399,18 @@ namespace bilsoft_mobil_app.Pages.MainView
             PopUpMenuItemFiyatGor.TranslateTo/*    */(0, 0, 240);
         }
 
-        private void btnPopupMenuClose_Tapped(object sender, EventArgs e)
+        private async void btnPopupMenuClose_Tapped(object sender, EventArgs e)
         {
-            this.CancelAnimations();
             popupMenuBack.IsVisible = false;
-            PopUpMenuItemPanel.TranslateTo/*       */(-300, 0, 120);
-            PopUpMenuItemCariArama.TranslateTo/*   */(-300, 0, 140);
-            PopUpMenuItemCariIslemler.TranslateTo/**/(-300, 0, 160);
-            PopUpMenuItemStokKartlar.TranslateTo/* */(-300, 0, 180);
-            PopUpMenuItemSatisYap.TranslateTo/*    */(-300, 0, 200);
-            PopUpMenuItemFaturalar.TranslateTo/*   */(-300, 0, 220);
-            PopUpMenuItemFiyatGor.TranslateTo/*    */(-300, 0, 240);
+            _ = PopUpMenuItemPanel.TranslateTo/*       */(-300, 0, 120);
+            _ = PopUpMenuItemCariArama.TranslateTo/*   */(-300, 0, 140);
+            _ = PopUpMenuItemCariIslemler.TranslateTo/**/(-300, 0, 160);
+            _ = PopUpMenuItemStokKartlar.TranslateTo/* */(-300, 0, 180);
+            _ = PopUpMenuItemSatisYap.TranslateTo/*    */(-300, 0, 200);
+            _ = PopUpMenuItemFaturalar.TranslateTo/*   */(-300, 0, 220);
+            _ = PopUpMenuItemFiyatGor.TranslateTo/*    */(-300, 0, 240);
+            await Task.Delay(150);
+            MenuPopup.IsVisible = false;
         }
 
         #region popup menu items
@@ -179,8 +449,16 @@ namespace bilsoft_mobil_app.Pages.MainView
             DisplayAlert("", sender.ToString(), "ok");
         }
         #endregion
+
         #endregion
 
         #endregion
+
+        int test = 0;
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            this.Title = test + "";
+            test++;
+        }
     }
 }

@@ -8,6 +8,7 @@
     Title="Ana Sayfa"
     BackgroundImageSource="background.jpg">
 
+    <!--
     <ContentPage.ToolbarItems>
         <ToolbarItem
             x:Name="btnToolbarRefesh"
@@ -15,20 +16,29 @@
             IconImageSource="toolbar_refesh24px.png"
             Priority="0" />
     </ContentPage.ToolbarItems>
+    -->
 
+    <ContentPage.Content>
+        <Label
+            FontSize="30"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="Eski SAYFA KULLANIM DIŞI"
+            VerticalOptions="Center" />
+        <!--eski
     <Grid>
-        <!--#region Main Content-->
+        #region Main Content
         <ScrollView>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <!--#region Menüler-->
+                #region Menüler
                 <Frame
                     Margin="15,0,15,15"
                     BackgroundColor="{Binding CardBackgroundColor}"
                     BorderColor="{Binding BorderColor}"
                     CornerRadius="15">
                     <StackLayout>
-                        <!--#region cari hesaplar - Stok Kartları-->
+                       #region cari hesaplar - Stok Kartları
                         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <ImageButton
                                 x:Name="btnAnaSayfaCariHesaplar"
@@ -51,9 +61,9 @@
                                 Source="maincontent_menu_stokkartlarbtn.png"
                                 VerticalOptions="Center" />
                         </StackLayout>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region Taksit Takip - Satış Yap-->
+                        #region Taksit Takip - Satış Yap
                         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <ImageButton
                                 x:Name="btnAnaSayfaTaksitTakip"
@@ -76,9 +86,9 @@
                                 Source="maincontent_menu_satisyapbtn.png"
                                 VerticalOptions="Center" />
                         </StackLayout>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region Çek Senet - Banka-->
+                        #region Çek Senet - Banka
                         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <ImageButton
                                 x:Name="btnAnaSayfaCekSenet"
@@ -101,9 +111,9 @@
                                 Source="maincontent_menu_bankabtn.png"
                                 VerticalOptions="Center" />
                         </StackLayout>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region Kasa - Faturalar-->
+                        #region Kasa - Faturalar
                         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <ImageButton
                                 x:Name="btnAnaSayfaKasa"
@@ -126,15 +136,16 @@
                                 Source="maincontent_menu_faturalarbtn.png"
                                 VerticalOptions="Center" />
                         </StackLayout>
-                        <!--#endregion-->
+                        #endregion
                     </StackLayout>
                 </Frame>
-                <!--#endregion-->
+                #endregion
 
-                <!--#region Chartlar-->
+                #region Chartlar
                 <Grid>
                     <StackLayout>
-                        <!--#region GÜNLÜK Satış Donut Grafik-->
+
+                        #region GÜNLÜK Satış Donut Grafik
                         <Frame
                             Margin="20,5,20,0"
                             Padding="120,20,120,25"
@@ -239,9 +250,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region GÜNLÜK ALIŞ Donut Grafik-->
+                        <#region GÜNLÜK ALIŞ Donut Grafik
                         <Frame
                             Margin="20,20,20,0"
                             Padding="120,20,120,25"
@@ -345,9 +356,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region GÜNLÜK TAHSİLAT Donut Grafik-->
+                        #region GÜNLÜK TAHSİLAT Donut Grafik
                         <Frame
                             Margin="20,20,20,0"
                             Padding="120,20,120,25"
@@ -451,9 +462,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region GÜNLÜK ÖDEME Donut Grafik-->
+                        #region GÜNLÜK ÖDEME Donut Grafik
                         <Frame
                             Margin="20,20,20,0"
                             Padding="120,20,120,25"
@@ -556,9 +567,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region 7 Günlük Satış Grafik-->
+                        #region 7 Günlük Satış Grafik
                         <Frame
                             Margin="20,20,20,5"
                             Padding="10,10,10,15"
@@ -594,9 +605,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region 7 Günlük Vadesi Gelen Grafik-->
+                        #region 7 Günlük Vadesi Gelen Grafik
                         <Frame
                             Margin="20,20,20,5"
                             Padding="10,10,10,15"
@@ -670,9 +681,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region 7 Günlük Banka Haraket Grafik-->
+                        #region 7 Günlük Banka Haraket Grafik
                         <Frame
                             Margin="20,0,20,0"
                             BackgroundColor="{Binding CardBackgroundColor}"
@@ -702,9 +713,11 @@
                                         x:Name="_7gunlukBankaHaraketPicker"
                                         Title="Banka Listesi"
                                         HorizontalOptions="Center"
-                                        SelectedIndexChanged="_7gunlukBankaHaraketPicker_SelectedIndexChanged"
                                         TextColor="White"
                                         TitleColor="White" />
+
+                                        SelectedIndexChanged="_7gunlukBankaHaraketPicker_SelectedIndexChanged"
+
                                 </StackLayout>
 
                                 <forms:ChartView
@@ -750,9 +763,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region Banka Bakiyeleri Tablo-->
+                        #region Banka Bakiyeleri Tablo
                         <Frame
                             Margin="20,20,20,-5"
                             BackgroundColor="{Binding CardBackgroundColor}"
@@ -767,7 +780,7 @@
                                         TextColor="White" />
                                 </Frame>
                                 <Grid x:Name="gridBankaList">
-                                    <!--  0. Satır  -->
+                                      0. Satır
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -796,7 +809,7 @@
                                         FontSize="Body"
                                         Text="Bakiye"
                                         TextColor="{Binding TextColor}" />
-                                    <!--  0. Satır End  -->
+                                      0. Satır End
                                     <BoxView
                                         Grid.Row="0"
                                         Grid.ColumnSpan="4"
@@ -804,14 +817,14 @@
                                         HeightRequest="1"
                                         VerticalOptions="End"
                                         Color="Green" />
-                                    <!--  Custom List Start  -->
+                                      Custom List Start
 
                                 </Grid>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region 7 Günlük Kasa Hareketleri Grafik-->
+        #region 7 Günlük Kasa Hareketleri Grafik
                         <Frame
                             Margin="20,20,20,5"
                             Padding="10,15,10,15"
@@ -867,9 +880,9 @@
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
-                        <!--#region Kasa Bakiyeleri Tablo-->
+                        #region Kasa Bakiyeleri Tablo
                         <Frame
                             Margin="20,20,20,-5"
                             BackgroundColor="{Binding CardBackgroundColor}"
@@ -884,7 +897,7 @@
                                         TextColor="White" />
                                 </Frame>
                                 <Grid x:Name="gridKasaBakiye">
-                                    <!--  0. Satır  -->
+                                      0. Satır
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -906,7 +919,7 @@
                                         FontSize="Body"
                                         Text="Bakiye"
                                         TextColor="{Binding TextColor}" />
-                                    <!--  0. Satır End  -->
+                                      0. Satır End
                                     <BoxView
                                         Grid.Row="0"
                                         Grid.ColumnSpan="3"
@@ -918,19 +931,19 @@
                                 </Grid>
                             </StackLayout>
                         </Frame>
-                        <!--#endregion-->
+                        #endregion
 
                     </StackLayout>
                 </Grid>
-                <!--#endregion-->
+                #endregion
 
             </StackLayout>
         </ScrollView>
-        <!--#endregion-->
+        #endregion
 
-        <!--#region AltNavigasyon-->
+        #region AltNavigasyon
 
-        <!--#region Navigasyon Bar-->
+        #region Navigasyon Bar
         <Grid TranslationY="45" VerticalOptions="EndAndExpand">
             <Frame BackgroundColor="{Binding NavBarColor}">
                 <Grid>
@@ -997,9 +1010,9 @@
                 </Frame>
             </Frame>
         </Grid>
-        <!--#endregion-->
+        #endregion
 
-        <!--#region User Menü-->
+        #region User Menü
         <Grid
             x:Name="userSettingsViewBack"
             Margin="0,0,-5,0"
@@ -1028,7 +1041,7 @@
             HorizontalOptions="EndAndExpand"
             VerticalOptions="EndAndExpand">
 
-            <!--#region Mail Ayarları-->
+            #region Mail Ayarları
             <StackLayout
                 x:Name="UserPopupbtnMailAyarlari"
                 Margin="0,10"
@@ -1069,9 +1082,9 @@
                         TranslationX="2" />
                 </Frame>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Yetki Ayarları-->
+            #region Yetki Ayarları
             <StackLayout
                 x:Name="UserPopupbtnYetkiAyarlari"
                 Margin="0,10"
@@ -1112,9 +1125,9 @@
                         TranslationX="2" />
                 </Frame>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Firma Bilgileri-->
+            #region Firma Bilgileri
             <StackLayout
                 x:Name="UserPopupbtnFirmaInfo"
                 Margin="0,10"
@@ -1154,9 +1167,9 @@
                         Source="info32px.png" />
                 </Frame>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Çıkış Yap-->
+            #region Çıkış Yap
             <StackLayout
                 x:Name="UserPopupbtnLogout"
                 Margin="0,10"
@@ -1197,11 +1210,11 @@
                         TranslationX="2" />
                 </Frame>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
         </StackLayout>
-        <!--#endregion-->
+        #endregion
 
-        <!--#region Hızlı Menü-->
+        #region Hızlı Menü
         <Grid
             x:Name="popupMenuBack"
             Margin="0,0,-5,0"
@@ -1233,7 +1246,7 @@
             TranslationX="20"
             VerticalOptions="Center">
 
-            <!--#region Panel-->
+            #region Panel
             <StackLayout
                 x:Name="PopUpMenuItemPanel"
                 Margin="0,10"
@@ -1271,9 +1284,9 @@
                         WidthRequest="100" />
                 </Frame>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Cari Arama-->
+            #region Cari Arama
             <StackLayout
                 x:Name="PopUpMenuItemCariArama"
                 Margin="0,10"
@@ -1314,9 +1327,9 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Cari İşlemler-->
+            #region Cari İşlemler
             <StackLayout
                 x:Name="PopUpMenuItemCariIslemler"
                 Margin="0,10"
@@ -1357,9 +1370,9 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Stok Kartları-->
+            #region Stok Kartları
             <StackLayout
                 x:Name="PopUpMenuItemStokKartlar"
                 Margin="0,10"
@@ -1400,9 +1413,9 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Satış Yap-->
+            #region Satış Yap
             <StackLayout
                 x:Name="PopUpMenuItemSatisYap"
                 Margin="0,10"
@@ -1443,9 +1456,9 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Faturalar-->
+            #region Faturalar
             <StackLayout
                 x:Name="PopUpMenuItemFaturalar"
                 Margin="0,10"
@@ -1486,9 +1499,9 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
-            <!--#region Fiyat Gör-->
+            #region Fiyat Gör
             <StackLayout
                 x:Name="PopUpMenuItemFiyatGor"
                 Margin="0,10"
@@ -1532,14 +1545,14 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
+            #endregion
 
         </StackLayout>
-        <!--#endregion-->
+        #endregion
 
-        <!--#endregion-->
+        #endregion
 
-        <!--#region Suresi Geçen Hatırlatmalar View-->
+        #region Suresi Geçen Hatırlatmalar View
         <Frame
             x:Name="SuresiGecenHatirlatmaView"
             Margin="20"
@@ -1621,7 +1634,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <StackLayout Margin="0,10,0,10" VerticalOptions="End">
-                    <!-- <BoxView HeightRequest="1" Color="White" Margin ="0, 0, 0, 0" VerticalOptions="End"/>-->
                     <StackLayout Orientation="Horizontal">
                         <Button
                             x:Name="btnSureGecenHatirlatmaAjandayaGit"
@@ -1647,9 +1659,9 @@
                 </StackLayout>
             </StackLayout>
         </Frame>
-        <!--#endregion-->
+        #endregion
 
-        <!--#region Looding Layout-->
+        #region Looding Layout
         <Grid
             x:Name="Loodinglayout"
             BackgroundColor="#77767676"
@@ -1677,6 +1689,8 @@
                 </StackLayout>
             </Frame>
         </Grid>
-        <!--  #Endregion  -->
-    </Grid>
+        #Endregion
+        </Grid>
+        -->
+    </ContentPage.Content>
 </ContentPage>

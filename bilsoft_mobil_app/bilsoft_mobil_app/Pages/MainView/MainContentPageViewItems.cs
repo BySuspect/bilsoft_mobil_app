@@ -1,4 +1,6 @@
 ﻿using bilsoft_mobil_app.Helper.App;
+using Microcharts;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,19 +18,22 @@ namespace bilsoft_mobil_app.Pages.MainView
         public Color CardBackgroundColor { get; set; } = Color.FromHex(AppThemeColors._cardBackgroundColor);
         public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
         public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
-
-        public Color KrediKartiColor { get; set; } = Color.FromHex(AppThemeColors._chartKrediKartiColor);
-        public Color NakitColor { get; set; } = Color.FromHex(AppThemeColors._chartNakitColor);
-        public Color AcikHesapColor { get; set; } = Color.FromHex(AppThemeColors._chartAcikHesapColor);
-        public Color CekColor { get; set; } = Color.FromHex(AppThemeColors._chartCekColor);
-        public Color _7GunVadeTahsilatColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeTahsilatGColor);
-        public Color _7GunVadeOdemeColor { get; set; } = Color.FromHex(AppThemeColors._7GunVadeOdemeGColor);
-        public Color _BankaHaraketGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketGirisColor);
-        public Color _BankaHaraketCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunBankaHaraketCikisColor);
-        public Color _KasaGirisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaGirisColor);
-        public Color _KasaCikisColor { get; set; } = Color.FromHex(AppThemeColors._7GunlukKasaCikisColor);
         #endregion
         public string Name { get; set; }
         public string View { get; set; }
+        public Chart ChartView { get; set; }
+
+        public string ChartValueName1 { get; set; }
+        public int ChartValue1 { get; set; }
+        public Color ChartValueColor1 { get; set; }
+        public string ChartValueName2 { get; set; }
+        public int ChartValue2 { get; set; }
+        public Color ChartValueColor2 { get; set; }
+        public string ChartValueName3 { get; set; }
+        public int ChartValue3 { get; set; }
+        public Color ChartValueColor3 { get; set; }
+        public string ChartValueName4 { get; set; }
+        public int ChartValue4 { get; set; }
+        public Color ChartValueColor4 { get; set; }
     }
 }

@@ -19,6 +19,10 @@ namespace bilsoft_mobil_app.Pages.MainView
                     return MainViewItems;
                     break;
 
+                case "chart":
+                    return MainChartsItems;
+                    break;
+
                 default:
                     return MainChartsItems;
                     break;

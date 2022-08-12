@@ -23,6 +23,7 @@
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="108.0.1" />
+    <PackageReference Include="TouchView" Version="4.1.100" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
     <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="2.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />

@@ -3,7 +3,10 @@
     x:Class="bilsoft_mobil_app.Pages.MainView.MainContentPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.MainView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Title="Ana Sayfa"
     BackgroundImageSource="background.jpg">
 
@@ -40,22 +43,30 @@
                         </Grid.ColumnDefinitions>
                         <!--#region cari hesaplar - Stok Kartları-->
                         <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <ClickGestureRecognizer>
-                                    <ClickGestureRecognizer.Effects />
-                                </ClickGestureRecognizer>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Frame.GestureRecognizers>
-                            <StackLayout>
+                            <Grid>
                                 <Image
                                     x:Name="btnAnaSayfaCariHesaplar"
-                                    BackgroundColor="{Binding BackgroundColor}"
+                                    BackgroundColor="Transparent"
                                     HorizontalOptions="Center"
                                     Source="users64px.png"
                                     VerticalOptions="Start" />
                                 <Label
+                                    BackgroundColor="Transparent"
                                     FontAttributes="Bold"
                                     FontSize="20"
                                     HorizontalOptions="Center"
@@ -63,95 +74,269 @@
                                     Text="Cari Hesaplar"
                                     TextColor="{Binding TextColor}"
                                     VerticalOptions="End" />
-                            </StackLayout>
+                            </Grid>
                         </Frame>
-                        <ImageButton
-                            x:Name="btnAnaSayfaStokKartlari"
+
+                        <Frame
                             Grid.Row="0"
                             Grid.Column="1"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Scale="1.0"
-                            Source="maincontent_menu_stokkartlarbtn.png"
-                            VerticalOptions="Center" />
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaStokKartlari"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Source="dropbox64px.png"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Stok Kartları"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
                         <!--#endregion-->
 
                         <!--#region Taksit Takip - Satış Yap-->
-                        <ImageButton
-                            x:Name="btnAnaSayfaTaksitTakip"
+                        <Frame
                             Grid.Row="1"
                             Grid.Column="0"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Source="maincontent_menu_taksittakipbtn.png"
-                            VerticalOptions="Center" />
-                        <ImageButton
-                            x:Name="btnAnaSayfaSatisYap"
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaTaksitTakip"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Source="lookprice64px.png"
+                                    TranslationX="2"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Taksit Takip"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
+
+                        <Frame
                             Grid.Row="1"
                             Grid.Column="1"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Source="maincontent_menu_satisyapbtn.png"
-                            VerticalOptions="Center" />
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaSatisYap"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Scale="1.1"
+                                    Source="shop64px.png"
+                                    TranslationX="-4"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Satış yap"
+                                    TextColor="{Binding TextColor}"
+                                    TranslationY="-10"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
                         <!--#endregion-->
 
                         <!--#region Çek Senet - Banka-->
-                        <ImageButton
-                            x:Name="btnAnaSayfaCekSenet"
+                        <Frame
                             Grid.Row="2"
                             Grid.Column="0"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Source="maincontent_menu_ceksenetbtn.png"
-                            VerticalOptions="Center" />
-                        <ImageButton
-                            x:Name="btnAnaSayfaBanka"
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaCekSenet"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Scale="1"
+                                    Source="file_dolar64px.png"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Çek Senet"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
+
+                        <Frame
                             Grid.Row="2"
                             Grid.Column="1"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Source="maincontent_menu_bankabtn.png"
-                            VerticalOptions="Center" />
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaBanka"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Scale="1.3"
+                                    Source="banka64px.png"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Banka"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
                         <!--#endregion-->
 
                         <!--#region Kasa - Faturalar-->
-                        <ImageButton
-                            x:Name="btnAnaSayfaKasa"
+                        <Frame
                             Grid.Row="3"
                             Grid.Column="0"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Source="maincontent_menu_kasabtn.png"
-                            VerticalOptions="Center" />
-                        <ImageButton
-                            x:Name="btnAnaSayfaFaturalar"
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaKasa"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Scale="1.1"
+                                    Source="kasa64px.png"
+                                    TranslationX="-3"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Kasa"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
+
+                        <Frame
                             Grid.Row="3"
                             Grid.Column="1"
+                            touch:TouchEff.NativeAnimation="true"
+                            touch:TouchEff.NativeAnimationColor="#2E000000"
+                            touch:TouchEff.PressedAnimationDuration="500"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.98"
+                            touch:TouchEff.RegularAnimationDuration="400"
+                            touch:TouchEff.RippleCount="0"
                             BackgroundColor="{Binding BackgroundColor}"
-                            BorderColor="LightGray"
-                            BorderWidth="1"
-                            CornerRadius="15"
-                            HorizontalOptions="Center"
-                            Source="maincontent_menu_faturalarbtn.png"
-                            VerticalOptions="Center" />
+                            BorderColor="White"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Image
+                                    x:Name="btnAnaSayfaFaturalar"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    Scale="1.1"
+                                    Source="fatura64px.png"
+                                    TranslationX="-6"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Faturalar"
+                                    TextColor="{Binding TextColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
                         <!--#endregion-->
                     </Grid>
                 </Frame>
@@ -169,23 +354,72 @@
                     CornerRadius="15"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
-                    <StackLayout HorizontalOptions="Center">
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Large"
-                            HorizontalOptions="Center"
-                            Text="{Binding Name}"
+                    <!--#region GÜNLÜK Satış Donut Grafik-->
+                    <Grid VerticalOptions="Fill">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Start"
+                                TextColor="{Binding TextColor}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}" />
+                                        <Span
+                                            FontSize="12"
+                                            Text=" Grafiği"
+                                            TextColor="LightGray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+
+                        <charts:ChartView
+                            x:Name="GunlukSatisChart"
+                            Chart="{Binding ChartView}"
+                            HeightRequest="500"
+                            IgnorePixelScaling="False"
                             VerticalOptions="Center" />
 
-                        <Label HorizontalOptions="Center" Text="{Binding Location}" />
-                        <Label
-                            FontAttributes="Italic"
-                            HorizontalOptions="Center"
-                            LineBreakMode="TailTruncation"
-                            MaxLines="5"
-                            Text="{Binding Details}" />
-                        <ActivityIndicator IsRunning="True" Color="Red" />
-                    </StackLayout>
+                        <xct:UniformGrid Margin="0,0,0,50" VerticalOptions="End">
+                            <Label FontSize="Medium" TextColor="White">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding ChartValueName1}" />
+                                        <Span Text=": " />
+                                        <Span Text="{Binding ChartValue1}" TextColor="{Binding ChartValueColor1}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="Medium">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding ChartValueName2}" TextColor="White" />
+                                        <Span Text=": " TextColor="white" />
+                                        <Span Text="{Binding ChartValue2}" TextColor="{Binding ChartValueColor2}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="Medium">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding ChartValueName3}" TextColor="White" />
+                                        <Span Text=": " TextColor="white" />
+                                        <Span Text="{Binding ChartValue3}" TextColor="{Binding ChartValueColor3}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="Medium">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding ChartValueName4}" TextColor="White" />
+                                        <Span Text=": " TextColor="white" />
+                                        <Span Text="{Binding ChartValue4}" TextColor="{Binding ChartValueColor4}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </xct:UniformGrid>
+                    </Grid>
                 </Frame>
             </StackLayout>
         </DataTemplate>
@@ -328,9 +562,14 @@
                 </Frame>
             </Grid>
             <StackLayout
+                x:Name="UserPopup"
                 Margin="0,0,20,100"
                 HorizontalOptions="EndAndExpand"
+                IsVisible="false"
                 VerticalOptions="EndAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="btnNavSettingsClose_Tapped" />
+                </StackLayout.GestureRecognizers>
 
                 <!--#region Mail Ayarları-->
                 <StackLayout
@@ -354,7 +593,7 @@
                             Text="Mail Ayarları"
                             TextColor="white"
                             VerticalOptions="Center"
-                            WidthRequest="100" />
+                            WidthRequest="120" />
                     </Frame>
                     <Frame
                         BackgroundColor="{Binding BackgroundColor}"
@@ -397,7 +636,7 @@
                             Text="Yetki Ayarları"
                             TextColor="white"
                             VerticalOptions="Center"
-                            WidthRequest="100" />
+                            WidthRequest="120" />
                     </Frame>
                     <Frame
                         BackgroundColor="{Binding BackgroundColor}"
@@ -440,11 +679,11 @@
                             Text="Firma Bilgileri"
                             TextColor="white"
                             VerticalOptions="Center"
-                            WidthRequest="100" />
+                            WidthRequest="120" />
                     </Frame>
                     <Frame
                         BackgroundColor="{Binding BackgroundColor}"
-                        CornerRadius="255"
+                        CornerRadius="256"
                         HeightRequest="25"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -482,7 +721,7 @@
                             Text="Çıkış Yap"
                             TextColor="white"
                             VerticalOptions="Center"
-                            WidthRequest="100" />
+                            WidthRequest="120" />
                     </Frame>
                     <Frame
                         BackgroundColor="{Binding BackgroundColor}"
@@ -531,11 +770,14 @@
                 </Frame>
             </Grid>
             <StackLayout
-                x:Name="popupMenu"
+                x:Name="MenuPopup"
                 HorizontalOptions="StartAndExpand"
-                IsVisible="true"
+                IsVisible="false"
                 TranslationX="20"
                 VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="btnPopupMenuClose_Tapped" />
+                </StackLayout.GestureRecognizers>
 
                 <!--#region Panel-->
                 <StackLayout
