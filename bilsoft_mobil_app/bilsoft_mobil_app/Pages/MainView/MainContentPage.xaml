@@ -411,26 +411,27 @@
             </StackLayout>
         </DataTemplate>
         <!--#endregion-->
+        <!--#endregion-->
 
         <local:MainPageDataTemplateSelector
             x:Key="MainContentPageViewSelector"
             DonutChartViewItems="{StaticResource DonutChartViewItemsTemplate}"
             MainViewItems="{StaticResource MainViewItemsTemplate}" />
     </ContentPage.Resources>
-    <!--#endregion-->
 
     <!--#endregion-->
+
     <ContentPage.Content>
         <Grid>
 
             <!--#region Main Content-->
             <CarouselView
-                x:Name="MainPageCarouselView" 
+                x:Name="MainPageCarouselView"
                 IndicatorView="{x:Reference MainContentPageViewIndicatorView}"
                 IsSwipeEnabled="True"
                 ItemTemplate="{StaticResource MainContentPageViewSelector}"
                 ItemsSource="{Binding _mainContentPageViewItemsSource}"
-                Loop="False"
+                Loop="True"
                 PeekAreaInsets="35" />
             <IndicatorView
                 x:Name="MainContentPageViewIndicatorView"

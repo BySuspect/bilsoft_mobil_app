@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using Microcharts.Forms;
 using SkiaSharp.Views.Forms;
 using System.Net.Http.Headers;
+using Xamarin.CommunityToolkit.Markup;
 
 namespace bilsoft_mobil_app.Pages.MainView
 {
@@ -59,6 +60,10 @@ namespace bilsoft_mobil_app.Pages.MainView
             LoodingActivity.IsRunning = true;
 
             _mainContentPageViewItemsSource = new ObservableCollection<MainContentPageViewItems>();
+
+            #region Grafikler
+
+            #endregion
 
             _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "Menü", View = "Main" });
 
@@ -123,7 +128,7 @@ namespace bilsoft_mobil_app.Pages.MainView
             #endregion
 
             MainPageCarouselView.ItemsSource = _mainContentPageViewItemsSource;
-
+            MainPageCarouselView.Position = 0;
 
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;
