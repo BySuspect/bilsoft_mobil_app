@@ -128,7 +128,7 @@ namespace bilsoft_mobil_app.Pages.MainView
             #endregion
 
             MainPageCarouselView.ItemsSource = _mainContentPageViewItemsSource;
-            MainPageCarouselView.Position = 0;
+            MainPageCarouselView.Position = 2;
 
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;

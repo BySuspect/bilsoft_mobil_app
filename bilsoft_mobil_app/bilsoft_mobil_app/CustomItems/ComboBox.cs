@@ -1,10 +1,10 @@
-﻿using bilsoft_mobil_app.CustomItems;
-using bilsoft_mobil_app.Helper.App;
+﻿using bilsoft_mobil_app.Helper.App;
 using System;
 using System.Collections;
+using Xamarin.Forms;
 using static Xamarin.Forms.VisualMarker;
 
-namespace Xamarin.Forms.ComboBox
+namespace bilsoft_mobil_app.CustomItems
 {
     /// <summary>
     /// Combo box with search option
@@ -38,7 +38,7 @@ namespace Xamarin.Forms.ComboBox
 
         public object SelectedItem
         {
-            get { return (object)GetValue(SelectedItemProperty); }
+            get { return GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
 
@@ -115,7 +115,7 @@ namespace Xamarin.Forms.ComboBox
             handler?.Invoke(this, e);
         }
 
-        public ComboBox()
+        public ComboBox() : base()
         {
             //Entry used for filtering list view
             _entry = new BorderlessEntry();
@@ -131,7 +131,7 @@ namespace Xamarin.Forms.ComboBox
                 if (_supressFiltering)
                     return;
 
-                if (String.IsNullOrEmpty(args.NewTextValue))
+                if (string.IsNullOrEmpty(args.NewTextValue))
                 {
                     _supressSelectedItemFiltering = true;
                     _listView.SelectedItem = null;
@@ -150,7 +150,7 @@ namespace Xamarin.Forms.ComboBox
             _listView.HeightRequest = 120;
             _listView.HorizontalOptions = LayoutOptions.StartAndExpand;
             _listView.IsVisible = false;
-            _listView.SetBinding(ListView.SelectedItemProperty, new Binding(nameof(ComboBox.SelectedItem), source: this));
+            _listView.SetBinding(ListView.SelectedItemProperty, new Binding(nameof(SelectedItem), source: this));
 
             //Item selected event, surface it back to the top
             _listView.ItemSelected += (sender, args) =>
@@ -160,7 +160,7 @@ namespace Xamarin.Forms.ComboBox
                     _supressFiltering = true;
 
                     var selectedItem = args.SelectedItem;
-                    _entry.Text = !String.IsNullOrEmpty(EntryDisplayPath) && selectedItem != null ? selectedItem.GetType().GetProperty(EntryDisplayPath).GetValue(selectedItem, null).ToString() : selectedItem?.ToString();
+                    _entry.Text = !string.IsNullOrEmpty(EntryDisplayPath) && selectedItem != null ? selectedItem.GetType().GetProperty(EntryDisplayPath).GetValue(selectedItem, null).ToString() : selectedItem?.ToString();
 
                     _supressFiltering = false;
                     _listView.IsVisible = false;
@@ -174,7 +174,7 @@ namespace Xamarin.Forms.ComboBox
             boxView.HeightRequest = 1;
             boxView.Color = Color.FromHex(AppThemeColors._borderColor);
             boxView.Margin = new Thickness(0);
-            boxView.SetBinding(BoxView.IsVisibleProperty, new Binding(nameof(ListView.IsVisible), source: _listView));
+            boxView.SetBinding(IsVisibleProperty, new Binding(nameof(IsVisible), source: _listView));
 
             //Custom preferences
             _stackLayout = new StackLayout();
@@ -183,8 +183,8 @@ namespace Xamarin.Forms.ComboBox
             _listView.BackgroundColor = Color.Transparent;
             _entry.TextColor = Color.White;
             _entry.PlaceholderColor = Color.White;
-            this.BorderColor = Color.FromHex(AppThemeColors._borderColor);
-            this.CornerRadius = 15;
+            BorderColor = Color.FromHex(AppThemeColors._borderColor);
+            CornerRadius = 15;
             _stackLayout.Margin = new Thickness(-15);
 
             //Add main view
@@ -192,7 +192,7 @@ namespace Xamarin.Forms.ComboBox
             _stackLayout.Children.Add(_listView);
             //_stackLayout.Children.Add(boxView);
 
-            this.Content = _stackLayout;
+            Content = _stackLayout;
         }
 
         public new bool Focus()

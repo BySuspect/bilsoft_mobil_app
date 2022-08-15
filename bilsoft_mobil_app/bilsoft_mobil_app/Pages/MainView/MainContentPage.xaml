@@ -1114,7 +1114,12 @@
                 HorizontalOptions="Center"
                 Text="test"
                 VerticalOptions="Start" />
-            <Label x:Name="testedt" VerticalOptions="Start" />
+            <Label
+                x:Name="testedt"
+                Background="transparent"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Start"
+                VerticalOptions="Start" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
