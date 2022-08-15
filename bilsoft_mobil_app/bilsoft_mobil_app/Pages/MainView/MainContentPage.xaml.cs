@@ -22,6 +22,7 @@ using bilsoft_mobil_app.Pages.Ajanda;
 using System.Collections.ObjectModel;
 using Microcharts.Forms;
 using SkiaSharp.Views.Forms;
+using System.Net.Http.Headers;
 
 namespace bilsoft_mobil_app.Pages.MainView
 {
@@ -52,290 +53,154 @@ namespace bilsoft_mobil_app.Pages.MainView
             MainViewStart();
         }
         #region Main Content
-        private void MainViewStart()
+        private async void MainViewStart()
         {
+            Loodinglayout.IsVisible = true;
+            LoodingActivity.IsRunning = true;
+
             _mainContentPageViewItemsSource = new ObservableCollection<MainContentPageViewItems>();
 
             _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "Menü", View = "Main" });
+
             #region Donut Charts
 
-            Color c1 = Color.FromHex("#FF1000"),
-                c2 = Color.FromHex("#36FF00"),
-                c3 = Color.FromHex("#FF00C3"),
-                c4 = Color.FromHex("#003CFF");
+            var DonutchartVerileriList = await getChartsDonut();
 
-            string t1 = "test1",
-                t2 = "test2",
-                t3 = "test3",
-                t4 = "test4";
+            Color donutC1 = Color.FromHex("#00C321"),
+                  donutC2 = Color.FromHex("#005AD4"),
+                  donutC3 = Color.FromHex("#D90000"),
+                  donutC4 = Color.Gray;
 
-            int v1 = 1255,
-                v2 = 2000,
-                v3 = 200,
-                v4 = 500;
-
-            #region Günlük Satış Chart
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+            foreach (var item in DonutchartVerileriList)
             {
-                Name = "Günlük Satış",
-                View = "Chart",
-                ChartValue1 = v1,
-                ChartValue2 = v2,
-                ChartValue3 = v3,
-                ChartValue4 = v4,
-                ChartValueColor1 = c1,
-                ChartValueColor2 = c2,
-                ChartValueColor3 = c3,
-                ChartValueColor4 = c4,
-                ChartValueName1 = t1,
-                ChartValueName2 = t2,
-                ChartValueName3 = t3,
-                ChartValueName4 = t4,
-
-                ChartView = new DonutChart
+                _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
                 {
-                    Entries = new List<ChartEntry>
-                    {
-                        new ChartEntry(v1)
-                        {
-                            Label=t1,
-                            Color=c1.ToSKColor(),
-                            ValueLabel=t1,
-                            TextColor=c1.ToSKColor(),
-                            ValueLabelColor=c1.ToSKColor(),
-                        },
-                        new ChartEntry(v2)
-                        {
-                            Label=t2,
-                            Color=c2.ToSKColor(),
-                            ValueLabel=t2,
-                            TextColor=c2.ToSKColor(),
-                            ValueLabelColor=c2.ToSKColor(),
-                        },
-                        new ChartEntry(v3)
-                        {
-                            Label=t3,
-                            Color=c3.ToSKColor(),
-                            ValueLabel=t3,
-                            TextColor=c3.ToSKColor(),
-                            ValueLabelColor=c3.ToSKColor(),
-                        },
-                        new ChartEntry(v4)
-                        {
-                            Label=t4,
-                            Color=c4.ToSKColor(),
-                            ValueLabel=t4,
-                            TextColor=c4  .ToSKColor()  ,
-                            ValueLabelColor=c4.ToSKColor(),
-                        }
-                    },
-                    IsAnimated = true,
-                    AnimationDuration = TimeSpan.FromSeconds(3),
-                    LabelMode = LabelMode.None,
-                    GraphPosition = GraphPosition.Center,
-                    BackgroundColor = SKColors.Transparent
-                }
-            });
-            #endregion
-            #region Günlük Satış Chart
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
-            {
-                Name = "Günlük Satış",
-                View = "Chart",
-                ChartValue1 = v1,
-                ChartValue2 = v2,
-                ChartValue3 = v3,
-                ChartValue4 = v4,
-                ChartValueColor1 = c1,
-                ChartValueColor2 = c2,
-                ChartValueColor3 = c3,
-                ChartValueColor4 = c4,
-                ChartValueName1 = t1,
-                ChartValueName2 = t2,
-                ChartValueName3 = t3,
-                ChartValueName4 = t4,
+                    Name = item.Name,
+                    View = "Donut",
+                    ChartValue1 = item.Money1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValue2 = item.Money2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValue3 = item.Money3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValue4 = item.Money4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValueColor1 = donutC1,
+                    ChartValueColor2 = donutC2,
+                    ChartValueColor3 = donutC3,
+                    ChartValueColor4 = donutC4,
+                    ChartValueName1 = item.Label1,
+                    ChartValueName2 = item.Label2,
+                    ChartValueName3 = item.Label3,
+                    ChartValueName4 = item.Label4,
 
-                ChartView = new DonutChart
-                {
-                    Entries = new List<ChartEntry>
+                    ChartView = new DonutChart
                     {
-                        new ChartEntry(v1)
+                        Entries = new List<ChartEntry>
                         {
-                            Label=t1,
-                            Color=c1.ToSKColor(),
-                            ValueLabel=t1,
-                            TextColor=c1.ToSKColor(),
-                            ValueLabelColor=c1.ToSKColor(),
+                            new ChartEntry(item.Value1)
+                            {
+                                Color=donutC1.ToSKColor(),
+                            },
+                            new ChartEntry(item.Value2)
+                            {
+                                Color=donutC2.ToSKColor(),
+                            },
+                            new ChartEntry(item.Value3)
+                            {
+                                Color=donutC3.ToSKColor(),
+                            },
+                            new ChartEntry(item.Value4)
+                            {
+                                Color=donutC4.ToSKColor(),
+                            }
                         },
-                        new ChartEntry(v2)
-                        {
-                            Label=t2,
-                            Color=c2.ToSKColor(),
-                            ValueLabel=t2,
-                            TextColor=c2.ToSKColor(),
-                            ValueLabelColor=c2.ToSKColor(),
-                        },
-                        new ChartEntry(v3)
-                        {
-                            Label=t3,
-                            Color=c3.ToSKColor(),
-                            ValueLabel=t3,
-                            TextColor=c3.ToSKColor(),
-                            ValueLabelColor=c3.ToSKColor(),
-                        },
-                        new ChartEntry(v4)
-                        {
-                            Label=t4,
-                            Color=c4.ToSKColor(),
-                            ValueLabel=t4,
-                            TextColor=c4  .ToSKColor()  ,
-                            ValueLabelColor=c4.ToSKColor(),
-                        }
-                    },
-                    IsAnimated = true,
-                    AnimationDuration = TimeSpan.FromSeconds(3),
-                    LabelMode = LabelMode.None,
-                    GraphPosition = GraphPosition.Center,
-                    BackgroundColor = SKColors.Transparent
-                }
-            });
-            #endregion
-            #region Günlük Satış Chart
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
-            {
-                Name = "Günlük Satış",
-                View = "Chart",
-                ChartValue1 = v1,
-                ChartValue2 = v2,
-                ChartValue3 = v3,
-                ChartValue4 = v4,
-                ChartValueColor1 = c1,
-                ChartValueColor2 = c2,
-                ChartValueColor3 = c3,
-                ChartValueColor4 = c4,
-                ChartValueName1 = t1,
-                ChartValueName2 = t2,
-                ChartValueName3 = t3,
-                ChartValueName4 = t4,
-
-                ChartView = new DonutChart
-                {
-                    Entries = new List<ChartEntry>
-                    {
-                        new ChartEntry(v1)
-                        {
-                            Label=t1,
-                            Color=c1.ToSKColor(),
-                            ValueLabel=t1,
-                            TextColor=c1.ToSKColor(),
-                            ValueLabelColor=c1.ToSKColor(),
-                        },
-                        new ChartEntry(v2)
-                        {
-                            Label=t2,
-                            Color=c2.ToSKColor(),
-                            ValueLabel=t2,
-                            TextColor=c2.ToSKColor(),
-                            ValueLabelColor=c2.ToSKColor(),
-                        },
-                        new ChartEntry(v3)
-                        {
-                            Label=t3,
-                            Color=c3.ToSKColor(),
-                            ValueLabel=t3,
-                            TextColor=c3.ToSKColor(),
-                            ValueLabelColor=c3.ToSKColor(),
-                        },
-                        new ChartEntry(v4)
-                        {
-                            Label=t4,
-                            Color=c4.ToSKColor(),
-                            ValueLabel=t4,
-                            TextColor=c4  .ToSKColor()  ,
-                            ValueLabelColor=c4.ToSKColor(),
-                        }
-                    },
-                    IsAnimated = true,
-                    AnimationDuration = TimeSpan.FromSeconds(3),
-                    LabelMode = LabelMode.None,
-                    GraphPosition = GraphPosition.Center,
-                    BackgroundColor = SKColors.Transparent
-                }
-            });
-            #endregion
-            #region Günlük Satış Chart
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
-            {
-                Name = "Günlük Satış",
-                View = "Chart",
-                ChartValue1 = v1,
-                ChartValue2 = v2,
-                ChartValue3 = v3,
-                ChartValue4 = v4,
-                ChartValueColor1 = c1,
-                ChartValueColor2 = c2,
-                ChartValueColor3 = c3,
-                ChartValueColor4 = c4,
-                ChartValueName1 = t1,
-                ChartValueName2 = t2,
-                ChartValueName3 = t3,
-                ChartValueName4 = t4,
-
-                ChartView = new DonutChart
-                {
-                    Entries = new List<ChartEntry>
-                    {
-                        new ChartEntry(v1)
-                        {
-                            Label=t1,
-                            Color=c1.ToSKColor(),
-                            ValueLabel=t1,
-                            TextColor=c1.ToSKColor(),
-                            ValueLabelColor=c1.ToSKColor(),
-                        },
-                        new ChartEntry(v2)
-                        {
-                            Label=t2,
-                            Color=c2.ToSKColor(),
-                            ValueLabel=t2,
-                            TextColor=c2.ToSKColor(),
-                            ValueLabelColor=c2.ToSKColor(),
-                        },
-                        new ChartEntry(v3)
-                        {
-                            Label=t3,
-                            Color=c3.ToSKColor(),
-                            ValueLabel=t3,
-                            TextColor=c3.ToSKColor(),
-                            ValueLabelColor=c3.ToSKColor(),
-                        },
-                        new ChartEntry(v4)
-                        {
-                            Label=t4,
-                            Color=c4.ToSKColor(),
-                            ValueLabel=t4,
-                            TextColor=c4  .ToSKColor()  ,
-                            ValueLabelColor=c4.ToSKColor(),
-                        }
-                    },
-                    IsAnimated = true,
-                    AnimationDuration = TimeSpan.FromSeconds(3),
-                    LabelMode = LabelMode.None,
-                    GraphPosition = GraphPosition.Center,
-                    BackgroundColor = SKColors.Transparent
-                }
-            });
-            #endregion
+                        IsAnimated = true,
+                        AnimationDuration = TimeSpan.FromSeconds(3),
+                        LabelMode = LabelMode.None,
+                        GraphPosition = GraphPosition.Center,
+                        BackgroundColor = SKColors.Transparent,
+                    }
+                });
+            }
 
             #endregion
+
             MainPageCarouselView.ItemsSource = _mainContentPageViewItemsSource;
 
-            getCharts();
+
+            Loodinglayout.IsVisible = false;
+            LoodingActivity.IsRunning = false;
         }
 
-        void getCharts()
+        async Task<List<donutChartItems>> getChartsDonut()
         {
+            return new List<donutChartItems>
+            {
+                new donutChartItems
+                {
+                    Name="Günlük Satış",
+                    Label1="Nakit",
+                    Value1=67,
+                    Money1=67.00,
+                    Label2="Kredi Kartı",
+                    Value2=1179,
+                    Money2=1179.40,
+                    Label3="Açık Hesap",
+                    Value3=73,
+                    Money3=73.50,
+                    Label4="Yok",
+                    Value4=0,
+                    Money4=0.00,
+                },
 
+                new donutChartItems
+                {
+                    Name="Günlük Alış",
+                    Label1="Nakit",
+                    Value1=223,
+                    Money1=223.00,
+                    Label2="Kredi Kartı",
+                    Value2=559,
+                    Money2=1179.40,
+                    Label3="Açık Hesap",
+                    Value3=2041,
+                    Money3=2041.40,
+                    Label4="Yok",
+                    Value4=0,
+                    Money4=0.00,
+                },
+
+                new donutChartItems
+                {
+                    Name="Günlük Tahsilat",
+                    Label1="Çek",
+                    Value1=132,
+                    Money1=132.00,
+                    Label2="Nakit",
+                    Value2=150,
+                    Money2=150.00,
+                    Label3="Kredi Kartı",
+                    Value3=125,
+                    Money3=125.00,
+                    Label4="Yok",
+                    Value4=0,
+                    Money4=0.00,
+                },
+
+                new donutChartItems
+                {
+                    Name="Günlük Ödeme",
+                    Label1="Çek",
+                    Value1=148,
+                    Money1=148.00,
+                    Label2="Nakit",
+                    Value2=130,
+                    Money2=130.00,
+                    Label3="Kredi Kartı",
+                    Value3=100,
+                    Money3=100.00,
+                    Label4="Yok",
+                    Value4=0,
+                    Money4=0.00,
+                },
+            };
         }
         #endregion
 
@@ -460,5 +325,35 @@ namespace bilsoft_mobil_app.Pages.MainView
             this.Title = test + "";
             test++;
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            var DonutchartVerileriList = await getChartsDonut();
+            testedt.Text = "";
+            foreach (var item in DonutchartVerileriList)
+            {
+                testedt.Text += "\n" + item.Money1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
+                testedt.Text += "\n" + item.Money2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
+                testedt.Text += "\n" + item.Money3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
+                testedt.Text += "\n" + item.Money4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
+            }
+            MainViewStart();
+        }
+    }
+    public class donutChartItems
+    {
+        public string Name { get; set; }
+        public int Value1 { get; set; }
+        public double Money1 { get; set; }
+        public string Label1 { get; set; }
+        public int Value2 { get; set; }
+        public double Money2 { get; set; }
+        public string Label2 { get; set; }
+        public int Value3 { get; set; }
+        public double Money3 { get; set; }
+        public string Label3 { get; set; }
+        public int Value4 { get; set; }
+        public double Money4 { get; set; }
+        public string Label4 { get; set; }
     }
 }

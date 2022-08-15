@@ -24,16 +24,16 @@ namespace bilsoft_mobil_app.Pages.MainView
         public Chart ChartView { get; set; }
 
         public string ChartValueName1 { get; set; }
-        public int ChartValue1 { get; set; }
+        public string ChartValue1 { get; set; }
         public Color ChartValueColor1 { get; set; }
         public string ChartValueName2 { get; set; }
-        public int ChartValue2 { get; set; }
+        public string ChartValue2 { get; set; }
         public Color ChartValueColor2 { get; set; }
         public string ChartValueName3 { get; set; }
-        public int ChartValue3 { get; set; }
+        public string ChartValue3 { get; set; }
         public Color ChartValueColor3 { get; set; }
         public string ChartValueName4 { get; set; }
-        public int ChartValue4 { get; set; }
+        public string ChartValue4 { get; set; }
         public Color ChartValueColor4 { get; set; }
     }
 }

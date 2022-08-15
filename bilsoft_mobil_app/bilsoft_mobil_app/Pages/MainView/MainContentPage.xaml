@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.MainView"
-    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Title="Ana Sayfa"
     BackgroundImageSource="background.jpg">
@@ -17,8 +16,9 @@
             Priority="0" />
     </ContentPage.ToolbarItems>
 
-    <!--#region Resources-->
     <ContentPage.Resources>
+
+        <!--#region Resources-->
 
         <!--#region Menü Template-->
         <DataTemplate x:Key="MainViewItemsTemplate">
@@ -45,13 +45,11 @@
                         <Frame
                             Grid.Row="0"
                             Grid.Column="0"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -80,13 +78,11 @@
                         <Frame
                             Grid.Row="0"
                             Grid.Column="1"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -117,13 +113,11 @@
                         <Frame
                             Grid.Row="1"
                             Grid.Column="0"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -153,13 +147,11 @@
                         <Frame
                             Grid.Row="1"
                             Grid.Column="1"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -193,13 +185,11 @@
                         <Frame
                             Grid.Row="2"
                             Grid.Column="0"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -229,13 +219,11 @@
                         <Frame
                             Grid.Row="2"
                             Grid.Column="1"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -267,13 +255,11 @@
                         <Frame
                             Grid.Row="3"
                             Grid.Column="0"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -304,13 +290,11 @@
                         <Frame
                             Grid.Row="3"
                             Grid.Column="1"
-                            touch:TouchEff.NativeAnimation="true"
-                            touch:TouchEff.NativeAnimationColor="#2E000000"
-                            touch:TouchEff.PressedAnimationDuration="500"
-                            touch:TouchEff.PressedOpacity="0.6"
-                            touch:TouchEff.PressedScale="0.98"
-                            touch:TouchEff.RegularAnimationDuration="400"
-                            touch:TouchEff.RippleCount="0"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
                             BackgroundColor="{Binding BackgroundColor}"
                             BorderColor="White"
                             CornerRadius="15">
@@ -345,7 +329,7 @@
         <!--#endregion-->
 
         <!--#region ChartTemplate-->
-        <DataTemplate x:Key="MainChartsItemsTemplate">
+        <DataTemplate x:Key="DonutChartViewItemsTemplate">
             <StackLayout>
                 <Frame
                     Margin="5,10,5,100"
@@ -381,7 +365,7 @@
                             IgnorePixelScaling="False"
                             VerticalOptions="Center" />
 
-                        <xct:UniformGrid Margin="0,0,0,50" VerticalOptions="End">
+                        <StackLayout Margin="0,0,0,20" VerticalOptions="End">
                             <Label FontSize="Medium" TextColor="White">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -391,7 +375,8 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label FontSize="Medium">
+
+                            <Label FontSize="Medium" TextColor="White">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding ChartValueName2}" TextColor="White" />
@@ -400,7 +385,8 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label FontSize="Medium">
+
+                            <Label FontSize="Medium" TextColor="White">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding ChartValueName3}" TextColor="White" />
@@ -409,7 +395,8 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label FontSize="Medium">
+
+                            <Label FontSize="Medium" TextColor="White">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding ChartValueName4}" TextColor="White" />
@@ -418,7 +405,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                        </xct:UniformGrid>
+                        </StackLayout>
                     </Grid>
                 </Frame>
             </StackLayout>
@@ -427,17 +414,18 @@
 
         <local:MainPageDataTemplateSelector
             x:Key="MainContentPageViewSelector"
-            MainChartsItems="{StaticResource MainChartsItemsTemplate}"
+            DonutChartViewItems="{StaticResource DonutChartViewItemsTemplate}"
             MainViewItems="{StaticResource MainViewItemsTemplate}" />
     </ContentPage.Resources>
     <!--#endregion-->
 
+    <!--#endregion-->
     <ContentPage.Content>
         <Grid>
 
             <!--#region Main Content-->
             <CarouselView
-                x:Name="MainPageCarouselView"
+                x:Name="MainPageCarouselView" 
                 IndicatorView="{x:Reference MainContentPageViewIndicatorView}"
                 IsSwipeEnabled="True"
                 ItemTemplate="{StaticResource MainContentPageViewSelector}"
@@ -512,6 +500,11 @@
                     WidthRequest="35">
                     <Frame
                         Margin="-16"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
                         BackgroundColor="{Binding NavBarColor}"
                         CornerRadius="255"
                         HeightRequest="60"
@@ -1114,6 +1107,13 @@
                 </Frame>
             </Grid>
             <!--  #Endregion  -->
+
+            <Button
+                Clicked="Button_Clicked"
+                HorizontalOptions="Center"
+                Text="test"
+                VerticalOptions="Start" />
+            <Label x:Name="testedt" VerticalOptions="Start" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

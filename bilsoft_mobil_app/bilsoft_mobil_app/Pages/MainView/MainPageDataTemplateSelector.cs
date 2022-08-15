@@ -9,7 +9,7 @@ namespace bilsoft_mobil_app.Pages.MainView
     public class MainPageDataTemplateSelector : DataTemplateSelector
     {
         public DataTemplate MainViewItems { get; set; }
-        public DataTemplate MainChartsItems { get; set; }
+        public DataTemplate DonutChartViewItems { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
@@ -17,15 +17,12 @@ namespace bilsoft_mobil_app.Pages.MainView
             {
                 case "main":
                     return MainViewItems;
-                    break;
 
-                case "chart":
-                    return MainChartsItems;
-                    break;
+                case "Donut":
+                    return DonutChartViewItems;
 
                 default:
-                    return MainChartsItems;
-                    break;
+                    return DonutChartViewItems;
             }
         }
     }
