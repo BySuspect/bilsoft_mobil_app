@@ -328,7 +328,7 @@
         </DataTemplate>
         <!--#endregion-->
 
-        <!--#region ChartTemplate-->
+        <!--#region Chart Template-->
         <DataTemplate x:Key="DonutChartViewItemsTemplate">
             <StackLayout>
                 <Frame
@@ -338,7 +338,7 @@
                     CornerRadius="15"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
-                    <!--#region GÜNLÜK Satış Donut Grafik-->
+                    <!--#region Donut Grafik-->
                     <Grid VerticalOptions="Fill">
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                             <Label
@@ -359,7 +359,6 @@
                         </StackLayout>
 
                         <charts:ChartView
-                            x:Name="GunlukSatisChart"
                             Chart="{Binding ChartView}"
                             HeightRequest="500"
                             IgnorePixelScaling="False"
@@ -413,9 +412,53 @@
         <!--#endregion-->
         <!--#endregion-->
 
+        <!--#region Grafik Template-->
+        <DataTemplate x:Key="GrafikViewItemsTemplate">
+            <StackLayout>
+                <Frame
+                    Margin="5,10,5,100"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <!--#region Grafik-->
+                    <Grid VerticalOptions="Fill">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Start"
+                                TextColor="{Binding TextColor}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}" />
+                                        <Span
+                                            FontSize="12"
+                                            Text=" Grafiği"
+                                            TextColor="LightGray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <charts:ChartView
+                                Chart="{Binding ChartView}"
+                                HeightRequest="500"
+                                IgnorePixelScaling="False"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </DataTemplate>
+        <!--#endregion-->
+
+        <!--#endregion-->
+
         <local:MainPageDataTemplateSelector
             x:Key="MainContentPageViewSelector"
             DonutChartViewItems="{StaticResource DonutChartViewItemsTemplate}"
+            GrafikViewItems="{StaticResource GrafikViewItemsTemplate}"
             MainViewItems="{StaticResource MainViewItemsTemplate}" />
     </ContentPage.Resources>
 
@@ -431,12 +474,12 @@
                 IsSwipeEnabled="True"
                 ItemTemplate="{StaticResource MainContentPageViewSelector}"
                 ItemsSource="{Binding _mainContentPageViewItemsSource}"
-                Loop="True"
+                Loop="False"
                 PeekAreaInsets="35" />
             <IndicatorView
                 x:Name="MainContentPageViewIndicatorView"
                 Margin="0,50,0,80"
-                HorizontalOptions="FillAndExpand"
+                HorizontalOptions="Center"
                 IndicatorColor="White"
                 IndicatorsShape="Circle"
                 SelectedIndicatorColor="Black"
@@ -603,7 +646,7 @@
                             Margin="-2"
                             BackgroundColor="Transparent"
                             Source="mailsettings24px.png"
-                            TranslationX="2" />
+                            TranslationX="0" />
                     </Frame>
                 </StackLayout>
                 <!--#endregion-->

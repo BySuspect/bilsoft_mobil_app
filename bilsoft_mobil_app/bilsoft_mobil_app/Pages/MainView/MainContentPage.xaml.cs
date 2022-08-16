@@ -61,10 +61,6 @@ namespace bilsoft_mobil_app.Pages.MainView
 
             _mainContentPageViewItemsSource = new ObservableCollection<MainContentPageViewItems>();
 
-            #region Grafikler
-
-            #endregion
-
             _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "Menü", View = "Main" });
 
             #region Donut Charts
@@ -127,8 +123,68 @@ namespace bilsoft_mobil_app.Pages.MainView
 
             #endregion
 
+            #region Grafik Charts
+
+            var GrafikchartVerileriList = await getChartsDonut();
+
+            Color grafikC1 = Color.FromHex("#00C321"),
+                  grafikC2 = Color.FromHex("#005AD4"),
+                  grafikC3 = Color.FromHex("#D90000"),
+                  grafikC4 = Color.Gray;
+
+            foreach (var item in GrafikchartVerileriList)
+            {
+                _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+                {
+                    Name = item.Name,
+                    View = "Grafik",
+                    ChartValue1 = item.Money1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValue2 = item.Money2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValue3 = item.Money3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValue4 = item.Money4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
+                    ChartValueColor1 = grafikC1,
+                    ChartValueColor2 = grafikC2,
+                    ChartValueColor3 = grafikC3,
+                    ChartValueColor4 = grafikC4,
+                    ChartValueName1 = item.Label1,
+                    ChartValueName2 = item.Label2,
+                    ChartValueName3 = item.Label3,
+                    ChartValueName4 = item.Label4,
+
+                    ChartView = new PointChart
+                    {
+                        Entries = new List<ChartEntry>
+                        {
+                            new ChartEntry(item.Value1)
+                            {
+                                Color=grafikC1.ToSKColor(),
+                            },
+                            new ChartEntry(item.Value2)
+                            {
+                                Color=grafikC2.ToSKColor(),
+                            },
+                            new ChartEntry(item.Value3)
+                            {
+                                Color=grafikC3.ToSKColor(),
+                            },
+                            new ChartEntry(item.Value4)
+                            {
+                                Color=grafikC4.ToSKColor(),
+                            }
+                        },
+                        IsAnimated = true,
+                        AnimationDuration = TimeSpan.FromSeconds(3),
+                        BackgroundColor = SKColors.Transparent,
+                    }
+                });
+            }
+
+            #endregion
+
             MainPageCarouselView.ItemsSource = _mainContentPageViewItemsSource;
-            MainPageCarouselView.Position = 2;
+
+            //Bozuk
+            //MainPageCarouselView.Position = 4;
 
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;
