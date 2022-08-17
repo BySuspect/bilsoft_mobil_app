@@ -24,6 +24,9 @@ using Microcharts.Forms;
 using SkiaSharp.Views.Forms;
 using System.Net.Http.Headers;
 using Xamarin.CommunityToolkit.Markup;
+using Org.Apache.Http.Conn;
+using Timer = System.Timers.Timer;
+using static Android.Content.ClipData;
 
 namespace bilsoft_mobil_app.Pages.MainView
 {
@@ -39,7 +42,6 @@ namespace bilsoft_mobil_app.Pages.MainView
         public Color ToolBarColor { get; set; } = Color.FromHex(AppThemeColors._toolbarcolor);
         public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
         #endregion
-
         public ObservableCollection<MainContentPageViewItems> _mainContentPageViewItemsSource { get; set; }
         public MainContentPage()
         {
@@ -61,8 +63,35 @@ namespace bilsoft_mobil_app.Pages.MainView
 
             _mainContentPageViewItemsSource = new ObservableCollection<MainContentPageViewItems>();
 
-            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "Menü", View = "Main" });
 
+            //Kasa Bakiyeleri
+            #region Kasa Bakiyeleri
+            var _kasaList = new ObservableCollection<KasaBakiyeListeVeriler>();
+            var KasaListItems = await getKasaList();
+
+            foreach (var item in KasaListItems)
+            {
+                _kasaList.Add(new KasaBakiyeListeVeriler
+                {
+                    sira = item.sira,
+                    Kasa = item.Kasa,
+                    KasaBakiye = item.KasaBakiye,
+                });
+            }
+
+            MainContentPageViewItems kasaBakiyeView = new MainContentPageViewItems()
+            {
+                Name = "Kasa Bakiyeleri",
+                View = "Kasa",
+                KasaBakiyeleriList = _kasaList,
+            };
+
+            _mainContentPageViewItemsSource.Add(kasaBakiyeView);
+
+
+            #endregion
+
+            //Yuvarlak Chart olan sayfalar
             #region Donut Charts
 
             var DonutchartVerileriList = await getChartsDonut();
@@ -123,68 +152,286 @@ namespace bilsoft_mobil_app.Pages.MainView
 
             #endregion
 
-            #region Grafik Charts
+            //Ana navigasyon görünümü
+            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems() { Name = "Menü", View = "Main" });
 
-            var GrafikchartVerileriList = await getChartsDonut();
+            //7 günlük tablolar
+            #region 7 Gun Grafik Charts
 
-            Color grafikC1 = Color.FromHex("#00C321"),
-                  grafikC2 = Color.FromHex("#005AD4"),
-                  grafikC3 = Color.FromHex("#D90000"),
-                  grafikC4 = Color.Gray;
+            var CiftGrafikchartVerileriList = await get7gunGrafikItems();
 
-            foreach (var item in GrafikchartVerileriList)
+            Color grafikC1 = Color.FromHex("#00FF00"),
+                  grafikC2 = Color.FromHex("#FF0000");
+
+            var TekGrafikchartVerileriList = await get7gunSatisVeriler();
+
+            //7 günlük satış tablo
+            _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
+            {
+                Name = TekGrafikchartVerileriList.Name,
+                View = "tekgrafik",
+                ChartView = new LineChart
+                {
+                    AnimationDuration = TimeSpan.FromSeconds(3),
+                    EnableYFadeOutGradient = true,
+                    IsAnimated = true,
+                    LabelTextSize = 30,
+                    LabelColor = SKColors.White,
+                    BackgroundColor = SKColors.Transparent,
+                    LineMode = LineMode.Straight,
+                    PointMode = PointMode.None,
+                    ValueLabelOrientation = Microcharts.Orientation.Horizontal,
+                    Entries = new[]
+                    {
+                        new ChartEntry(TekGrafikchartVerileriList.GValue1)
+                        {
+                            Label = TekGrafikchartVerileriList.Label1,
+                            ValueLabel = TekGrafikchartVerileriList.GValue1.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        },
+                        new ChartEntry(TekGrafikchartVerileriList.GValue2)
+                        {
+                            Label = TekGrafikchartVerileriList.Label2,
+                            ValueLabel = TekGrafikchartVerileriList.GValue2.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        },
+                        new ChartEntry(TekGrafikchartVerileriList.GValue3)
+                        {
+                            Label = TekGrafikchartVerileriList.Label3,
+                            ValueLabel = TekGrafikchartVerileriList.GValue3.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        },
+                        new ChartEntry(TekGrafikchartVerileriList.GValue4)
+                        {
+                            Label = TekGrafikchartVerileriList.Label4,
+                            ValueLabel = TekGrafikchartVerileriList.GValue4.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        },
+                        new ChartEntry(TekGrafikchartVerileriList.GValue5)
+                        {
+                            Label = TekGrafikchartVerileriList.Label5,
+                            ValueLabel = TekGrafikchartVerileriList.GValue5.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        },
+                        new ChartEntry(TekGrafikchartVerileriList.GValue6)
+                        {
+                            Label = TekGrafikchartVerileriList.Label6,
+                            ValueLabel = TekGrafikchartVerileriList.GValue6.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        },
+                        new ChartEntry(TekGrafikchartVerileriList.GValue7)
+                        {
+                            Label = TekGrafikchartVerileriList.Label7,
+                            ValueLabel = TekGrafikchartVerileriList.GValue7.ToString(),
+                            ValueLabelColor=grafikC1.ToSKColor(),
+                            TextColor=SKColors.White,
+                            Color = grafikC1.ToSKColor()
+                        }
+                    },
+                },
+            });
+
+            //7 günlük çift tablolar
+            foreach (var item in CiftGrafikchartVerileriList)
             {
                 _mainContentPageViewItemsSource.Add(new MainContentPageViewItems()
                 {
                     Name = item.Name,
-                    View = "Grafik",
-                    ChartValue1 = item.Money1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                    ChartValue2 = item.Money2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                    ChartValue3 = item.Money3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                    ChartValue4 = item.Money4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr")),
-                    ChartValueColor1 = grafikC1,
-                    ChartValueColor2 = grafikC2,
-                    ChartValueColor3 = grafikC3,
-                    ChartValueColor4 = grafikC4,
-                    ChartValueName1 = item.Label1,
-                    ChartValueName2 = item.Label2,
-                    ChartValueName3 = item.Label3,
-                    ChartValueName4 = item.Label4,
-
-                    ChartView = new PointChart
+                    View = "ciftGrafik",
+                    GirisLabel = item.Glabel,
+                    CikisLabel = item.Clabel,
+                    Bool1 = item.Bool1,
+                    BankaListeSource = item.BankaListeSource,
+                    BankaPickerIndex = 0,
+                    ChartView = new LineChart
                     {
-                        Entries = new List<ChartEntry>
+                        AnimationDuration = TimeSpan.FromSeconds(3),
+                        EnableYFadeOutGradient = true,
+                        IsAnimated = true,
+                        LabelTextSize = 30,
+                        LabelColor = SKColors.White,
+                        BackgroundColor = SKColors.Transparent,
+                        LineMode = LineMode.Straight,
+                        PointMode = PointMode.None,
+                        ValueLabelOrientation = Microcharts.Orientation.Horizontal,
+                        Entries = new[]
                         {
-                            new ChartEntry(item.Value1)
+                            new ChartEntry(item.GValue1)
                             {
-                                Color=grafikC1.ToSKColor(),
+                                Label = item.Label1,
+                                ValueLabel = item.GValue1.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
                             },
-                            new ChartEntry(item.Value2)
+                            new ChartEntry(item.GValue2)
                             {
-                                Color=grafikC2.ToSKColor(),
+                                Label = item.Label2,
+                                ValueLabel = item.GValue2.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
                             },
-                            new ChartEntry(item.Value3)
+                            new ChartEntry(item.GValue3)
                             {
-                                Color=grafikC3.ToSKColor(),
+                                Label = item.Label3,
+                                ValueLabel = item.GValue3.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
                             },
-                            new ChartEntry(item.Value4)
+                            new ChartEntry(item.GValue4)
                             {
-                                Color=grafikC4.ToSKColor(),
+                                Label = item.Label4,
+                                ValueLabel = item.GValue4.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
+                            },
+                            new ChartEntry(item.GValue5)
+                            {
+                                Label = item.Label5,
+                                ValueLabel = item.GValue5.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
+                            },
+                            new ChartEntry(item.GValue6)
+                            {
+                                Label = item.Label6,
+                                ValueLabel = item.GValue6.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
+                            },
+                            new ChartEntry(item.GValue7)
+                            {
+                                Label = item.Label7,
+                                ValueLabel = item.GValue7.ToString(),
+                                ValueLabelColor=grafikC1.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC1.ToSKColor()
                             }
                         },
-                        IsAnimated = true,
+                    },
+                    ChartView2 = new LineChart
+                    {
                         AnimationDuration = TimeSpan.FromSeconds(3),
+                        EnableYFadeOutGradient = true,
+                        IsAnimated = true,
+                        LabelTextSize = 30,
+                        LabelColor = SKColors.White,
                         BackgroundColor = SKColors.Transparent,
+                        LineMode = LineMode.Straight,
+                        PointMode = PointMode.None,
+                        ValueLabelOrientation = Microcharts.Orientation.Horizontal,
+                        Entries = new[]
+                        {
+                            new ChartEntry(item.CValue1)
+                            {
+                                Label = item.Label1,
+                                ValueLabel=item.CValue1.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC2.ToSKColor()
+                            },
+                            new ChartEntry(item.CValue2)
+                            {
+                                Label = item.Label2,
+                                ValueLabel=item.CValue2.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC2.ToSKColor()
+                            },
+                            new ChartEntry(item.CValue3)
+                            {
+                                Label = item.Label3,
+                                ValueLabel=item.CValue3.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC2.ToSKColor()
+                            },
+                            new ChartEntry(item.CValue4)
+                            {
+                                Label = item.Label4,
+                                ValueLabel=item.CValue4.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.Red,
+                                Color = grafikC2.ToSKColor()
+                            },
+                            new ChartEntry(item.CValue5)
+                            {
+                                Label = item.Label5,
+                                ValueLabel=item.CValue5.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC2.ToSKColor()
+                            },
+                            new ChartEntry(item.CValue6)
+                            {
+                                Label = item.Label6,
+                                ValueLabel=item.CValue6.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC2.ToSKColor()
+                            },
+                            new ChartEntry(item.CValue7)
+                            {
+                                Label = item.Label7,
+                                ValueLabel=item.CValue7.ToString(),
+                                ValueLabelColor=grafikC2.ToSKColor(),
+                                TextColor=SKColors.White,
+                                Color = grafikC2.ToSKColor()
+                            }
+                        },
                     }
                 });
             }
 
             #endregion
 
+            //Banka Bakiyeleri
+            #region Banka Bakiyeleri
+            var _bankaList = new ObservableCollection<BankListVeriler>();
+            var bankaListItems = await getBankaList();
+
+            foreach (var item in bankaListItems)
+            {
+                _bankaList.Add(new BankListVeriler
+                {
+                    sira = item.sira,
+                    Banka_Hesap = item.Banka_Hesap,
+                    HesapNo = item.HesapNo,
+                    HesapBakiye = item.HesapBakiye,
+                });
+            }
+
+            MainContentPageViewItems bankaBakiyeView = new MainContentPageViewItems()
+            {
+                Name = "Banka Bakiyeleri",
+                View = "Banka",
+                BankaBakiyeleriList = _bankaList,
+            };
+
+            _mainContentPageViewItemsSource.Add(bankaBakiyeView);
+            #endregion
+
             MainPageCarouselView.ItemsSource = _mainContentPageViewItemsSource;
 
-            //Bozuk
-            //MainPageCarouselView.Position = 4;
+            //Bozuluyor
+            MainPageCarouselView.Position = 5;
 
             Loodinglayout.IsVisible = false;
             LoodingActivity.IsRunning = false;
@@ -263,6 +510,168 @@ namespace bilsoft_mobil_app.Pages.MainView
                 },
             };
         }
+        async Task<List<_7gunGrafikItems>> get7gunGrafikItems()
+        {
+            return new List<_7gunGrafikItems>
+            {
+                new _7gunGrafikItems
+                {
+                    Name="7 Günlük Vadesi Gelecek İşlemler",
+                    Glabel="Tahsilat",
+                    Clabel="Ödeme",
+                    Bool1=false,
+
+                    Label1 = "17.08.2022",
+                    GValue1 = 12000,
+                    CValue1 = 50,
+                    Label2 = "16.08.2022",
+                    GValue2 = 2640,
+                    CValue2 = 125,
+                    Label3 = "16.08.2022",
+                    GValue3 = 0,
+                    CValue3 = 0,
+                    Label4 = "16.08.2022",
+                    GValue4 = 0,
+                    CValue4 = 0,
+                    Label5 = "16.08.2022",
+                    GValue5 = 4555,
+                    CValue5 = 430,
+                    Label6 = "16.08.2022",
+                    GValue6 = 0,
+                    CValue6 = 0,
+                    Label7 = "16.08.2022",
+                    GValue7 = 2350,
+                    CValue7 = 534,
+                },
+                new _7gunGrafikItems
+                {
+                    Name="7 Günlük Banka Haraketleri",
+                    Glabel="Giriş",
+                    Clabel="Çıkış",
+                    Bool1=true,
+                    BankaListeSource = new List<string>
+                    {
+                        "Tümü",
+                        "Ziraat Bankası",
+                        "Garanti Bankası",
+                        "TC İş Bankası"
+                    },
+
+                    Label1 = "17.08.2022",
+                    GValue1 = 12000,
+                    CValue1 = 50,
+                    Label2 = "16.08.2022",
+                    GValue2 = 2640,
+                    CValue2 = 125,
+                    Label3 = "16.08.2022",
+                    GValue3 = 0,
+                    CValue3 = 0,
+                    Label4 = "16.08.2022",
+                    GValue4 = 0,
+                    CValue4 = 0,
+                    Label5 = "16.08.2022",
+                    GValue5 = 4555,
+                    CValue5 = 430,
+                    Label6 = "16.08.2022",
+                    GValue6 = 0,
+                    CValue6 = 0,
+                    Label7 = "16.08.2022",
+                    GValue7 = 2350,
+                    CValue7 = 534,
+                },
+                new _7gunGrafikItems
+                {
+                    Name="7 Günlük Kasa Haraketleri",
+                    Glabel="Giriş",
+                    Clabel="Çıkış",
+                    Bool1=false,
+
+                    Label1 = "17.08.2022",
+                    GValue1 = 12000,
+                    CValue1 = 50,
+                    Label2 = "16.08.2022",
+                    GValue2 = 2640,
+                    CValue2 = 125,
+                    Label3 = "16.08.2022",
+                    GValue3 = 0,
+                    CValue3 = 0,
+                    Label4 = "16.08.2022",
+                    GValue4 = 0,
+                    CValue4 = 0,
+                    Label5 = "16.08.2022",
+                    GValue5 = 4555,
+                    CValue5 = 430,
+                    Label6 = "16.08.2022",
+                    GValue6 = 0,
+                    CValue6 = 0,
+                    Label7 = "16.08.2022",
+                    GValue7 = 2350,
+                    CValue7 = 534,
+                },
+            };
+        }
+        async Task<_7gunGrafikItems> get7gunSatisVeriler()
+        {
+            return new _7gunGrafikItems
+            {
+                Name = "7 Günlük Satış",
+
+                Label1 = "17.08.2022",
+                GValue1 = 12000,
+                Label2 = "16.08.2022",
+                GValue2 = 2640,
+                Label3 = "16.08.2022",
+                GValue3 = 0,
+                Label4 = "16.08.2022",
+                GValue4 = 0,
+                Label5 = "16.08.2022",
+                GValue5 = 4555,
+                Label6 = "16.08.2022",
+                GValue6 = 0,
+                Label7 = "16.08.2022",
+                GValue7 = 2350,
+            };
+        }
+        async Task<List<BankListVeriler>> getBankaList()
+        {
+            return new List<BankListVeriler>
+            {
+                new BankListVeriler
+                {
+                    sira=1,
+                    Banka_Hesap="Ziraat Bankası",
+                    HesapNo="33325612532623",
+                    HesapBakiye=124125125,
+                },
+                new BankListVeriler
+                {
+                    sira=2,
+                    Banka_Hesap="Garanti Bankası",
+                    HesapNo="33325612532623",
+                    HesapBakiye=124125125,
+                },
+                new BankListVeriler
+                {
+                    sira=3,
+                    Banka_Hesap="TC İş Bankası",
+                    HesapNo="33325612532623",
+                    HesapBakiye=124125125,
+                },
+            };
+        }
+        async Task<List<KasaBakiyeListeVeriler>> getKasaList()
+        {
+            return new List<KasaBakiyeListeVeriler>
+            {
+                new KasaBakiyeListeVeriler
+                {
+                    sira=1,
+                    Kasa="Varsayılan Kasa",
+                    KasaBakiye=124125125,
+                },
+            };
+        }
+
         #endregion
 
         #region mainView Navigation
@@ -389,15 +798,11 @@ namespace bilsoft_mobil_app.Pages.MainView
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var DonutchartVerileriList = await getChartsDonut();
             testedt.Text = "";
-            foreach (var item in DonutchartVerileriList)
-            {
-                testedt.Text += "\n" + item.Money1.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
-                testedt.Text += "\n" + item.Money2.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
-                testedt.Text += "\n" + item.Money3.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
-                testedt.Text += "\n" + item.Money4.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("tr-tr"));
-            }
+            DateTime[] last7Days = Enumerable.Range(0, 7).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
+
+            foreach (var day in last7Days)
+                Console.WriteLine($"{day:yyyy-MM-dd}"); // Any manipulations with days go here
             MainViewStart();
         }
     }
@@ -416,5 +821,38 @@ namespace bilsoft_mobil_app.Pages.MainView
         public int Value4 { get; set; }
         public double Money4 { get; set; }
         public string Label4 { get; set; }
+    }
+    public class _7gunGrafikItems
+    {
+        public string Name { get; set; }
+        public string Glabel { get; set; }
+        public string Clabel { get; set; }
+        public int GValue1 { get; set; }
+        public int CValue1 { get; set; }
+        public string Label1 { get; set; }
+        public int GValue2 { get; set; }
+        public int CValue2 { get; set; }
+        public string Label2 { get; set; }
+        public int GValue3 { get; set; }
+        public int CValue3 { get; set; }
+        public string Label3 { get; set; }
+        public int GValue4 { get; set; }
+        public int CValue4 { get; set; }
+        public string Label4 { get; set; }
+        public int GValue5 { get; set; }
+        public int CValue5 { get; set; }
+        public string Label5 { get; set; }
+        public int GValue6 { get; set; }
+        public int CValue6 { get; set; }
+        public string Label6 { get; set; }
+        public int GValue7 { get; set; }
+        public int CValue7 { get; set; }
+        public string Label7 { get; set; }
+
+
+        #region opsiyonel
+        public bool Bool1 { get; set; }
+        public List<string> BankaListeSource { get; set; }
+        #endregion
     }
 }

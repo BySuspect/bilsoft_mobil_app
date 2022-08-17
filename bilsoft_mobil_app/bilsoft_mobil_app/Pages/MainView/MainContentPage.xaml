@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:custom="clr-namespace:bilsoft_mobil_app.CustomItems"
     xmlns:local="clr-namespace:bilsoft_mobil_app.Pages.MainView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Title="Ana Sayfa"
@@ -412,8 +413,8 @@
         <!--#endregion-->
         <!--#endregion-->
 
-        <!--#region Grafik Template-->
-        <DataTemplate x:Key="GrafikViewItemsTemplate">
+        <!--#region 7Gun Satış Grafik Template-->
+        <DataTemplate x:Key="_7gunSatisGrafikViewItemsTemplate">
             <StackLayout>
                 <Frame
                     Margin="5,10,5,100"
@@ -423,7 +424,7 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <!--#region Grafik-->
-                    <Grid VerticalOptions="Fill">
+                    <StackLayout>
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                             <Label
                                 FontAttributes="Bold"
@@ -440,14 +441,301 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-
+                        </StackLayout>
+                        <Grid>
                             <charts:ChartView
+                                x:Name="mChart"
+                                Margin="0,30"
                                 Chart="{Binding ChartView}"
                                 HeightRequest="500"
                                 IgnorePixelScaling="False"
-                                VerticalOptions="Center" />
+                                VerticalOptions="CenterAndExpand" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </DataTemplate>
+        <!--#endregion-->
+
+        <!--#endregion-->
+
+        <!--#region 7Gun Giris Cıkıs Grafik Template-->
+        <DataTemplate x:Key="_7gunCiftGrafikViewItemsTemplate">
+            <StackLayout>
+                <Frame
+                    Margin="5,10,5,100"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <!--#region Grafik-->
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Start"
+                                TextColor="{Binding TextColor}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}" />
+                                        <Span
+                                            FontSize="12"
+                                            Text=" Grafiği"
+                                            TextColor="LightGray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </StackLayout>
-                    </Grid>
+                        <StackLayout>
+                            <Frame
+                                Margin="0,0,20,0"
+                                BackgroundColor="Transparent"
+                                BorderColor="{Binding BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="EndAndExpand"
+                                IsVisible="{Binding Bool1}">
+                                <custom:BorderlessPicker
+                                    Title="Banka Listesi"
+                                    Margin="0,-25,0,-25"
+                                    HorizontalOptions="Center"
+                                    ItemsSource="{Binding BankaListeSource}"
+                                    SelectedIndex="{Binding BankaPickerIndex}"
+                                    TextColor="{Binding TextColor}" />
+                            </Frame>
+                            <StackLayout
+                                Margin="20,0"
+                                HorizontalOptions="EndAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
+                                <StackLayout Orientation="Horizontal">
+                                    <BoxView
+                                        CornerRadius="255"
+                                        HeightRequest="20"
+                                        WidthRequest="20"
+                                        Color="#00FF00" />
+                                    <Label Text="{Binding GirisLabel}" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <BoxView
+                                        CornerRadius="255"
+                                        HeightRequest="20"
+                                        WidthRequest="20"
+                                        Color="#FF0000" />
+                                    <Label Text="{Binding CikisLabel}" TextColor="White" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <Grid>
+                            <charts:ChartView
+                                x:Name="mChart"
+                                Chart="{Binding ChartView}"
+                                HeightRequest="480"
+                                IgnorePixelScaling="False"
+                                VerticalOptions="End" />
+                            <charts:ChartView
+                                x:Name="mChart2"
+                                Chart="{Binding ChartView2}"
+                                HeightRequest="500"
+                                IgnorePixelScaling="False"
+                                VerticalOptions="End" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </DataTemplate>
+        <!--#endregion-->
+
+        <!--#endregion-->
+
+        <!--#region Banka Bakiye List Template-->
+        <DataTemplate x:Key="BankaBakiyeListkViewItemsTemplate">
+            <StackLayout>
+                <Frame
+                    Margin="5,10,5,100"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <!--#region Grafik-->
+                    <StackLayout>
+                        <!--  {Binding BankaBakiyeleriList}  -->
+                        <ListView
+                            HasUnevenRows="True"
+                            ItemsSource="{Binding BankaBakiyeleriList}"
+                            SeparatorColor="Transparent">
+                            <ListView.Header>
+                                <StackLayout>
+                                    <Label
+                                        Margin="15"
+                                        FontSize="25"
+                                        Text="{Binding Name}"
+                                        TextColor="{Binding TextColor}" />
+                                    <Frame BackgroundColor="Transparent" BorderColor="#4BFFFFFF">
+                                        <Grid Margin="-15">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                FontSize="Default"
+                                                Text="#"
+                                                TextColor="{Binding TextColor}" />
+                                            <Label
+                                                Grid.Column="1"
+                                                FontSize="Default"
+                                                Text="Banka-Hesap"
+                                                TextColor="{Binding TextColor}" />
+                                            <Label
+                                                Grid.Column="2"
+                                                FontSize="Default"
+                                                Text="Hesap No"
+                                                TextColor="{Binding TextColor}" />
+                                            <Label
+                                                Grid.Column="3"
+                                                FontSize="Default"
+                                                HorizontalOptions="End"
+                                                Text="Bakiye"
+                                                TextColor="{Binding TextColor}" />
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="Transparent" BorderColor="#4BFFFFFF">
+                                            <Grid Margin="-15">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="10" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontSize="Caption"
+                                                    Text="{Binding sira}"
+                                                    TextColor="{Binding TextColor}" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    FontSize="Caption"
+                                                    Text="{Binding Banka_Hesap}"
+                                                    TextColor="{Binding TextColor}" />
+                                                <Label
+                                                    Grid.Column="2"
+                                                    FontSize="Caption"
+                                                    Text="{Binding HesapNo}"
+                                                    TextColor="{Binding TextColor}" />
+                                                <Label
+                                                    Grid.Column="3"
+                                                    FontSize="Caption"
+                                                    HorizontalOptions="End"
+                                                    Text="{Binding HesapBakiye}"
+                                                    TextColor="{Binding TextColor}" />
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </DataTemplate>
+        <!--#endregion-->
+
+        <!--#endregion-->
+
+        <!--#region Kasa Bakiye List Template-->
+        <DataTemplate x:Key="KasaBakiyeListkViewItemsTemplate">
+            <StackLayout>
+                <Frame
+                    Margin="5,10,5,100"
+                    BackgroundColor="{Binding CardBackgroundColor}"
+                    BorderColor="{Binding BorderColor}"
+                    CornerRadius="15"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <!--#region Grafik-->
+                    <StackLayout>
+                        <!--  {Binding BankaBakiyeleriList}  -->
+                        <ListView
+                            HasUnevenRows="True"
+                            ItemsSource="{Binding KasaBakiyeleriList}"
+                            SeparatorColor="Transparent">
+                            <ListView.Header>
+                                <StackLayout>
+                                    <Label
+                                        Margin="15"
+                                        FontSize="25"
+                                        Text="Banka Bakiyeleri"
+                                        TextColor="{Binding TextColor}" />
+                                    <Frame BackgroundColor="Transparent" BorderColor="#4BFFFFFF">
+                                        <Grid Margin="-15">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                FontSize="Default"
+                                                Text="#"
+                                                TextColor="{Binding TextColor}" />
+                                            <Label
+                                                Grid.Column="1"
+                                                FontSize="Default"
+                                                Text="Kasa"
+                                                TextColor="{Binding TextColor}" />
+                                            <Label
+                                                Grid.Column="2"
+                                                FontSize="Default"
+                                                HorizontalOptions="End"
+                                                Text="Bakiye"
+                                                TextColor="{Binding TextColor}" />
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BackgroundColor="Transparent" BorderColor="#4BFFFFFF">
+                                            <Grid Margin="-15">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="10" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    FontSize="Caption"
+                                                    Text="{Binding sira}"
+                                                    TextColor="{Binding TextColor}" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    FontSize="Caption"
+                                                    Text="{Binding Kasa}"
+                                                    TextColor="{Binding TextColor}" />
+                                                <Label
+                                                    Grid.Column="3"
+                                                    FontSize="Caption"
+                                                    HorizontalOptions="End"
+                                                    Text="{Binding KasaBakiye}"
+                                                    TextColor="{Binding TextColor}" />
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                 </Frame>
             </StackLayout>
         </DataTemplate>
@@ -457,9 +745,12 @@
 
         <local:MainPageDataTemplateSelector
             x:Key="MainContentPageViewSelector"
+            BankaBakiyeListkViewItems="{StaticResource BankaBakiyeListkViewItemsTemplate}"
             DonutChartViewItems="{StaticResource DonutChartViewItemsTemplate}"
-            GrafikViewItems="{StaticResource GrafikViewItemsTemplate}"
-            MainViewItems="{StaticResource MainViewItemsTemplate}" />
+            KasaBakiyeListkViewItems="{StaticResource KasaBakiyeListkViewItemsTemplate}"
+            MainViewItems="{StaticResource MainViewItemsTemplate}"
+            _7gunCiftGrafikViewItems="{StaticResource _7gunCiftGrafikViewItemsTemplate}"
+            _7gunSatisGrafikViewItems="{StaticResource _7gunSatisGrafikViewItemsTemplate}" />
     </ContentPage.Resources>
 
     <!--#endregion-->
@@ -474,8 +765,9 @@
                 IsSwipeEnabled="True"
                 ItemTemplate="{StaticResource MainContentPageViewSelector}"
                 ItemsSource="{Binding _mainContentPageViewItemsSource}"
-                Loop="False"
-                PeekAreaInsets="35" />
+                Loop="True"
+                PeekAreaInsets="20"
+                Position="5" />
             <IndicatorView
                 x:Name="MainContentPageViewIndicatorView"
                 Margin="0,50,0,80"
@@ -1126,7 +1418,7 @@
             <Grid
                 x:Name="Loodinglayout"
                 BackgroundColor="#77767676"
-                IsVisible="false">
+                IsVisible="true">
                 <Frame
                     BackgroundColor="#77767676"
                     CornerRadius="15"
@@ -1139,7 +1431,7 @@
                         <ActivityIndicator
                             x:Name="LoodingActivity"
                             HorizontalOptions="Center"
-                            IsRunning="False"
+                            IsRunning="True"
                             VerticalOptions="Center"
                             Color="White" />
                         <Label

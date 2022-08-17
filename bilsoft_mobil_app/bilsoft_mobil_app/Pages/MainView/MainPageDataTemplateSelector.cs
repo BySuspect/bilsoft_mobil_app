@@ -10,7 +10,10 @@ namespace bilsoft_mobil_app.Pages.MainView
     {
         public DataTemplate MainViewItems { get; set; }
         public DataTemplate DonutChartViewItems { get; set; }
-        public DataTemplate GrafikViewItems { get; set; }
+        public DataTemplate BankaBakiyeListkViewItems { get; set; }
+        public DataTemplate KasaBakiyeListkViewItems { get; set; }
+        public DataTemplate _7gunCiftGrafikViewItems { get; set; }
+        public DataTemplate _7gunSatisGrafikViewItems { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
@@ -22,11 +25,20 @@ namespace bilsoft_mobil_app.Pages.MainView
                 case "donut":
                     return DonutChartViewItems;
 
-                case "grafik":
-                    return GrafikViewItems;
+                case "ciftgrafik":
+                    return _7gunCiftGrafikViewItems;
+
+                case "tekgrafik":
+                    return _7gunSatisGrafikViewItems;
+
+                case "banka":
+                    return BankaBakiyeListkViewItems;
+
+                case "kasa":
+                    return KasaBakiyeListkViewItems;
 
                 default:
-                    return GrafikViewItems;
+                    return BankaBakiyeListkViewItems;
             }
         }
     }
