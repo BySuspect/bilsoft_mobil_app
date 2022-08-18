@@ -42,6 +42,7 @@
                                         CornerRadius="15">
                                         <customitems:BorderlessEntry
                                             x:Name="entryAd"
+                                            Margin="-15"
                                             HorizontalTextAlignment="Start"
                                             Placeholder="Hesap/Firma Adı:"
                                             PlaceholderColor="{Binding TextColor}"
@@ -69,6 +70,7 @@
                                         CornerRadius="15">
                                         <customitems:BorderlessEntry
                                             x:Name="entryYetkili"
+                                            Margin="-15"
                                             HorizontalTextAlignment="Start"
                                             Placeholder="Yetkili:"
                                             PlaceholderColor="{Binding TextColor}"
@@ -87,10 +89,11 @@
                                         BackgroundColor="Transparent"
                                         ButtonCornerRadius="15"
                                         CornerRadius="15"
-                                        DownButtonBackgroundColor="#9EFF0000"
+                                        DownButtonBackgroundColor="#52FF0000"
                                         DownButtonBorderColor="Transparent"
                                         Increment="1"
-                                        UpButtonBackgroundColor="#B2008000"
+                                        TextColor="White"
+                                        UpButtonBackgroundColor="#52008000"
                                         UpButtonBorderColor="Transparent"
                                         maxValue="1000"
                                         minValue="0"
@@ -105,10 +108,11 @@
                                         BackgroundColor="Transparent"
                                         ButtonCornerRadius="15"
                                         CornerRadius="15"
-                                        DownButtonBackgroundColor="#9EFF0000"
+                                        DownButtonBackgroundColor="#52FF0000"
                                         DownButtonBorderColor="Transparent"
                                         Increment="1"
-                                        UpButtonBackgroundColor="#B2008000"
+                                        TextColor="White"
+                                        UpButtonBackgroundColor="#52008000"
                                         UpButtonBorderColor="Transparent"
                                         maxValue="31"
                                         minValue="1"
@@ -357,12 +361,12 @@
                                     CornerRadius="15">
                                     <customitems:BorderlessEntry
                                         x:Name="entryCariKod"
+                                        Margin="-15"
                                         HorizontalTextAlignment="Start"
                                         Placeholder="Cari Kod:"
                                         PlaceholderColor="{Binding TextColor}"
                                         TextColor="{Binding TextColor}"
-                                        VerticalOptions="Start"
-                                        Margin="-15" />
+                                        VerticalOptions="Start" />
                                 </Frame>
                                 <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                                     <Button

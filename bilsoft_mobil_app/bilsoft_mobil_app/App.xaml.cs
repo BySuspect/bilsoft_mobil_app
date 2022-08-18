@@ -19,20 +19,20 @@ namespace bilsoft_mobil_app
             InitializeComponent();
 
             /*
-             * ana sayfa yenilenicek
+             * --ana sayfa yenilenicek 
              * loginde girişte uygulama çöküyor bakılacak
              * cariyi incele kısmı yapılıcak
-             * ana sayfadaki hatırlatma düzenlenicek ana sayfa tekrar yapılıcak
+             * ana sayfadaki hatırlatma yapılacak
              */
 
-            //Test Verileri
-            APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiYzg3N2UxMDUtMzc3ZS00YTc5LWJlNzYtOGY0MWI0ZTczNGJlIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NjA1NDU2MzcsImV4cCI6MTY2MDU4ODgzMSwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.o1HpUky6qOi9KdDLlhyg3pgyocW5E6iwAfeyGVzYvCc";
-            APIHelper.kullaniciAdi = "demo";
-            APIHelper.subeAd = "merkez";
-            //Test Verileri End
+            ////Test Verileri
+            //APIHelper.loginToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI4OCIsInVuaXF1ZV9uYW1lIjoiMjU4MzRmZDQtOTAzMS00NmFkLWIxNTQtNTBlODY0ODc0NzNmIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImRlbW8iLCJuYmYiOjE2NjA4MTAyOTAsImV4cCI6MTY2MDg1MzQ4NCwiaXNzIjoid3d3LmJpbHNvZnQuY29tIiwiYXVkIjoid3d3LmJpbHNvZnQuY29tIn0.AXSppDRMlZoWjgFBQg6M7saARKc17LnAxn-APkC8mew";
+            //APIHelper.kullaniciAdi = "demo";
+            //APIHelper.subeAd = "merkez";
+            ////Test Verileri End
 
             //Giriş
-            //MainPage = new LoginPage();
+            MainPage = new LoginPage();
 
             //Ana Sayfa
             //MainPage = new MainMDPage("demo","index",null);
@@ -50,20 +50,21 @@ namespace bilsoft_mobil_app
 
             //Test Page
             //MainPage = new NavigationPage(new TestPage());
-            MainPage = new NavigationPage(new Pages.MainView.MainContentPage())
+            /*MainPage = new NavigationPage(new Pages.MainView.MainContentPage())
             {
                 BarTextColor = Color.FromHex(AppThemeColors._textColor),
                 //BarBackgroundColor = Color.Transparent
                 BarBackgroundColor = Color.FromHex(AppThemeColors._toolbarcolor)
             };/**/
         }
-        public void SetMainPage(Page rootPage)
-        {
-            MainPage = rootPage;
-        }
+        //public void SetMainPage(Page rootPage)
+        //{
+        //    MainPage = rootPage;
+        //}
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()

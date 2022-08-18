@@ -2,6 +2,7 @@
 using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Helper.JSONHelpers.RootAjanda;
 using bilsoft_mobil_app.Helper.JSONHelpers.User;
+using bilsoft_mobil_app.Pages.MainView;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -307,6 +308,11 @@ namespace bilsoft_mobil_app.Pages.Ajanda
         {
             await getAllData();
             listBildirm.IsRefreshing = false;
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            App.Current.MainPage = new MainPage();
+            return true;
         }
     }
 }

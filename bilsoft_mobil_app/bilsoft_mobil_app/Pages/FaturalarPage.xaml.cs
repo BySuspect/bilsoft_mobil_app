@@ -1,5 +1,6 @@
 ﻿using bilsoft_mobil_app.Helper.App;
 using bilsoft_mobil_app.Helper.Veriler;
+using bilsoft_mobil_app.Pages.MainView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -237,6 +238,11 @@ namespace bilsoft_mobil_app.Pages
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            App.Current.MainPage = new MainPage();
+            return true;
         }
     }
 }

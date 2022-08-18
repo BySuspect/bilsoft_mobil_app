@@ -16,6 +16,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using APIHelper = bilsoft_mobil_app.Helper.API.APIHelper;
 using APIResponse = bilsoft_mobil_app.Helper.API.APIResponse;
+using System.Timers;
 
 namespace bilsoft_mobil_app.Pages
 {
@@ -85,6 +86,7 @@ namespace bilsoft_mobil_app.Pages
                 HttpHelper httpHelper = new HttpHelper();
                 RootGirisYapDonemGetir GirisData;
                 APIResponse res;
+
                 #region sunucu GirisYapDonemGetir Gönderme
                 GirisYapDonemGetirConvert();
                 await Task.Delay(100);
@@ -146,7 +148,11 @@ namespace bilsoft_mobil_app.Pages
                                     oturumuAciktut();
                                 }
                                 APIHelper.loginToken = tokenData.data.token;
-                                await Navigation.PushModalAsync(new MainPage(), false);/**/
+
+                                App.Current.MainPage = new MainPage();
+
+                                //Hatalı
+                                //await Navigation.PushModalAsync(new MainPage(), true);/**/
                             }
                             else
                                 await DisplayAlert("Hata", tokenData.message.ToString(), "Tamam");
@@ -280,7 +286,7 @@ namespace bilsoft_mobil_app.Pages
                         {
                             APIHelper.loginToken = tokenData.data.token;
                             APIHelper.secilenlogindonemYil = Preferences.Get("OturumuAcikTutDonem", "Yok");
-                            await Navigation.PushModalAsync(new MainPage(), false);/**/
+                            App.Current.MainPage = new MainPage();
                         }
                         else
                             await DisplayAlert("Hata", tokenData.message.ToString(), "Tamam");
@@ -314,18 +320,6 @@ namespace bilsoft_mobil_app.Pages
 
         }
 
-        private async void btn_demogiris_Clicked(object sender, EventArgs e)
-        {
-            Loodinglayout.IsVisible = true;
-            LoodingActivity.IsVisible = true;
-            LoodingActivity.IsRunning = true;
-            APIHelper.loginMod = "demo";
-            await Navigation.PushModalAsync(new MainPage(), false);/**/
-            Loodinglayout.IsVisible = false;
-            LoodingActivity.IsVisible = false;
-            LoodingActivity.IsRunning = false;
-        }
-
         private async void TestBTN_Clicked(object sender, EventArgs e)
         {
 
@@ -335,9 +329,31 @@ namespace bilsoft_mobil_app.Pages
         {
             pickerDonem.Focus();
         }
+
+        #region Geri butonu kapatma
+        Timer timer = new Timer { Interval = 2000 };
+        int _backButtonCounter = 1;
+        void setupTimer()
+        {
+            if (!timer.Enabled)
+            {
+                timer.Elapsed += (s, e) =>
+                {
+                    _backButtonCounter = 0;
+                    timer.Stop();
+                };
+                timer.Start();
+            }
+        }
         protected override bool OnBackButtonPressed()
         {
+            if (_backButtonCounter >= 3) return false;
+            if (_backButtonCounter == 0) setupTimer();
+
+            _backButtonCounter++;
+
             return true;
         }
+        #endregion
     }
 }

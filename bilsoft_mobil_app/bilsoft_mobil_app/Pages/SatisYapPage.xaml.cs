@@ -1,4 +1,5 @@
 ﻿using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Pages.MainView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -204,6 +205,11 @@ namespace bilsoft_mobil_app.Pages
             Grid.SetRowSpan(btnStokAc, 2);
             mainFrame.Content = mainStacklayout;
             MainListView.Children.Add(mainFrame);
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            App.Current.MainPage = new MainPage();
+            return true;
         }
     }
 }

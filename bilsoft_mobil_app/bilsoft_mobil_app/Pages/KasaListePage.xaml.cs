@@ -1,6 +1,7 @@
 ﻿using bilsoft_mobil_app.Helper;
 using bilsoft_mobil_app.Helper.API;
 using bilsoft_mobil_app.Helper.App;
+using bilsoft_mobil_app.Pages.MainView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -226,6 +227,11 @@ namespace bilsoft_mobil_app.Pages
             ListGrid.Children.Add(btnEdit, 1, 1);
             mainFrame.Content = mainStacklayout;
             MainListView.Children.Add(mainFrame);
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            App.Current.MainPage = new MainPage();
+            return true;
         }
 
         #region popup voidler

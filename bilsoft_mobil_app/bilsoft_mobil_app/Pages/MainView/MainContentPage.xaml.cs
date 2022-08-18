@@ -23,10 +23,8 @@ using System.Collections.ObjectModel;
 using Microcharts.Forms;
 using SkiaSharp.Views.Forms;
 using System.Net.Http.Headers;
-using Xamarin.CommunityToolkit.Markup;
-using Org.Apache.Http.Conn;
 using Timer = System.Timers.Timer;
-using static Android.Content.ClipData;
+using Xamarin.CommunityToolkit.UI.Views;
 
 namespace bilsoft_mobil_app.Pages.MainView
 {
@@ -43,6 +41,8 @@ namespace bilsoft_mobil_app.Pages.MainView
         public Color NavBarColor { get; set; } = Color.FromHex(AppThemeColors._navbarcolor);
         #endregion
         public ObservableCollection<MainContentPageViewItems> _mainContentPageViewItemsSource { get; set; }
+
+        DateTime[] last7Days = Enumerable.Range(0, 7).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
         public MainContentPage()
         {
             InitializeComponent();
@@ -52,10 +52,53 @@ namespace bilsoft_mobil_app.Pages.MainView
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            testedt.Text = Navigation.NavigationStack.Count + "\n" + Navigation.ModalStack.Count;
             MainViewStart();
         }
         #region Main Content
+
+        #region Menü Butonları
+        private async void CariHesaplar_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new CariHesaplarPage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void StokKartlar_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new StokKartlariPage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void TaksitTakip_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new TaksitListesiPage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void SatisYap_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new SatisYapPage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void CekSenet_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new CekSenetListesiPage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void Banka_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new BankaPage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void Kasa_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new KasaListePage(), this);
+            await Navigation.PopAsync();
+        }
+        private async void Faturalar_Tapped(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new AjandaPage(), this);
+            await Navigation.PopAsync();
+        }
+        #endregion
         private async void MainViewStart()
         {
             Loodinglayout.IsVisible = true;
@@ -512,6 +555,12 @@ namespace bilsoft_mobil_app.Pages.MainView
         }
         async Task<List<_7gunGrafikItems>> get7gunGrafikItems()
         {
+            var _bankaListe = new List<string>();
+            _bankaListe.Add("Tümü");
+            foreach (var item in await getBankaList())
+            {
+                _bankaListe.Add(item.Banka_Hesap);
+            }
             return new List<_7gunGrafikItems>
             {
                 new _7gunGrafikItems
@@ -521,25 +570,25 @@ namespace bilsoft_mobil_app.Pages.MainView
                     Clabel="Ödeme",
                     Bool1=false,
 
-                    Label1 = "17.08.2022",
+                    Label1 = last7Days[0].Day.ToString("00") + "." + last7Days[0].Month.ToString("00") + "." + last7Days[0].Year,
                     GValue1 = 12000,
                     CValue1 = 50,
-                    Label2 = "16.08.2022",
+                    Label2 = last7Days[1].Day.ToString("00") + "." + last7Days[1].Month.ToString("00") + "." + last7Days[1].Year,
                     GValue2 = 2640,
                     CValue2 = 125,
-                    Label3 = "16.08.2022",
+                    Label3 = last7Days[2].Day.ToString("00") + "." + last7Days[2].Month.ToString("00") + "." + last7Days[2].Year,
                     GValue3 = 0,
                     CValue3 = 0,
-                    Label4 = "16.08.2022",
+                    Label4 = last7Days[3].Day.ToString("00") + "." + last7Days[3].Month.ToString("00") + "." + last7Days[3].Year,
                     GValue4 = 0,
                     CValue4 = 0,
-                    Label5 = "16.08.2022",
+                    Label5 = last7Days[4].Day.ToString("00") + "." + last7Days[4].Month.ToString("00") + "." + last7Days[4].Year,
                     GValue5 = 4555,
                     CValue5 = 430,
-                    Label6 = "16.08.2022",
+                    Label6 = last7Days[5].Day.ToString("00") + "." + last7Days[5].Month.ToString("00") + "." + last7Days[5].Year,
                     GValue6 = 0,
                     CValue6 = 0,
-                    Label7 = "16.08.2022",
+                    Label7 = last7Days[6].Day.ToString("00") + "." + last7Days[6].Month.ToString("00") + "." + last7Days[6].Year,
                     GValue7 = 2350,
                     CValue7 = 534,
                 },
@@ -549,33 +598,27 @@ namespace bilsoft_mobil_app.Pages.MainView
                     Glabel="Giriş",
                     Clabel="Çıkış",
                     Bool1=true,
-                    BankaListeSource = new List<string>
-                    {
-                        "Tümü",
-                        "Ziraat Bankası",
-                        "Garanti Bankası",
-                        "TC İş Bankası"
-                    },
+                    BankaListeSource = _bankaListe,
 
-                    Label1 = "17.08.2022",
+                    Label1 = last7Days[0].Day.ToString("00") + "." + last7Days[0].Month.ToString("00") + "." + last7Days[0].Year,
                     GValue1 = 12000,
                     CValue1 = 50,
-                    Label2 = "16.08.2022",
+                    Label2 = last7Days[1].Day.ToString("00") + "." + last7Days[1].Month.ToString("00") + "." + last7Days[1].Year,
                     GValue2 = 2640,
                     CValue2 = 125,
-                    Label3 = "16.08.2022",
+                    Label3 = last7Days[2].Day.ToString("00") + "." + last7Days[2].Month.ToString("00") + "." + last7Days[2].Year,
                     GValue3 = 0,
                     CValue3 = 0,
-                    Label4 = "16.08.2022",
+                    Label4 = last7Days[3].Day.ToString("00") + "." + last7Days[3].Month.ToString("00") + "." + last7Days[3].Year,
                     GValue4 = 0,
                     CValue4 = 0,
-                    Label5 = "16.08.2022",
+                    Label5 = last7Days[4].Day.ToString("00") + "." + last7Days[4].Month.ToString("00") + "." + last7Days[4].Year,
                     GValue5 = 4555,
                     CValue5 = 430,
-                    Label6 = "16.08.2022",
+                    Label6 = last7Days[5].Day.ToString("00") + "." + last7Days[5].Month.ToString("00") + "." + last7Days[5].Year,
                     GValue6 = 0,
                     CValue6 = 0,
-                    Label7 = "16.08.2022",
+                    Label7 = last7Days[6].Day.ToString("00") + "." + last7Days[6].Month.ToString("00") + "." + last7Days[6].Year,
                     GValue7 = 2350,
                     CValue7 = 534,
                 },
@@ -586,25 +629,25 @@ namespace bilsoft_mobil_app.Pages.MainView
                     Clabel="Çıkış",
                     Bool1=false,
 
-                    Label1 = "17.08.2022",
+                    Label1 = last7Days[0].Day.ToString("00") + "." + last7Days[0].Month.ToString("00") + "." + last7Days[0].Year,
                     GValue1 = 12000,
                     CValue1 = 50,
-                    Label2 = "16.08.2022",
+                    Label2 = last7Days[1].Day.ToString("00") + "." + last7Days[1].Month.ToString("00") + "." + last7Days[1].Year,
                     GValue2 = 2640,
                     CValue2 = 125,
-                    Label3 = "16.08.2022",
+                    Label3 = last7Days[2].Day.ToString("00") + "." + last7Days[2].Month.ToString("00") + "." + last7Days[2].Year,
                     GValue3 = 0,
                     CValue3 = 0,
-                    Label4 = "16.08.2022",
+                    Label4 = last7Days[3].Day.ToString("00") + "." + last7Days[3].Month.ToString("00") + "." + last7Days[3].Year,
                     GValue4 = 0,
                     CValue4 = 0,
-                    Label5 = "16.08.2022",
+                    Label5 = last7Days[4].Day.ToString("00") + "." + last7Days[4].Month.ToString("00") + "." + last7Days[4].Year,
                     GValue5 = 4555,
                     CValue5 = 430,
-                    Label6 = "16.08.2022",
+                    Label6 = last7Days[5].Day.ToString("00") + "." + last7Days[5].Month.ToString("00") + "." + last7Days[5].Year,
                     GValue6 = 0,
                     CValue6 = 0,
-                    Label7 = "16.08.2022",
+                    Label7 = last7Days[6].Day.ToString("00") + "." + last7Days[6].Month.ToString("00") + "." + last7Days[6].Year,
                     GValue7 = 2350,
                     CValue7 = 534,
                 },
@@ -616,19 +659,19 @@ namespace bilsoft_mobil_app.Pages.MainView
             {
                 Name = "7 Günlük Satış",
 
-                Label1 = "17.08.2022",
+                Label1 = last7Days[0].Day.ToString("00") + "." + last7Days[0].Month.ToString("00") + "." + last7Days[0].Year,
                 GValue1 = 12000,
-                Label2 = "16.08.2022",
+                Label2 = last7Days[1].Day.ToString("00") + "." + last7Days[1].Month.ToString("00") + "." + last7Days[1].Year,
                 GValue2 = 2640,
-                Label3 = "16.08.2022",
+                Label3 = last7Days[2].Day.ToString("00") + "." + last7Days[2].Month.ToString("00") + "." + last7Days[2].Year,
                 GValue3 = 0,
-                Label4 = "16.08.2022",
+                Label4 = last7Days[3].Day.ToString("00") + "." + last7Days[3].Month.ToString("00") + "." + last7Days[3].Year,
                 GValue4 = 0,
-                Label5 = "16.08.2022",
+                Label5 = last7Days[4].Day.ToString("00") + "." + last7Days[4].Month.ToString("00") + "." + last7Days[4].Year,
                 GValue5 = 4555,
-                Label6 = "16.08.2022",
+                Label6 = last7Days[5].Day.ToString("00") + "." + last7Days[5].Month.ToString("00") + "." + last7Days[5].Year,
                 GValue6 = 0,
-                Label7 = "16.08.2022",
+                Label7 = last7Days[6].Day.ToString("00") + "." + last7Days[6].Month.ToString("00") + "." + last7Days[6].Year,
                 GValue7 = 2350,
             };
         }
@@ -675,10 +718,35 @@ namespace bilsoft_mobil_app.Pages.MainView
         #endregion
 
         #region mainView Navigation
-        private void btnNavHome_Tapped(object sender, EventArgs e)
+
+        #region Geri butonu kapatma
+        Timer timer = new Timer { Interval = 2000 };
+        int _backButtonCounter = 1;
+        void setupTimer()
         {
-            Navigation.InsertPageBefore(new MainContentPage(), this);
-            Navigation.PopAsync(false);
+            if (!timer.Enabled)
+            {
+                timer.Elapsed += (s, e) =>
+                {
+                    _backButtonCounter = 0;
+                    timer.Stop();
+                };
+                timer.Start();
+            }
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            if (_backButtonCounter >= 3) return false;
+            if (_backButtonCounter == 0) setupTimer();
+
+            _backButtonCounter++;
+
+            return true;
+        }
+        #endregion
+        private async void btnNavHome_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MainPage();
         }
 
         #region Kullanıcı Ayarları Menü
@@ -713,10 +781,10 @@ namespace bilsoft_mobil_app.Pages.MainView
         {
 
         }
-        private async void UserPopupbtnLogout_Tapped(object sender, EventArgs e)
+        private void UserPopupbtnLogout_Tapped(object sender, EventArgs e)
         {
             Preferences.Clear();
-            await Navigation.PushModalAsync(new LoginPage());
+            App.Current.MainPage = new LoginPage();
         }
         #endregion
 
@@ -804,6 +872,18 @@ namespace bilsoft_mobil_app.Pages.MainView
             foreach (var day in last7Days)
                 Console.WriteLine($"{day:yyyy-MM-dd}"); // Any manipulations with days go here
             MainViewStart();
+        }
+
+        private void lvKasaBakiye_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var test = ((sender as ListView).SelectedItem as KasaBakiyeListeVeriler);
+            foreach (var item in Resources)
+            {
+                if (item.Key is "KasaBakiyeListkViewItemsTemplate")
+                {
+                    var test2 = item.Value;
+                }
+            }
         }
     }
     public class donutChartItems

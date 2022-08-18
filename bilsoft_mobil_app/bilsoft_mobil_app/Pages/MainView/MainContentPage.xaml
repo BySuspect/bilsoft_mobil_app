@@ -55,7 +55,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="CariHesaplar_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -88,7 +88,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="StokKartlar_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -123,7 +123,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="TaksitTakip_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -157,7 +157,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="SatisYap_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -195,7 +195,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="CekSenet_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -229,7 +229,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="Banka_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -265,7 +265,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="Kasa_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -300,7 +300,7 @@
                             BorderColor="White"
                             CornerRadius="15">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                <TapGestureRecognizer Tapped="Faturalar_Tapped" />
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Image
@@ -569,7 +569,7 @@
                             <ListView.Header>
                                 <StackLayout>
                                     <Label
-                                        Margin="15"
+                                        Margin="0,15,15,15"
                                         FontSize="25"
                                         Text="{Binding Name}"
                                         TextColor="{Binding TextColor}" />
@@ -666,15 +666,17 @@
                     <StackLayout>
                         <!--  {Binding BankaBakiyeleriList}  -->
                         <ListView
+                            x:Name="lvKasaBakiye"
                             HasUnevenRows="True"
+                            ItemSelected="lvKasaBakiye_ItemSelected"
                             ItemsSource="{Binding KasaBakiyeleriList}"
                             SeparatorColor="Transparent">
                             <ListView.Header>
                                 <StackLayout>
                                     <Label
-                                        Margin="15"
+                                        Margin="0,15,15,15"
                                         FontSize="25"
-                                        Text="Banka Bakiyeleri"
+                                        Text="{Binding Name}"
                                         TextColor="{Binding TextColor}" />
                                     <Frame BackgroundColor="Transparent" BorderColor="#4BFFFFFF">
                                         <Grid Margin="-15">
